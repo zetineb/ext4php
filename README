@@ -1,9 +1,9 @@
-Author :Rigoberto D. Benitez
-From   :Maringá - Paraná, Brazil
-Email  :rigoberto.benitez@gmx.com
-Purpose:Wrapper PHP for the Ext JS
-ExtJS 4:Framework should be at the root http.
-PS     :All tests are being done with WampServer 2.1e (32 bit)
-		CSS,Images and Javascript is defined by user
-		Example app1 are using ext-4.0.2a
-		Don't forget to write back your comments and suggestions. 
+Author : Rigoberto D. Benitez
+From   : Maringá - Paraná, Brazil
+Email  : rigoberto.benitez@gmx.com
+Purpose: ExtJS PHP Framework
+PS     : All tests are being done with WampServer 2.1e (32 bit)
+		 ExtJS 4 should be at the root http
+		 CSS,Images and Javascript is defined by user
+		 Example app1 are using ext-4.0.2a
+		 Don't forget to write back your comments and suggestions. 
