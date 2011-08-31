@@ -256,8 +256,8 @@
 				elseif (!strcasecmp($keys[$i],autoSelect)) $this->autoSelect=$v;
 				elseif (!strcasecmp($keys[$i],autoScroll)) $this->autoScroll=$v;
 				elseif (!strcasecmp($keys[$i],autoWidth)) $this->autoWidth=$v;
-				elseif (!strcasecmp($keys[$i],'baseCls')) $this->baseCls=$v;
-				elseif (!strcasecmp($keys[$i],'bbar')){
+				elseif (!strcasecmp($keys[$i],baseCls)) $this->baseCls=$v;
+				elseif (!strcasecmp($keys[$i],bbar)){
 					if (is_array($v)){
 						for($j=0;$j<count($v);$j++){
 							$this->bbar->add(spl_object_hash($v[$j]),$v[$j]);
