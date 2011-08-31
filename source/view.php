@@ -28,10 +28,11 @@
 		public $fields;
 		public $data;
 		
-		public function __construct(){
-			parent::__construct();
+		public function __construct($param=array()){
 			$this->fields=new TListString();
 			$this->data=new TListString();
+			//
+			parent::__construct($param);
 		}
 		
 		public function  __destruct(){

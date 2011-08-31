@@ -10,10 +10,11 @@
 		public $layout=null;		
 		public $items;
 		
-		public function __construct(){
-			parent::__construct();
+		public function __construct($param=array()){
 			$this->items=new TListItems();
 			$this->items->setOwner($this);
+			//
+			parent::__construct($param);
 		}
 		
 		public function __destruct(){

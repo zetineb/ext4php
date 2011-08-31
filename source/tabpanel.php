@@ -32,10 +32,11 @@
 		//
 		public $items;
 		
-		public function __construct(){
-			parent::__construct();
+		public function __construct($param=array()){
 			$this->items=new TListItems();
 			$this->items->setOwner($this);
+			//
+			parent::__construct($param);
 		}
 		
 		public function __destruct(){
@@ -54,6 +55,8 @@
 		public $bodyPadding=null;
 		public $bodyStyle=null;
 		public $border=null; 
+		public $buttons; 
+		public $buttonAlign=null; 
 		public $closable=null;
 		public $cls=null;
 		public $collapsed=null;
@@ -87,10 +90,11 @@
 		//
 		public $items;
 		
-		public function __construct(){
-			parent::__construct();
+		public function __construct($param=array()){
 			$this->items=new TListTabs();
 			$this->items->setOwner($this);
+			$this->buttons=new TListItems();
+			$this->buttons->setOwner($this);
 			$this->bbar=new TListItems();
 			$this->bbar->setOwner($this);
 			$this->fbar=new TListItems();
@@ -104,11 +108,14 @@
 			$this->tbar=new TListItems();
 			$this->tbar->setOwner($this);
 			$this->tools=new TListTools();
+			//
+			parent::__construct($param);
 		}
 		
 		public function __destruct(){
 			parent::__destruct();
 			unset($this->items);
+			unset($this->buttons);
 			unset($this->bbar);
 			unset($this->fbar);
 			unset($this->lbar);

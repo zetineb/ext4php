@@ -1,0 +1,119 @@
+/* FileUpload */
+.x-form-file-wrap {
+    position: relative;
+    height: 22px;
+}
+.x-form-file-wrap .x-form-file {
+	position: absolute;
+	right: 0;
+	-moz-opacity: 0;
+	filter:alpha(opacity: 0);
+	opacity: 0;
+	z-index: 2;
+    height: 22px;
+}
+.x-form-file-wrap .x-form-file-btn {
+	position: absolute;
+	right: 0;
+	z-index: 1;
+}
+.x-form-file-wrap .x-form-file-text {
+    position: absolute;
+    left: 0;
+    z-index: 3;
+    color: #777;
+}
+/**/
+
+.xbody {
+	background:#3d71b8 url(../images/wallpaper/aquablue.jpg) no-repeat center top;
+	font: normal 12px tahoma, arial, verdana, sans-serif;
+	margin: 0;
+	padding: 0;
+	border: 0 none;
+	overflow: hidden;
+	height: 100%;
+}
+.xtaskbar {
+	background:#3d71b8 url(../images/taskbar/toolbar-gradient-blue.png);
+	padding: 0;
+	border: 0 none;
+	overflow: hidden;
+}	
+.xpanel {
+	opacity: .5; 
+	filter: alpha(opacity=50); 
+	background-color: white; 
+	border: 0;
+}
+
+.xnegative {
+	color:#ff0000;
+	font: normal 13px arial, tahoma, verdana, sans-serif;
+}
+.badd {
+	background-image: url(../images/buttons/add.png) !important;
+}
+.bedit {
+	background-image: url(../images/buttons/edit.png) !important;
+}			
+.bdel {
+	background-image: url(../images/buttons/delete.png) !important;
+}						
+.bsave {
+	background-image: url(../images/buttons/save.png) !important;
+}						
+.bdocsave {
+	background-image: url(../images/buttons/doc-save.png) !important;
+}						
+.bclose {
+	background-image: url(../images/buttons/close.png) !important;
+}									
+.blogoff {
+	background-image: url(../images/buttons/shutdown.png) !important;
+}
+.bpgfirst {
+	background-image: url(../images/buttons/go-first.png) !important;
+}
+.bpglast {
+	background-image: url(../images/buttons/go-last.png) !important;
+}
+.bpgnext{
+	background-image: url(../images/buttons/go-next.png) !important;
+}
+.bpgprev{
+	background-image: url(../images/buttons/go-previous.png) !important;
+}
+.bup{
+	background-image: url(../images/buttons/go-up.png) !important;
+}
+.bsearch{
+	background-image: url(../images/buttons/search.png) !important;
+}
+.bfilter{
+	background-image: url(../images/buttons/filter.png) !important;
+}
+.bprint{
+	background-image: url(../images/buttons/print.png) !important;
+}
+.bclear{
+	background-image: url(../images/buttons/editclear.png) !important;
+}
+.bchkproxy{
+	background-image: url(../images/buttons/check_plugin.png) !important;
+}
+.bdiagcancel{
+	background-image: url(../images/buttons/dialog-cancel.png) !important;
+}
+.bprocess{
+	background-image: url(../images/buttons/process.png) !important;
+}
+.btools{
+	background-image: url(../images/buttons/tools.png) !important;
+}
+.blist{
+	background-image: url(../images/buttons/list.png) !important;
+}
+.brefresh{
+	background-image: url(../images/buttons/refresh.png) !important;
+}

@@ -42,8 +42,7 @@
 		//
 		public $items;
 		
-		public function __construct(){
-			parent::__construct();
+		public function __construct($param=array()){
 			$this->items=new TListItems();
 			$this->items->setOwner($this);
 			$this->buttons=new TListItems();
@@ -59,6 +58,8 @@
 			$this->tbar=new TListItems();
 			$this->tbar->setOwner($this);
 			$this->tools=new TListTools();
+			//
+			parent::__construct($param);
 		}
 		
 		public function __destruct(){

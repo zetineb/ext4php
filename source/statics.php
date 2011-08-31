@@ -27,8 +27,13 @@
 	}
 	
 	class TScrollType{			//scroll -> Grid
-		public static $both ='both';
+		public static $both      ='both';
 		public static $horizontal='horizontal';
-		public static $vertical='vertical';
+		public static $vertical  ='vertical';
+	}
+	
+	class TCloseAction{
+		public static $destroy='destroy';
+		public static $hide   ='hide';
 	}
 ?>

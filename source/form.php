@@ -43,8 +43,7 @@
 		//
 		public $items;
 		
-		public function __construct(){
-			parent::__construct();
+		public function __construct($param=array()){
 			$this->items=new TListItems();
 			$this->items->setOwner($this);
 			$this->buttons=new TListItems();
@@ -60,6 +59,8 @@
 			$this->tbar=new TListItems();
 			$this->tbar->setOwner($this);
 			$this->tools=new TListTools();
+			//
+			parent::__construct($param);
 		}
 		
 		public function __destruct(){
@@ -155,10 +156,11 @@
 		public $fields;
 		public $data;
 		
-		public function __construct(){
-			parent::__construct();
+		public function __construct($param=array()){
 			$this->fields=new TListString();
 			$this->data=new TListString();
+			//
+			parent::__construct($param);
 		}
 		
 		public function  __destruct(){
@@ -371,10 +373,11 @@
 		public $layout=null;
 		public $items;
 		
-		public function __construct(){
-			parent::__construct();
+		public function __construct($param=array()){
 			$this->items=new TListCheckbox();
 			$this->items->setOwner($this);
+			//
+			parent::__construct($param);
 		}
 		
 		public function __destruct(){
@@ -389,10 +392,11 @@
 		public $layout=null;
 		public $items;
 		
-		public function __construct(){
-			parent::__construct();
+		public function __construct($param=array()){
 			$this->items=new TListItems();
 			$this->items->setOwner($this);
+			//
+			parent::__construct($param);
 		}
 		
 		public function __destruct(){
@@ -412,10 +416,11 @@
 		public $layout=null;
 		public $items;
 		
-		public function __construct(){
-			parent::__construct();
+		public function __construct($param=array()){
 			$this->items=new TListItems();
 			$this->items->setOwner($this);
+			//
+			parent::__construct($param);
 		}
 		
 		public function __destruct(){
@@ -431,10 +436,11 @@
 		public $layout=null;
 		public $items;
 		
-		public function __construct(){
-			parent::__construct();
+		public function __construct($param=array()){
 			$this->items=new TListRadio();
 			$this->items->setOwner($this);
+			//
+			parent::__construct($param);
 		}
 		
 		public function __destruct(){

@@ -1,5 +1,6 @@
 <?php
 	include("language.php");
+	include("const.php");
 	include("extevents.php");
 	include("statics.php");
 	include("collection.php");
@@ -376,6 +377,13 @@
 				$this->writeLn('bodyStyle:"'.$obj->bodyStyle.'",');
 			if (!is_null($obj->border))
 				$this->writeLn('border:'.$obj->border.',');
+			if ($obj->buttons->count()){
+				$this->writeLn('buttons:[');
+				$this->mkItems($obj->buttons);
+				$this->writeLn('],');
+			}
+			if (!is_null($obj->buttonAlign))
+				$this->writeLn('buttonAlign:"'.$obj->buttonAlign.'",');
 			if (!is_null($obj->closable))
 				$this->writeLn('closable:'.$this->boolean[$obj->closable].',');
 			if (!is_null($obj->cls))
@@ -2084,6 +2092,8 @@
 				$this->mkItems($obj->buttons);
 				$this->writeLn('],');
 			}
+			if (!is_null($obj->buttonAlign))
+				$this->writeLn('buttonAlign:"'.$obj->buttonAlign.'",');
 			if (!is_null($obj->closable))
 				$this->writeLn('closable:'.$this->boolean[$obj->closable].',');
 			if (!is_null($obj->cls))
@@ -2381,8 +2391,17 @@
 					$this->writeLn('bodyStyle:"'.$this->windows->value()->bodyStyle.'",');
 				if (!is_null($this->windows->value()->border))
 					$this->writeLn('border:'.$this->windows->value()->border.',');
+				if ($this->windows->value()->buttons->count()){
+					$this->writeLn('buttons:[');
+					$this->mkItems($this->windows->value()->buttons);
+					$this->writeLn('],');
+				}
+				if (!is_null($this->windows->value()->buttonAlign))
+					$this->writeLn('buttonAlign:"'.$this->windows->value()->buttonAlign.'",');
 				if (!is_null($this->windows->value()->closable))
 					$this->writeLn('closable:'.$this->boolean[$this->windows->value()->closable].',');
+				if (!is_null($this->windows->value()->closeAction))
+					$this->writeLn('closeAction:"'.$this->windows->value()->closeAction.'",');
 				if (!is_null($this->windows->value()->cls))
 					$this->writeLn('cls:"'.$this->windows->value()->cls.'",');
 				if (!is_null($this->windows->value()->collapsed))

@@ -17,10 +17,11 @@
 		public $style=null;
 		public $text='';	
 		
-		public function __construct(){
-			parent::__construct();
+		public function __construct($param=array()){
 			$this->menu=new TListCustomMenu();
 			$this->menu->setOwner($this);
+			//
+			parent::__construct($param);
 		}
 		
 		public function __destruct(){
