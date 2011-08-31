@@ -312,11 +312,11 @@
 				elseif (!strcasecmp($keys[$i],data)){
 					if (is_array($v)){
 						for($j=0;$j<count($v);$j++){
-							$this->data->add(spl_object_hash($v[$j]),$v[$j]);
+							$this->data->add('data'.rand(),$v[$j]);
 						}
 					}
 					else{
-						$this->data->add(spl_object_hash($v),$v);
+						$this->data->add('data'.rand(),$v);
 					}
 				}
 				elseif (!strcasecmp($keys[$i],dataIndex)) $this->dataIndex=$v;
@@ -364,11 +364,11 @@
 				elseif (!strcasecmp($keys[$i],fields)){
 					if (is_array($v)){
 						for($j=0;$j<count($v);$j++){
-							$this->fields->add(spl_object_hash($v[$j]),$v[$j]);
+							$this->fields->add('fields'.rand(),$v[$j]);
 						}
 					}
 					else{
-						$this->fields->add(spl_object_hash($v),$v);
+						$this->fields->add('fields'.rand(),$v);
 					}
 				}
 				elseif (!strcasecmp($keys[$i],fieldLabel)) $this->fieldLabel=$v;

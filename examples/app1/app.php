@@ -65,15 +65,25 @@ try{
 	$dl1=new TDisplay();		
 	$dl1->fieldLabel='Display label';
 	$dl1->value='10';
-	$cb1=new TCombobox();
-	$cb1->fieldLabel='Combo (local)';
+	$cb1=new TCombobox(array(
+		fieldLabel=>'Combo (local)',
+		displayField=>'name',
+		valueField=>'abbr',
+		fields=>array('abbr','name'),
+		data=>array(
+			array('AL','Alabama'),
+			array('AK','Alaska'),
+			array('AZ','Arizona')
+		)
+	));
+	/*$cb1->fieldLabel='Combo (local)';
 	$cb1->displayField='name';
 	$cb1->valueField='abbr';
 	$cb1->fields->add(0,'abbr');
 	$cb1->fields->add(1,'name');
 	$cb1->data->add(0,array('AL','Alabama'));
 	$cb1->data->add(1,array('AK','Alaska'));
-	$cb1->data->add(2,array('AZ','Arizona'));
+	$cb1->data->add(2,array('AZ','Arizona'));*/
 	$cb2=new TCombobox();
 	$cb2->fieldLabel='Combo (remote)';
 	$cb2->displayField='name';
