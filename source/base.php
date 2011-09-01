@@ -541,5 +541,792 @@
 		public function getOwner(){
 			return $this->owner;
 		}
+		//
+		//
+		public function activeItem($v){
+			$this->activeItem=$v;
+			return ($this);
+		}
+		public function activeError($v){ 
+			$this->activeError=$v;
+			return ($this);
+		}
+		public function allowBlank($v){ 
+			$this->allowBlank=$v;
+			return ($this);
+		}
+		public function allowDecimals($v){ 
+			$this->allowDecimals=$v;
+			return ($this);
+		}
+		public function allowDepress($v){ 
+			$this->allowDepress=$v;
+			return ($this);
+		}
+		public function altFormats($v){ 
+			$this->altFormats=$v;
+			return ($this);
+		}
+		public function anchor($v){ 
+			$this->anchor=$v;
+			return ($this);
+		}
+		public function autoLoad($v){ 
+			$this->autoLoad=$v;
+			return ($this);
+		}
+		public function autoSelect($v){ 
+			$this->autoSelect=$v;
+			return ($this);
+		}
+		public function autoScroll($v){ 
+			$this->autoScroll=$v;
+			return ($this);
+		}
+		public function autoWidth($v){ 
+			$this->autoWidth=$v;
+			return ($this);
+		}
+		public function baseCls($v){ 
+			$this->baseCls=$v;
+			return ($this);
+		}
+		public function bbar($v){
+			if (is_array($v)){
+				for($j=0;$j<count($v);$j++){
+					$this->bbar->add(spl_object_hash($v[$j]),$v[$j]);
+				}
+			}
+			else{
+				$this->bbar->add(spl_object_hash($v),$v);
+			}
+			return ($this);
+		}
+		public function blankText($v){ 
+			$this->blankText=$v;
+			return ($this);
+		}
+		public function blockRefresh($v){ 
+			$this->blockRefresh=$v;
+			return ($this);
+		}
+		public function bodyBorder($v){ 
+			$this->bodyBorder=$v;
+			return ($this);
+		}
+		public function bodyCls($v){ 
+			$this->bodyCls=$v;
+			return ($this);
+		}
+		public function bodyPadding($v){ 
+			$this->bodyPadding=$v;
+			return ($this);
+		}
+		public function bodyStyle($v){ 
+			$this->bodyStyle=$v;
+			return ($this);
+		}
+		public function border($v){ 
+			$this->border=$v;
+			return ($this);
+		}
+		public function boxLabel($v){ 
+			$this->boxLabel=$v;
+			return ($this);
+		}
+		public function boxLabelAlign($v){ 
+			$this->boxLabelAlign=$v;
+			return ($this);
+		}
+		public function buttons($v){
+			if (is_array($v)){
+				for($j=0;$j<count($v);$j++){
+					$this->buttons->add(spl_object_hash($v[$j]),$v[$j]);
+				}
+			}
+			else{
+				$this->buttons->add(spl_object_hash($v),$v);
+			}
+			return ($this);
+		}
+		public function buttonAlign($v){ 
+			$this->buttonAlign=$v;
+			return ($this);
+		}
+		public function buttonText($v){ 
+			$this->buttonText=$v;
+			return ($this);
+		}
+		public function checked($v){ 
+			$this->checked=$v;
+			return ($this);
+		}
+		public function clearCls($v){ 
+			$this->clearCls=$v;
+			return ($this);
+		}
+		public function closable($v){ 
+			$this->closable=$v;
+			return ($this);
+		}
+		public function closeText($v){ 
+			$this->closeText=$v;
+			return ($this);
+		}
+		public function cls($v){ 
+			$this->cls=$v;
+			return ($this);
+		}
+		public function collapsed($v){ 
+			$this->collapsed=$v;
+			return ($this);
+		}
+		public function collapsible($v){ 
+			$this->collapsible=$v;
+			return ($this);
+		}
+		public function columnLines($v){ 
+			$this->columnLines=$v;
+			return ($this);
+		}
+		public function columns($v){
+			if (get_class($this)=='TGrid'){
+				if (is_array($v)){
+					for($j=0;$j<count($v);$j++){
+						$this->columns->add(spl_object_hash($v[$j]),$v[$j]);
+					}
+				}
+				else{
+					$this->columns->add(spl_object_hash($v),$v);
+				}
+			}
+			else{
+				$this->columns=$v;
+			}
+			return ($this);
+		}
+		public function columnWidth($v){ 
+			$this->columnWidth=$v;
+			return ($this);
+		}
+		public function createLinkText($v){ 
+			$this->createLinkText=$v;
+			return ($this);
+		}
+		public function data($v){
+			if (is_array($v)){
+				for($j=0;$j<count($v);$j++){
+					$this->data->add('data'.rand(),$v[$j]);
+				}
+			}
+			else{
+				$this->data->add('data'.rand(),$v);
+			}
+			return ($this);
+		}
+		public function dataIndex($v){ 
+			$this->dataIndex=$v;
+			return ($this);
+		}
+		public function decimalPrecision($v){ 
+			$this->decimalPrecision=$v;
+			return ($this);
+		}
+		public function decimalSeparator($v){ 
+			$this->decimalSeparator=$v;
+			return ($this);
+		}
+		public function defaults($v){ 
+			$this->defaults=$v;
+			return ($this);
+		}
+		public function defaultLinkValue($v){ 
+			$this->defaultLinkValue=$v;
+			return ($this);
+		}
+		public function defaultType($v){ 
+			$this->defaultType=$v;
+			return ($this);
+		}
+		public function defaultValue($v){ 
+			$this->defaultValue=$v;
+			return ($this);
+		}
+		public function disabled($v){ 
+			$this->disabled=$v;
+			return ($this);
+		}
+		public function disabledDates($v){ 
+			$this->disabledDates=$v;
+			return ($this);
+		}
+		public function disabledDatesText($v){ 
+			$this->disabledDatesText=$v;
+			return ($this);
+		}
+		public function disabledDays($v){ 
+			$this->disabledDays=$v;
+			return ($this);
+		}
+		public function disabledDaysText($v){ 
+			$this->disabledDaysText=$v;
+			return ($this);
+		}
+		public function disableSelection($v){ 
+			$this->disableSelection=$v;
+			return ($this);
+		}
+		public function displayField($v){ 
+			$this->displayField=$v;
+			return ($this);
+		}
+		public function draggable($v){ 
+			$this->draggable=$v;
+			return ($this);
+		}
+		public function enableKeyEvents($v){ 
+			$this->enableKeyEvents=$v;
+			return ($this);
+		}
+		public function editable($v){ 
+			$this->editable=$v;
+			return ($this);
+		}
+		public function emptyText($v){ 
+			$this->emptyText=$v;
+			return ($this);
+		}
+		public function enableAlignments($v){ 
+			$this->enableAlignments=$v;
+			return ($this);
+		}
+		public function enableColors($v){ 
+			$this->enableColors=$v;
+			return ($this);
+		}
+		public function enableColumnHide($v){ 
+			$this->enableColumnHide=$v;
+			return ($this);
+		}
+		public function enableColumnMove($v){ 
+			$this->enableColumnMove=$v;
+			return ($this);
+		}
+		public function enableColumnResize($v){ 
+			$this->enableColumnResize=$v;
+			return ($this);
+		}
+		public function enableFont($v){ 
+			$this->enableFont=$v;
+			return ($this);
+		}
+		public function enableFontSize($v){ 
+			$this->enableFontSize=$v;
+			return ($this);
+		}
+		public function enableFormat($v){ 
+			$this->enableFormat=$v;
+			return ($this);
+		}
+		public function enableLinks($v){ 
+			$this->enableLinks=$v;
+			return ($this);
+		}
+		public function enableLists($v){ 
+			$this->enableLists=$v;
+			return ($this);
+		}
+		public function enableToggle($v){ 
+			$this->enableToggle=$v;
+			return ($this);
+		}
+		public function enableSourceEdit($v){ 
+			$this->enableSourceEdit=$v;
+			return ($this);
+		}
+		public function eventName($v){ 
+			$this->eventName=$v;
+			return ($this);
+		}
+		public function falseText($v){ 
+			$this->falseText=$v;
+			return ($this);
+		}
+		public function fbar($v){
+			if (is_array($v)){
+				for($j=0;$j<count($v);$j++){
+					$this->fbar->add(spl_object_hash($v[$j]),$v[$j]);
+				}
+			}
+			else{
+				$this->fbar->add(spl_object_hash($v),$v);
+			}
+			return ($this);
+		}
+		public function fields($v){
+			if (is_array($v)){
+				for($j=0;$j<count($v);$j++){
+					$this->fields->add('fields'.rand(),$v[$j]);
+				}
+			}
+			else{
+				$this->fields->add('fields'.rand(),$v);
+			}
+			return ($this);
+		}
+		public function fieldLabel($v){ 
+			$this->fieldLabel=$v;
+			return ($this);
+		}
+		public function flex($v){ 
+			$this->flex=$v;
+			return ($this);
+		}
+		public function fontFamilies($v){ 
+			$this->fontFamilies=$v;
+			return ($this);
+		}
+		public function forceFit($v){ 
+			$this->forceFit=$v;
+			return ($this);
+		}
+		public function forceSelection($v){ 
+			$this->forceSelection=$v;
+			return ($this);
+		}
+		public function format($v){ 
+			$this->format=$v;
+			return ($this);
+		}
+		public function frameHeader($v){ 
+			$this->frameHeader=$v;
+			return ($this);
+		}
+		public function frame($v){ 
+			$this->frame=$v;
+			return ($this);
+		}
+		public function groupable($v){ 
+			$this->groupable=$v;
+			return ($this);
+		}
+		public function handler($v){ 
+			$this->handler=$v;
+			return ($this);
+		}
+		public function header($v){ 
+			$this->header=$v;
+			return ($this);
+		}
+		public function headerPosition($v){ 
+			$this->headerPosition=$v;
+			return ($this);
+		}
+		public function height($v){ 
+			$this->height=$v;
+			return ($this);
+		}
+		public function hidden($v){ 
+			$this->hidden=$v;
+			return ($this);
+		}
+		public function hideable($v){ 
+			$this->hideable=$v;
+			return ($this);
+		}
+		public function html($v){ 
+			$this->html=$v;
+			return ($this);
+		}
+		public function icon($v){ 
+			$this->icon=$v;
+			return ($this);
+		}
+		public function iconAlign($v){ 
+			$this->iconAlign=$v;
+			return ($this);
+		}
+		public function iconCls($v){ 
+			$this->iconCls=$v;
+			return ($this);
+		}
+		public function increment($v){ 
+			$this->increment=$v;
+			return ($this);
+		}
+		public function inputValue($v){ 
+			$this->inputValue=$v;
+			return ($this);
+		}
+		public function items($v){
+			if (is_array($v)){
+				for($j=0;$j<count($v);$j++){
+					$this->items->add(spl_object_hash($v[$j]),$v[$j]);
+				}
+			}
+			else{
+				$this->items->add(spl_object_hash($v),$v);
+			}
+			return ($this);
+		}
+		public function itemSelector($v){ 
+			$this->itemSelector=$v;
+			return ($this);
+		}
+		public function invalidText($v){ 
+			$this->invalidText=$v;
+			return ($this);
+		}
+		public function keyNavEnabled($v){ 
+			$this->keyNavEnabled=$v;
+			return ($this);
+		}
+		public function labelAlign($v){ 
+			$this->labelAlign=$v;
+			return ($this);
+		}
+		public function labelPad($v){ 
+			$this->labelPad=$v;
+			return ($this);
+		}
+		public function labelSeparator($v){ 
+			$this->labelSeparator=$v;
+			return ($this);
+		}
+		public function labelWidth($v){ 
+			$this->labelWidth=$v;
+			return ($this);
+		}
+		public function layout($v){ 
+			$this->layout=$v;
+			return ($this);
+		}
+		public function lbar($v){
+			if (is_array($v)){
+				for($j=0;$j<count($v);$j++){
+					$this->lbar->add(spl_object_hash($v[$j]),$v[$j]);
+				}
+			}
+			else{
+				$this->lbar->add(spl_object_hash($v),$v);
+			}
+			return ($this);
+		}
+		public function loadingText($v){ 
+			$this->loadingText=$v;
+			return ($this);
+		}
+		public function margin($v){ 
+			$this->margin=$v;
+			return ($this);
+		}
+		public function maskRe($v){ 
+			$this->maskRe=$v;
+			return ($this);
+		}
+		public function maxHeight($v){ 
+			$this->maxHeight=$v;
+			return ($this);
+		}
+		public function maxWidth($v){ 
+			$this->maxWidth=$v;
+			return ($this);
+		}
+		public function maximizable($v){ 
+			$this->maximizable=$v;
+			return ($this);
+		}
+		public function maximized($v){ 
+			$this->maximized=$v;
+			return ($this);
+		}
+		public function maxLength($v){ 
+			$this->maxLength=$v;
+			return ($this);
+		}
+		public function maxLengthText($v){ 
+			$this->maxLengthText=$v;
+			return ($this);
+		}
+		public function maxText($v){ 
+			$this->maxText=$v;
+			return ($this);
+		}
+		public function maxValue($v){ 
+			$this->maxValue=$v;
+			return ($this);
+		}
+		public function menu($v){
+			if (is_array($v)){
+				for($j=0;$j<count($v);$j++){
+					$this->menu->add(spl_object_hash($v[$j]),$v[$j]);
+				}
+			}
+			else{
+				$this->menu->add(spl_object_hash($v),$v);
+			}
+			return ($this);
+		}
+		public function menuDisabled($v){ 
+			$this->menuDisabled=$v;
+			return ($this);
+		}
+		public function minHeight($v){ 
+			$this->minHeight=$v;
+			return ($this);
+		}
+		public function minWidth($v){ 
+			$this->minWidth=$v;
+			return ($this);
+		}
+		public function minimizable($v){ 
+			$this->minimizable=$v;
+			return ($this);
+		}
+		public function minLength($v){ 
+			$this->minLength=$v;
+			return ($this);
+		}
+		public function minLengthText($v){ 
+			$this->minLengthText=$v;
+			return ($this);
+		}
+		public function minText($v){ 
+			$this->minText=$v;
+			return ($this);
+		}
+		public function minValue($v){ 
+			$this->minValue=$v;
+			return ($this);
+		}
+		public function multiSelect($v){ 
+			$this->multiSelect=$v;
+			return ($this);
+		}
+		public function modal($v){ 
+			$this->modal=$v;
+			return ($this);
+		}
+		public function msgTarget($v){ 
+			$this->msgTarget=$v;
+			return ($this);
+		}
+		public function name($v){ 
+			$this->name=$v;
+			return ($this);
+		}
+		public function nanText($v){ 
+			$this->nanText=$v;
+			return ($this);
+		}
+		public function negativeText($v){ 
+			$this->negativeText=$v;
+			return ($this);
+		}
+		public function overCls($v){ 
+			$this->overCls=$v;
+			return ($this);
+		}
+		public function padding($v){ 
+			$this->padding=$v;
+			return ($this);
+		}
+		public function plain($v){ 
+			$this->plain=$v;
+			return ($this);
+		}
+		public function pressed($v){ 
+			$this->pressed=$v;
+			return ($this);
+		}
+		public function queryMode($v){ 
+			$this->queryMode=$v;
+			return ($this);
+		}
+		public function queryParam($v){ 
+			$this->queryParam=$v;
+			return ($this);
+		}
+		public function rbar($v){
+			if (is_array($v)){
+				for($j=0;$j<count($v);$j++){
+					$this->rbar->add(spl_object_hash($v[$j]),$v[$j]);
+				}
+			}
+			else{
+				$this->rbar->add(spl_object_hash($v),$v);
+			}
+			return ($this);
+		}
+		public function readOnly($v){ 
+			$this->readOnly=$v;
+			return ($this);
+		}
+		public function renderer($v){ 
+			$this->renderer=$v;
+			return ($this);
+		}
+		public function resizable($v){ 
+			$this->resizable=$v;
+			return ($this);
+		}
+		public function root($v){ 
+			$this->root=$v;
+			return ($this);
+		}
+		public function scale($v){ 
+			$this->scale=$v;
+			return ($this);
+		}
+		public function scroll($v){ 
+			$this->scroll=$v;
+			return ($this);
+		}
+		public function selectOnFocus($v){ 
+			$this->selectOnFocus=$v;
+			return ($this);
+		}
+		public function selectOnTab($v){ 
+			$this->selectOnTab=$v;
+			return ($this);
+		}
+		public function showToday($v){ 
+			$this->showToday=$v;
+			return ($this);
+		}
+		public function sortable($v){ 
+			$this->sortable=$v;
+			return ($this);
+		}
+		public function sortableColumns($v){ 
+			$this->sortableColumns=$v;
+			return ($this);
+		}
+		public function spinDownEnabled($v){ 
+			$this->spinDownEnabled=$v;
+			return ($this);
+		}
+		public function spinUpEnabled($v){ 
+			$this->spinUpEnabled=$v;
+			return ($this);
+		}
+		public function startDay($v){ 
+			$this->startDay=$v;
+			return ($this);
+		}
+		public function step($v){ 
+			$this->step=$v;
+			return ($this);
+		}
+		public function style($v){ 
+			$this->style=$v;
+			return ($this);
+		}
+		public function tbar($v){
+			if (is_array($v)){
+				for($j=0;$j<count($v);$j++){
+					$this->tbar->add(spl_object_hash($v[$j]),$v[$j]);
+				}
+			}
+			else{
+				$this->tbar->add(spl_object_hash($v),$v);
+			}
+			return ($this);
+		}
+		public function tabIndex($v){ 
+			$this->tabIndex=$v;
+			return ($this);
+		}
+		public function text($v){ 
+			$this->text=$v;
+			return ($this);
+		}
+		public function title($v){ 
+			$this->title=$v;
+			return ($this);
+		}
+		public function titleCollapse($v){ 
+			$this->titleCollapse=$v;
+			return ($this);
+		}
+		public function tools($v){
+			if (is_array($v)){
+				for($j=0;$j<count($v);$j++){
+					$this->tools->add(spl_object_hash($v[$j]),$v[$j]);
+				}
+			}
+			else{
+				$this->tools->add(spl_object_hash($v),$v);
+			}
+			return ($this);
+		}
+		public function tooltip($v){ 
+			$this->tooltip=$v;
+			return ($this);
+		}
+		public function totalProperty($v){ 
+			$this->totalProperty=$v;
+			return ($this);
+		}
+		public function tpl($v){ 
+			$this->tpl=$v;
+			return ($this);
+		}
+		public function triggerAction($v){ 
+			$this->triggerAction=$v;
+			return ($this);
+		}
+		public function trueText($v){ 
+			$this->trueText=$v;
+			return ($this);
+		}
+		public function type($v){ 
+			$this->type=$v;
+			return ($this);
+		}
+		public function typeAhead($v){ 
+			$this->typeAhead=$v;
+			return ($this);
+		}
+		public function validateOnBlur($v){ 
+			$this->validateOnBlur=$v;
+			return ($this);
+		}
+		public function validateOnChange($v){ 
+			$this->validateOnChange=$v;
+			return ($this);
+		}
+		public function validator($v){ 
+			$this->validator=$v;
+			return ($this);
+		}
+		public function valueField($v){ 
+			$this->valueField=$v;
+			return ($this);
+		}
+		public function valueNotFoundText($v){ 
+			$this->valueNotFoundText=$v;
+			return ($this);
+		}
+		public function value($v){ 
+			$this->value=$v;
+			return ($this);
+		}
+		public function vertical($v){ 
+			$this->vertical=$v;
+			return ($this);
+		}
+		public function width($v){ 
+			$this->width=$v;
+			return ($this);
+		}
+		public function x($v){ 
+			$this->x=$v;
+			return ($this);
+		}
+		public function y($v){ 
+			$this->y=$v;
+			return ($this);
+		}
 	}
 ?>

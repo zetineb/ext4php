@@ -59,9 +59,10 @@ try{
 	$xb1->name='topping';
 	$xb1->inputValue=1;*/
 	$dt1=new TDate();
-	$dt1->fieldLabel='Date';
+	$dt1->fieldLabel('Date')->disabledDays(array(0,6));
+/*	$dt1->fieldLabel='Date';
 	//$dt1->disabledDays='0,6'; //disable Sunday and Saturday
-	$dt1->disabledDays=array(0,6);
+	$dt1->disabledDays=array(0,6);*/
 	$dl1=new TDisplay();		
 	$dl1->fieldLabel='Display label';
 	$dl1->value='10';
@@ -85,13 +86,21 @@ try{
 	$cb1->data->add(1,array('AK','Alaska'));
 	$cb1->data->add(2,array('AZ','Arizona'));*/
 	$cb2=new TCombobox();
-	$cb2->fieldLabel='Combo (remote)';
+	$cb2->fieldLabel('Combo (remote)')->
+		  displayField('name')->
+		  valueField('abbr')->
+		  fields(array('abbr','name'))->
+		  eventName('combobox2')->
+		  queryMode(TQueryModeType::$remote);
+		  
+/*	$cb2->fieldLabel='Combo (remote)';
 	$cb2->displayField='name';
 	$cb2->valueField='abbr';
 	$cb2->fields->add(0,'abbr');
 	$cb2->fields->add(1,'name');
 	$cb2->eventName='combobox2';				//PHP event for this combo
 	$cb2->queryMode=TQueryModeType::$remote;	//Get data from server
+*/
 	$ed1=new THtmlEditor();
 	$ed1->height=80;
 	$nu1=new TNumber();
@@ -117,7 +126,15 @@ try{
 	$cont3->items->add('rd1',$rd1);
 	$cont3->items->add('rd2',$rd2);
 	$txt1=new TText();
-	$txt1->name='email';
+	$txt1->name('email')->fieldLabel('Email Address')->width(300)->validateOnBlur(true)->validateOnChange(false)->validator('
+		if (!value.length){ 
+			Ext.Msg.alert("ERROR","Not Allow Blank");
+			return (false);
+		}
+		else 
+			return (true);
+	');
+/*	$txt1->name='email';
 	$txt1->fieldLabel='Email Address';
 	$txt1->width=300;
 	//$txt1->allowBlank=false;
@@ -128,7 +145,7 @@ try{
 			return (false);
 		}
 		else 
-			return (true);';
+			return (true);';*/
 	$txa1=new TTextArea();
 	$txa1->width=300;
 	$txa1->height=50;
