@@ -739,7 +739,7 @@
 			if (!is_null($obj->validateOnChange))
 				$this->writeLn('validateOnChange:'.$this->boolean[$obj->validateOnChange].',');
 			if (!is_null($obj->validator))
-				$this->writeLn('validator:function(value){'.$obj->validator.'},');
+				$this->writeLn('validator:function(value){'.$this->getString($obj->validator).'},');
 			if (!is_null($obj->value))
 				$this->writeLn('value:"'.$obj->value.'",');
 			if (!is_null($obj->valueField))
@@ -882,7 +882,7 @@
 			if (!is_null($obj->validateOnChange))
 				$this->writeLn('validateOnChange:'.$this->boolean[$obj->validateOnChange].',');
 			if (!is_null($obj->validator))
-				$this->writeLn('validator:function(value){'.$obj->validator.'},');
+				$this->writeLn('validator:function(value){'.$this->getString($obj->validator).'},');
 			if (!is_null($obj->value))
 				$this->writeLn('value:"'.$obj->value.'",');
 			if (!is_null($obj->width)){
@@ -1246,7 +1246,7 @@
 			if (!is_null($obj->validateOnChange))
 				$this->writeLn('validateOnChange:'.$this->boolean[$obj->validateOnChange].',');
 			if (!is_null($obj->validator))
-				$this->writeLn('validator:function(value){'.$obj->validator.'},');
+				$this->writeLn('validator:function(value){'.$this->getString($obj->validator).'},');
 			if (!is_null($obj->value))
 				$this->writeLn('value:'.$obj->value.',');
 			if (!is_null($obj->width)){
@@ -1412,7 +1412,7 @@
 			else
 				$this->writeLn('value:"",');
 			if (!is_null($obj->validator))
-				$this->writeLn('validator:function(value){'.$obj->validator.'},');
+				$this->writeLn('validator:function(value){'.$this->getString($obj->validator).'},');
 			if (!is_null($obj->width)){
 				if (stristr($obj->width,"%"))
 					$this->writeLn('width:"'.$obj->width.'",');
@@ -1493,7 +1493,7 @@
 			else
 				$this->writeLn('value:"",');
 			if (!is_null($obj->validator))
-				$this->writeLn('validator:function(value){'.$obj->validator.'},');
+				$this->writeLn('validator:function(value){'.$this->getString($obj->validator).'},');
 			if (!is_null($obj->width)){
 				if (stristr($obj->width,"%"))
 					$this->writeLn('width:"'.$obj->width.'",');
@@ -1602,7 +1602,7 @@
 			if (!is_null($obj->validateOnChange))
 				$this->writeLn('validateOnChange:'.$this->boolean[$obj->validateOnChange].',');
 			if (!is_null($obj->validator))
-				$this->writeLn('validator:function(value){'.$obj->validator.'},');
+				$this->writeLn('validator:function(value){'.$this->getString($obj->validator).'},');
 			if (!is_null($obj->value))
 				$this->writeLn('value:"'.$obj->value.'",');
 			if (!is_null($obj->width)){
