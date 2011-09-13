@@ -362,7 +362,7 @@ try{
 	$w1->items->add('tabpanel1',$tabpanel1);*/
 	
 	$app=new TApplication();
-	$app->extVersion='ext-4.0.2a';
+	$app->ext='ext-4.0.2a';
 	$app->cls='xbody';
 	$app->headers->add('utils','<script type="text/javascript" src="js/utils.js"></script>');
 	$app->headers->add('app-style','<link rel="stylesheet" type="text/css" href="css/app.css"/>');

@@ -350,7 +350,7 @@
 				elseif (!strcasecmp($keys[$i],enableToggle)) $this->enableToggle=$v;
 				elseif (!strcasecmp($keys[$i],enableSourceEdit)) $this->enableSourceEdit=$v;
 				elseif (!strcasecmp($keys[$i],eventName)) $this->eventName=$v;
-				elseif (!strcasecmp($keys[$i],extVersion)) $this->extVersion=$v;
+				elseif (!strcasecmp($keys[$i],ext)) $this->ext=$v;
 				elseif (!strcasecmp($keys[$i],falseText)) $this->falseText=$v;
 				elseif (!strcasecmp($keys[$i],fbar)){
 					if (is_array($v)){
@@ -860,8 +860,8 @@
 			$this->eventName=$v;
 			return ($this);
 		}
-		public function extVersion($v){ 
-			$this->extVersion=$v;
+		public function ext($v){ 
+			$this->ext=$v;
 			return ($this);
 		}
 		public function falseText($v){ 

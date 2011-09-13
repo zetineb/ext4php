@@ -29,7 +29,7 @@
 		//
 		public $xtype='viewport';
 		public $language;
-		public $extVersion;
+		public $ext;
 		public $headers;	//HTML header
 		public $events;		//PHP events, not agile syntax
 		//
@@ -71,9 +71,9 @@
 		private function mkHeader(){
 			$this->writeLn('<head>');
 			$this->writeLn('<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />');
-			$this->writeLn('<link rel="stylesheet" type="text/css" href="/'.$this->extVersion.'/resources/css/ext-all.css"/>');
-			$this->writeLn('<script type="text/javascript" src="/'.$this->extVersion.'/ext-all.js"></script>');
-			$this->writeLn('<script type="text/javascript" src="/'.$this->extVersion.'/locale/'.$this->language.'"></script>');
+			$this->writeLn('<link rel="stylesheet" type="text/css" href="/'.$this->ext.'/resources/css/ext-all.css"/>');
+			$this->writeLn('<script type="text/javascript" src="/'.$this->ext.'/ext-all.js"></script>');
+			$this->writeLn('<script type="text/javascript" src="/'.$this->ext.'/locale/'.$this->language.'"></script>');
 			while ($this->headers->next()){
 				$this->writeLn($this->headers->value());
 			}

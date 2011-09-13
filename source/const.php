@@ -67,7 +67,7 @@
 	define("enableToggle","enableToggle");
 	define("enableSourceEdit","enableSourceEdit");
 	define("eventName","eventName");
-	define("extVersion","extVersion");
+	define("ext","ext");
 	define("falseText","falseText");
 	define("fbar","fbar");
 	define("fields","fields");
