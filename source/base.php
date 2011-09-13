@@ -350,6 +350,7 @@
 				elseif (!strcasecmp($keys[$i],enableToggle)) $this->enableToggle=$v;
 				elseif (!strcasecmp($keys[$i],enableSourceEdit)) $this->enableSourceEdit=$v;
 				elseif (!strcasecmp($keys[$i],eventName)) $this->eventName=$v;
+				elseif (!strcasecmp($keys[$i],extVersion)) $this->extVersion=$v;
 				elseif (!strcasecmp($keys[$i],falseText)) $this->falseText=$v;
 				elseif (!strcasecmp($keys[$i],fbar)){
 					if (is_array($v)){
@@ -381,6 +382,16 @@
 				elseif (!strcasecmp($keys[$i],frame)) $this->frame=$v;
 				elseif (!strcasecmp($keys[$i],groupable)) $this->groupable=$v;
 				elseif (!strcasecmp($keys[$i],handler)) $this->handler=$v;
+				elseif (!strcasecmp($keys[$i],headers)){
+					if (is_array($v)){
+						for($j=0;$j<count($v);$j++){
+							$this->headers->add(spl_object_hash($v[$j]),$v[$j]);
+						}
+					}
+					else{
+						$this->headers->add(spl_object_hash($v),$v);
+					}
+				}
 				elseif (!strcasecmp($keys[$i],header)) $this->header=$v;
 				elseif (!strcasecmp($keys[$i],headerPosition)) $this->headerPosition=$v;
 				elseif (!strcasecmp($keys[$i],height)) $this->height=$v;
@@ -409,6 +420,7 @@
 				elseif (!strcasecmp($keys[$i],labelPad)) $this->labelPad=$v;
 				elseif (!strcasecmp($keys[$i],labelSeparator)) $this->labelSeparator=$v;
 				elseif (!strcasecmp($keys[$i],labelWidth)) $this->labelWidth=$v;
+				elseif (!strcasecmp($keys[$i],language)) $this->language=$v;
 				elseif (!strcasecmp($keys[$i],layout)) $this->layout=$v;
 				elseif (!strcasecmp($keys[$i],lbar)){
 					if (is_array($v)){
@@ -848,6 +860,10 @@
 			$this->eventName=$v;
 			return ($this);
 		}
+		public function extVersion($v){ 
+			$this->extVersion=$v;
+			return ($this);
+		}
 		public function falseText($v){ 
 			$this->falseText=$v;
 			return ($this);
@@ -912,6 +928,17 @@
 		}
 		public function handler($v){ 
 			$this->handler=$v;
+			return ($this);
+		}
+		public function headers($v){
+			if (is_array($v)){
+				for($j=0;$j<count($v);$j++){
+					$this->headers->add('headers'.rand(),$v[$j]);
+				}
+			}
+			else{
+				$this->headers->add('headers'.rand(),$v);
+			}
 			return ($this);
 		}
 		public function header($v){ 
@@ -995,6 +1022,10 @@
 		}
 		public function labelWidth($v){ 
 			$this->labelWidth=$v;
+			return ($this);
+		}
+		public function language($v){ 
+			$this->language=$v;
 			return ($this);
 		}
 		public function layout($v){ 

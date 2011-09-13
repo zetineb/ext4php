@@ -15,9 +15,11 @@
 	include("toolbar.php");
 	include("grid.php");
 	include("view.php");
-	
+
 	//
-	class TApplication extends TListeners{
+	//ATENTION: Any new properties must be mapped in the base.php and const.php
+	//
+	class TApplication extends TComponent{
 		private $boolean=array(true=>"true",false=>"false");
 		//
 		private $onWindowBeforeUnloadValue=null;
@@ -29,10 +31,10 @@
 		public $language;
 		public $extVersion;
 		public $headers;	//HTML header
-		public $events;		//PHP events
+		public $events;		//PHP events, not agile syntax
 		//
-		public $listeners;	//ExtJS listeners
-		public $windows;
+		//public $listeners;	//ExtJS listeners
+		public $windows;		//Not agile syntax
 		public $items;
 		public $activeItem=0;
 		public $baseCls=null;
@@ -2598,22 +2600,26 @@
 			$this->onDocumentReadyValue=$value;
 		}
 		//
-		public function __construct(){
+		public function __construct($param=array()){
 			$this->language=TLanguage::$pt_BR;
 			$this->headers=new TListHeader();
-			$this->listeners=new TListListener();
+			//$this->listeners=new TListListener();
 			$this->events=new TListEvent();
 			$this->windows=new TListWindow();
 			$this->items=new TListItems();
 			$this->items->setOwner($this);
+			//
+			parent::__construct($param);	//Must be here
 		}
 		
 		public function __destruct(){
 			unset($this->headers);
-			unset($this->listeners);
+			//unset($this->listeners);
 			unset($this->events);
 			unset($this->windows);
 			unset($this->items);
+			//
+			parent::__destruct();
 		}
 		
 		public function show(){

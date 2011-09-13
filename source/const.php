@@ -67,6 +67,7 @@
 	define("enableToggle","enableToggle");
 	define("enableSourceEdit","enableSourceEdit");
 	define("eventName","eventName");
+	define("extVersion","extVersion");
 	define("falseText","falseText");
 	define("fbar","fbar");
 	define("fields","fields");
@@ -80,6 +81,7 @@
 	define("frame","frame");
 	define("groupable","groupable");
 	define("handler","handler");
+	define("headers","headers");
 	define("header","header");
 	define("headerPosition","headerPosition");
 	define("height","height");
@@ -99,6 +101,7 @@
 	define("labelPad","labelPad");
 	define("labelSeparator","labelSeparator");
 	define("labelWidth","labelWidth");
+	define("language","language");
 	define("layout","layout");
 	define("lbar","lbar");
 	define("loadingText","loadingText");
