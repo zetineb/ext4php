@@ -2624,10 +2624,10 @@
 		
 		public function show(){
 			if ($_REQUEST){
-				$event='';
-				if (isset($_REQUEST['event'])) $event=$_REQUEST['event'];
+				$_ev='';
+				if (isset($_REQUEST['event'])) $_ev=$_REQUEST['event'];
 
-				$this->execEvent($event);
+				$this->execEvent($_ev);
 			}
 			else{
 				$this->writeLn('<html>');
