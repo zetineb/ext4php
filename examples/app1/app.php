@@ -1,5 +1,6 @@
 ﻿<?php
 require("../../source/application.php");
+include ("formupl.php");
 
 try{
 	class Event1 extends TEvent{
@@ -187,7 +188,7 @@ try{
 	$panel1->tools->add('print',$tool1);
 	$panel1->items->add('cont1',$cont1);
 
-	$file1=new TFile();
+/*	$file1=new TFile();
 	$file1->name='photo';
 	$file1->fieldLabel='Photo';
 	$file1->labelWidth=50;
@@ -214,7 +215,7 @@ try{
 	$form1->width='400';
 	$form1->height=90;
 	$form1->items->add('file1',$file1);
-	$form1->buttons->add('btn2',$btn2);
+	$form1->buttons->add('btn2',$btn2);*/
 
 	$col1=new TColumn();
 	$col1->header='State';
@@ -322,7 +323,8 @@ try{
 	$tab1->items->add('cont1',$cont1);
 	$tab2=new TTab();
 	$tab2->title='Upload';
-	$tab2->items->add('formUp',$form1);
+	$form1=new FormUpload();
+	$tab2->items->add('formUp',$form1->getForm());
 	$tab3=new TTab();
 	//$tab3->listeners->add('activate','if (!Ext.getCmp("grid").getStore().getCount()) Ext.Msg.alert("Information","Load data from menu Tools")');
 	$tab3->onActivate('if (!Ext.getCmp("grid").getStore().getCount()) Ext.Msg.alert("Information","Load data from menu Tools")');
