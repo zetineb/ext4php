@@ -184,10 +184,18 @@
 			$this->listeners->add('initialize',$this->getString($value));
 		}
 
+		public function onItemClick($value){
+			$this->listeners->add('itemclick',$this->getString($value));
+		}
+
+		public function onItemDblClick($value){
+			$this->listeners->add('itemdblclick',$this->getString($value));
+		}
+
 		public function onMaximize($value){
 			$this->listeners->add('maximize',$this->getString($value));
 		}
-
+		
 		public function onMinimize($value){
 			$this->listeners->add('minimize',$this->getString($value));
 		}
@@ -215,7 +223,15 @@
 		public function onResize($value){
 			$this->listeners->add('resize',$this->getString($value));
 		}
+		
+		public function onRowClick($value){
+			$this->listeners->add('itemclick',$this->getString($value));
+		}
 
+		public function onRowDblClick($value){
+			$this->listeners->add('itemdblclick',$this->getString($value));
+		}
+		
 		public function onSelect($value){
 			$this->listeners->add('select',$this->getString($value));
 		}

@@ -100,6 +100,8 @@
 			'focus'             =>'function(component,options){%CODE%}',
 			'hide'              =>'function(component,options){%CODE%}',
 			'initialize'        =>'function(htmlEditor,options){%CODE%}',
+			'itemclick'         =>'function(self,record,item,index,eventObj,options){%CODE%}',
+			'itemdblclick'      =>'function(self,record,item,index,eventObj,options){%CODE%}',
 			'maximize'          =>'function(self,options){%CODE%}',
 			'minimize'          =>'function(self,options){%CODE%}',
 			'move'              =>'function(component,x,y,options){%CODE%}',

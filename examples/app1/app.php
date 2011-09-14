@@ -267,6 +267,8 @@ try{
 	$grid->autoLoad=false;
 	$grid->eventName='combobox2';				//PHP event for this combo
 	$grid->queryMode=TQueryModeType::$remote;	//Get data from server
+	$grid->onItemClick(array('Ext.Msg.alert("INFO","click row "+index+" name "+record.get("name"));'));
+	//$grid->onItemDblClick(array('Ext.Msg.alert("INFO","dblclick row "+index+" abbr "+record.get("abbr"));'));
 
 	$btn3=new TButton();
 	$btn3->text='Submit';
