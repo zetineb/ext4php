@@ -102,6 +102,9 @@
 			'initialize'        =>'function(htmlEditor,options){%CODE%}',
 			'itemclick'         =>'function(self,record,item,index,eventObj,options){%CODE%}',
 			'itemdblclick'      =>'function(self,record,item,index,eventObj,options){%CODE%}',
+			'keydown'           =>'function(self,eventObj,options){%CODE%}',
+			'keypress'          =>'function(self,eventObj,options){%CODE%}',
+			'keyup'             =>'function(self,eventObj,options){%CODE%}',
 			'maximize'          =>'function(self,options){%CODE%}',
 			'minimize'          =>'function(self,options){%CODE%}',
 			'move'              =>'function(component,x,y,options){%CODE%}',
@@ -112,6 +115,7 @@
 			'resize'            =>'function(self,adjWidth,adjHeight,options){%CODE%}',
 			'select'            =>'function(component,value,options){%CODE%}',
 			'show'              =>'function(component,options){%CODE%}',
+			'specialkey'        =>'function(self,eventObj,options){%CODE%}',
 			'sync'              =>'function(htmlEditor,isValid,options){%CODE%}',
 			'validitychange'    =>'function(field,isValid,options){%CODE%}'
 		);

@@ -192,6 +192,18 @@
 			$this->listeners->add('itemdblclick',$this->getString($value));
 		}
 
+		public function onKeyDown($value){
+			$this->listeners->add('keydown',$this->getString($value));
+		}
+		
+		public function onKeyPress($value){
+			$this->listeners->add('keypress',$this->getString($value));
+		}
+
+		public function onKeyUp($value){
+			$this->listeners->add('keyup',$this->getString($value));
+		}
+
 		public function onMaximize($value){
 			$this->listeners->add('maximize',$this->getString($value));
 		}
@@ -238,6 +250,10 @@
 
 		public function onShow($value){
 			$this->listeners->add('show',$this->getString($value));
+		}
+
+		public function onSpecialKey($value){
+			$this->listeners->add('specialkey',$this->getString($value));
 		}
 
 		public function onSync($value){
