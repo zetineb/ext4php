@@ -649,7 +649,7 @@
 			if (!is_null($obj->margin))
 				$this->writeLn('margin:"'.$obj->margin.'",');
 			if (!is_null($obj->maskRe))
-				$this->writeLn('maskRe:"'.$obj->maskRe.'",');
+				$this->writeLn('maskRe:'.$obj->maskRe.',');
 			if (!is_null($obj->maxLength))
 				$this->writeLn('maxLength:'.$obj->maxLength.',');
 			if (!is_null($obj->maxLengthText))
@@ -836,7 +836,7 @@
 			if (!is_null($obj->labelWidth))
 				$this->writeLn('labelWidth:'.$obj->labelWidth.',');
 			if (!is_null($obj->maskRe))
-				$this->writeLn('maskRe:"'.$obj->maskRe.'",');
+				$this->writeLn('maskRe:'.$obj->maskRe.',');
 			if (!is_null($obj->maxLength))
 				$this->writeLn('maxLength:'.$obj->maxLength.',');
 			if (!is_null($obj->maxLengthText))
@@ -1194,7 +1194,7 @@
 			if (!is_null($obj->labelWidth))
 				$this->writeLn('labelWidth:'.$obj->labelWidth.',');
 			if (!is_null($obj->maskRe))
-				$this->writeLn('maskRe:"'.$obj->maskRe.'",');
+				$this->writeLn('maskRe:'.$obj->maskRe.',');
 			if (!is_null($obj->maxLength))
 				$this->writeLn('maxLength:'.$obj->maxLength.',');
 			if (!is_null($obj->maxLengthText))
@@ -1390,7 +1390,7 @@
 			if (!is_null($obj->labelWidth))
 				$this->writeLn('labelWidth:'.$obj->labelWidth.',');
 			if (!is_null($obj->maskRe))
-				$this->writeLn('maskRe:"'.$obj->maskRe.'",');
+				$this->writeLn('maskRe:'.$obj->maskRe.',');
 			if (!is_null($obj->maxLength))
 				$this->writeLn('maxLength:'.$obj->maxLength.',');
 			if (!is_null($obj->maxLengthText))
@@ -1471,7 +1471,7 @@
 			if (!is_null($obj->labelWidth))
 				$this->writeLn('labelWidth:'.$obj->labelWidth.',');
 			if (!is_null($obj->maskRe))
-				$this->writeLn('maskRe:"'.$obj->maskRe.'",');
+				$this->writeLn('maskRe:'.$obj->maskRe.',');
 			if (!is_null($obj->maxLength))
 				$this->writeLn('maxLength:'.$obj->maxLength.',');
 			if (!is_null($obj->maxLengthText))
@@ -1560,7 +1560,7 @@
 			if (!is_null($obj->labelWidth))
 				$this->writeLn('labelWidth:'.$obj->labelWidth.',');
 			if (!is_null($obj->maskRe))
-				$this->writeLn('maskRe:"'.$obj->maskRe.'",');
+				$this->writeLn('maskRe:'.$obj->maskRe.',');
 			if (!is_null($obj->maxLength))
 				$this->writeLn('maxLength:'.$obj->maxLength.',');
 			if (!is_null($obj->maxLengthText))
