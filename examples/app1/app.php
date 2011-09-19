@@ -11,6 +11,7 @@ try{
 	class Combobox2 extends TEvent{
 		public function execute(){
 			/*$fp = fopen('debug.txt', 'w');
+			//GRID|1|0|25|[{"property":"name","direction":"ASC"}]|[{"property":"eyeColor","value":"brown"}]
 			fwrite($fp, $this->data.'|'.$this->page.'|'.$this->start.'|'.$this->limit.'|'.$this->sort.'|'.$this->filter);
 			fclose($fp);*/
 			//
@@ -353,7 +354,7 @@ try{
 		tools=>$tool1,		//or array
 		items=>$tabpanel1	//or array
 	));
-	$w1->onBeforeHide('Ext.Msg.alert("Information","window beforehide");');
+	$w1->onBeforeHide('Ext.Msg.alert("Information","window beforehide")');
 	
 	/*$w1->layout='fit';
 	$w1->title='First window';
@@ -411,7 +412,6 @@ try{
 	});	
 	if (Ext.getCmp('grid')){
 		Ext.getCmp('grid').getStore().load(operation);
-		Ext.getCmp('paging_grid').doRefresh();	//Name of pagingtoolbar is 'paging_' + 'grid id'
 		Ext.Msg.alert('INFO','Send proxy operation to server');
 	}
 	else
