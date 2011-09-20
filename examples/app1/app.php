@@ -10,7 +10,7 @@ try{
 	}
 	class Combobox2 extends TEvent{
 		public function execute(){
-			/*$fp = fopen('debug.txt', 'w');
+/*			$fp = fopen('debug.txt', 'w');
 			//GRID|1|0|25|[{"property":"name","direction":"ASC"}]|[{"property":"eyeColor","value":"brown"}]
 			fwrite($fp, $this->data.'|'.$this->page.'|'.$this->start.'|'.$this->limit.'|'.$this->sort.'|'.$this->filter);
 			fclose($fp);*/
@@ -32,7 +32,7 @@ try{
 					'dtf'=>'2011/06/13'
 				)
 			);
-			
+						
 			//echo json_encode($states);
 			echo '{"totalCount":30,"records":'.json_encode($states).'}';	//Default obj->totalProperty='totalCount', obj->root='records'; (obj=Combobox or Grid)
 		}
@@ -244,12 +244,34 @@ try{
 	$col5->width=40;
 	$col5->items->add('bdel',$bdel);
 	
+	$bnext=new TButton();
+	$bnext->text='Open';
+	$bnext->handler="
+		if (typeof operation=='undefined'){
+			Ext.Msg.alert('ERROR','Create operation first');
+			return;
+		}
+		operation.sorters.push(
+			new Ext.util.Sorter({
+				property : 'name',
+				direction: 'ASC'
+		}));
+		operation.filters.push(new Ext.util.Filter({
+			property: 'abbr',
+			value   : 'brown'
+		}));
+		operation.page++;
+		Ext.getCmp('grid').getStore().load(operation);
+	";
+
 	$grid=new TGrid(array(
-		columns=>array($col1,$col2,$col3,$col4,$col5)
+		columns=>array($col1,$col2,$col3,$col4,$col5),
+		bbar=>array($bnext)
 	));
 	$grid->height=200;
 	$grid->width='100%';
 	$grid->title='Grid Test';
+	
 /*	$grid->fields->add(0,'abbr');
 	$grid->fields->add(1,'name');
 	$grid->fields->add(2,'pop');
@@ -268,7 +290,7 @@ try{
 	$grid->autoLoad=false;
 	$grid->eventName='combobox2';				//PHP event for this combo
 	$grid->queryMode=TQueryModeType::$remote;	//Get data from server
-	$grid->onItemClick(array('Ext.Msg.alert("INFO","click row "+index+" name "+record.get("name"));'));
+	//$grid->onItemClick(array('Ext.Msg.alert("INFO","click row "+index+" name "+record.get("name"));'));
 	//$grid->onItemDblClick(array('Ext.Msg.alert("INFO","dblclick row "+index+" abbr "+record.get("abbr"));'));
 
 	$btn3=new TButton();
@@ -330,7 +352,7 @@ try{
 	$tab2->items->add('formUp',$form1->getForm());
 	$tab3=new TTab();
 	//$tab3->listeners->add('activate','if (!Ext.getCmp("grid").getStore().getCount()) Ext.Msg.alert("Information","Load data from menu Tools")');
-	$tab3->onActivate('if (!Ext.getCmp("grid").getStore().getCount()) Ext.Msg.alert("Information","Load data from menu Tools")');
+	$tab3->onActivate('if (!Ext.getCmp("grid").getStore().getCount()) Ext.Msg.alert("ATTENTION","Create operation from menu Tools before load data grid !!!")');
 	$tab3->title='Grid';
 	$tab3->items->add('grid',$grid);	//->add(id,obj)
 	$tab4=new TTab();
@@ -374,7 +396,7 @@ try{
 	//Only TApplication---------------------------------------------------------------------------
 	$app->onWindowBeforeUnload('','Quit my App'); //Javascript code, Quit Message
 	//$app->onWindowResize('alert("WindowResize");'); //Javascript code
-	//$app->onDocumentReady('alert("DocumentReady");'); //Javascript code
+	//$app->onDocumentReady(""); //Javascript code
 	//--------------------------------------------------------------------------------------------
 	//
 	$app->onAfterRender(array('Ext.Msg.alert("Information","application afterrender",',
@@ -392,30 +414,24 @@ try{
 	$it1=new TMenuItem();
 	$it1->iconCls='badd';
 	$it1->iconAlign='left';
-	$it1->text='Load Grid Store';
+	$it1->text='Create operation';
 	//$it1->listeners->add('click',
-	$it1->onClick("var operation = new Ext.data.Operation({
-		action: 'read',
-		page  : 1,
-		sorters: [
-				new Ext.util.Sorter({
-					property : 'name',
-					direction: 'ASC'
-				})
-		],
-		filters: [
-			new Ext.util.Filter({
-				property: 'eyeColor',
-				value   : 'brown'
-			})
-		]
-	});	
-	if (Ext.getCmp('grid')){
-		Ext.getCmp('grid').getStore().load(operation);
-		Ext.Msg.alert('INFO','Send proxy operation to server');
-	}
-	else
-		Ext.Msg.alert('INFO','Not available here');
+	$it1->onClick("
+		if (Ext.getCmp('grid')){
+			operation = new Ext.data.Operation({
+				start : 0,
+				page  : 0,
+				limit :50,
+				sorters: [
+				],
+				filters: [
+				]
+			});	
+			Ext.Msg.alert('INFO','Click button Open in grid toolbar');
+		}
+		else{
+			Ext.Msg.alert('ERROR','Not Allow here');
+		}
 	");
 	$it2=new TMenuSeparator();
 	$it3=new TMenuItem();

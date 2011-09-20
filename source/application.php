@@ -2045,6 +2045,7 @@
 				if (is_null($obj->eventName)) throw new Exception('ERROR: Missing eventName');
 				//
 				$this->writeLn('store:{');
+				$this->writeLn('remoteFilter:true,');
 				$this->writeLn('autoLoad:'.$this->boolean[$obj->autoLoad].',');	
 				$this->writeLn('fields:'.$fields.',');
 				$this->writeLn('proxy: {');	
@@ -2058,10 +2059,12 @@
 				$this->writeLn('}');
 				$this->writeLn('},');
 				//
-				$this->writeLn('dockedItems: [{');
+/*				$this->writeLn('dockedItems: [{');
 				$this->writeLn('xtype:"pagingtoolbar",');
 				$this->writeLn('id:"paging_'.$id.'",');
+				$this->writeLn('store:store,');
 				$this->writeLn('store:{');
+				$this->writeLn('remoteFilter:true,');
 				$this->writeLn('autoLoad:'.$this->boolean[$obj->autoLoad].',');	
 				$this->writeLn('fields:'.$fields.',');
 				$this->writeLn('proxy: {');	
@@ -2076,7 +2079,7 @@
 				$this->writeLn('},');
 				$this->writeLn('dock:"bottom",');
 				$this->writeLn('displayInfo:true');
-				$this->writeLn('}],');
+				$this->writeLn('}],');*/
 			}
 			if (!is_null($obj->baseCls))
 				$this->writeLn('baseCls:"'.$obj->baseCls.'",');
