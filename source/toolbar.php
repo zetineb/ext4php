@@ -9,7 +9,8 @@
 		public $padding=null;
 		public $plain=null;
 		public $style=null;
-		public $text=null;	
+		public $displayMsg=null;
+		public $text=null;
 	}
 	
 	class TToolbarFill extends TCustomToolbar{

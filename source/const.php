@@ -50,6 +50,7 @@
 	define("disabledDaysText","disabledDaysText");
 	define("disableSelection","disableSelection");
 	define("displayField","displayField");
+	define("displayMsg","displayMsg");
 	define("draggable","draggable");
 	define("enableKeyEvents","enableKeyEvents");
 	define("editable","editable");

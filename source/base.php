@@ -365,6 +365,7 @@
 				elseif (!strcasecmp($keys[$i],disabledDaysText)) $this->disabledDaysText=$v;
 				elseif (!strcasecmp($keys[$i],disableSelection)) $this->disableSelection=$v;
 				elseif (!strcasecmp($keys[$i],displayField)) $this->displayField=$v;
+				elseif (!strcasecmp($keys[$i],displayMsg)) $this->displayMsg=$v;
 				elseif (!strcasecmp($keys[$i],draggable)) $this->draggable=$v;
 				elseif (!strcasecmp($keys[$i],enableKeyEvents)) $this->enableKeyEvents=$v;
 				elseif (!strcasecmp($keys[$i],editable)) $this->editable=$v;
@@ -822,6 +823,10 @@
 		}
 		public function displayField($v){ 
 			$this->displayField=$v;
+			return ($this);
+		}
+		public function displayMsg($v){ 
+			$this->displayMsg=$v;
 			return ($this);
 		}
 		public function draggable($v){ 

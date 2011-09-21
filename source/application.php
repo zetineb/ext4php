@@ -15,6 +15,7 @@
 	include("toolbar.php");
 	include("grid.php");
 	include("view.php");
+	include("paging.php");
 
 	//
 	//ATENTION: Any new properties must be mapped in the base.php and const.php
@@ -1894,6 +1895,9 @@
 		}
 		
 		private function mkCustomToolbar($obj){
+			if (!is_null($obj->displayMsg))
+				$this->writeLn('displayMsg:"'.$obj->displayMsg.'",');
+			//
 			if (!is_null($obj->baseCls))
 				$this->writeLn('baseCls:"'.$obj->baseCls.'",');			
 			if (!is_null($obj->cls))
@@ -1911,9 +1915,9 @@
 			if (!is_null($obj->style))
 				$this->writeLn('style:"'.$obj->style.'",');
 			if (!is_null($obj->text)&&is_null($obj->html))
-				$this->writeLn('text:"'.$obj->text.'"');
+				$this->writeLn('text:"'.$obj->text.'",');
 			elseif ($obj->xtype=='tbtext'&&is_null($obj->html))
-				$this->writeLn('text:""');
+				$this->writeLn('text:"",');
 
 			$this->writeLn('margin:"'.$obj->margin.'"');
 		}

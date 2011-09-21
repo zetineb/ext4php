@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 require("../../source/application.php");
 include ("formupl.php");
 
@@ -10,7 +10,7 @@ try{
 	}
 	class Combobox2 extends TEvent{
 		public function execute(){
-/*			$fp = fopen('debug.txt', 'w');
+			/*$fp = fopen('debug.txt', 'w');
 			//GRID|1|0|25|[{"property":"name","direction":"ASC"}]|[{"property":"eyeColor","value":"brown"}]
 			fwrite($fp, $this->data.'|'.$this->page.'|'.$this->start.'|'.$this->limit.'|'.$this->sort.'|'.$this->filter);
 			fclose($fp);*/
@@ -244,33 +244,14 @@ try{
 	$col5->width=40;
 	$col5->items->add('bdel',$bdel);
 	
-	$bnext=new TButton();
-	$bnext->text='Open';
-	$bnext->handler="
-		if (typeof operation=='undefined'){
-			Ext.Msg.alert('ERROR','Create operation first');
-			return;
-		}
-		operation.sorters.push(
-			new Ext.util.Sorter({
-				property : 'name',
-				direction: 'ASC'
-		}));
-		operation.filters.push(new Ext.util.Filter({
-			property: 'abbr',
-			value   : 'brown'
-		}));
-		operation.page++;
-		Ext.getCmp('grid').getStore().load(operation);
-	";
 
-	$grid=new TGrid(array(
+/*	$grid=new TGrid(array(
 		columns=>array($col1,$col2,$col3,$col4,$col5),
-		bbar=>array($bnext)
+		bbar=>array(new TToolbarFill(),$bnext)
 	));
 	$grid->height=200;
 	$grid->width='100%';
-	$grid->title='Grid Test';
+	$grid->title='Grid Test';*/
 	
 /*	$grid->fields->add(0,'abbr');
 	$grid->fields->add(1,'name');
@@ -287,12 +268,30 @@ try{
 	$grid->columns->add('col4',$col4);
 	$grid->columns->add('col5',$col5);*/
 	//
-	$grid->autoLoad=false;
-	$grid->eventName='combobox2';				//PHP event for this combo
-	$grid->queryMode=TQueryModeType::$remote;	//Get data from server
+//	$grid->autoLoad=false;
+//	$grid->eventName='combobox2';				//PHP event for this combo
+//	$grid->queryMode=TQueryModeType::$remote;	//Get data from server
 	//$grid->onItemClick(array('Ext.Msg.alert("INFO","click row "+index+" name "+record.get("name"));'));
 	//$grid->onItemDblClick(array('Ext.Msg.alert("INFO","dblclick row "+index+" abbr "+record.get("abbr"));'));
 
+	$paging=new TPaging('grid','operation',array(
+		columns=>array($col1,$col2,$col3,$col4,$col5),
+		height=>200,
+		width=>'100%',
+		title=>'Paging test',
+		autoLoad=>false,
+		eventName=>'combobox2',
+		queryMode=>TQueryModeType::$remote
+	));
+	//$paging->first->text='Primeira';
+	$paging->first->iconCls='bpgfirst';
+	//$paging->prev->text='Anterior';
+	$paging->prev->iconCls='bpgprev';
+	//$paging->next->text='Próxima';
+	$paging->next->iconCls='bpgnext';
+	//$paging->last->text='Última';
+	$paging->last->iconCls='bpglast';
+	
 	$btn3=new TButton();
 	$btn3->text='Submit';
 	$btn3->handler="
@@ -352,9 +351,12 @@ try{
 	$tab2->items->add('formUp',$form1->getForm());
 	$tab3=new TTab();
 	//$tab3->listeners->add('activate','if (!Ext.getCmp("grid").getStore().getCount()) Ext.Msg.alert("Information","Load data from menu Tools")');
-	$tab3->onActivate('if (!Ext.getCmp("grid").getStore().getCount()) Ext.Msg.alert("ATTENTION","Create operation from menu Tools before load data grid !!!")');
+	$tab3->onActivate('if (!Ext.getCmp("grid").getStore().getCount()) Ext.Msg.alert("ATTENTION","Load data grid from menu Tools !")');
 	$tab3->title='Grid';
-	$tab3->items->add('grid',$grid);	//->add(id,obj)
+	
+	$grid=$paging->getGrid();
+	$tab3->items->add($paging->gridId,$grid);	//->add(id,obj)
+	
 	$tab4=new TTab();
 	$tab4->title='Form';
 	$tab4->items->add('form2',$form2);
@@ -414,20 +416,20 @@ try{
 	$it1=new TMenuItem();
 	$it1->iconCls='badd';
 	$it1->iconAlign='left';
-	$it1->text='Create operation';
+	$it1->text='Load data grid';
 	//$it1->listeners->add('click',
 	$it1->onClick("
 		if (Ext.getCmp('grid')){
 			operation = new Ext.data.Operation({
 				start : 0,
-				page  : 0,
+				page  : 1,
 				limit :50,
 				sorters: [
 				],
 				filters: [
 				]
 			});	
-			Ext.Msg.alert('INFO','Click button Open in grid toolbar');
+			Ext.getCmp('grid').getStore().load(operation);
 		}
 		else{
 			Ext.Msg.alert('ERROR','Not Allow here');
