@@ -74,7 +74,7 @@ try{
 		valueField=>'abbr',
 		fields=>array('abbr','name'),
 		data=>array(
-			array('AL','Alabama'),
+			array('AL','Alabama asdasdsdasdkaçldkaçlsdkasççalsdçaskdçaslkdsçalkdaçsdkçaskdasçdkas'),
 			array('AK','Alaska'),
 			array('AZ','Arizona')
 		)
@@ -424,12 +424,14 @@ try{
 				start : 0,
 				page  : 1,
 				limit :50,
+				count :1200,  //total records is not mandatory
 				sorters: [
 				],
 				filters: [
 				]
 			});	
 			Ext.getCmp('grid').getStore().load(operation);
+			Ext.getCmp('grid_display').setText('<b>Page: 1 - '+Math.ceil(operation.count/operation.limit)+'</b>');
 		}
 		else{
 			Ext.Msg.alert('ERROR','Not Allow here');

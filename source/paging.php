@@ -1,4 +1,9 @@
 <?php
+/*
+	Ext.data.Operation is required to use this class. 
+	Required properties are start, and page limit. 
+	Property count (total records) is not mandatory
+*/
 class TPaging{
 	private $grid;
 	//
@@ -24,11 +29,14 @@ class TPaging{
 				Ext.Msg.alert('ERROR','Missing paging operation for id ".$id."');
 				return;
 			}
+			var _last=999999;
+			if (typeof ".$operation.".count!='undefined') _last=Math.ceil(".$operation.".count/".$operation.".limit);
 			".$operation.".page=1;
 			".$operation.".start=0;
 			var _txt='?';
-			if (typeof ".$operation.".last!='undefined') _txt=".$operation.".last;
-			Ext.getCmp('".$id."_display').setText('<b>'+Ext.getCmp('".$id."_display').displayMsg+': '+".$operation.".page+' - '+_txt+'</b>');
+			if (typeof ".$operation.".count!='undefined') _txt=_last;
+			if (Ext.getCmp('".$id."_display').displayMsg!='')
+				Ext.getCmp('".$id."_display').setText('<b>'+Ext.getCmp('".$id."_display').displayMsg+': '+".$operation.".page+' - '+_txt+'</b>');
 			Ext.getCmp('".$id."').getStore().load(".$operation.");
 		";
 		//
@@ -41,12 +49,15 @@ class TPaging{
 				Ext.Msg.alert('ERROR','Missing paging operation for id ".$id."');
 				return;
 			}
+			var _last=999999;
+			if (typeof ".$operation.".count!='undefined') _last=Math.ceil(".$operation.".count/".$operation.".limit);
 			if (".$operation.".page>1){
 				".$operation.".page--;
 				".$operation.".start-=".$operation.".limit;
 				var _txt='?';
-				if (typeof ".$operation.".last!='undefined') _txt=".$operation.".last;
-				Ext.getCmp('".$id."_display').setText('<b>'+Ext.getCmp('".$id."_display').displayMsg+': '+".$operation.".page+' - '+_txt+'</b>');
+				if (typeof ".$operation.".count!='undefined') _txt=_last;
+				if (Ext.getCmp('".$id."_display').displayMsg!='')
+					Ext.getCmp('".$id."_display').setText('<b>'+Ext.getCmp('".$id."_display').displayMsg+': '+".$operation.".page+' - '+_txt+'</b>');
 				Ext.getCmp('".$id."').getStore().load(".$operation.");
 			}
 			else
@@ -64,12 +75,15 @@ class TPaging{
 				Ext.Msg.alert('ERROR','Missing paging operation for id ".$id."');
 				return;
 			}
-			if (".$operation.".page!=-1){
+			var _last=999999;
+			if (typeof ".$operation.".count!='undefined') _last=Math.ceil(".$operation.".count/".$operation.".limit);
+			if (".$operation.".page!=-1&&".$operation.".page<_last){
 				".$operation.".page++;
 				".$operation.".start+=".$operation.".limit;
 				var _txt='?';
-				if (typeof ".$operation.".last!='undefined') _txt=".$operation.".last;
-				Ext.getCmp('".$id."_display').setText('<b>'+Ext.getCmp('".$id."_display').displayMsg+': '+".$operation.".page+' - '+_txt+'</b>');
+				if (typeof ".$operation.".count!='undefined') _txt=_last;
+				if (Ext.getCmp('".$id."_display').displayMsg!='')
+					Ext.getCmp('".$id."_display').setText('<b>'+Ext.getCmp('".$id."_display').displayMsg+': '+".$operation.".page+' - '+_txt+'</b>');
 				Ext.getCmp('".$id."').getStore().load(".$operation.");
 			}
 		";
@@ -83,12 +97,15 @@ class TPaging{
 				Ext.Msg.alert('ERROR','Missing paging operation for id ".$id."');
 				return;
 			}
-			if (".$operation.".page!=-1){
+			var _last=999999;
+			if (typeof ".$operation.".count!='undefined') _last=Math.ceil(".$operation.".count/".$operation.".limit);
+			if (".$operation.".page!=-1&&".$operation.".page<_last){
 				".$operation.".page =-1;
 				".$operation.".start=-1;
 				var _txt='?';
-				if (typeof ".$operation.".last!='undefined') _txt=".$operation.".last;
-				Ext.getCmp('".$id."_display').setText('<b>'+Ext.getCmp('".$id."_display').displayMsg+': '+_txt+' - '+_txt+'</b>');
+				if (typeof ".$operation.".count!='undefined') _txt=_last;
+				if (Ext.getCmp('".$id."_display').displayMsg!='')
+					Ext.getCmp('".$id."_display').setText('<b>'+Ext.getCmp('".$id."_display').displayMsg+': '+_txt+' - '+_txt+'</b>');
 				Ext.getCmp('".$id."').getStore().load(".$operation.");
 			}
 		";
@@ -107,7 +124,11 @@ class TPaging{
 		if ($this->buttonsAlign=='left'){
 			$this->grid->bbar->add('',new TToolbarFill());
 		}
-		$this->grid->bbar->add($this->gridId.'_display',new TToolbarText(array(displayMsg=>$this->displayMsg,text=>'<b>'.$this->displayMsg.': 1 - ?</b>')));
+		$display='';
+		$displayMsg=$this->displayMsg;
+		if (is_null($this->displayMsg)) $displayMsg='';
+		if ($displayMsg) $display='<b>'.$displayMsg.': 1 - ?</b>';
+		$this->grid->bbar->add($this->gridId.'_display',new TToolbarText(array(displayMsg=>$displayMsg,text=>$display)));
 		//
 		return ($this->grid);
 	}
