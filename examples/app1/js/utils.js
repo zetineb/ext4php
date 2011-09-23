@@ -9,18 +9,18 @@ _APP={
 					params:{event:_p.event,data:_p.data},
 					method:'POST',
 					success: function(response, opts){
-						Ext.Msg.hide();
+						if (_p.msg) Ext.Msg.hide();
 						if (_p.handler) _p.handler(response.responseText);
 				},
 				failure: function(response, opts){
-					Ext.Msg.hide();
+					if (_p.msg) Ext.Msg.hide();
 					if (_p.showNetFail) alert(response.statusText);
 					if (_p.fail) _p.fail();
 				}
 			});	
 		}
 		catch(e){
-			Ext.Msg.hide();
+			if (_p.msg) Ext.Msg.hide();
 			alert(e.message)
 		}
 	}
