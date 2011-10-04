@@ -1966,6 +1966,8 @@
 					$this->writeLn('draggable:'.$this->boolean[$obj->columns->value()->draggable].',');
 				if (!is_null($obj->columns->value()->groupable))
 					$this->writeLn('groupable:'.$this->boolean[$obj->columns->value()->groupable].',');
+				if (!is_null($obj->columns->value()->hidden))
+					$this->writeLn('hidden:'.$this->boolean[$obj->columns->value()->hidden].',');
 				if ($obj->columns->value()->xtype=='actioncolumn'){
 					$this->writeLn('items:[');
 					while ($obj->columns->value()->items->next()){

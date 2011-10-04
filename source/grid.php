@@ -10,6 +10,7 @@
 		public $menuDisabled=null;
 		public $draggable=null;
 		public $groupable=null;
+		public $hidden=null;
 	}
 	
 	class TColumnAction extends TCustomColumn{
