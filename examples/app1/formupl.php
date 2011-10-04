@@ -15,6 +15,13 @@ class FormUpload{
 		return ($file1); 
 	}
 	
+	private function path(){
+		$path=new THidden();
+		$path->name='path';
+		$path->value='uploads/';	
+		return ($path); 
+	}
+	
 	private function button(){
 		$btn2=new TButton();
 		$btn2->text='Upload';
@@ -26,6 +33,9 @@ class FormUpload{
 						"waitMsg: 'Uploading your photo...',",
 						"success: function(fp, o) {",
 							"Ext.Msg.alert('Success', 'Your photo \"' + o.result.file + '\" has been uploaded.');",
+						"},",
+						"failure: function(fp,o){",
+						  "Ext.Msg.alert('Failure', 'Your photo \"' + o.result.file + '\" cannot has been uploaded.');",
 						"}",
 					"});",
 				"}");
@@ -38,6 +48,7 @@ class FormUpload{
 		$this->form->width='400';
 		$this->form->height=90;
 		$this->form->items->add('file1',$this->file());
+		$this->form->items->add('path',$this->path());
 		$this->form->buttons->add('btn2',$this->button());
 	}
 	
