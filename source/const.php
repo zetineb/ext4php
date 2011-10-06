@@ -94,6 +94,7 @@
 	define("iconCls","iconCls");
 	define("increment","increment");
 	define("inputValue","inputValue");
+	define("inputType","inputType");
 	define("invalidText","invalidText");
 	define("items","items");
 	define("itemSelector","itemSelector");

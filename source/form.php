@@ -307,6 +307,7 @@
 		public $labelPad=null;
 		public $labelSeparator=null;
 		public $labelWidth=null;
+		public $inputType=null;
 		public $maskRe=null;
 		public $maxLength=null;
 		public $maxLengthText=null;

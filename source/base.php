@@ -435,6 +435,7 @@
 				elseif (!strcasecmp($keys[$i],iconAlign)) $this->iconAlign=$v;
 				elseif (!strcasecmp($keys[$i],iconCls)) $this->iconCls=$v;
 				elseif (!strcasecmp($keys[$i],increment)) $this->increment=$v;
+				elseif (!strcasecmp($keys[$i],inputType)) $this->inputType=$v;
 				elseif (!strcasecmp($keys[$i],inputValue)) $this->inputValue=$v;
 				elseif (!strcasecmp($keys[$i],items)){
 					if (is_array($v)){
@@ -1016,6 +1017,10 @@
 		}
 		public function increment($v){ 
 			$this->increment=$v;
+			return ($this);
+		}
+		public function inputType($v){ 
+			$this->inputType=$v;
 			return ($this);
 		}
 		public function inputValue($v){ 

@@ -1380,6 +1380,8 @@
 				$this->writeLn('hidden:'.$this->boolean[$obj->hidden].',');
 			if (!is_null($obj->html))
 				$this->writeLn('html:"'.$obj->html.'",');
+			if (!is_null($obj->inputType))
+				$this->writeLn('inputType:"'.$obj->inputType.'",');
 			if (!is_null($obj->invalidText))
 				$this->writeLn('invalidText:"'.$obj->invalidText.'",');
 			if (!is_null($obj->labelAlign))
