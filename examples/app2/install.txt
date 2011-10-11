@@ -1,0 +1,16 @@
+Developed by: Fausto Castagnari Marouvo
+Location: Maringa, PR, Brazil
+Contact Email: fausto@mirageminterativa.com.br
+
+Install:
+1 - Create a database named 'destaque';
+2 - Import app2.sql (can be found in sql/app2.sql);
+3 - Edit connection lines:
+	index.php in line 8 and index2.php in line 30
+	$conexao = mysql_connect("localhost","root","");
+	replace "localhost" for your mysql address;
+	replace "root" for destaque table user;
+	replace "" for destaque table password;
+4 - Access index.php path in your browser;
+5 - Create a new user;
+6 - Enjoy and have fun!

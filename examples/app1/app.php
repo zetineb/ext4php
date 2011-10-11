@@ -237,6 +237,7 @@ try{
 	$col4->flex=1;	
 	
 	$bdel=new TButton();
+	$bdel->tooltip='Delete';
 	$bdel->icon='images/buttons/delete.png';
 	$bdel->handler='Ext.Msg.alert("INFO","Delete "+grid.getStore().getAt(rowIndex).get("name"));';  //handler receives params grid,rowIndex,colIndex
 	
@@ -379,7 +380,6 @@ try{
 		items=>$tabpanel1	//or array
 	));
 	$w1->onBeforeHide('Ext.Msg.alert("Information","window beforehide")');
-	
 	/*$w1->layout='fit';
 	$w1->title='First window';
 	$w1->width=700;

@@ -1,0 +1,109 @@
+*{
+	padding:0;
+	margin:0;
+}
+img{
+	border:none;
+}
+a{
+	text-decoration:none;
+}
+a:hover{
+	text-decoration:underline;
+}
+body{
+	background:url("../images/bg.png") repeat-x;
+	background-color:#5098bc;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#fff;
+}
+.resolucao{
+	width:990px;
+	margin:0 auto;
+}
+.clear{
+	clear:both;
+}
+.right{
+	float:right;
+}
+#topo{
+	background:url("../images/topo.png") repeat;
+	padding:20px;
+}
+#topo #logo{
+	background:url("../images/logo.png") repeat;
+	display:block;
+	width:600px;
+	height:85px;
+	text-indent:-99999px;
+}
+.paragrafo{
+	margin-top:20px;
+	width:690px;
+	float:left;
+}
+#login{
+	background:url("../images/login.png") repeat;
+	display:table;
+	width:280px;
+	height:198px;
+	margin:20px 10px;
+}
+#login form{
+	margin:60px 0 0 10px;
+}
+label{
+	cursor:pointer;
+}
+.texto_form_login{
+	background:#fff;
+	border-radius:5px;
+	border:1px solid #fff;
+	padding:5px;
+	margin-bottom:8px;
+	width:245px;
+}
+.texto_form_login:focus{
+	border-color:#333;
+	background:#fbfbeb;
+}
+.botao_login{
+	background:#23608c;
+	padding:5px 7px;
+	border:0;
+	border-radius:5px;
+	float:right;
+	margin-right:15px;
+	color:#fff;
+	cursor:pointer;
+}
+.botao_login:hover{
+	background:#8cc3eb;
+	color:#23608c;
+}
+#novo{
+	background:url("../images/novo.png") repeat;
+	display:table;
+	width:280px;
+	height:297px;
+	margin:0 10px 10px 10px;
+}
+#novo form{
+	margin:60px 0 0 10px;
+}
+.botao_novo{
+	background:#af0014;
+	padding:5px 7px;
+	border:0;
+	border-radius:5px;
+	float:right;
+	margin-right:15px;
+	color:#fff;
+	cursor:pointer;
+}
+.botao_novo:hover{
+	background:#f2939e;
+	color:#af0014;
+}
