@@ -15,6 +15,7 @@
 	
 	class TColumnAction extends TCustomColumn{
 		public $xtype='actioncolumn';
+		public $tooltip=null;
 		public $items;
 		
 		public function __construct($param=array()){
