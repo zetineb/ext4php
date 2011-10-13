@@ -5,5 +5,5 @@ Purpose: ExtJS (4+) PHP (5.2+) Framework
 PS     : All tests are being done with WampServer 2.1e (32 bit)
 		 ExtJS 4 should be at the root http
 		 CSS,Images and Javascript is defined by user
-		 Example app1 are using ext-4.0.2a
+		 Examples are using ext-4.0.2a
 		 Don't forget to write back your comments and suggestions. 
