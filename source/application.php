@@ -15,6 +15,7 @@
 	include("toolbar.php");
 	include("grid.php");
 	include("view.php");
+	include("chart.php");
 	include("paging.php");
 
 	//
@@ -1944,6 +1945,7 @@
 				if ($obj->columns->iterator()>0) $this->writeLn(',');
 				$this->writeLn('{');
 				$this->writeLn('xtype:"'.$obj->columns->value()->xtype.'",');
+				$this->writeLn('id:"'.$obj->columns->name().'",');
 				if (!is_null($obj->columns->value()->header))
 					$this->writeLn('header:"'.$obj->columns->value()->header.'",');
 				if (!is_null($obj->columns->value()->height)){
