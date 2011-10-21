@@ -43,7 +43,7 @@ class winIdiomas {
 	}
 	
 	public function btPesq(){
-		$obj->btPesq=new TButton(array(
+		$obj=new TButton(array(
 			name=>'idi_btPesq',
 			iconCls=>'bsearch',
 			iconAlign=>'left',
@@ -52,7 +52,7 @@ class winIdiomas {
 			text=>'Search',
 			width=>85
 		));	
-		$obj->btPesq->listeners->add("click","
+		$obj->listeners->add("click","
 		  winIdiomasSel.onExit=function(_r){
 			  Ext.getCmp('idi_codigo').setValue(_r.codSel);
 				Ext.getCmp('idi_descr').setValue(_r.descrSel);
@@ -60,7 +60,7 @@ class winIdiomas {
 			};
 		  winIdiomasSel.show();
 		");
-		return $obj->btPesq;
+		return $obj;
 	}		
 	
 	private function TNivel(){

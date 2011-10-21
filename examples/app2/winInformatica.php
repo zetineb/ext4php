@@ -43,7 +43,7 @@ class winInformatica {
 	}
 	
 	public function btPesq(){
-		$obj->btPesq=new TButton(array(
+		$obj=new TButton(array(
 			name=>'inf_btPesq',
 			iconCls=>'bsearch',
 			iconAlign=>'left',
@@ -52,7 +52,7 @@ class winInformatica {
 			text=>'Search',
 			width=>85
 		));	
-		$obj->btPesq->listeners->add("click","
+		$obj->listeners->add("click","
 		  winInforSel.onExit=function(_r){
 			  Ext.getCmp('inf_codigo').setValue(_r.codSel);
 				Ext.getCmp('inf_descr').setValue(_r.descrSel);
@@ -60,7 +60,7 @@ class winInformatica {
 			};
 		  winInforSel.show();
 		");
-		return $obj->btPesq;
+		return $obj;
 	}		
 	
 	private function TNivel(){
