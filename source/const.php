@@ -26,8 +26,12 @@
 	define("bodyPadding","bodyPadding");
 	define("bodyStyle","bodyStyle");
 	define("border","border");
+	define("boxFill","boxFill");
 	define("boxLabel","boxLabel");
 	define("boxLabelAlign","boxLabelAlign");
+	define("boxStroke","boxStroke");
+	define("boxStrokeWidth","boxStrokeWidth");
+	define("boxZIndex","boxZIndex");
 	define("buttons","buttons");
 	define("buttonAlign","buttonAlign");
 	define("buttonText","buttonText");
@@ -39,6 +43,7 @@
 	define("collapsed","collapsed");
 	define("collapsible","collapsible");
 	define("color","color");
+	define("contrast","contrast");
 	define("columnLines","columnLines");
 	define("column","column");
 	define("columns","columns");
@@ -121,9 +126,11 @@
 	define("invalidText","invalidText");
 	define("items","items");
 	define("itemSelector","itemSelector");
+	define("itemSpacing","itemSpacing");
 	define("keyNavEnabled","keyNavEnabled");
 	define("label","label");
 	define("labelAlign","labelAlign");
+	define("labelFont","labelFont");
 	define("labelPad","labelPad");
 	define("labelSeparator","labelSeparator");
 	define("labelWidth","labelWidth");
@@ -132,6 +139,7 @@
 	define("legend","legend");
 	define("length","length");
 	define("lengthField","lengthField");
+	define("markerConfig","markerConfig");
 	define("lbar","lbar");
 	define("loadingText","loadingText");
 	define("majorTickSteps","majorTickSteps");
@@ -177,7 +185,6 @@
 	define("readOnly","readOnly");
 	define("renderer","renderer");
 	define("resizable","resizable");
-	define("resize","resize");
 	define("root","root");
 	define("scale","scale");
 	define("scroll","scroll");
@@ -200,6 +207,7 @@
 	define("tbar","tbar");
 	define("tabIndex","tabIndex");
 	define("text","text");
+	define("textAnchor","textAnchor");
 	define("theme","theme");
 	define("tips","tips");
 	define("title","title");
@@ -209,6 +217,7 @@
 	define("tooltip","tooltip");
 	define("totalProperty","totalProperty");
 	define("tpl","tpl");
+	define("trackMouse","trackMouse");
 	define("triggerAction","triggerAction");
 	define("trueText","trueText");
 	define("type","type");
@@ -221,9 +230,12 @@
 	define("value","value");
 	define("vertical","vertical");
 	define("viewBox","viewBox");
+	define("visible","visible");
 	define("width","width");
 	define("x","x");
 	define("xField","xField");
+	define("xPadding","xPadding");
 	define("y","y");
 	define("yField","yField");
+	define("yPadding","yPadding");
 ?>

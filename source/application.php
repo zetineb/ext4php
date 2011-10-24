@@ -508,7 +508,10 @@
 				else
 					$this->writeLn('width:'.$obj->width.',');
 			}
-			$this->writeLn('text:"'.$obj->text.'"');
+			if (is_null($obj->text))
+				$this->writeLn('text:""');
+			else
+				$this->writeLn('text:"'.$obj->text.'"');
 		}
 		
 		private function mkCheckboxField($obj){
@@ -592,7 +595,10 @@
 					$this->writeLn('width:'.$obj->width.',');
 			}
 			//
-			$this->writeLn('margin:"'.$obj->margin.'"');
+			if (is_null($obj->margin))
+				$this->writeLn('margin:""');
+			else
+				$this->writeLn('margin:"'.$obj->margin.'"');
 		}
 		
 		private function mkCombobox($obj){
@@ -687,7 +693,10 @@
 						if ($obj->fields->iterator()>0) $data.=',';
 						$sV='null';
 						if ($obj->fields->iterator()<count($obj->data->value())) $sV=$aV[$obj->fields->iterator()];
-						$data.='"'.$obj->fields->value().'":"'.$sV.'"';
+						if ($sV=='null'||!is_string($sV))
+							$data.='"'.$obj->fields->value().'":'.$sV;
+						else
+							$data.='"'.$obj->fields->value().'":"'.$sV.'"';
 					}
 					$data.='}';
 				}
@@ -757,7 +766,10 @@
 					$this->writeLn('width:'.$obj->width.',');
 			}
 			//
-			$this->writeLn('queryMode:"'.$obj->queryMode.'"');
+			if (is_null($obj->queryMode))
+				$this->writeLn('queryMode:"local"');
+			else
+				$this->writeLn('queryMode:"'.$obj->queryMode.'"');
 		}
 		
 		private function  mkDateField($obj){
@@ -896,7 +908,10 @@
 					$this->writeLn('width:'.$obj->width.',');
 			}
 			//
-			$this->writeLn('margin:"'.$obj->margin.'"');
+			if (is_null($obj->margin))
+				$this->writeLn('margin:""');
+			else
+				$this->writeLn('margin:"'.$obj->margin.'"');
 		}
 
 		private function mkDisplayField($obj){
@@ -964,7 +979,10 @@
 				else
 					$this->writeLn('width:'.$obj->width.',');
 			}
-			$this->writeLn('margin:"'.$obj->margin.'"');
+			if (is_null($obj->margin))
+				$this->writeLn('margin:""');
+			else
+				$this->writeLn('margin:"'.$obj->margin.'"');
 		}
 
 		private function mkFileField($obj){
@@ -1036,16 +1054,19 @@
 				else
 					$this->writeLn('width:'.$obj->width.',');
 			}
-			$this->writeLn('margin:"'.$obj->margin.'"');
+			if (is_null($obj->margin))
+				$this->writeLn('margin:""');
+			else
+				$this->writeLn('margin:"'.$obj->margin.'"');
 		}
 		
 		private function mkHiddenField($obj){
 			if (!is_null($obj->name))
 				$this->writeLn('name:"'.$obj->name.'",');
-			if (!is_null($obj->value))
-				$this->writeLn('value:"'.$obj->value.'"');
-			else
+			if (is_null($obj->value))
 				$this->writeLn('value:""');
+			else
+				$this->writeLn('value:"'.$obj->value.'"');
 		}
 		
 		private function mkHtmlEditor($obj){
@@ -1141,7 +1162,10 @@
 					$this->writeLn('width:'.$obj->width.',');
 			}
 			//
-			$this->writeLn('margin:"'.$obj->margin.'"');
+			if (is_null($obj->margin))
+				$this->writeLn('margin:""');
+			else
+				$this->writeLn('margin:"'.$obj->margin.'"');
 		}
 
 		private function mkNumberField($obj){
@@ -1259,7 +1283,10 @@
 				else
 					$this->writeLn('width:'.$obj->width.',');
 			}
-			$this->writeLn('margin:"'.$obj->margin.'"');
+			if (is_null($obj->margin))
+				$this->writeLn('margin:""');
+			else
+				$this->writeLn('margin:"'.$obj->margin.'"');
 		}
 
 		private function mkRadioField($obj){
@@ -1343,7 +1370,10 @@
 					$this->writeLn('width:'.$obj->width.',');
 			}
 			//
-			$this->writeLn('margin:"'.$obj->margin.'"');
+			if (is_null($obj->margin))
+				$this->writeLn('margin:""');
+			else
+				$this->writeLn('margin:"'.$obj->margin.'"');
 		}
 
 		private function mkTextField($obj){
@@ -1426,7 +1456,10 @@
 					$this->writeLn('width:'.$obj->width.',');
 			}
 			//
-			$this->writeLn('margin:"'.$obj->margin.'"');
+			if (is_null($obj->margin))
+				$this->writeLn('margin:""');
+			else
+				$this->writeLn('margin:"'.$obj->margin.'"');
 		}
 		
 		private function mkTextAreaField($obj){
@@ -1507,7 +1540,10 @@
 					$this->writeLn('width:'.$obj->width.',');
 			}
 			//
-			$this->writeLn('margin:"'.$obj->margin.'"');
+			if (is_null($obj->margin))
+				$this->writeLn('margin:""');
+			else
+				$this->writeLn('margin:"'.$obj->margin.'"');
 		}
 
 		private function  mkTimeField($obj){
@@ -1618,7 +1654,10 @@
 					$this->writeLn('width:'.$obj->width.',');
 			}
 			//
-			$this->writeLn('margin:"'.$obj->margin.'"');
+			if (is_null($obj->margin))
+				$this->writeLn('margin:""');
+			else
+				$this->writeLn('margin:"'.$obj->margin.'"');
 		}
 
 		private function mkCheckboxRadioGroup($obj){
@@ -1850,7 +1889,10 @@
 			if (!is_null($obj->type))
 				$this->writeLn('type:"'.$obj->type.'",');
 			//
-			$this->writeLn('text:"'.$obj->text.'"');
+			if (is_null($obj->text))
+				$this->writeLn('text:""');
+			else
+				$this->writeLn('text:"'.$obj->text.'"');
 		}
 		
 		private function mkCustomMenu($obj){
@@ -1894,7 +1936,10 @@
 				$this->writeLn('plain:'.$this->boolean[$obj->plain].',');
 			if (!is_null($obj->style))
 				$this->writeLn('style:"'.$obj->style.'",');
-			$this->writeLn('text:"'.$obj->text.'"');
+			if (is_null($obj->text))
+				$this->writeLn('text:""');
+			else
+				$this->writeLn('text:"'.$obj->text.'"');
 		}
 		
 		private function mkCustomToolbar($obj){
@@ -1921,11 +1966,13 @@
 				$this->writeLn('text:"'.$obj->text.'",');
 			elseif ($obj->xtype=='tbtext'&&is_null($obj->html))
 				$this->writeLn('text:"",');
-
-			$this->writeLn('margin:"'.$obj->margin.'"');
+			if (is_null($obj->margin))
+				$this->writeLn('margin:""');
+			else
+				$this->writeLn('margin:"'.$obj->margin.'"');
 		}
 		
-		private function mkGridPanel($obj,$id){
+		private function mkGridPanel($obj){
 			$_count=0;
 			$fieldsEmpty=false;
 			if (!$obj->fields->count()) $fieldsEmpty=true;
@@ -2041,7 +2088,10 @@
 						if ($obj->fields->iterator()>0) $data.=',';
 						$sV='null';
 						if ($obj->fields->iterator()<count($obj->data->value())) $sV=$aV[$obj->fields->iterator()];
-						$data.='"'.$obj->fields->value().'":"'.$sV.'"';
+						if ($sV=='null'||!is_string($sV))
+							$data.='"'.$obj->fields->value().'":'.$sV;
+						else
+							$data.='"'.$obj->fields->value().'":"'.$sV.'"';
 					}
 					$data.='}';
 				}
@@ -2068,28 +2118,6 @@
 				$this->writeLn('}');
 				$this->writeLn('}');
 				$this->writeLn('},');
-				//
-/*				$this->writeLn('dockedItems: [{');
-				$this->writeLn('xtype:"pagingtoolbar",');
-				$this->writeLn('id:"paging_'.$id.'",');
-				$this->writeLn('store:store,');
-				$this->writeLn('store:{');
-				$this->writeLn('remoteFilter:true,');
-				$this->writeLn('autoLoad:'.$this->boolean[$obj->autoLoad].',');	
-				$this->writeLn('fields:'.$fields.',');
-				$this->writeLn('proxy: {');	
-				$this->writeLn('extraParams:{event:"'.$obj->eventName.'",data:""},');
-				$this->writeLn('type: "ajax",');
-				$this->writeLn('url: "",');
-				$this->writeLn('reader: {');
-				$this->writeLn('root: "'.$obj->root.'",');
-				$this->writeLn('totalProperty: "'.$obj->totalProperty.'"');
-				$this->writeLn('}');
-				$this->writeLn('}');
-				$this->writeLn('},');
-				$this->writeLn('dock:"bottom",');
-				$this->writeLn('displayInfo:true');
-				$this->writeLn('}],');*/
 			}
 			if (!is_null($obj->baseCls))
 				$this->writeLn('baseCls:"'.$obj->baseCls.'",');
@@ -2197,7 +2225,10 @@
 					$this->writeLn('width:'.$obj->width.',');
 			}
 			//
-			$this->writeLn('margin:"'.$obj->margin.'"');
+			if (is_null($obj->margin))
+				$this->writeLn('margin:""');
+			else
+				$this->writeLn('margin:"'.$obj->margin.'"');
 		}
 		
 		private function mkDataView($obj){
@@ -2274,7 +2305,10 @@
 						if ($obj->fields->iterator()>0) $data.=',';
 						$sV='null';
 						if ($obj->fields->iterator()<count($obj->data->value())) $sV=$aV[$obj->fields->iterator()];
-						$data.='"'.$obj->fields->value().'":"'.$sV.'"';
+						if ($sV=='null'||!is_string($sV))
+							$data.='"'.$obj->fields->value().'":'.$sV;
+						else
+							$data.='"'.$obj->fields->value().'":"'.$sV.'"';
 					}
 					$data.='}';
 				}
@@ -2303,6 +2337,335 @@
 			}
 		}
 		
+		private function chartLabel($label){
+			$this->writeLn('label:{');
+			if (!is_null($label->color))
+				$this->writeLn('color:"'.$label->color.'",');
+			if (!is_null($label->contrast))
+				$this->writeLn('contrast:'.$this->boolean[$label->contrast].',');
+			if (!is_null($label->display))
+				$this->writeLn('display:"'.$label->display.'",');
+			if (!is_null($label->field))
+				$this->writeLn('field:"'.$label->field.'",');
+			if (!is_null($label->font))
+				$this->writeLn('font:"'.$label->font.'",');
+			if (!is_null($label->orientation))
+				$this->writeLn('orientation:"'.$label->orientation.'",');
+			if (!is_null($label->renderer))
+				$this->writeLn('renderer:'.$label->renderer.',');
+			if (!is_null($label->textAnchor))
+				$this->writeLn('text-anchor:"'.$label->textAnchor.'",');
+			if (is_null($label->minMargin))
+				$this->writeLn('minMargin:50');
+			else
+				$this->writeLn('minMargin:'.$label->minMargin);
+			$this->writeLn('},');
+		}
+		
+		private function mkChart($obj){
+			if (!is_null($obj->animate)){
+				if (stristr($obj->animate,"{"))
+					$this->writeLn('animate:'.$obj->animate.',');
+				else
+					$this->writeLn('animate:'.$this->boolean[$obj->animate].',');
+			}
+			if (!is_null($obj->autoScroll))
+				$this->writeLn('autoScroll:'.$this->boolean[$obj->autoScroll].',');
+			if (!is_null($obj->autoShow))
+				$this->writeLn('autoShow:'.$this->boolean[$obj->autoShow].',');
+			if (!is_null($obj->autoSize))
+				$this->writeLn('autoSize:'.$this->boolean[$obj->autoSize].',');
+			if (!is_null($obj->axes)&&is_array($obj->axes)){
+				$this->writeLn('axes:[');
+				for($i=0;$i<count($obj->axes);$i++){
+					if ($i) $this->writeLn(',');
+					$this->writeLn('{');
+					if (!is_null($obj->axes[$i]->dashSize))
+						$this->writeLn('dashSize:'.$obj->axes[$i]->dashSize.',');
+					if (!is_null($obj->axes[$i]->grid)){
+						if (stristr($obj->axes[$i]->grid,"{"))
+							$this->writeLn('grid:'.$obj->axes[$i]->grid.',');
+						else
+							$this->writeLn('grid:'.$this->boolean[$obj->axes[$i]->grid].',');
+					}
+					if (!is_null($obj->axes[$i]->length))
+						$this->writeLn('length:'.$obj->axes[$i]->length.',');
+					if (!is_null($obj->axes[$i]->majorTickSteps))
+						$this->writeLn('majorTickSteps:'.$obj->axes[$i]->majorTickSteps.',');
+					if (!is_null($obj->axes[$i]->minorTickSteps))
+						$this->writeLn('minorTickSteps:'.$obj->axes[$i]->minorTickSteps.',');
+					if (!is_null($obj->axes[$i]->position))
+						$this->writeLn('position:"'.$obj->axes[$i]->position.'",');
+					if (!is_null($obj->axes[$i]->fields)&&is_array($obj->axes[$i]->fields)){
+						$this->writeLn('fields:[');
+						for($j=0;$j<count($obj->axes[$i]->fields);$j++){
+							if ($j) $this->writeLn(',');
+							$this->writeLn('"'.$obj->axes[$i]->fields[$j].'"');
+						}
+						$this->writeLn('],');
+					}
+					if (!is_null($obj->axes[$i]->label)&&get_class($obj->axes[$i]->label)=='TChartLabel'){
+						$this->chartLabel($obj->axes[$i]->label);
+					}
+					if (!is_null($obj->axes[$i]->margin))
+						$this->writeLn('margin:'.$obj->axes[$i]->margin.',');
+					if (!is_null($obj->axes[$i]->maximum))
+						$this->writeLn('maximum:'.$obj->axes[$i]->maximum.',');
+					if (!is_null($obj->axes[$i]->minimum))
+						$this->writeLn('minimum:'.$obj->axes[$i]->minimum.',');
+					if (!is_null($obj->axes[$i]->steps))
+						$this->writeLn('steps:'.$obj->axes[$i]->steps.',');
+					if (!is_null($obj->axes[$i]->title))
+						$this->writeLn('title:"'.$obj->axes[$i]->title.'",');
+					if (is_null($obj->axes[$i]->type))
+						$this->writeLn('type:""');
+					else
+						$this->writeLn('type:"'.$obj->axes[$i]->type.'"');
+					$this->writeLn('}');
+				}
+				$this->writeLn('],');	//End axes
+			}
+			if (!is_null($obj->background)){
+				if (stristr($obj->background,"{"))
+					$this->writeLn('background:'.$obj->background.',');
+				else
+					$this->writeLn('background:'.$this->boolean[$obj->background].',');
+			}
+			if (!is_null($obj->baseCls))
+				$this->writeLn('baseCls:"'.$obj->baseCls.'",');
+			if (!is_null($obj->border))
+				$this->writeLn('border:'.$obj->border.',');
+			if (!is_null($obj->cls))
+				$this->writeLn('cls:"'.$obj->cls.'",');
+			if (!is_null($obj->disabled))
+				$this->writeLn('disabled:'.$this->boolean[$obj->disabled].',');
+			if (!is_null($obj->floating))
+				$this->writeLn('floating:'.$this->boolean[$obj->floating].',');
+			if (!is_null($obj->focusOnToFront))
+				$this->writeLn('focusOnToFront:'.$this->boolean[$obj->focusOnToFront].',');
+			if (!is_null($obj->frame))
+				$this->writeLn('frame:'.$this->boolean[$obj->frame].',');
+			if (!is_null($obj->html)){
+				if (stristr($obj->html,"{"))
+					$this->writeLn('html:'.$obj->html.',');
+				else
+					$this->writeLn('html:"'.$obj->html.'",');
+			}
+			if (!is_null($obj->insetPadding))
+				$this->writeLn('insetPadding:'.$obj->insetPadding.',');
+			if (!is_null($obj->legend)&&get_class($obj->legend)=='TChartLegend'){
+				$this->writeLn('legend:{');
+				if (!is_null($obj->legend->boxFill))
+					$this->writeLn('boxFill:"'.$obj->legend->boxFill.'",');
+				if (!is_null($obj->legend->boxStroke))
+					$this->writeLn('boxStroke:"'.$obj->legend->boxStroke.'",');
+				if (!is_null($obj->legend->boxStrokeWidth))
+					$this->writeLn('boxStrokeWidth:"'.$obj->legend->boxStrokeWidth.'",');
+				if (!is_null($obj->legend->boxZIndex))
+					$this->writeLn('boxZIndex:'.$obj->legend->boxZIndex.',');
+				if (!is_null($obj->legend->itemSpacing))
+					$this->writeLn('itemSpacing:'.$obj->legend->itemSpacing.',');
+				if (!is_null($obj->legend->labelFont))
+					$this->writeLn('labelFont:"'.$obj->legend->labelFont.'",');
+				if (!is_null($obj->legend->padding))
+					$this->writeLn('padding:"'.$obj->legend->padding.'",');
+				if (!is_null($obj->legend->position))
+					$this->writeLn('position:"'.$obj->legend->position.'",');
+				if (!is_null($obj->legend->visible))
+					$this->writeLn('visible:"'.$this->boolean[$obj->legend->visible].'",');
+				if (is_null($obj->legend->x))
+					$this->writeLn('x:0,');
+				else
+					$this->writeLn('x:'.$obj->legend->x.',');
+				if (is_null($obj->legend->y))
+					$this->writeLn('y:0');
+				else
+					$this->writeLn('y:'.$obj->legend->y);
+				$this->writeLn('},');
+			}
+			if (!is_null($obj->maintainFlex))
+				$this->writeLn('maintainFlex:'.$this->boolean[$obj->maintainFlex].',');
+			if (!is_null($obj->margin))
+					$this->writeLn('margin:"'.$obj->margin.'",');
+			if (!is_null($obj->padding))
+					$this->writeLn('padding:"'.$obj->padding.'",');
+			if (!is_null($obj->resizable)){
+				if (stristr($obj->resizable,"{"))
+					$this->writeLn('resizable:'.$obj->resizable.',');
+				else
+					$this->writeLn('resizable:'.$this->boolean[$obj->resizable].',');
+			}
+			$this->writeLn('series:[');
+			if (!is_null($obj->series)&&is_array($obj->series)){
+				for($i=0;$i<count($obj->series);$i++){
+					if ($i) $this->writeLn(',');
+					$this->writeLn('{');
+					if (!is_null($obj->series[$i]->angleField))
+						$this->writeLn('angleField:"'.$obj->series[$i]->angleField.'",');
+					if (!is_null($obj->series[$i]->axis))
+						$this->writeLn('axis:"'.$obj->series[$i]->axis.'",');
+					if (!is_null($obj->series[$i]->column))
+						$this->writeLn('column:'.$this->boolean[$obj->series[$i]->column].',');
+					if (!is_null($obj->series[$i]->donut)){
+						if (is_bool($obj->series[$i]->donut))
+							$this->writeLn('donut:'.$this->boolean[$obj->series[$i]->donut].',');
+						else
+							$this->writeLn('donut:'.$obj->series[$i]->donut.',');
+					}
+					if (!is_null($obj->series[$i]->field))
+						$this->writeLn('field:"'.$obj->series[$i]->field.'",');
+					if (!is_null($obj->series[$i]->fill))
+						$this->writeLn('fill:'.$this->boolean[$obj->series[$i]->fill].',');
+					if (!is_null($obj->series[$i]->groupGutter))
+						$this->writeLn('groupGutter:'.$obj->series[$i]->groupGutter.',');
+					if (!is_null($obj->series[$i]->gutter))
+						$this->writeLn('gutter:'.$obj->series[$i]->gutter.',');
+					if (!is_null($obj->series[$i]->highlight)){
+						if (stristr($obj->series[$i]->highlight,"{"))
+							$this->writeLn('highlight:'.$obj->series[$i]->highlight.',');
+						else
+							$this->writeLn('highlight:'.$this->boolean[$obj->series[$i]->highlight].',');
+					}
+					if (!is_null($obj->series[$i]->highlightDuration))
+						$this->writeLn('highlightDuration:'.$obj->series[$i]->highlightDuration.',');
+					if (!is_null($obj->series[$i]->label)&&get_class($obj->series[$i]->label)=='TChartLabel'){
+						$this->chartLabel($obj->series[$i]->label);
+					}
+					if (!is_null($obj->series[$i]->lengthField))
+						$this->writeLn('lengthField:"'.$obj->series[$i]->lengthField.'",');
+					if (!is_null($obj->series[$i]->markerConfig)){
+						if (stristr($obj->series[$i]->markerConfig,"{"))
+							$this->writeLn('markerConfig:'.$obj->series[$i]->markerConfig.',');
+						else
+							$this->writeLn('markerConfig:{'.$obj->series[$i]->markerConfig.'},');
+					}
+					if (!is_null($obj->series[$i]->renderer))
+						$this->writeLn('renderer:function(sprite,record,attributes,index,store){'.$obj->series[$i]->renderer.'},');
+					if (!is_null($obj->series[$i]->selectionTolerance))
+						$this->writeLn('selectionTolerance:'.$obj->series[$i]->selectionTolerance.',');
+					if (!is_null($obj->series[$i]->showInLegend))
+						$this->writeLn('showInLegend:'.$this->boolean[$obj->series[$i]->showInLegend].',');
+					if (!is_null($obj->series[$i]->smooth)){
+						if (is_bool($obj->series[$i]->smooth))
+							$this->writeLn('smooth:'.$this->boolean[$obj->series[$i]->smooth].',');
+						else
+							$this->writeLn('smooth:'.$obj->series[$i]->smooth.',');
+					}
+					if (!is_null($obj->series[$i]->tips)&&get_class($obj->series[$i]->tips)=='TChartTips'){
+						$this->writeLn('tips:{');
+						if (!is_null($obj->series[$i]->tips->trackMouse))
+							$this->writeLn('trackMouse:'.$this->boolean[$obj->series[$i]->tips->trackMouse].',');
+						if (!is_null($obj->series[$i]->tips->width))
+							$this->writeLn('width:'.$obj->series[$i]->tips->width.',');
+						if (!is_null($obj->series[$i]->tips->height))
+							$this->writeLn('height:'.$obj->series[$i]->tips->height.',');
+						$this->writeLn('renderer:function(storeItem, item){');
+						if (!is_null($obj->series[$i]->tips->renderer)){
+							$this->writeLn($obj->series[$i]->tips->renderer);
+						}
+						$this->writeLn('}');
+						$this->writeLn('},');
+					}
+					if (!is_null($obj->series[$i]->title))
+						$this->writeLn('title:"'.$obj->series[$i]->title.'",');
+					if (!is_null($obj->series[$i]->type))
+						$this->writeLn('type:"'.$obj->series[$i]->type.'",');
+					if (!is_null($obj->series[$i]->xField))
+						$this->writeLn('xField:"'.$obj->series[$i]->xField.'",');
+					if (!is_null($obj->series[$i]->xPadding))
+						$this->writeLn('xPadding:"'.$obj->series[$i]->xPadding.'",');
+					if (!is_null($obj->series[$i]->yField))
+						$this->writeLn('yField:"'.$obj->series[$i]->yField.'",');
+					if (!is_null($obj->series[$i]->yPadding))
+						$this->writeLn('yPadding:"'.$obj->series[$i]->yPadding.'",');
+					if (is_null($obj->series[$i]->minMargin))
+						$this->writeLn('minMargin:50');
+					else
+						$this->writeLn('minMargin:'.$obj->series[$i]->minMargin);
+				
+					$this->writeLn('}');
+				}
+			}
+			$this->writeLn('],');	//end series
+			//
+			$fields='[';
+			while ($obj->fields->next()){
+				if ($obj->fields->iterator()>0) $fields.=',';
+				$fields.='"'.$obj->fields->value().'"';
+			}
+			$fields.=']';
+			if ($obj->queryMode==TQueryModeType::$local){
+				$data='[';
+				while ($obj->data->next()){
+					if ($obj->data->iterator()>0) $data.=',';
+					$data.='{';
+					$aV=$obj->data->value();
+					if (!is_array($aV)) $aV=array($aV);
+					while ($obj->fields->next()){
+						if ($obj->fields->iterator()>0) $data.=',';
+						$sV='null';
+						if ($obj->fields->iterator()<count($obj->data->value())) $sV=$aV[$obj->fields->iterator()];
+						if ($sV=='null'||!is_string($sV))
+							$data.='"'.$obj->fields->value().'":'.$sV;
+						else
+							$data.='"'.$obj->fields->value().'":"'.$sV.'"';
+					}
+					$data.='}';
+				}
+				$data.=']';
+				$this->writeLn('store:{');
+				$this->writeLn('fields:'.$fields.',');
+				$this->writeLn('data:'.$data);
+				$this->writeLn('},');
+			}
+			else{
+				if (is_null($obj->eventName)) throw new Exception('ERROR: Missing eventName');
+				//
+				$this->writeLn('store:{');
+				$this->writeLn('remoteFilter:true,');
+				$this->writeLn('autoLoad:'.$this->boolean[$obj->autoLoad].',');	
+				$this->writeLn('fields:'.$fields.',');
+				$this->writeLn('proxy: {');	
+				$this->writeLn('extraParams:{event:"'.$obj->eventName.'",data:"CHART"},');
+				$this->writeLn('type: "ajax",');
+				$this->writeLn('url: "",');
+				$this->writeLn('reader: {');
+				$this->writeLn('root: "'.$obj->root.'",');
+				$this->writeLn('totalProperty: "'.$obj->totalProperty.'"');
+				$this->writeLn('}');
+				$this->writeLn('}');
+				$this->writeLn('},');
+			}
+			if (!is_null($obj->shadow)){
+				if (!is_bool($obj->shadow))
+					$this->writeLn('shadow:'.$this->boolean[$obj->shadow].',');
+				else
+					$this->writeLn('shadow:"'.$obj->shadow.'",');
+			}
+			if (!is_null($obj->style))
+				$this->writeLn('style:"'.$obj->style.'",');
+			if (!is_null($obj->theme))
+				$this->writeLn('theme:"'.$obj->theme.'",');
+			if (!is_null($obj->toFrontOnShow))
+				$this->writeLn('toFrontOnShow:'.$this->boolean[$obj->toFrontOnShow].',');
+			if (!is_null($obj->tpl)){
+				if (is_array($obj->tpl)){
+					$this->writeLn('tpl:[');
+					for($i=0;$i<count($obj->tpl);$i++){
+						if ($i) $this->writeLn(',');
+						$this->writeLn("'".$obj->tpl[$i]."'");
+					}
+					$this->writeLn('],');
+				}
+				else
+					$this->writeLn('tpl:"'.$obj->tpl.'",');
+			}
+			if (is_null($obj->toFrontOnShow))
+				$this->writeLn('toFrontOnShow:true');
+			else
+				$this->writeLn('toFrontOnShow:'.$this->boolean[$obj->toFrontOnShow]);
+		}
+		
 		private function mkItems($items){
 			while ($items->next()){
 				if ($items->iterator()>0) $this->writeLn(',');
@@ -2319,7 +2682,7 @@
 				elseif ($items->value()->xtype=='tabpanel')
 					$this->mkTabPanel($items->value());
 				elseif ($items->value()->xtype=='gridpanel')
-					$this->mkGridPanel($items->value(),$items->name());
+					$this->mkGridPanel($items->value());
 				elseif ($items->value()->xtype=='dataview')
 					$this->mkDataView($items->value(),$items->name());
 				elseif ($items->value()->xtype=='label')
@@ -2360,6 +2723,9 @@
 					$this->mkCustomMenu($items->value());
 				elseif ($items->value()->xtype=='tbfill'||$items->value()->xtype=='tbseparator'||$items->value()->xtype=='tbspacer'||$items->value()->xtype=='tbtext')
 					$this->mkCustomToolbar($items->value());
+				elseif ($items->value()->xtype=='chart')
+					$this->mkChart($items->value());
+				//
 				if ($items->value()->listeners->count()){
 					$this->writeLn(',listeners:{');
 					while ($items->value()->listeners->next()){
@@ -2627,7 +2993,6 @@
 		
 		public function __destruct(){
 			unset($this->headers);
-			//unset($this->listeners);
 			unset($this->events);
 			unset($this->windows);
 			unset($this->items);

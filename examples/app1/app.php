@@ -48,6 +48,19 @@ try{
 			}
 		}
 	}
+	class ChartEvent extends TEvent{
+		public function execute(){
+			$data=array(
+				array('month'=>'May 2011','payments'=>4824.43),
+				array('month'=>'June 2011','payments'=>9631.88),
+				array('month'=>'July 2011','payments'=>28373.89),
+				array('month'=>'August 2011','payments'=>24072.13),
+				array('month'=>'September 2011','payments'=>33475.55)
+			);
+			//
+			echo json_encode($data);
+		}
+	}
 	
 	$lbl1=new TLabel(array(text=>'Label 1'));
 	//$lbl1->text='Label 1';
@@ -370,7 +383,195 @@ try{
 	$tabpanel1->items->add('tab3',$tab3);
 	$tabpanel1->items->add('tab4',$tab4);
 	$tabpanel1->items->add('tab5',$tab5);
-	
+	//
+	//Tab for charts
+	$tabpanel2=new TTabPanel();
+	$tab6=new TTab(array(
+		layout=>'fit',
+		title=>'Chart',
+		items=>$tabpanel2
+	));
+	$tab61=new TTab();
+	$tab61->layout='fit';
+	$tab61->title='Column';
+	//
+	//Charts
+	$chart1=new TChart();
+    $chart1->style='background:#fff';
+    $chart1->animate=true;
+    $chart1->shadow=true;
+	$chart1->fields->add(0,'month');
+	$chart1->fields->add(1,'payments');
+	$chart1->data->add(0,array('May 2011',4824.43));
+	$chart1->data->add(1,array('June 2011',9631.88));
+	$chart1->data->add(2,array('July 2011',28373.89));
+	$chart1->data->add(3,array('August 2011',24072.13));
+	$chart1->data->add(4,array('September 2011',33475.55));
+	$label11=new TChartLabel(array(
+		renderer=>"Ext.util.Format.numberRenderer('0,0')"
+	));
+	$axes11=new TChartAxis(array(
+		type=>'Numeric',
+		position=>'left',
+		fields=>array('payments'),
+		label=>$label11,
+		title=>'Payments',
+		grid=>true,
+		minimum=>0
+	));
+	$axes12=new TChartAxis(array(
+		type=>'Category',
+		position=>'bottom',
+		fields=>array('month'),
+		title=>'Month of the Year'
+	));
+	$tips11=new TChartTips(array(
+		trackMouse=>true,
+		width=>140,
+		height=>28,
+		renderer=>"this.setTitle(storeItem.get('month') + ': ' + storeItem.get('payments') + ' $');"
+	));
+	$label12=new TChartLabel(array(
+		display=>'insideEnd',
+		textAnchor=>'middle',	//property text-anchor
+		field=>'payments',
+		renderer=>"Ext.util.Format.numberRenderer('0')",
+		orientation=>'vertical',
+		color=>'#333'
+	));
+	$serie11=new TChartSeries(array(
+		type=>'column',
+		axis=>'left',
+		highlight=>true,
+		tips=>$tips11,
+		label=>$label12,
+		xField=>'month',
+		yField=>'payments'
+	));
+	$chart1->axes=array($axes11,$axes12);
+	$chart1->series=array($serie11);
+	$tab61->items->add('chart1',$chart1);
+	//
+	//
+	$tab62=new TTab();
+	$tab62->layout='fit';
+	$tab62->title='Line';
+	//
+	//Charts
+	$chart2=new TChart();
+    $chart2->style='background:#fff';
+    $chart2->animate=true;
+	$chart2->theme='Category1';
+    $chart2->shadow=true;
+	$chart2->fields->add(0,'month');
+	$chart2->fields->add(1,'payments');
+	$chart2->data->add(0,array('May 2011',4824.43));
+	$chart2->data->add(1,array('June 2011',9631.88));
+	$chart2->data->add(2,array('July 2011',28373.89));
+	$chart2->data->add(3,array('August 2011',24072.13));
+	$chart2->data->add(4,array('September 2011',33475.55));
+	$axes21=new TChartAxis(array(
+		type=>'Numeric',
+		position=>'left',
+		fields=>array('payments'),
+		title=>'Payments',
+		minorTickSteps=>1,
+		grid=>"{
+                    odd: {
+                        opacity: 1,
+                        fill: '#ddd',
+                        stroke: '#bbb',
+                        'stroke-width': 0.5
+                    }
+                }",
+		minimum=>0
+	));
+	$axes22=new TChartAxis(array(
+		type=>'Category',
+		position=>'bottom',
+		fields=>array('month'),
+		title=>'Month of the Year'
+	));
+	$serie21=new TChartSeries(array(
+		type=>'line',
+		highlight=>"{
+			size: 7,
+			radius: 7
+		}",
+		axis=>'left',
+		xField=>'month',
+		yField=>'payments',
+		markerConfig=>"{
+			type: 'cross',
+			size: 4,
+			radius: 4,
+			'stroke-width': 0
+		}"
+	));
+	$chart2->axes=array($axes21,$axes22);
+	$chart2->series=array($serie21);
+	$tab62->items->add('chart2',$chart2);
+	//
+	//
+	$tab63=new TTab();
+	$tab63->layout='fit';
+	$tab63->title='Pie';
+	//
+	//Charts
+	$legend31=new TChartLegend();
+	$legend31->position='right';
+	//
+	$chart3=new TChart();
+	$chart3->insetPadding=60;
+    $chart3->animate=true;
+	$chart3->theme='Base:gradients';
+    $chart3->shadow=true;
+	$chart3->legend=$legend31;
+	$chart3->fields->add(0,'month');
+	$chart3->fields->add(1,'payments');
+	$chart3->autoLoad=true;
+	$chart3->eventName='chart';
+	$chart3->queryMode=TQueryModeType::$remote;
+	$label31=new TChartLabel(array(
+		field=>'month',
+		display=>'rotate',
+		contrast=>true,
+		font=>'18px Arial'
+	));
+	$tips31=new TChartTips(array(
+		trackMouse=>true,
+		width=>140,
+		height=>28,
+		renderer=>"
+			var total = 0;
+			Ext.getCmp('chart3').store.each(function(rec) {
+				total += rec.get('payments');
+			});
+			this.setTitle(storeItem.get('month') + ': ' + Math.round(storeItem.get('payments') / total * 100) + '%');
+		"
+	));
+	$serie31=new TChartSeries(array(
+		type=>'pie',
+		field=>'payments',
+		highlight=>"{
+			segment: {
+				margin: 20
+			}
+		}",
+		showInLegend=>true,
+		donut=>false,
+		tips=>$tips31,
+		label=>$label31
+	));
+	$chart3->series=array($serie31);
+	$tab63->items->add('chart3',$chart3);
+	//
+	$tabpanel2->items->add('tab61',$tab61);
+	$tabpanel2->items->add('tab62',$tab62);
+	$tabpanel2->items->add('tab63',$tab63);
+	//
+	$tabpanel1->items->add('tab6',$tab6);
+	//
 	$w1=new TWindow(array(
 		layout=>'fit',
 		title=>'First window',
@@ -391,7 +592,7 @@ try{
 	$w1->items->add('tabpanel1',$tabpanel1);*/
 	
 	$app=new TApplication();
-	$app->ext='ext-4.0.2a';
+	$app->ext='ext-4.0.7-gpl';
 	$app->cls='xbody';
 	$app->headers->add('utils','<script type="text/javascript" src="js/utils.js"></script>');
 	$app->headers->add('app-style','<link rel="stylesheet" type="text/css" href="css/app.css"/>');
@@ -412,6 +613,7 @@ try{
 	$app->events->add('event1',new Event1());  //PHP event
 	$app->events->add('combobox2',new Combobox2()); //Return data for combobox
 	$app->events->add('formEvent',new FormEvent());
+	$app->events->add('chart',new ChartEvent());
 	$app->windows->add('win1',$w1);
 	$it1=new TMenuItem();
 	$it1->iconCls='badd';
