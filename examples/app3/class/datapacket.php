@@ -1,4 +1,8 @@
 ﻿<?php
+/*
+*	Author: Rigoberto D. Benitez
+*	Purpose: Datapacket generator
+*/
 class TFieldConversion{
 	private $valor;
 	

@@ -1,4 +1,8 @@
 <?php
+/*
+*	Author: Rigoberto D. Benitez
+*	Purpose: Manipulation SQL template
+*/
 class TTypeAccess {
 	public static $taLocal=0;
 	public static $taRemote=1;

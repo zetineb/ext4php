@@ -1,4 +1,8 @@
 <?php
+/*
+*	Author : Rigoberto D. Benitez
+*	Purpose: Report Generator
+*/
 define ("_MM",0.264583333);
 
 class TWComponent {

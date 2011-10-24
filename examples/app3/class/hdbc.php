@@ -1,4 +1,8 @@
 <?php
+/*
+*	Author: Rigoberto D. Benitez
+*	Purpose: Remote datapacket
+*/
 require("database.php");
 
 $path_info=$_SERVER['PATH_INFO'];

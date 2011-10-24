@@ -1,4 +1,8 @@
 <?php
+/*
+*	Author: Rigoberto D. Benitez
+*	Purpose: SQL Query by PDO
+*/
 class TDriverType{
 	public static $dblib='dblib';
 	public static $firebird='firebird';
