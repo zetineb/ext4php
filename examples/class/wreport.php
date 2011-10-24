@@ -2,6 +2,7 @@
 /*
 *	Author : Rigoberto D. Benitez
 *	Purpose: Report Generator
+* 	Require: mpdf
 */
 define ("_MM",0.264583333);
 
