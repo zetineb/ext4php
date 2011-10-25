@@ -1,7 +1,7 @@
 ﻿<?php
 /*
 *	Author: Rigoberto D. Benitez
-*	Purpose: Datapacket generator
+*	Purpose: Datapacket Manipulation
 */
 class TFieldConversion{
 	private $valor;
