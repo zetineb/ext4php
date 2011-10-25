@@ -2356,8 +2356,14 @@
 				$this->writeLn('orientation:"'.$label->orientation.'",');
 			if (!is_null($label->renderer))
 				$this->writeLn('renderer:'.$label->renderer.',');
+			if (!is_null($label->rotate)){
+				if (stristr($label->rotate,"{"))
+					$this->writeLn('rotate:'.$label->rotate.',');
+				else
+					$this->writeLn('rotate:{'.$label->rotate.'},');
+			}
 			if (!is_null($label->textAnchor))
-				$this->writeLn('text-anchor:"'.$label->textAnchor.'",');
+				$this->writeLn('"text-anchor":"'.$label->textAnchor.'",');
 			if (is_null($label->minMargin))
 				$this->writeLn('minMargin:50');
 			else
@@ -2383,6 +2389,8 @@
 				for($i=0;$i<count($obj->axes);$i++){
 					if ($i) $this->writeLn(',');
 					$this->writeLn('{');
+					if (!is_null($obj->axes[$i]->adjustMinimumByMajorUnit))
+						$this->writeLn('adjustMinimumByMajorUnit:'.$obj->axes[$i]->adjustMinimumByMajorUnit.',');
 					if (!is_null($obj->axes[$i]->dashSize))
 						$this->writeLn('dashSize:'.$obj->axes[$i]->dashSize.',');
 					if (!is_null($obj->axes[$i]->grid)){
@@ -2399,6 +2407,8 @@
 						$this->writeLn('minorTickSteps:'.$obj->axes[$i]->minorTickSteps.',');
 					if (!is_null($obj->axes[$i]->position))
 						$this->writeLn('position:"'.$obj->axes[$i]->position.'",');
+					if (!is_null($obj->axes[$i]->roundToDecimal))
+							$this->writeLn('roundToDecimal:'.$this->boolean[$obj->axes[$i]->roundToDecimal].',');
 					if (!is_null($obj->axes[$i]->fields)&&is_array($obj->axes[$i]->fields)){
 						$this->writeLn('fields:[');
 						for($j=0;$j<count($obj->axes[$i]->fields);$j++){
@@ -2442,12 +2452,22 @@
 				$this->writeLn('cls:"'.$obj->cls.'",');
 			if (!is_null($obj->disabled))
 				$this->writeLn('disabled:'.$this->boolean[$obj->disabled].',');
+			if (!is_null($obj->flex))
+				$this->writeLn('flex:'.$obj->flex.',');
 			if (!is_null($obj->floating))
 				$this->writeLn('floating:'.$this->boolean[$obj->floating].',');
 			if (!is_null($obj->focusOnToFront))
 				$this->writeLn('focusOnToFront:'.$this->boolean[$obj->focusOnToFront].',');
 			if (!is_null($obj->frame))
 				$this->writeLn('frame:'.$this->boolean[$obj->frame].',');
+			if (!is_null($obj->gradients&&is_array($obj->gradients))){
+				$this->writeLn('gradients:[');
+				for ($i=0;$i<count($obj->gradients);$i++){
+					if ($i) $this->writeLn(',');
+					$this->writeLn($obj->gradients[$i]);
+				}
+				$this->writeLn('],');
+			}
 			if (!is_null($obj->html)){
 				if (stristr($obj->html,"{"))
 					$this->writeLn('html:'.$obj->html.',');
@@ -2507,6 +2527,14 @@
 						$this->writeLn('angleField:"'.$obj->series[$i]->angleField.'",');
 					if (!is_null($obj->series[$i]->axis))
 						$this->writeLn('axis:"'.$obj->series[$i]->axis.'",');
+					if (!is_null($obj->series[$i]->colorSet)&&is_array($obj->series[$i]->colorSet)){
+						$this->writeLn('colorSet:[');
+						for ($j=0;$j<count($obj->series[$i]->colorSet);$j++){
+							if ($j) $this->writeLn(',');
+							$this->writeLn('"'.$obj->series[$i]->colorSet[$j].'"');
+						}
+						$this->writeLn('],');
+					}
 					if (!is_null($obj->series[$i]->column))
 						$this->writeLn('column:'.$this->boolean[$obj->series[$i]->column].',');
 					if (!is_null($obj->series[$i]->donut)){
@@ -2519,6 +2547,8 @@
 						$this->writeLn('field:"'.$obj->series[$i]->field.'",');
 					if (!is_null($obj->series[$i]->fill))
 						$this->writeLn('fill:'.$this->boolean[$obj->series[$i]->fill].',');
+					if (!is_null($obj->series[$i]->fillOpacity))
+						$this->writeLn('fillOpacity:'.$obj->series[$i]->fillOpacity.',');
 					if (!is_null($obj->series[$i]->groupGutter))
 						$this->writeLn('groupGutter:'.$obj->series[$i]->groupGutter.',');
 					if (!is_null($obj->series[$i]->gutter))
@@ -2548,11 +2578,21 @@
 						$this->writeLn('selectionTolerance:'.$obj->series[$i]->selectionTolerance.',');
 					if (!is_null($obj->series[$i]->showInLegend))
 						$this->writeLn('showInLegend:'.$this->boolean[$obj->series[$i]->showInLegend].',');
+					if (!is_null($obj->series[$i]->showMarkers))
+						$this->writeLn('showMarkers:'.$this->boolean[$obj->series[$i]->showMarkers].',');
 					if (!is_null($obj->series[$i]->smooth)){
 						if (is_bool($obj->series[$i]->smooth))
 							$this->writeLn('smooth:'.$this->boolean[$obj->series[$i]->smooth].',');
 						else
 							$this->writeLn('smooth:'.$obj->series[$i]->smooth.',');
+					}
+					if (!is_null($obj->series[$i]->stacked))
+						$this->writeLn('stacked:'.$this->boolean[$obj->series[$i]->stacked].',');
+					if (!is_null($obj->series[$i]->style)){
+						if (stristr($obj->series[$i]->style,"{"))
+							$this->writeLn('style:'.$obj->series[$i]->style.',');
+						else
+							$this->writeLn('style:{'.$obj->series[$i]->style.'},');
 					}
 					if (!is_null($obj->series[$i]->tips)&&get_class($obj->series[$i]->tips)=='TChartTips'){
 						$this->writeLn('tips:{');

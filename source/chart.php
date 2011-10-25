@@ -26,11 +26,13 @@
 		public $font=null;
 		public $orientation=null;
 		public $renderer=null;
+		public $rotate=null;
 		public $textAnchor=null;
 		public $minMargin=50;
 	}
 	
 	class TChartAxis extends TComponent{
+		public $adjustMinimumByMajorUnit=null;
 		public $dashSize=null;
 		public $grid=null;
 		public $length=null;
@@ -42,6 +44,7 @@
 		public $margin=null;
 		public $maximum=null;
 		public $minimum=null;
+		public $roundToDecimal=null;
 		public $steps=null;
 		public $title=null;
 		public $type='';
@@ -50,10 +53,12 @@
 	class TChartSeries extends TComponent{
 		public $angleField=null;
 		public $axis=null;
+		public $colorSet=null;	//array of color
 		public $column=null;
 		public $donut=null;
 		public $field=null;
 		public $fill=null;
+		public $fillOpacity=null;
 		public $groupGutter=null;
 		public $gutter=null;
 		public $highlight=null;
@@ -64,7 +69,10 @@
 		public $renderer=null;
 		public $selectionTolerance=null;
 		public $showInLegend=null;
+		public $showMarkers=null;
 		public $smooth=null;
+		public $stacked=null;
+		public $style=null;
 		public $tips=null;		//Object TCharTips
 		public $title=null;
 		public $type=null;
@@ -89,10 +97,12 @@
 		public $autoSize=null;
 		public $axes=null;			//array of TChartAxis
 		public $background=null;
+		public $gradients=null;
 		public $baseCls=null;
 		public $border=null;
 		public $cls=null;
 		public $disabled=null;
+		public $flex=null;
 		public $floating=null;
 		public $focusOnToFront=null;
 		public $frame=null;

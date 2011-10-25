@@ -339,6 +339,7 @@
 				elseif (!strcasecmp($keys[$i],collapsed)) $this->collapsed=$v;
 				elseif (!strcasecmp($keys[$i],collapsible)) $this->collapsible=$v;
 				elseif (!strcasecmp($keys[$i],color)) $this->color=$v;
+				elseif (!strcasecmp($keys[$i],colorSet)) $this->colorSet=$v;
 				elseif (!strcasecmp($keys[$i],contrast)) $this->contrast=$v;
 				elseif (!strcasecmp($keys[$i],column)) $this->column=$v;
 				elseif (!strcasecmp($keys[$i],columnLines)) $this->columnLines=$v;
@@ -356,6 +357,7 @@
 				elseif (!strcasecmp($keys[$i],columnWidth)) $this->columnWidth=$v;
 				elseif (!strcasecmp($keys[$i],createLinkText)) $this->createLinkText=$v;
 				elseif (!strcasecmp($keys[$i],dashSize)) $this->dashSize=$v;
+				elseif (!strcasecmp($keys[$i],adjustMinimumByMajorUnit)) $this->adjustMinimumByMajorUnit=$v;
 				elseif (!strcasecmp($keys[$i],data)){
 					if (is_array($v)){
 						for($j=0;$j<count($v);$j++){
@@ -430,6 +432,7 @@
 				}
 				elseif (!strcasecmp($keys[$i],fieldLabel)) $this->fieldLabel=$v;
 				elseif (!strcasecmp($keys[$i],fill)) $this->fill=$v;
+				elseif (!strcasecmp($keys[$i],fillOpacity)) $this->fillOpacity=$v;
 				elseif (!strcasecmp($keys[$i],flex)) $this->flex=$v;
 				elseif (!strcasecmp($keys[$i],floating)) $this->floating=$v;
 				elseif (!strcasecmp($keys[$i],focusOnToFront)) $this->focusOnToFront=$v;
@@ -440,6 +443,7 @@
 				elseif (!strcasecmp($keys[$i],format)) $this->format=$v;
 				elseif (!strcasecmp($keys[$i],frameHeader)) $this->frameHeader=$v;
 				elseif (!strcasecmp($keys[$i],frame)) $this->frame=$v;
+				elseif (!strcasecmp($keys[$i],gradients)) $this->gradients=$v;
 				elseif (!strcasecmp($keys[$i],grid)) $this->grid=$v;
 				elseif (!strcasecmp($keys[$i],groupable)) $this->groupable=$v;
 				elseif (!strcasecmp($keys[$i],groupGutter)) $this->groupGutter=$v;
@@ -568,7 +572,9 @@
 				elseif (!strcasecmp($keys[$i],readOnly)) $this->readOnly=$v;
 				elseif (!strcasecmp($keys[$i],renderer)) $this->renderer=$v;
 				elseif (!strcasecmp($keys[$i],resizable)) $this->resizable=$v;
+				elseif (!strcasecmp($keys[$i],roundToDecimal)) $this->roundToDecimal=$v;
 				elseif (!strcasecmp($keys[$i],root)) $this->root=$v;
+				elseif (!strcasecmp($keys[$i],rotate)) $this->rotate=$v;
 				elseif (!strcasecmp($keys[$i],scale)) $this->scale=$v;
 				elseif (!strcasecmp($keys[$i],scroll)) $this->scroll=$v;
 				elseif (!strcasecmp($keys[$i],selectOnFocus)) $this->selectOnFocus=$v;
@@ -577,6 +583,7 @@
 				elseif (!strcasecmp($keys[$i],series)) $this->series=$v;
 				elseif (!strcasecmp($keys[$i],shadow)) $this->shadow=$v;
 				elseif (!strcasecmp($keys[$i],showInLegend)) $this->showInLegend=$v;
+				elseif (!strcasecmp($keys[$i],showMarkers)) $this->showMarkers=$v;
 				elseif (!strcasecmp($keys[$i],showToday)) $this->showToday=$v;
 				elseif (!strcasecmp($keys[$i],sortable)) $this->sortable=$v;
 				elseif (!strcasecmp($keys[$i],sortableColumns)) $this->sortableColumns=$v;
@@ -584,6 +591,7 @@
 				elseif (!strcasecmp($keys[$i],spinUpEnabled)) $this->spinUpEnabled=$v;
 				elseif (!strcasecmp($keys[$i],smooth)) $this->smooth=$v;
 				elseif (!strcasecmp($keys[$i],startDay)) $this->startDay=$v;
+				elseif (!strcasecmp($keys[$i],stacked)) $this->stacked=$v;
 				elseif (!strcasecmp($keys[$i],step)) $this->step=$v;
 				elseif (!strcasecmp($keys[$i],steps)) $this->steps=$v;
 				elseif (!strcasecmp($keys[$i],style)) $this->style=$v;
@@ -599,7 +607,7 @@
 				}
 				elseif (!strcasecmp($keys[$i],tabIndex)) $this->tabIndex=$v;
 				elseif (!strcasecmp($keys[$i],text)) $this->text=$v;
-				elseif (!strcasecmp($keys[$i],textAnchor)) $this->text=$v;
+				elseif (!strcasecmp($keys[$i],textAnchor)) $this->textAnchor=$v;
 				elseif (!strcasecmp($keys[$i],theme)) $this->theme=$v;
 				elseif (!strcasecmp($keys[$i],tips)) $this->tips=$v;
 				elseif (!strcasecmp($keys[$i],title)) $this->title=$v;
@@ -844,6 +852,10 @@
 			$this->color=$v;
 			return ($this);
 		}
+		public function colorSet($v){ 
+			$this->colorSet=$v;
+			return ($this);
+		}
 		public function contrast($v){ 
 			$this->contrast=$v;
 			return ($this);
@@ -878,6 +890,10 @@
 		}
 		public function createLinkText($v){ 
 			$this->createLinkText=$v;
+			return ($this);
+		}
+		public function adjustMinimumByMajorUnit($v){ 
+			$this->adjustMinimumByMajorUnit=$v;
 			return ($this);
 		}
 		public function dashSize($v){ 
@@ -1078,6 +1094,10 @@
 			$this->fill=$v;
 			return ($this);
 		}
+		public function fillOpacity($v){ 
+			$this->fillOpacity=$v;
+			return ($this);
+		}
 		public function flex($v){ 
 			$this->flex=$v;
 			return ($this);
@@ -1112,6 +1132,10 @@
 		}
 		public function frameHeader($v){ 
 			$this->frameHeader=$v;
+			return ($this);
+		}
+		public function gradients($v){ 
+			$this->gradients=$v;
 			return ($this);
 		}
 		public function grid($v){ 
@@ -1485,8 +1509,16 @@
 			$this->resizable=$v;
 			return ($this);
 		}
+		public function roundToDecimal($v){ 
+			$this->roundToDecimal=$v;
+			return ($this);
+		}
 		public function root($v){ 
 			$this->root=$v;
+			return ($this);
+		}
+		public function rotate($v){ 
+			$this->rotate=$v;
 			return ($this);
 		}
 		public function scale($v){ 
@@ -1521,6 +1553,10 @@
 			$this->showInLegend=$v;
 			return ($this);
 		}
+		public function showMarkers($v){ 
+			$this->showMarkers=$v;
+			return ($this);
+		}
 		public function showToday($v){ 
 			$this->showToday=$v;
 			return ($this);
@@ -1547,6 +1583,10 @@
 		}
 		public function startDay($v){ 
 			$this->startDay=$v;
+			return ($this);
+		}
+		public function stacked($v){ 
+			$this->stacked=$v;
 			return ($this);
 		}
 		public function step($v){ 

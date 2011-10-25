@@ -43,12 +43,14 @@
 	define("collapsed","collapsed");
 	define("collapsible","collapsible");
 	define("color","color");
+	define("colorSet","colorSet");
 	define("contrast","contrast");
 	define("columnLines","columnLines");
 	define("column","column");
 	define("columns","columns");
 	define("columnWidth","columnWidth");
 	define("createLinkText","createLinkText");
+	define("adjustMinimumByMajorUnit","adjustMinimumByMajorUnit");
 	define("dashSize","dashSize");
 	define("data","data");
 	define("dataIndex","dataIndex");
@@ -92,6 +94,7 @@
 	define("fields","fields");
 	define("fieldLabel","fieldLabel");
 	define("fill","fill");
+	define("fillOpacity","fillOpacity");
 	define("flex","flex");
 	define("floating","floating");
 	define("focusOnToFront","focusOnToFront");
@@ -102,6 +105,7 @@
 	define("format","format");
 	define("frameHeader","frameHeader");
 	define("frame","frame");
+	define("gradients","gradients");
 	define("grid","grid");
 	define("groupable","groupable");
 	define("groupGutter","groupGutter");
@@ -185,7 +189,9 @@
 	define("readOnly","readOnly");
 	define("renderer","renderer");
 	define("resizable","resizable");
+	define("roundToDecimal","roundToDecimal");
 	define("root","root");
+	define("rotate","rotate");
 	define("scale","scale");
 	define("scroll","scroll");
 	define("selectOnFocus","selectOnFocus");
@@ -194,6 +200,7 @@
 	define("series","series");
 	define("shadow","shadow");
 	define("showInLegend","showInLegend");
+	define("showMarkers","showMarkers");
 	define("showToday","showToday");
 	define("sortable","sortable");
 	define("sortableColumns","sortableColumns");
@@ -201,6 +208,7 @@
 	define("spinUpEnabled","spinUpEnabled");
 	define("smooth","smooth");
 	define("startDay","startDay");
+	define("stacked","stacked");
 	define("step","step");
 	define("steps","steps");
 	define("style","style");
