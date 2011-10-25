@@ -3,6 +3,8 @@
 *	Author : Rigoberto D. Benitez
 *	Purpose: Report Generator
 * 	Require: mpdf
+*	PS     : This class uses anonymous functions.
+*			 It is available in version 5 PHP 5.3.0
 */
 define ("_MM",0.264583333);
 
