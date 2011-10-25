@@ -592,6 +592,22 @@ try{
 	$w1->items->add('tabpanel1',$tabpanel1);*/
 	
 	$app=new TApplication();
+	$app->package=array(
+		TPackage::$button,
+		TPackage::$chart,
+		TPackage::$container,
+		TPackage::$data,
+		TPackage::$form,
+		TPackage::$grid,
+		TPackage::$layout,
+		TPackage::$menu,
+		TPackage::$tab,
+		TPackage::$tip,
+		TPackage::$toolbar,
+		TPackage::$util,
+		TPackage::$view,
+		TPackage::$window
+	);
 	$app->ext='ext-4.0.7-gpl';
 	$app->cls='xbody';
 	$app->headers->add('utils','<script type="text/javascript" src="js/utils.js"></script>');

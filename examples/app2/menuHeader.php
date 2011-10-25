@@ -111,8 +111,8 @@ class menuHeader{
 			iconAlign=>'left',
 			scale=>'small',
 			text=>'Professional History',
-			margin=>'0 0 0 650',
-			width=>130
+			margin=>'0 0 0 650'
+			//width=>130
 		));	
 		$obj->listeners->add('click','winHistorico.show();');
 		return $obj;

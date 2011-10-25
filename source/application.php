@@ -29,6 +29,8 @@
 		private $onWindowResizeValue=null;
 		private $onDocumentReadyValue=null;
 		//
+		public $package=array();
+		//
 		public $xtype='viewport';
 		public $language;
 		public $ext;
@@ -74,7 +76,8 @@
 			$this->writeLn('<head>');
 			$this->writeLn('<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />');
 			$this->writeLn('<link rel="stylesheet" type="text/css" href="/'.$this->ext.'/resources/css/ext-all.css"/>');
-			$this->writeLn('<script type="text/javascript" src="/'.$this->ext.'/ext-all.js"></script>');
+//			$this->writeLn('<script type="text/javascript" src="/'.$this->ext.'/ext-all.js"></script>');
+			$this->writeLn('<script type="text/javascript" src="/'.$this->ext.'/bootstrap.js"></script>');
 			$this->writeLn('<script type="text/javascript" src="/'.$this->ext.'/locale/'.$this->language.'"></script>');
 			while ($this->headers->next()){
 				$this->writeLn($this->headers->value());
@@ -3018,6 +3021,16 @@
 					$this->writeLn('Ext.EventManager.onDocumentReady(function(){');
 					$this->writeLn($this->getString($this->onDocumentReadyValue));
 					$this->writeLn('},this);');
+				}
+				if (is_null($this->package)||!count($this->package))
+					$this->writeLn("Ext.require('Ext.*');");
+				else{
+					$this->writeLn("Ext.require([");
+					for ($i=0;$i<count($this->package);$i++){
+						if ($i) $this->writeLn(",");
+						$this->writeLn("    'Ext.".$this->package[$i].".*'");
+					}
+					$this->writeLn("]);");
 				}
 				$this->writeLn('Ext.onReady(function(){');
 				if (!is_null($this->onWindowBeforeUnloadValue)){

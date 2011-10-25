@@ -8,4 +8,5 @@ PS     : All tests are being done with WampServer 2.1e (32 bit)
 		 All examples are using ext-4.0.7-gpl
 		 Example app1: http://www.vmtech.com.br/app1
 		 Example app2: http://www.vmtech.com.br/app2
-		 Changelog: 0.9.9.0=>Insert TChart
+		 Changelog: 0.9.9.0=> insert TChart
+					0.9.9.1=> ext-all replacement for bootstrap

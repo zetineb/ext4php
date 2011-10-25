@@ -59,8 +59,22 @@ try{
 	$winInstituicao 	= new winInstituicao();
 	$winPerfil 		  	= new winPerfil();
 	
-  $app=new TApplication();
-	$app->ext='ext-4.0.2a';
+	$app=new TApplication();
+	$app->package=array(
+		TPackage::$button,
+		TPackage::$container,
+		TPackage::$data,
+		TPackage::$form,
+		TPackage::$grid,
+		TPackage::$layout,
+		TPackage::$menu,
+		TPackage::$tab,
+		TPackage::$tip,
+		TPackage::$toolbar,
+		TPackage::$util,
+		TPackage::$window
+	);
+	$app->ext='ext-4.0.7-gpl';
 	$app->cls='xbody';
 	$app->headers->add('utils','<script type="text/javascript" src="js/utils.js"></script>');
 	$app->headers->add('app-style','<link rel="stylesheet" type="text/css" href="css/app.css"/>');
