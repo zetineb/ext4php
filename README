@@ -6,8 +6,7 @@ PS     : All tests are being done with WampServer 2.1e (32 bit)
 		 ExtJS 4 should be at the root http
 		 CSS,Images and Javascript is defined by user
 		 All examples are using ext-4.0.7-gpl
-		 Example app1: http://www.vmtech.com.br/app1
-		 Example app2: http://www.vmtech.com.br/app2
+		 Examples online: http://www.vmtech.com.br
 		 Changelog: 
 					0.9.9.0=> insert TChart
 					0.9.9.1=> ext-all replacement for bootstrap
