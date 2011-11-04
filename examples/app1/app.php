@@ -230,9 +230,6 @@ try{
 					}]
 				}
 			]}";		
-			$fp = fopen('debug.txt', 'w+');
-			fwrite($fp, $_data);
-			fclose($fp);
 			echo $_data;
 		}
 	}
@@ -808,9 +805,6 @@ try{
 			Ext.getCmp('tree').getStore().load();
 		");
 	}
-	$tree->onItemClick('
-		alert(item.innerText);
-	');
 	//
 	$tab7=new TTab();
 	$tab7->layout='fit';
