@@ -61,6 +61,181 @@ try{
 			echo json_encode($data);
 		}
 	}
+	class TreeEvent extends TEvent{
+		public function execute(){
+			$_data="{'text':'.','children': [
+				{
+					task:'Project: Shopping',
+					duration:13.25,
+					user:'Tommy Maintz',
+					iconCls:'task-folder',
+					expanded: true,
+					children:[{
+						task:'Housewares',
+						duration:1.25,
+						user:'Tommy Maintz',
+						iconCls:'task-folder',
+						children:[{
+							task:'Kitchen supplies',
+							duration:0.25,
+							user:'Tommy Maintz',
+							leaf:true,
+							iconCls:'task'
+						},{
+							task:'Groceries',
+							duration:.4,
+							user:'Tommy Maintz',
+							leaf:true,
+							iconCls:'task'
+						},{
+							task:'Cleaning supplies',
+							duration:.4,
+							user:'Tommy Maintz',
+							leaf:true,
+							iconCls:'task'
+						},{
+							task: 'Office supplies',
+							duration: .2,
+							user: 'Tommy Maintz',
+							leaf: true,
+							iconCls: 'task'
+						}]
+					}, {
+						task:'Remodeling',
+						duration:12,
+						user:'Tommy Maintz',
+						iconCls:'task-folder',
+						expanded: true,
+						children:[{
+							task:'Retile kitchen',
+							duration:6.5,
+							user:'Tommy Maintz',
+							leaf:true,
+							iconCls:'task'
+						},{
+							task:'Paint bedroom',
+							duration: 2.75,
+							user:'Tommy Maintz',
+							iconCls:'task-folder',
+							children: [{
+								task: 'Ceiling',
+								duration: 1.25,
+								user: 'Tommy Maintz',
+								iconCls: 'task',
+								leaf: true
+							}, {
+								task: 'Walls',
+								duration: 1.5,
+								user: 'Tommy Maintz',
+								iconCls: 'task',
+								leaf: true
+							}]
+						},{
+							task:'Decorate living room',
+							duration:2.75,
+							user:'Tommy Maintz',
+							leaf:true,
+							iconCls:'task'
+						},{
+							task: 'Fix lights',
+							duration: .75,
+							user: 'Tommy Maintz',
+							leaf: true,
+							iconCls: 'task'
+						}, {
+							task: 'Reattach screen door',
+							duration: 2,
+							user: 'Tommy Maintz',
+							leaf: true,
+							iconCls: 'task'
+						}]
+					}]
+				},{
+					task:'Project: Testing',
+					duration:2,
+					user:'Core Team',
+					iconCls:'task-folder',
+					children:[{
+						task: 'Mac OSX',
+						duration: 0.75,
+						user: 'Tommy Maintz',
+						iconCls: 'task-folder',
+						children: [{
+							task: 'FireFox',
+							duration: 0.25,
+							user: 'Tommy Maintz',
+							iconCls: 'task',
+							leaf: true
+						}, {
+							task: 'Safari',
+							duration: 0.25,
+							user: 'Tommy Maintz',
+							iconCls: 'task',
+							leaf: true
+						}, {
+							task: 'Chrome',
+							duration: 0.25,
+							user: 'Tommy Maintz',
+							iconCls: 'task',
+							leaf: true
+						}]
+					},{
+						task: 'Windows',
+						duration: 3.75,
+						user: 'Darrell Meyer',
+						iconCls: 'task-folder',
+						children: [{
+							task: 'FireFox',
+							duration: 0.25,
+							user: 'Darrell Meyer',
+							iconCls: 'task',
+							leaf: true
+						}, {
+							task: 'Safari',
+							duration: 0.25,
+							user: 'Darrell Meyer',
+							iconCls: 'task',
+							leaf: true
+						}, {
+							task: 'Chrome',
+							duration: 0.25,
+							user: 'Darrell Meyer',
+							iconCls: 'task',
+							leaf: true
+						},{
+							task: 'Internet Exploder',
+							duration: 3,
+							user: 'Darrell Meyer',
+							iconCls: 'task',
+							leaf: true
+						}]
+					},{
+						task: 'Linux',
+						duration: 0.5,
+						user: 'Aaron Conran',
+						iconCls: 'task-folder',
+						children: [{
+							task: 'FireFox',
+							duration: 0.25,
+							user: 'Aaron Conran',
+							iconCls: 'task',
+							leaf: true
+						}, {
+							task: 'Chrome',
+							duration: 0.25,
+							user: 'Aaron Conran',
+							iconCls: 'task',
+							leaf: true
+						}]
+					}]
+				}
+			]}";		
+			$fp = fopen('debug.txt', 'w+');
+			fwrite($fp, $_data);
+			fclose($fp);
+			echo $_data;
+		}
+	}
 	
 	$lbl1=new TLabel(array(text=>'Label 1'));
 	//$lbl1->text='Label 1';
@@ -570,7 +745,80 @@ try{
 	$tabpanel2->items->add('tab62',$tab62);
 	$tabpanel2->items->add('tab63',$tab63);
 	//
+	//For local
+	$treeNode1=new TTreeNode();
+	$treeNode1->text='node 1';
+	$treeNode2=new TTreeNode();
+	$treeNode2->text='node 2';
+	$treeNode21=new TTreeNode();
+	$treeNode21->text='node 21';
+	$treeNode22=new TTreeNode();
+	$treeNode22->text='node 22';
+	$treeNode2->children->add('node21',$treeNode21);
+	$treeNode2->children->add('node22',$treeNode22);
+	$treeNode221=new TTreeNode();
+	$treeNode221->text='node 221';
+	$treeNode22->children->add('node221',$treeNode221);
+	$treeNode22->expanded=true;
+	$treeRootNode=new TTreeNode();
+	$treeRootNode->expanded=true;
+	$treeRootNode->children->add('node1',$treeNode1);
+	$treeRootNode->children->add('node2',$treeNode2);
+	//
+	//
+	$tree=new TTree();
+	//
+	//For remote
+	$treecol1=new TTreeColumn();
+	$treecol1->text='Task';
+	$treecol1->flex=2;
+	$treecol1->dataIndex='task';
+	$treecol2=new TColumn();
+    $treecol2->text='Duration';
+    $treecol2->flex=1;
+    $treecol2->sortable=true;
+    $treecol2->dataIndex='duration';
+    $treecol2->align='center';
+	$treecol3=new TColumn();
+    $treecol3->text='Assigned To';
+    $treecol3->flex=1;
+    $treecol3->dataIndex='user';
+    $treecol3->sortable=true;
+	$tree->columns->add('treecol1',$treecol1);
+	$tree->columns->add('treecol2',$treecol2);
+	$tree->columns->add('treecol3',$treecol3);
+	//
+	$tree->fields->add(0,'task');
+	$tree->fields->add(1,'user');
+	$tree->fields->add(2,'duration');
+	$tree->autoLoad=false;
+	$tree->eventName='tree';
+	//
+	$tree->queryMode=TQueryModeType::$remote;	//Test with TQueryModeType::$local
+	//
+	//
+	$tree->title='Tree';
+	$tree->rootVisible=true;
+	$tree->useArrows=true;
+	if ($tree->queryMode==TQueryModeType::$local){
+		$tree->rootNode=$treeRootNode;
+	}
+	else{
+		$tree->onAfterRender("
+			Ext.getCmp('tree').getStore().load();
+		");
+	}
+	$tree->onItemClick('
+		alert(item.innerText);
+	');
+	//
+	$tab7=new TTab();
+	$tab7->layout='fit';
+	$tab7->title='Tree';
+	$tab7->items->add('tree',$tree);
+	//
 	$tabpanel1->items->add('tab6',$tab6);
+	$tabpanel1->items->add('tab7',$tab7);
 	//
 	$w1=new TWindow(array(
 		layout=>'fit',
@@ -606,6 +854,7 @@ try{
 		TPackage::$toolbar,
 		TPackage::$util,
 		TPackage::$view,
+		TPackage::$tree,
 		TPackage::$window
 	);
 	$app->ext='ext-4.0.7-gpl';
@@ -630,6 +879,7 @@ try{
 	$app->events->add('combobox2',new Combobox2()); //Return data for combobox
 	$app->events->add('formEvent',new FormEvent());
 	$app->events->add('chart',new ChartEvent());
+	$app->events->add('tree',new TreeEvent());
 	$app->windows->add('win1',$w1);
 	$it1=new TMenuItem();
 	$it1->iconCls='badd';

@@ -286,6 +286,7 @@
 				elseif (!strcasecmp($keys[$i],angleField)) $this->angleField=$v;
 				elseif (!strcasecmp($keys[$i],anchor)) $this->anchor=$v;
 				elseif (!strcasecmp($keys[$i],animate)) $this->animate=$v;
+				elseif (!strcasecmp($keys[$i],animCollapse)) $this->animCollapse=$v;
 				elseif (!strcasecmp($keys[$i],autoLoad)) $this->autoLoad=$v;
 				elseif (!strcasecmp($keys[$i],autoSelect)) $this->autoSelect=$v;
 				elseif (!strcasecmp($keys[$i],autoScroll)) $this->autoScroll=$v;
@@ -336,7 +337,10 @@
 				elseif (!strcasecmp($keys[$i],closable)) $this->closable=$v;
 				elseif (!strcasecmp($keys[$i],closeText)) $this->closeText=$v;
 				elseif (!strcasecmp($keys[$i],cls)) $this->cls=$v;
+				elseif (!strcasecmp($keys[$i],collapseDirection)) $this->collapseDirection=$v;
 				elseif (!strcasecmp($keys[$i],collapsed)) $this->collapsed=$v;
+				elseif (!strcasecmp($keys[$i],collapseFirst)) $this->collapseFirst=$v;
+				elseif (!strcasecmp($keys[$i],collapseMode)) $this->collapseMode=$v;
 				elseif (!strcasecmp($keys[$i],collapsible)) $this->collapsible=$v;
 				elseif (!strcasecmp($keys[$i],color)) $this->color=$v;
 				elseif (!strcasecmp($keys[$i],colorSet)) $this->colorSet=$v;
@@ -375,6 +379,7 @@
 				elseif (!strcasecmp($keys[$i],defaultLinkValue)) $this->defaultLinkValue=$v;
 				elseif (!strcasecmp($keys[$i],defaultType)) $this->defaultType=$v;
 				elseif (!strcasecmp($keys[$i],defaultValue)) $this->defaultValue=$v;
+				elseif (!strcasecmp($keys[$i],deferRowRender)) $this->deferRowRender=$v;
 				elseif (!strcasecmp($keys[$i],disabled)) $this->disabled=$v;
 				elseif (!strcasecmp($keys[$i],disabledDates)) $this->disabledDates=$v;
 				elseif (!strcasecmp($keys[$i],disabledDatesText)) $this->disabledDatesText=$v;
@@ -399,6 +404,7 @@
 				elseif (!strcasecmp($keys[$i],enableFormat)) $this->enableFormat=$v;
 				elseif (!strcasecmp($keys[$i],enableLinks)) $this->enableLinks=$v;
 				elseif (!strcasecmp($keys[$i],enableLists)) $this->enableLists=$v;
+				elseif (!strcasecmp($keys[$i],enableLocking)) $this->enableLocking=$v;
 				elseif (!strcasecmp($keys[$i],enableToggle)) $this->enableToggle=$v;
 				elseif (!strcasecmp($keys[$i],enableSourceEdit)) $this->enableSourceEdit=$v;
 				elseif (!strcasecmp($keys[$i],eventName)) $this->eventName=$v;
@@ -434,8 +440,10 @@
 				elseif (!strcasecmp($keys[$i],fill)) $this->fill=$v;
 				elseif (!strcasecmp($keys[$i],fillOpacity)) $this->fillOpacity=$v;
 				elseif (!strcasecmp($keys[$i],flex)) $this->flex=$v;
+				elseif (!strcasecmp($keys[$i],floatable)) $this->floatable=$v;
 				elseif (!strcasecmp($keys[$i],floating)) $this->floating=$v;
 				elseif (!strcasecmp($keys[$i],focusOnToFront)) $this->focusOnToFront=$v;
+				elseif (!strcasecmp($keys[$i],folderSort)) $this->folderSort=$v;
 				elseif (!strcasecmp($keys[$i],font)) $this->font=$v;
 				elseif (!strcasecmp($keys[$i],fontFamilies)) $this->fontFamilies=$v;
 				elseif (!strcasecmp($keys[$i],forceFit)) $this->forceFit=$v;
@@ -463,7 +471,10 @@
 				elseif (!strcasecmp($keys[$i],headerPosition)) $this->headerPosition=$v;
 				elseif (!strcasecmp($keys[$i],height)) $this->height=$v;
 				elseif (!strcasecmp($keys[$i],hidden)) $this->hidden=$v;
+				elseif (!strcasecmp($keys[$i],hideCollapseTool)) $this->hideCollapseTool=$v;
 				elseif (!strcasecmp($keys[$i],hideable)) $this->hideable=$v;
+				elseif (!strcasecmp($keys[$i],hideHeaders)) $this->hideHeaders=$v;
+				elseif (!strcasecmp($keys[$i],hideMode)) $this->hideMode=$v;
 				elseif (!strcasecmp($keys[$i],highlight)) $this->highlight=$v;
 				elseif (!strcasecmp($keys[$i],highlightDuration)) $this->highlightDuration=$v;
 				elseif (!strcasecmp($keys[$i],html)) $this->html=$v;
@@ -484,6 +495,7 @@
 						$this->items->add(spl_object_hash($v),$v);
 					}
 				}
+				elseif (!strcasecmp($keys[$i],itemId)) $this->itemId=$v;
 				elseif (!strcasecmp($keys[$i],itemSelector)) $this->itemSelector=$v;
 				elseif (!strcasecmp($keys[$i],itemSpacing)) $this->itemSpacing=$v;
 				elseif (!strcasecmp($keys[$i],invalidText)) $this->invalidText=$v;
@@ -509,6 +521,7 @@
 				}
 				elseif (!strcasecmp($keys[$i],length)) $this->length=$v;
 				elseif (!strcasecmp($keys[$i],lengthField)) $this->lengthField=$v;
+				elseif (!strcasecmp($keys[$i],lines)) $this->lines=$v;
 				elseif (!strcasecmp($keys[$i],markerConfig)) $this->markerConfig=$v;
 				elseif (!strcasecmp($keys[$i],loadingText)) $this->loadingText=$v;
 				elseif (!strcasecmp($keys[$i],maintainFlex)) $this->maintainFlex=$v;
@@ -537,6 +550,7 @@
 					}
 				}
 				elseif (!strcasecmp($keys[$i],menuDisabled)) $this->menuDisabled=$v;
+				elseif (!strcasecmp($keys[$i],minButtonWidth)) $this->minButtonWidth=$v;
 				elseif (!strcasecmp($keys[$i],minHeight)) $this->minHeight=$v;
 				elseif (!strcasecmp($keys[$i],minMargin)) $this->minMargin=$v;
 				elseif (!strcasecmp($keys[$i],minWidth)) $this->minWidth=$v;
@@ -551,8 +565,10 @@
 				elseif (!strcasecmp($keys[$i],name)) $this->name=$v;
 				elseif (!strcasecmp($keys[$i],nanText)) $this->nanText=$v;
 				elseif (!strcasecmp($keys[$i],negativeText)) $this->negativeText=$v;
+				elseif (!strcasecmp($keys[$i],rootNode)) $this->rootNode=$v;
 				elseif (!strcasecmp($keys[$i],orientation)) $this->orientation=$v;
 				elseif (!strcasecmp($keys[$i],overCls)) $this->overCls=$v;
+				elseif (!strcasecmp($keys[$i],overlapHeader)) $this->overlapHeader=$v;
 				elseif (!strcasecmp($keys[$i],padding)) $this->padding=$v;
 				elseif (!strcasecmp($keys[$i],plain)) $this->plain=$v;
 				elseif (!strcasecmp($keys[$i],position)) $this->position=$v;
@@ -574,9 +590,12 @@
 				elseif (!strcasecmp($keys[$i],resizable)) $this->resizable=$v;
 				elseif (!strcasecmp($keys[$i],roundToDecimal)) $this->roundToDecimal=$v;
 				elseif (!strcasecmp($keys[$i],root)) $this->root=$v;
+				elseif (!strcasecmp($keys[$i],rootVisible)) $this->rootVisible=$v;
 				elseif (!strcasecmp($keys[$i],rotate)) $this->rotate=$v;
+				elseif (!strcasecmp($keys[$i],saveDelay)) $this->saveDelay=$v;
 				elseif (!strcasecmp($keys[$i],scale)) $this->scale=$v;
 				elseif (!strcasecmp($keys[$i],scroll)) $this->scroll=$v;
+				elseif (!strcasecmp($keys[$i],scrollDelta)) $this->scrollDelta=$v;
 				elseif (!strcasecmp($keys[$i],selectOnFocus)) $this->selectOnFocus=$v;
 				elseif (!strcasecmp($keys[$i],selectOnTab)) $this->selectOnTab=$v;
 				elseif (!strcasecmp($keys[$i],selectionTolerance)) $this->selectionTolerance=$v;
@@ -585,6 +604,8 @@
 				elseif (!strcasecmp($keys[$i],showInLegend)) $this->showInLegend=$v;
 				elseif (!strcasecmp($keys[$i],showMarkers)) $this->showMarkers=$v;
 				elseif (!strcasecmp($keys[$i],showToday)) $this->showToday=$v;
+				elseif (!strcasecmp($keys[$i],simpleSelect)) $this->simpleSelect=$v;
+				elseif (!strcasecmp($keys[$i],singleExpand)) $this->singleExpand=$v;
 				elseif (!strcasecmp($keys[$i],sortable)) $this->sortable=$v;
 				elseif (!strcasecmp($keys[$i],sortableColumns)) $this->sortableColumns=$v;
 				elseif (!strcasecmp($keys[$i],spinDownEnabled)) $this->spinDownEnabled=$v;
@@ -631,6 +652,7 @@
 				elseif (!strcasecmp($keys[$i],trueText)) $this->trueText=$v;
 				elseif (!strcasecmp($keys[$i],type)) $this->type=$v;
 				elseif (!strcasecmp($keys[$i],typeAhead)) $this->typeAhead=$v;
+				elseif (!strcasecmp($keys[$i],useArrows)) $this->useArrows=$v;
 				elseif (!strcasecmp($keys[$i],validateOnBlur)) $this->validateOnBlur=$v;
 				elseif (!strcasecmp($keys[$i],validateOnChange)) $this->validateOnChange=$v;
 				elseif (!strcasecmp($keys[$i],validator)) $this->validator=$v;
@@ -696,6 +718,10 @@
 		}
 		public function animate($v){ 
 			$this->animate=$v;
+			return ($this);
+		}
+		public function animCollapse($v){ 
+			$this->animCollapse=$v;
 			return ($this);
 		}
 		public function autoLoad($v){ 
@@ -840,8 +866,20 @@
 			$this->cls=$v;
 			return ($this);
 		}
+		public function collapseDirection($v){ 
+			$this->collapseDirection=$v;
+			return ($this);
+		}
 		public function collapsed($v){ 
 			$this->collapsed=$v;
+			return ($this);
+		}
+		public function collapseFirst($v){ 
+			$this->collapseFirst=$v;
+			return ($this);
+		}
+		public function collapseMode($v){ 
+			$this->collapseMode=$v;
 			return ($this);
 		}
 		public function collapsible($v){ 
@@ -937,6 +975,10 @@
 		}
 		public function defaultValue($v){ 
 			$this->defaultValue=$v;
+			return ($this);
+		}
+		public function deferRowRender($v){ 
+			$this->deferRowRender=$v;
 			return ($this);
 		}
 		public function disabled($v){ 
@@ -1035,6 +1077,10 @@
 			$this->enableLists=$v;
 			return ($this);
 		}
+		public function enableLocking($v){ 
+			$this->enableLocking=$v;
+			return ($this);
+		}
 		public function enableToggle($v){ 
 			$this->enableToggle=$v;
 			return ($this);
@@ -1102,12 +1148,20 @@
 			$this->flex=$v;
 			return ($this);
 		}
+		public function floatable($v){ 
+			$this->floatable=$v;
+			return ($this);
+		}
 		public function floating($v){ 
 			$this->floating=$v;
 			return ($this);
 		}
 		public function focusOnToFront($v){ 
 			$this->focusOnToFront=$v;
+			return ($this);
+		}
+		public function folderSort($v){ 
+			$this->folderSort=$v;
 			return ($this);
 		}
 		public function fontFamilies($v){ 
@@ -1189,8 +1243,20 @@
 			$this->hidden=$v;
 			return ($this);
 		}
+		public function hideCollapseTool($v){ 
+			$this->hideCollapseTool=$v;
+			return ($this);
+		}
 		public function hideable($v){ 
 			$this->hideable=$v;
+			return ($this);
+		}
+		public function hideHeaders($v){ 
+			$this->hideHeaders=$v;
+			return ($this);
+		}
+		public function hideMode($v){ 
+			$this->hideMode=$v;
 			return ($this);
 		}
 		public function highlight($v){ 
@@ -1242,6 +1308,10 @@
 			else{
 				$this->items->add(spl_object_hash($v),$v);
 			}
+			return ($this);
+		}
+		public function itemId($v){ 
+			$this->itemId=$v;
 			return ($this);
 		}
 		public function itemSelector($v){ 
@@ -1313,6 +1383,10 @@
 		}
 		public function lengthField($v){ 
 			$this->lengthField=$v;
+			return ($this);
+		}
+		public function lines($v){ 
+			$this->lines=$v;
 			return ($this);
 		}
 		public function markerConfig($v){ 
@@ -1398,6 +1472,10 @@
 			$this->menuDisabled=$v;
 			return ($this);
 		}
+		public function minButtonWidth($v){ 
+			$this->minButtonWidth=$v;
+			return ($this);
+		}
 		public function minHeight($v){ 
 			$this->minHeight=$v;
 			return ($this);
@@ -1454,12 +1532,20 @@
 			$this->negativeText=$v;
 			return ($this);
 		}
+		public function rootNode($v){ 
+			$this->rootNode=$v;
+			return ($this);
+		}
 		public function orientation($v){ 
 			$this->orientation=$v;
 			return ($this);
 		}
 		public function overCls($v){ 
 			$this->overCls=$v;
+			return ($this);
+		}
+		public function overlapHeader($v){ 
+			$this->overlapHeader=$v;
 			return ($this);
 		}
 		public function padding($v){ 
@@ -1476,6 +1562,10 @@
 		}
 		public function pressed($v){ 
 			$this->pressed=$v;
+			return ($this);
+		}
+		public function preventHeader($v){ 
+			$this->preventHeader=$v;
 			return ($this);
 		}
 		public function queryMode($v){ 
@@ -1517,8 +1607,16 @@
 			$this->root=$v;
 			return ($this);
 		}
+		public function rootVisible($v){ 
+			$this->rootVisible=$v;
+			return ($this);
+		}
 		public function rotate($v){ 
 			$this->rotate=$v;
+			return ($this);
+		}
+		public function saveDelay($v){ 
+			$this->saveDelay=$v;
 			return ($this);
 		}
 		public function scale($v){ 
@@ -1527,6 +1625,10 @@
 		}
 		public function scroll($v){ 
 			$this->scroll=$v;
+			return ($this);
+		}
+		public function scrollDelta($v){ 
+			$this->scrollDelta=$v;
 			return ($this);
 		}
 		public function selectOnFocus($v){ 
@@ -1559,6 +1661,14 @@
 		}
 		public function showToday($v){ 
 			$this->showToday=$v;
+			return ($this);
+		}
+		public function simpleSelect($v){ 
+			$this->simpleSelect=$v;
+			return ($this);
+		}
+		public function singleExpand($v){ 
+			$this->singleExpand=$v;
 			return ($this);
 		}
 		public function sortable($v){ 
@@ -1685,6 +1795,10 @@
 		}
 		public function typeAhead($v){ 
 			$this->typeAhead=$v;
+			return ($this);
+		}
+		public function useArrows($v){ 
+			$this->useArrows=$v;
 			return ($this);
 		}
 		public function validateOnBlur($v){ 

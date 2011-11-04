@@ -7,6 +7,7 @@
 	define("altFormats","altFormats");
 	define("anchor","anchor");
 	define("animate","animate");
+	define("animCollapse","animCollapse");
 	define("angleField","angleField");
 	define("autoLoad","autoLoad");
 	define("autoSelect","autoSelect");
@@ -40,7 +41,10 @@
 	define("closable","closable");
 	define("closeText","closeText");
 	define("cls","cls");
+	define("collapseDirection","collapseDirection");
 	define("collapsed","collapsed");
+	define("collapseFirst","collapseFirst");
+	define("collapseMode","collapseMode");
 	define("collapsible","collapsible");
 	define("color","color");
 	define("colorSet","colorSet");
@@ -60,6 +64,7 @@
 	define("defaultLinkValue","defaultLinkValue");
 	define("defaultType","defaultType");
 	define("defaultValue","defaultValue");
+	define("deferRowRender","deferRowRender");
 	define("disabled","disabled");
 	define("disabledDates","disabledDates");
 	define("disabledDatesText","disabledDatesText");
@@ -84,6 +89,7 @@
 	define("enableFormat","enableFormat");
 	define("enableLinks","enableLinks");
 	define("enableLists","enableLists");
+	define("enableLocking","enableLocking");
 	define("enableToggle","enableToggle");
 	define("enableSourceEdit","enableSourceEdit");
 	define("eventName","eventName");
@@ -96,8 +102,10 @@
 	define("fill","fill");
 	define("fillOpacity","fillOpacity");
 	define("flex","flex");
+	define("floatable","floatable");
 	define("floating","floating");
 	define("focusOnToFront","focusOnToFront");
+	define("folderSort","folderSort");
 	define("font","font");
 	define("fontFamilies","fontFamilies");
 	define("forceFit","forceFit");
@@ -116,7 +124,10 @@
 	define("headerPosition","headerPosition");
 	define("height","height");
 	define("hidden","hidden");
+	define("hideCollapseTool","hideCollapseTool");
 	define("hideable","hideable");
+	define("hideHeaders","hideHeaders");
+	define("hideMode","hideMode");
 	define("highlight","highlight");
 	define("highlightDuration","highlightDuration");
 	define("html","html");
@@ -129,6 +140,7 @@
 	define("insetPadding","insetPadding");
 	define("invalidText","invalidText");
 	define("items","items");
+	define("itemId","itemId");
 	define("itemSelector","itemSelector");
 	define("itemSpacing","itemSpacing");
 	define("keyNavEnabled","keyNavEnabled");
@@ -143,6 +155,7 @@
 	define("legend","legend");
 	define("length","length");
 	define("lengthField","lengthField");
+	define("lines","lines");
 	define("markerConfig","markerConfig");
 	define("lbar","lbar");
 	define("loadingText","loadingText");
@@ -162,6 +175,7 @@
 	define("maximized","maximized");
 	define("menu","menu");
 	define("menuDisabled","menuDisabled");
+	define("minButtonWidth","minButtonWidth");
 	define("minHeight","minHeight");
 	define("minMargin","minMargin");
 	define("minWidth","minWidth");
@@ -177,12 +191,15 @@
 	define("name","name");
 	define("nanText","nanText");
 	define("negativeText","negativeText");
+	define("rootNode","rootNode");
 	define("orientation","orientation");
 	define("overCls","overCls");
+	define("overlapHeader","overlapHeader");
 	define("padding","padding");
 	define("plain","plain");
 	define("position","position");
 	define("pressed","pressed");
+	define("preventHeader","preventHeader");
 	define("queryMode","queryMode");
 	define("queryParam","queryParam");
 	define("rbar","rbar");
@@ -191,9 +208,12 @@
 	define("resizable","resizable");
 	define("roundToDecimal","roundToDecimal");
 	define("root","root");
+	define("rootVisible","rootVisible");
 	define("rotate","rotate");
+	define("saveDelay","saveDelay");
 	define("scale","scale");
 	define("scroll","scroll");
+	define("scrollDelta","scrollDelta");
 	define("selectOnFocus","selectOnFocus");
 	define("selectOnTab","selectOnTab");
 	define("selectionTolerance","selectionTolerance");
@@ -202,6 +222,8 @@
 	define("showInLegend","showInLegend");
 	define("showMarkers","showMarkers");
 	define("showToday","showToday");
+	define("simpleSelect","simpleSelect");
+	define("singleExpand","singleExpand");
 	define("sortable","sortable");
 	define("sortableColumns","sortableColumns");
 	define("spinDownEnabled","spinDownEnabled");
@@ -230,6 +252,7 @@
 	define("trueText","trueText");
 	define("type","type");
 	define("typeAhead","typeAhead");
+	define("useArrows","useArrows");
 	define("validateOnBlur","validateOnBlur");
 	define("validateOnChange","validateOnChange");
 	define("validator","validator");

@@ -156,4 +156,14 @@
 			parent::add($name,$value);
 		}
 	}
+
+	class TListTreeNode extends TCollection{
+		public function __construct(){
+			$this->name='TreeNode';
+		}
+		public function add($name,$value){
+			if (get_class($value)!='TTreeNode') throw new Exception($this->name.' "'.$name.'" is not TTreeNode');
+			parent::add($name,$value);
+		}
+	}
 ?>

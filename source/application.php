@@ -16,6 +16,7 @@
 	include("grid.php");
 	include("view.php");
 	include("chart.php");
+	include("tree.php");
 	include("paging.php");
 
 	//
@@ -2138,8 +2139,6 @@
 				$this->mkItems($obj->buttons);
 				$this->writeLn('],');
 			}
-			if (!is_null($obj->buttonAlign))
-				$this->writeLn('buttonAlign:"'.$obj->buttonAlign.'",');
 			if (!is_null($obj->closable))
 				$this->writeLn('closable:'.$this->boolean[$obj->closable].',');
 			if (!is_null($obj->cls))
@@ -2709,6 +2708,413 @@
 				$this->writeLn('toFrontOnShow:'.$this->boolean[$obj->toFrontOnShow]);
 		}
 		
+		private function getNode($node){
+			$_node ='{';
+			if (!is_null($node->text))
+				$_node.='text:"'.$node->text.'",';
+			if (!is_null($node->iconCls))
+				$_node.='iconCls:"'.$node->iconCls.'",';
+			if ($node->children->count()){
+				if (!is_null($node->expanded))
+					$_node.='expanded:'.$this->boolean[$node->expanded].',';
+				else
+					$_node.='expanded:false,';
+				$_node.='children:[';
+				while ($node->children->next()){
+					if ($node->children->iterator()>0) $_node.=',';
+					$_node.=$this->getNode($node->children->value());
+				}
+				$_node.=']';
+			}
+			else
+				$_node.='leaf:true';
+			$_node.='}';
+			
+			return ($_node);
+		}
+		
+		private function mkTreePanel($obj){
+			$_count=0;
+			$fieldsEmpty=false;
+			if (!$obj->fields->count()) $fieldsEmpty=true;
+			
+			if (!is_null($obj->height)){
+				if (stristr($obj->height,"%"))
+					$this->writeLn('height:"'.$obj->height.'",');
+				else
+					$this->writeLn('height:'.$obj->height.',');
+			}
+			$_columns='[';
+			while ($obj->columns->next()){
+				if ($fieldsEmpty){
+					$obj->fields->add($_count,$obj->columns->value()->dataIndex);
+					$_count++;
+				}
+				if ($obj->columns->iterator()>0) $_columns.=',';
+				$_columns.='{';
+				$_columns.='xtype:"'.$obj->columns->value()->xtype.'",';
+				$_columns.='id:"'.$obj->columns->name().'",';
+				if (!is_null($obj->columns->value()->header))
+					$_columns.='header:"'.$obj->columns->value()->header.'",';
+				if (!is_null($obj->columns->value()->height)){
+					if (stristr($obj->columns->value()->height,"%"))
+						$_columns.='height:"'.$obj->columns->value()->height.'",';
+					else
+						$_columns.='height:'.$obj->columns->value()->height.',';
+				}
+				if (!is_null($obj->columns->value()->text))
+					$_columns.='text:"'.$obj->columns->value()->text.'",';
+				if (!is_null($obj->columns->value()->dataIndex))
+					$_columns.='dataIndex:"'.$obj->columns->value()->dataIndex.'",';
+				if (!is_null($obj->columns->value()->flex))
+					$_columns.='flex:'.$obj->columns->value()->flex.',';
+				if (!is_null($obj->columns->value()->renderer))
+					$_columns.='renderer:function(value,metaData,record,rowIndex,colIndex,store,view){'.$obj->columns->value()->renderer.'},';
+				if (!is_null($obj->columns->value()->hideable))
+					$_columns.='hideable:'.$this->boolean[$obj->columns->value()->hideable].',';
+				if (!is_null($obj->columns->value()->menuDisabled))
+					$_columns.='menuDisabled:'.$this->boolean[$obj->columns->value()->menuDisabled].',';
+				if (!is_null($obj->columns->value()->draggable))
+					$_columns.='draggable:'.$this->boolean[$obj->columns->value()->draggable].',';
+				if (!is_null($obj->columns->value()->groupable))
+					$_columns.='groupable:'.$this->boolean[$obj->columns->value()->groupable].',';
+				if (!is_null($obj->columns->value()->hidden))
+					$_columns.='hidden:'.$this->boolean[$obj->columns->value()->hidden].',';
+				if ($obj->columns->value()->xtype=='actioncolumn'){
+					$_columns.='items:[';
+					while ($obj->columns->value()->items->next()){
+						if ($obj->columns->value()->items->iterator()>0) $_columns.=',';
+						$_columns.='{';
+						if (!is_null($obj->columns->value()->items->value()->icon))
+							$_columns.='icon:"'.$obj->columns->value()->items->value()->icon.'",';
+						if (!is_null($obj->columns->value()->items->value()->iconCls))
+							$_columns.='iconCls:"'.$obj->columns->value()->items->value()->iconCls.'",';
+						if (!is_null($obj->columns->value()->items->value()->iconAlign))
+							$_columns.='iconAlign:"'.$obj->columns->value()->items->value()->iconAlign.'",';
+						if (!is_null($obj->columns->value()->items->value()->tooltip))
+							$_columns.='tooltip:"'.$obj->columns->value()->items->value()->tooltip.'",';
+						$handler='';
+						if (!is_null($obj->columns->value()->items->value()->handler)) $handler=$this->getString($obj->columns->value()->items->value()->handler);
+						$_columns.='handler:function(grid,rowIndex,colIndex){'.$handler.'}';
+						$_columns.='}';
+					}
+					$_columns.='],';
+				}
+				elseif($obj->columns->value()->xtype=='booleancolumn'){
+					$_columns.='trueText:"'.$obj->columns->value()->trueText.'",';
+					$_columns.='falseText:"'.$obj->columns->value()->falseText.'",';
+				}
+				elseif($obj->columns->value()->xtype=='datecolumn'||$obj->columns->value()->xtype=='numbercolumn'){
+					$_columns.='format:"'.$obj->columns->value()->format.'",';
+				}
+				elseif($obj->columns->value()->xtype=='templatecolumn'){
+					if (!is_null($obj->columns->value()->tpl)){
+						if (is_array($obj->columns->value()->tpl)){
+							$_columns.='tpl:[';
+							for($i=0;$i<count($obj->columns->value()->tpl);$i++){
+								if ($i) $_columns.=',';
+								$_columns.="'".$obj->columns->value()->tpl[$i]."'";
+							}
+							$_columns.='],';
+						}
+						else
+							$_columns.='tpl:"'.$obj->columns->value()->tpl.'",';
+					}
+				}
+				if (!is_null($obj->columns->value()->width)){
+					if (stristr($obj->columns->value()->width,"%"))
+						$_columns.='width:"'.$obj->columns->value()->width.'",';
+					else
+						$_columns.='width:'.$obj->columns->value()->width.',';
+				}
+				$_columns.='sortable:'.$this->boolean[$obj->columns->value()->sortable];
+				$_columns.='}';
+			}
+			$_columns.=']';
+			if ($_columns!='[]'&&$obj->queryMode==TQueryModeType::$remote){
+				$this->writeLn('columns:'.$_columns.',');
+			}
+			//
+			if (!is_null($obj->rootNode)&&get_class($obj->rootNode)=='TTreeNode'){
+				$_root=$this->getNode($obj->rootNode);
+			}
+			else
+				$_root='{}';
+			//
+			$fields='[';
+			while ($obj->fields->next()){
+				if ($obj->fields->iterator()>0) $fields.=',';
+				$fields.='"'.$obj->fields->value().'"';
+			}
+			$fields.=']';
+			if ($obj->queryMode==TQueryModeType::$local){
+				$data='[';
+				while ($obj->data->next()){
+					if ($obj->data->iterator()>0) $data.=',';
+					$data.='{';
+					$aV=$obj->data->value();
+					if (!is_array($aV)) $aV=array($aV);
+					while ($obj->fields->next()){
+						if ($obj->fields->iterator()>0) $data.=',';
+						$sV='null';
+						if ($obj->fields->iterator()<count($obj->data->value())) $sV=$aV[$obj->fields->iterator()];
+						if ($sV=='null'||!is_string($sV))
+							$data.='"'.$obj->fields->value().'":'.$sV;
+						else
+							$data.='"'.$obj->fields->value().'":"'.$sV.'"';
+					}
+					$data.='}';
+				}
+				$data.=']';
+				$this->writeLn('store:{');
+/*				if ($fields!='[]'){
+					$this->writeLn('fields:'.$fields.',');
+					$this->writeLn('data:'.$data.',');
+				}*/
+				$this->writeLn('root:'.$_root);
+				$this->writeLn('},');
+			}
+			else{
+				if (is_null($obj->eventName)) throw new Exception('ERROR: Missing eventName');
+				//
+				$this->writeLn('store:{');
+				$this->writeLn('remoteFilter:true,');
+				$this->writeLn('autoLoad:'.$this->boolean[$obj->autoLoad].',');	
+				$this->writeLn('fields:'.$fields.',');
+				$this->writeLn('proxy: {');	
+				$this->writeLn('extraParams:{event:"'.$obj->eventName.'",data:"TreeGRID"},');
+				$this->writeLn('type: "ajax",');
+				$this->writeLn('url: ""');
+//				$this->writeLn(',reader: {');
+//				$this->writeLn('root: "'.$obj->root.'",');
+//				$this->writeLn('totalProperty: "'.$obj->totalProperty.'"');
+//				$this->writeLn('}');
+				$this->writeLn('}');
+//				$this->writeLn('root:'.$_root);
+				$this->writeLn('},');
+			}
+			if (!is_null($obj->activeItem)){
+				if (is_string($obj->activeItem))
+					$this->writeLn('activeItem:"'.$obj->activeItem.'",');
+				else
+					$this->writeLn('activeItem:'.$obj->activeItem.',');
+			}
+			if (!is_null($obj->animCollapse))
+				$this->writeLn('animCollapse:'.$this->boolean[$obj->animCollapse].',');
+			if (!is_null($obj->animate))
+				$this->writeLn('animate:'.$this->boolean[$obj->animate].',');
+			if (!is_null($obj->autoScroll))
+				$this->writeLn('autoScroll:'.$this->boolean[$obj->autoScroll].',');
+			if (!is_null($obj->autoShow))
+				$this->writeLn('autoShow:'.$this->boolean[$obj->autoShow].',');
+			if (!is_null($obj->baseCls))
+				$this->writeLn('baseCls:"'.$obj->baseCls.'",');
+			if ($obj->bbar->count()){
+				$this->writeLn('bbar:[');
+				$this->mkItems($obj->bbar);
+				$this->writeLn('],');
+			}
+			if (!is_null($obj->border))
+				$this->writeLn('border:'.$obj->border.',');
+			if (!is_null($obj->bodyBorder))
+				$this->writeLn('bodyBorder:'.$this->boolean[$obj->bodyBorder].',');
+			if (!is_null($obj->bodyCls))
+				$this->writeLn('bodyCls:"'.$obj->bodyCls.'",');
+			if (!is_null($obj->bodyPadding)){
+				if (is_string($obj->bodyPadding))
+					$this->writeLn('bodyPadding:"'.$obj->bodyPadding.'",');
+				else
+					$this->writeLn('bodyPadding:'.$obj->bodyPadding.',');
+			}
+			if (!is_null($obj->bodyStyle)){
+				if (stristr($obj->bodyStyle,"{"))
+					$this->writeLn('bodyStyle:'.$obj->bodyStyle.',');
+				else
+					$this->writeLn('bodyStyle:"'.$obj->bodyStyle.'",');
+			}
+			if (!is_null($obj->buttonAlign))
+				$this->writeLn('buttonAlign:"'.$obj->buttonAlign.'",');
+			if ($obj->buttons->count()){
+				$this->writeLn('buttons:[');
+				$this->mkItems($obj->buttons);
+				$this->writeLn('],');
+			}
+			if (!is_null($obj->closable))
+				$this->writeLn('closable:'.$this->boolean[$obj->closable].',');
+			if (!is_null($obj->cls))
+				$this->writeLn('cls:"'.$obj->cls.'",');
+			if (!is_null($obj->collapsed))
+				$this->writeLn('collapsed:'.$this->boolean[$obj->collapsed].',');
+			if (!is_null($obj->collapseDirection))
+				$this->writeLn('collapseDirection:'.$this->boolean[$obj->collapseDirection].',');
+			if (!is_null($obj->collapseFirst))
+				$this->writeLn('collapseFirst:'.$this->boolean[$obj->collapseFirst].',');
+			if (!is_null($obj->collapsible))
+				$this->writeLn('collapsible:'.$this->boolean[$obj->collapsible].',');
+			if (!is_null($obj->collapseMode))
+				$this->writeLn('collapseMode:"'.$obj->collapseMode.'",');
+			if (!is_null($obj->defaults)){
+				if (stristr($obj->defaults,"{"))
+					$this->writeLn('defaults:'.$obj->defaults.',');
+				else
+					$this->writeLn('defaults:{'.$obj->defaults.'},');
+			}
+			if (!is_null($obj->deferRowRender))
+				$this->writeLn('deferRowRender:'.$this->boolean[$obj->deferRowRender].',');
+			if (!is_null($obj->disabled))
+				$this->writeLn('disabled:'.$this->boolean[$obj->disabled].',');
+			if (!is_null($obj->displayField))
+				$this->writeLn('displayField:'.$this->boolean[$obj->displayField].',');
+			if (!is_null($obj->enableColumnHide))
+				$this->writeLn('enableColumnHide:'.$this->boolean[$obj->enableColumnHide].',');
+			if (!is_null($obj->enableColumnMove))
+				$this->writeLn('enableColumnMove:'.$this->boolean[$obj->enableColumnMove].',');
+			if (!is_null($obj->enableColumnResize))
+				$this->writeLn('enableColumnResize:'.$this->boolean[$obj->enableColumnResize].',');
+			if (!is_null($obj->enableLocking))
+				$this->writeLn('enableLocking:'.$this->boolean[$obj->enableLocking].',');
+			if ($obj->fbar->count()){
+				$this->writeLn('fbar:[');
+				$this->mkItems($obj->fbar);
+				$this->writeLn('],');
+			}
+			if (!is_null($obj->floatable))
+				$this->writeLn('floatable:'.$this->boolean[$obj->floatable].',');
+			if (!is_null($obj->floating))
+				$this->writeLn('floating:'.$this->boolean[$obj->floating].',');
+			if (!is_null($obj->forceFit))
+				$this->writeLn('forceFit:'.$this->boolean[$obj->forceFit].',');
+			if (!is_null($obj->focusOnToFront))
+				$this->writeLn('focusOnToFront:'.$this->boolean[$obj->focusOnToFront].',');
+			if (!is_null($obj->folderSort))
+				$this->writeLn('folderSort:'.$this->boolean[$obj->folderSort].',');
+			if (!is_null($obj->frame))
+				$this->writeLn('frame:'.$this->boolean[$obj->frame].',');
+			if (!is_null($obj->frameHeader))
+				$this->writeLn('frameHeader:'.$this->boolean[$obj->frameHeader].',');
+			if (!is_null($obj->headerPosition))
+				$this->writeLn('headerPosition:"'.$obj->headerPosition.'",');
+			if (!is_null($obj->hidden))
+				$this->writeLn('hidden:'.$this->boolean[$obj->hidden].',');
+			if (!is_null($obj->hideCollapseTool))
+				$this->writeLn('hideCollapseTool:'.$this->boolean[$obj->hideCollapseTool].',');
+			if (!is_null($obj->hideHeaders))
+				$this->writeLn('hideHeaders:'.$this->boolean[$obj->hideHeaders].',');
+			if (!is_null($obj->hideMode))
+				$this->writeLn('hideMode:"'.$obj->hideMode.'",');
+			if (!is_null($obj->html))
+				$this->writeLn('html:"'.$obj->html.'",');
+			if (!is_null($obj->iconCls))
+				$this->writeLn('iconCls:"'.$obj->iconCls.'",');
+			if (!is_null($obj->itemId))
+				$this->writeLn('itemId:"'.$obj->itemId.'",');
+			if (!is_null($obj->layout)){
+				if (stristr($obj->layout,"{"))
+					$this->writeLn('layout:'.$obj->layout.',');
+				else
+					$this->writeLn('layout:"'.$obj->layout.'",');
+			}
+			if (!is_null($obj->lines))
+				$this->writeLn('lines:'.$this->boolean[$obj->lines].',');
+			if ($obj->lbar->count()){
+				$this->writeLn('lbar:[');
+				$this->mkItems($obj->lbar);
+				$this->writeLn('],');
+			}
+			if (!is_null($obj->maintainFlex))
+				$this->writeLn('maintainFlex:'.$this->boolean[$obj->maintainFlex].',');
+			if (!is_null($obj->maxHeight))
+				$this->writeLn('maxHeight:'.$obj->maxHeight.',');
+			if (!is_null($obj->maxWidth))
+				$this->writeLn('maxWidth:'.$obj->maxWidth.',');
+			if (!is_null($obj->minButtonWidth))
+				$this->writeLn('minButtonWidth:'.$obj->minButtonWidth.',');
+			if (!is_null($obj->minHeight))
+				$this->writeLn('minHeight:'.$obj->minHeight.',');
+			if (!is_null($obj->minWidth))
+				$this->writeLn('minWidth:'.$obj->minWidth.',');
+			if (!is_null($obj->multiSelect))
+				$this->writeLn('multiSelect:'.$this->boolean[$obj->multiSelect].',');
+			if (!is_null($obj->overCls))
+				$this->writeLn('overCls:"'.$obj->overCls.'",');
+			if (!is_null($obj->overlapHeader))
+				$this->writeLn('overlapHeader:'.$this->boolean[$obj->overlapHeader].',');
+			if (!is_null($obj->padding))
+				$this->writeLn('padding:"'.$obj->padding.'",');
+			if (!is_null($obj->preventHeader))
+				$this->writeLn('preventHeader:'.$this->boolean[$obj->preventHeader].',');
+			if (!is_null($obj->resizable))
+				$this->writeLn('resizable:'.$this->boolean[$obj->resizable].',');
+			if ($obj->rbar->count()){
+				$this->writeLn('rbar:[');
+				$this->mkItems($obj->rbar);
+				$this->writeLn('],');
+			}
+			if (!is_null($obj->rootVisible))
+				$this->writeLn('rootVisible:'.$this->boolean[$obj->rootVisible].',');
+			if (!is_null($obj->saveDelay))
+				$this->writeLn('saveDelay:'.$obj->saveDelay.',');
+			if (!is_null($obj->scroll))
+				$this->writeLn('scroll:"'.$obj->scroll.'",');
+			if (!is_null($obj->scrollDelta))
+				$this->writeLn('scrollDelta:'.$obj->scrollDelta.',');
+			if (!is_null($obj->shadow)){
+				if (is_bool($obj->shadow))
+					$this->writeLn('shadow:'.$this->boolean[$obj->shadow].',');
+				else
+					$this->writeLn('shadow:"'.$obj->shadow.'",');
+			}
+			if (!is_null($obj->simpleSelect))
+				$this->writeLn('simpleSelect:'.$this->boolean[$obj->simpleSelect].',');
+			if (!is_null($obj->singleExpand))
+				$this->writeLn('singleExpand:'.$this->boolean[$obj->singleExpand].',');
+			if (!is_null($obj->sortableColumns))
+				$this->writeLn('sortableColumns:'.$this->boolean[$obj->sortableColumns].',');
+			if (!is_null($obj->style))
+				$this->writeLn('style:"'.$obj->style.'",');
+			if ($obj->tbar->count()){
+				$this->writeLn('tbar:[');
+				$this->mkItems($obj->tbar);
+				$this->writeLn('],');
+			}
+			if ($obj->tools->count()){
+				$this->writeLn('tools:[');
+				$this->mkItems($obj->tools);
+				$this->writeLn('],');
+			}
+			if (!is_null($obj->tpl)){
+				if (is_array($obj->tpl)){
+					$this->writeLn('tpl:[');
+					for($i=0;$i<count($obj->tpl);$i++){
+						if ($i) $this->writeLn(',');
+						$this->writeLn("'".$obj->tpl[$i]."'");
+					}
+					$this->writeLn('],');
+				}
+				else
+					$this->writeLn('tpl:"'.$obj->tpl.'",');
+			}
+			if (!is_null($obj->title))
+				$this->writeLn('title:"'.$obj->title.'",');
+			if (!is_null($obj->titleCollapse))
+				$this->writeLn('titleCollapse:'.$this->boolean[$obj->titleCollapse].',');
+			if (!is_null($obj->toFrontOnShow))
+				$this->writeLn('toFrontOnShow:'.$this->boolean[$obj->toFrontOnShow].',');
+			if (!is_null($obj->width)){
+				if (stristr($obj->width,"%"))
+					$this->writeLn('width:"'.$obj->width.'",');
+				else
+					$this->writeLn('width:'.$obj->width.',');
+			}
+			if (!is_null($obj->useArrows))
+				$this->writeLn('useArrows:'.$this->boolean[$obj->useArrows].',');
+			//
+			if (is_null($obj->margin))
+				$this->writeLn('margin:""');
+			else
+				$this->writeLn('margin:"'.$obj->margin.'"');
+		}
+		
 		private function mkItems($items){
 			while ($items->next()){
 				if ($items->iterator()>0) $this->writeLn(',');
@@ -2768,6 +3174,8 @@
 					$this->mkCustomToolbar($items->value());
 				elseif ($items->value()->xtype=='chart')
 					$this->mkChart($items->value());
+				elseif ($items->value()->xtype=='treepanel')
+					$this->mkTreePanel($items->value());
 				//
 				if ($items->value()->listeners->count()){
 					$this->writeLn(',listeners:{');

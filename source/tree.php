@@ -1,109 +1,112 @@
 <?php
-	class TCustomColumn extends TComponent{
-		public $header=null;
+	class TTreeNode extends TComponent{
+		public $expanded=false;
 		public $text=null;
-		public $dataIndex=null;
-		public $flex=null;
-		public $renderer=null;
-		public $sortable=false;
-		public $hideable=null;
-		public $menuDisabled=null;
-		public $draggable=null;
-		public $groupable=null;
-		public $hidden=null;
-	}
-	
-	class TColumnAction extends TCustomColumn{
-		public $xtype='actioncolumn';
-		public $items;
+		public $iconCls=null;
+		public $children;
 		
 		public function __construct($param=array()){
-			$this->items=new TListItems();
-			$this->items->setOwner($this);
+			$this->children=new TListTreeNode();
 			//
 			parent::__construct($param);
 		}
-		
 		public function __destruct(){
-			unset($this->items);
+			unset($this->children);
+			//
 			parent::__destruct();
 		}
 	}
-	
-	class TColumnBoolean extends TCustomColumn{
-		public $xtype='booleancolumn';
-		public $trueText='Yes';
-		public $falseText='No';
-	}
-	
-	class TColumn extends TCustomColumn{
-		public $xtype='gridcolumn';
-	}
-	
-	class TColumnDate extends TCustomColumn{
-		public $xtype='datecolumn';
-		public $format='';
-	}
-	
-	class TColumnNumber extends TCustomColumn{
-		public $xtype='numbercolumn';
-		public $format='';
-	}
-	
-	class TColumnTemplate extends TCustomColumn{
-		public $xtype='templatecolumn';
-		public $tpl='';
-	}
-	//
-	class TTreeColumn extends TCustomColumn{
-		public $xtype='treecolumn';
-	}
-	//
-	//
-	class TGrid extends TComponent{
-		public $xtype='gridpanel';
+
+	class TTree extends TComponent{
+		public $xtype='treepanel';
 		public $autoLoad=true;
 		public $root='records';
 		public $totalProperty='totalCount';
 		public $eventName=null;
 		public $queryMode='local';
-		
+		//
+		public $activeItem=null;
+		public $animCollapse=null;
+		public $animate=null;
+		public $autoScroll=null;
+		public $autoShow=null;
 		public $baseCls=null;
 		public $bbar;
+		public $bodyBorder=null;
+		public $bodyCls=null;
+		public $bodyPadding=null;
+		public $bodyStyle=null;
 		public $border=null;
 		public $buttonAlign=null;
 		public $buttons;
 		public $closable=null;
+//		public $closeAction=null;
 		public $cls=null;
+		public $collapseDirection=null;
+		public $collapseFirst=null;
+		public $collapseMode=null;
 		public $collapsed=null;
 		public $collapsible=null;
-		public $columnLines=null;
+		public $columns;
+		public $defaults=null;
+		public $deferRowRender=null;
 		public $disabled=null;
+		public $displayField=null;
 		public $enableColumnHide=null;
 		public $enableColumnMove=null;
 		public $enableColumnResize=null;
+		public $enableLocking=null;
 		public $fbar;
+		public $floatable=null;
+		public $floating=null;
+		public $focusOnToFront=null;
+		public $folderSort=null;
 		public $forceFit=null;
 		public $frame=null;
+		public $frameHeader=null;
+		public $headerPosition=null;
 		public $hidden=null;
+		public $hideCollapseTool=null;
+		public $hideHeaders=null;
+		public $hideMode=null;
+		public $html=null;
+		public $iconCls=null;
+		public $itemId=null;
+		public $layout=null;
 		public $lbar;
+		public $lines=null;
+		public $maintainFlex=null;
 		public $maxHeight=null;
 		public $maxWidth=null;
+		public $minButtonWidth=null;
 		public $minHeight=null;
 		public $minWidth=null;
 		public $multiSelect=null;
+		public $overCls=null;
+		public $overlapHeader=null;
 		public $padding=null;
+		public $preventHeader=null;
 		public $rbar;
+		public $resizable=null;
+		public $rootVisible=null;
+		public $saveDelay=null;
 		public $scroll=null;
+		public $scrollDelta=null;
+		public $shadow=null;
+		public $simpleSelect=null;
+		public $singleExpand=null;
 		public $sortableColumns=null;
 		public $style=null;
 		public $tbar;
+		public $title=null;
+		public $titleCollapse=null;
+		public $toFrontOnShow=null;
 		public $tools;
 		public $tpl=null;
-		
-		public $title=null;
+		public $useArrows=null;
+		//
 		public $margin='0 0 0 0';
-		public $columns;
+		public $rootNode=null;			//TTreeNode
 		public $fields;
 		public $data;
 		
@@ -142,6 +145,7 @@
 			unset($this->rbar);
 			unset($this->tbar);
 			unset($this->tools);
+			//
 			parent::__destruct();
 		}
 	}

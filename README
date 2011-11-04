@@ -11,3 +11,4 @@ PS     : All tests are being done with WampServer 2.1e (32 bit)
 					0.9.9.0=> insert TChart
 					0.9.9.1=> ext-all replacement for bootstrap
 					0.9.9.2=> Update and bug-fix TChart
+					1.0.0.0=> insert TTree
