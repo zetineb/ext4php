@@ -496,7 +496,10 @@ class TWReport extends mPDF{
 							else{
 								$this->SetXY($comps[$j]->getLeft(),$this->totPageH+$comps[$j]->getTop());
 							}
-							$this->Cell($comps[$j]->getWidth(),$comps[$j]->getHeight(),$text,0,0,$align);
+							if (stristr(strtolower($text),"<table"))
+								$this->WriteHTML($text,2,true,true);
+							else
+								$this->Cell($comps[$j]->getWidth(),$comps[$j]->getHeight(),$text,0,0,$align);
 						}
 						elseif ($this->_type=='word'||$this->_type=='calc'||$this->_type=='writer'){
 							echo "<TD>".$text."</TD>";
@@ -780,6 +783,7 @@ class TWReport extends mPDF{
 	//
 	//
 	public function execute(){
+		//
 		//Order bands by types
 		$this->orderBands();
 		//
@@ -791,8 +795,9 @@ class TWReport extends mPDF{
 				$this->summaryH=$this->bands[$i]->getHeight();
 			}
 		}
-		if ($this->_type=='pdf')  //Bug na orientation quando inclui getPageSize, testar na última versão do mpdf
+		if ($this->_type=='pdf'){  //Bug na orientation quando inclui getPageSize, testar na última versão do mpdf
 			$this->AddPage($this->getOrientation(),'','','','',$this->getLeftMargin(),$this->getRightMargin(),$this->getTopMargin(),$this->getBottomMargin(),'','','','','','',0,0,0,0,''/*,$this->getPageSize()*/);
+		}
 		elseif ($this->_type=='word'){
 			header('Content-Type: application/msword');
 			header('Content-Disposition: attachment; filename="'.$this->name.'.doc"');

@@ -143,8 +143,7 @@ class TDataPacket{
 		curl_setopt($ch, CURLOPT_POST, 1);
 		curl_setopt($ch, CURLOPT_POSTFIELDS, $p.$req);
 		$retorno = curl_exec($ch);	
-	}
-	else{
+	}	else{
 		$this->db->setInput($req);
 		$retorno=$this->db->execute();
 	}
@@ -161,6 +160,11 @@ class TDataPacket{
 	  }
     }
     return $sret;
+  }
+  public function top(){
+    if($this->getRecordCount()>0 and $this->pointer>0){
+      $this->pointer=0;
+    }
   }
   public function prev(){
     if($this->getRecordCount()>0 and $this->pointer>0){

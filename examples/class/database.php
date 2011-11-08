@@ -80,9 +80,6 @@ class TDatabase {
 	public function setInput($input){
 		$this->input=explode("\r\n",$input);
 		$_tmp=base64_decode($this->input[0]);
-/*$f=fopen('debug.txt','w+');
-fwrite($f,base64_decode($this->input[1]));
-fclose($f);*/
 		$_b=explode(';',$_tmp);
 		$this->token='';
 		for($i=0;$i<count($_b);$i++){
