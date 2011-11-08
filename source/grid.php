@@ -1,4 +1,16 @@
 <?php
+	class TGridFeature extends TComponent{
+		public $ftype=null;
+		public $depthToIndent=null;
+		public $enableGroupingMenu=null;
+		public $enableNoGroups=null;
+		public $groupByText=null;
+		public $groupHeaderTpl=null;
+		public $hideGroupedHeader=null;
+		public $showGroupsText=null;
+		public $startCollapsed=null;
+	}
+	
 	class TCustomColumn extends TComponent{
 		public $header=null;
 		public $text=null;
@@ -11,6 +23,22 @@
 		public $draggable=null;
 		public $groupable=null;
 		public $hidden=null;
+		public $summaryType=null;
+		public $summaryRenderer=null;
+		public $columns;
+		//
+		public function __construct($param=array()){
+			$this->columns=new TListColumns();
+			$this->columns->setOwner($this);
+			//
+			parent::__construct($param);
+		}
+		
+		public function __destruct(){
+			unset($this->columns);
+			//
+			parent::__destruct();
+		}
 	}
 	
 	class TColumnAction extends TCustomColumn{
@@ -67,6 +95,7 @@
 		public $totalProperty='totalCount';
 		public $eventName=null;
 		public $queryMode='local';
+		public $groupField=null;
 		
 		public $baseCls=null;
 		public $bbar;
@@ -83,6 +112,7 @@
 		public $enableColumnMove=null;
 		public $enableColumnResize=null;
 		public $fbar;
+		public $features=null;	//array of TGridFeature
 		public $forceFit=null;
 		public $frame=null;
 		public $hidden=null;
@@ -100,6 +130,7 @@
 		public $tbar;
 		public $tools;
 		public $tpl=null;
+		public $viewConfig=null;
 		
 		public $title=null;
 		public $margin='0 0 0 0';

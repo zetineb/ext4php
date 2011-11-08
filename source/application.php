@@ -77,7 +77,6 @@
 			$this->writeLn('<head>');
 			$this->writeLn('<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />');
 			$this->writeLn('<link rel="stylesheet" type="text/css" href="/'.$this->ext.'/resources/css/ext-all.css"/>');
-//			$this->writeLn('<script type="text/javascript" src="/'.$this->ext.'/ext-all.js"></script>');
 			$this->writeLn('<script type="text/javascript" src="/'.$this->ext.'/bootstrap.js"></script>');
 			$this->writeLn('<script type="text/javascript" src="/'.$this->ext.'/locale/'.$this->language.'"></script>');
 			while ($this->headers->next()){
@@ -1976,11 +1975,126 @@
 				$this->writeLn('margin:"'.$obj->margin.'"');
 		}
 		
+		private function columnGrid($fields,$obj,$add){
+			$_columns='';
+			$_count=$fields->count();
+			while ($obj->columns->next()){
+				if ($add&&!$obj->columns->value()->columns->count()){	//Add field if do not have children
+					$fields->add($_count,$obj->columns->value()->dataIndex);
+					$_count++;
+				}
+				if ($obj->columns->iterator()>0) $_columns.=',';
+				$_columns.='{';
+				$_columns.='xtype:"'.$obj->columns->value()->xtype.'",';
+				$_columns.='id:"'.$obj->columns->name().'",';
+				if ($obj->columns->value()->columns->count()){
+					$_columns.='columns:[';
+					$_columns.=$this->columnGrid($fields,$obj->columns->value(),$add);
+					$_columns.='],';
+				}
+				if (!is_null($obj->columns->value()->header))
+					$_columns.='header:"'.$obj->columns->value()->header.'",';
+				if (!is_null($obj->columns->value()->height)){
+					if (stristr($obj->columns->value()->height,"%"))
+						$_columns.='height:"'.$obj->columns->value()->height.'",';
+					else
+						$_columns.='height:'.$obj->columns->value()->height.',';
+				}
+				if (!is_null($obj->columns->value()->text))
+					$_columns.='text:"'.$obj->columns->value()->text.'",';
+				if (!is_null($obj->columns->value()->dataIndex))
+					$_columns.='dataIndex:"'.$obj->columns->value()->dataIndex.'",';
+				if (!is_null($obj->columns->value()->flex))
+					$_columns.='flex:'.$obj->columns->value()->flex.',';
+				if (!is_null($obj->columns->value()->renderer)){
+					if (!is_array($obj->columns->value()->renderer)&&stristr($obj->columns->value()->renderer,'util.Format')&&!stristr($obj->columns->value()->renderer,'return '))
+						$_columns.='renderer:'.$obj->columns->value()->renderer.',';
+					else{
+						$_columns.='renderer:function(value,metaData,record,rowIndex,colIndex,store,view){'.$this->getString($obj->columns->value()->renderer).'},';
+					}
+				}
+				if (!is_null($obj->columns->value()->hideable))
+					$_columns.='hideable:'.$this->boolean[$obj->columns->value()->hideable].',';
+				if (!is_null($obj->columns->value()->menuDisabled))
+					$_columns.='menuDisabled:'.$this->boolean[$obj->columns->value()->menuDisabled].',';
+				if (!is_null($obj->columns->value()->draggable))
+					$_columns.='draggable:'.$this->boolean[$obj->columns->value()->draggable].',';
+				if (!is_null($obj->columns->value()->groupable))
+					$_columns.='groupable:'.$this->boolean[$obj->columns->value()->groupable].',';
+				if (!is_null($obj->columns->value()->hidden))
+					$_columns.='hidden:'.$this->boolean[$obj->columns->value()->hidden].',';
+				if ($obj->columns->value()->xtype=='actioncolumn'){
+					$_columns.='items:[';
+					while ($obj->columns->value()->items->next()){
+						if ($obj->columns->value()->items->iterator()>0) $_columns.=',';
+						$_columns.='{';
+						if (!is_null($obj->columns->value()->items->value()->icon))
+							$_columns.='icon:"'.$obj->columns->value()->items->value()->icon.'",';
+						if (!is_null($obj->columns->value()->items->value()->iconCls))
+							$_columns.='iconCls:"'.$obj->columns->value()->items->value()->iconCls.'",';
+						if (!is_null($obj->columns->value()->items->value()->iconAlign))
+							$_columns.='iconAlign:"'.$obj->columns->value()->items->value()->iconAlign.'",';
+						if (!is_null($obj->columns->value()->items->value()->tooltip))
+							$_columns.='tooltip:"'.$obj->columns->value()->items->value()->tooltip.'",';
+						$handler='';
+						if (!is_null($obj->columns->value()->items->value()->handler)) $handler=$this->getString($obj->columns->value()->items->value()->handler);
+						$_columns.='handler:function(grid,rowIndex,colIndex){'.$handler.'}';
+						$_columns.='}';
+					}
+					$_columns.='],';
+				}
+				elseif($obj->columns->value()->xtype=='booleancolumn'){
+					$_columns.='trueText:"'.$obj->columns->value()->trueText.'",';
+					$_columns.='falseText:"'.$obj->columns->value()->falseText.'",';
+				}
+				elseif($obj->columns->value()->xtype=='datecolumn'||$obj->columns->value()->xtype=='numbercolumn'){
+					$_columns.='format:"'.$obj->columns->value()->format.'",';
+				}
+				elseif($obj->columns->value()->xtype=='templatecolumn'){
+					if (!is_null($obj->columns->value()->tpl)){
+						if (is_array($obj->columns->value()->tpl)){
+							$_columns.='tpl:[';
+							for($i=0;$i<count($obj->columns->value()->tpl);$i++){
+								if ($i) $_columns.=',';
+								$_columns.="'".$obj->columns->value()->tpl[$i]."'";
+							}
+							$_columns.='],';
+						}
+						else
+							$_columns.='tpl:"'.$obj->columns->value()->tpl.'",';
+					}
+				}
+				if (!is_null($obj->columns->value()->width)){
+					if (stristr($obj->columns->value()->width,"%"))
+						$_columns.='width:"'.$obj->columns->value()->width.'",';
+					else
+						$_columns.='width:'.$obj->columns->value()->width.',';
+				}
+				if (!is_null($obj->columns->value()->summaryType)){
+					$_summT=strtolower($obj->columns->value()->summaryType);
+					if ($_summT!='count'&&$_summT!='sum'&&$_summT!='min'&&$_summT!='max'&&$_summT!='average')
+						$_columns.='summaryType:function(records){'.$obj->columns->value()->summaryType.'},';
+					else
+						$_columns.='summaryType:"'.$_summT.'",';
+				}
+				if (!is_null($obj->columns->value()->summaryRenderer)){
+					if (!is_array($obj->columns->value()->summaryRenderer)&&stristr($obj->columns->value()->summaryRenderer,'util.Format')&&!stristr($obj->columns->value()->summaryRenderer,'return '))
+						$_columns.='summaryRenderer:'.$obj->columns->value()->summaryRenderer.',';
+					else{
+						$_columns.='summaryRenderer:function(value,summaryData,dataIndex){'.$this->getString($obj->columns->value()->summaryRenderer).'},';
+					}
+				}
+				if (!is_null($obj->columns->value()->sortable))
+					$_columns.='sortable:'.$this->boolean[$obj->columns->value()->sortable];
+				else
+					$_columns.='sortable:false';
+				$_columns.='}';
+			}
+
+			return ($_columns);
+		}
+		
 		private function mkGridPanel($obj){
-			$_count=0;
-			$fieldsEmpty=false;
-			if (!$obj->fields->count()) $fieldsEmpty=true;
-			
 			if (!is_null($obj->height)){
 				if (stristr($obj->height,"%"))
 					$this->writeLn('height:"'.$obj->height.'",');
@@ -1988,91 +2102,7 @@
 					$this->writeLn('height:'.$obj->height.',');
 			}
 			$this->writeLn('columns:[');
-			while ($obj->columns->next()){
-				if ($fieldsEmpty){
-					$obj->fields->add($_count,$obj->columns->value()->dataIndex);
-					$_count++;
-				}
-				if ($obj->columns->iterator()>0) $this->writeLn(',');
-				$this->writeLn('{');
-				$this->writeLn('xtype:"'.$obj->columns->value()->xtype.'",');
-				$this->writeLn('id:"'.$obj->columns->name().'",');
-				if (!is_null($obj->columns->value()->header))
-					$this->writeLn('header:"'.$obj->columns->value()->header.'",');
-				if (!is_null($obj->columns->value()->height)){
-					if (stristr($obj->columns->value()->height,"%"))
-						$this->writeLn('height:"'.$obj->columns->value()->height.'",');
-					else
-						$this->writeLn('height:'.$obj->columns->value()->height.',');
-				}
-				if (!is_null($obj->columns->value()->text))
-					$this->writeLn('text:"'.$obj->columns->value()->text.'",');
-				if (!is_null($obj->columns->value()->dataIndex))
-					$this->writeLn('dataIndex:"'.$obj->columns->value()->dataIndex.'",');
-				if (!is_null($obj->columns->value()->flex))
-					$this->writeLn('flex:'.$obj->columns->value()->flex.',');
-				if (!is_null($obj->columns->value()->renderer))
-					$this->writeLn('renderer:function(value,metaData,record,rowIndex,colIndex,store,view){'.$obj->columns->value()->renderer.'},');
-				if (!is_null($obj->columns->value()->hideable))
-					$this->writeLn('hideable:'.$this->boolean[$obj->columns->value()->hideable].',');
-				if (!is_null($obj->columns->value()->menuDisabled))
-					$this->writeLn('menuDisabled:'.$this->boolean[$obj->columns->value()->menuDisabled].',');
-				if (!is_null($obj->columns->value()->draggable))
-					$this->writeLn('draggable:'.$this->boolean[$obj->columns->value()->draggable].',');
-				if (!is_null($obj->columns->value()->groupable))
-					$this->writeLn('groupable:'.$this->boolean[$obj->columns->value()->groupable].',');
-				if (!is_null($obj->columns->value()->hidden))
-					$this->writeLn('hidden:'.$this->boolean[$obj->columns->value()->hidden].',');
-				if ($obj->columns->value()->xtype=='actioncolumn'){
-					$this->writeLn('items:[');
-					while ($obj->columns->value()->items->next()){
-						if ($obj->columns->value()->items->iterator()>0) $this->writeLn(',');
-						$this->writeLn('{');
-						if (!is_null($obj->columns->value()->items->value()->icon))
-							$this->writeLn('icon:"'.$obj->columns->value()->items->value()->icon.'",');
-						if (!is_null($obj->columns->value()->items->value()->iconCls))
-							$this->writeLn('iconCls:"'.$obj->columns->value()->items->value()->iconCls.'",');
-						if (!is_null($obj->columns->value()->items->value()->iconAlign))
-							$this->writeLn('iconAlign:"'.$obj->columns->value()->items->value()->iconAlign.'",');
-						if (!is_null($obj->columns->value()->items->value()->tooltip))
-							$this->writeLn('tooltip:"'.$obj->columns->value()->items->value()->tooltip.'",');
-						$handler='';
-						if (!is_null($obj->columns->value()->items->value()->handler)) $handler=$this->getString($obj->columns->value()->items->value()->handler);
-						$this->writeLn('handler:function(grid,rowIndex,colIndex){'.$handler.'}');
-						$this->writeLn('}');
-					}
-					$this->writeLn('],');
-				}
-				elseif($obj->columns->value()->xtype=='booleancolumn'){
-					$this->writeLn('trueText:"'.$obj->columns->value()->trueText.'",');
-					$this->writeLn('falseText:"'.$obj->columns->value()->falseText.'",');
-				}
-				elseif($obj->columns->value()->xtype=='datecolumn'||$obj->columns->value()->xtype=='numbercolumn'){
-					$this->writeLn('format:"'.$obj->columns->value()->format.'",');
-				}
-				elseif($obj->columns->value()->xtype=='templatecolumn'){
-					if (!is_null($obj->columns->value()->tpl)){
-						if (is_array($obj->columns->value()->tpl)){
-							$this->writeLn('tpl:[');
-							for($i=0;$i<count($obj->columns->value()->tpl);$i++){
-								if ($i) $this->writeLn(',');
-								$this->writeLn("'".$obj->columns->value()->tpl[$i]."'");
-							}
-							$this->writeLn('],');
-						}
-						else
-							$this->writeLn('tpl:"'.$obj->columns->value()->tpl.'",');
-					}
-				}
-				if (!is_null($obj->columns->value()->width)){
-					if (stristr($obj->columns->value()->width,"%"))
-						$this->writeLn('width:"'.$obj->columns->value()->width.'",');
-					else
-						$this->writeLn('width:'.$obj->columns->value()->width.',');
-				}
-				$this->writeLn('sortable:'.$this->boolean[$obj->columns->value()->sortable]);
-				$this->writeLn('}');
-			}
+			$this->writeLn($this->columnGrid($obj->fields,$obj,!$obj->fields->count()));
 			$this->writeLn('],');
 			//
 			$fields='[';
@@ -2109,6 +2139,8 @@
 				if (is_null($obj->eventName)) throw new Exception('ERROR: Missing eventName');
 				//
 				$this->writeLn('store:{');
+				if (!is_null($obj->groupField))
+					$this->writeLn('groupField:"'.$obj->groupField.'",');
 				$this->writeLn('remoteFilter:true,');
 				$this->writeLn('autoLoad:'.$this->boolean[$obj->autoLoad].',');	
 				$this->writeLn('fields:'.$fields.',');
@@ -2160,6 +2192,47 @@
 			if ($obj->fbar->count()){
 				$this->writeLn('fbar:[');
 				$this->mkItems($obj->fbar);
+				$this->writeLn('],');
+			}
+			if (!is_null($obj->features)){
+				if (is_array($obj->features))
+					$_features=$obj->features;
+				else{
+					$_features=array();
+					array_push($_features,$obj->features);
+				}
+				//
+				$this->writeLn('features:[');
+				for ($i=0;$i<count($_features);$i++){
+					if ($i) $this->writeLn(',');
+					$this->writeLn('{');
+					if (!is_null($_features[$i]->ftype))
+						$this->writeLn('ftype:"'.$_features[$i]->ftype.'",');
+					else
+						$this->writeLn('ftype:"grouping",');
+					if (!is_null($_features[$i]->depthToIndent))
+						$this->writeLn('depthToIndent:'.$_features[$i]->depthToIndent.',');
+					if (!is_null($_features[$i]->enableGroupingMenu))
+						$this->writeLn('enableGroupingMenu:'.$this->boolean[$_features[$i]->enableGroupingMenu].',');
+					if (!is_null($_features[$i]->enableNoGroups))
+						$this->writeLn('enableNoGroups:'.$this->boolean[$_features[$i]->enableNoGroups].',');
+					if (!is_null($_features[$i]->groupByText))
+						$this->writeLn('depthToIndent:"'.$_features[$i]->groupByText.'",');
+					if (!is_null($_features[$i]->groupHeaderTpl))
+						if (stristr($_features[$i]->groupHeaderTpl,'"'))
+							$this->writeLn('groupHeaderTpl:\''.$_features[$i]->groupHeaderTpl.'\',');
+						else
+							$this->writeLn('groupHeaderTpl:"'.$_features[$i]->groupHeaderTpl.'",');
+					if (!is_null($_features[$i]->hideGroupedHeader))
+						$this->writeLn('hideGroupedHeader:'.$this->boolean[$_features[$i]->hideGroupedHeader].',');
+					if (!is_null($_features[$i]->showGroupsText))
+						$this->writeLn('showGroupsText:"'.$_features[$i]->showGroupsText.'",');
+					if (!is_null($_features[$i]->startCollapsed))
+						$this->writeLn('startCollapsed:'.$this->boolean[$_features[$i]->startCollapsed]);
+					else
+						$this->writeLn('startCollapsed:false');
+					$this->writeLn('}');
+				}
 				$this->writeLn('],');
 			}
 			if (!is_null($obj->forceFit))
@@ -2225,6 +2298,12 @@
 					$this->writeLn('width:"'.$obj->width.'",');
 				else
 					$this->writeLn('width:'.$obj->width.',');
+			}
+			if (!is_null($obj->viewConfig)){
+				if (stristr($obj->viewConfig,"{"))
+					$this->writeLn('viewConfig:'.$obj->viewConfig.',');
+				else
+					$this->writeLn('viewConfig:{'.$obj->viewConfig.'},');
 			}
 			//
 			if (is_null($obj->margin))
@@ -2734,102 +2813,14 @@
 		}
 		
 		private function mkTreePanel($obj){
-			$_count=0;
-			$fieldsEmpty=false;
-			if (!$obj->fields->count()) $fieldsEmpty=true;
-			
 			if (!is_null($obj->height)){
 				if (stristr($obj->height,"%"))
 					$this->writeLn('height:"'.$obj->height.'",');
 				else
 					$this->writeLn('height:'.$obj->height.',');
 			}
-			$_columns='[';
-			while ($obj->columns->next()){
-				if ($fieldsEmpty){
-					$obj->fields->add($_count,$obj->columns->value()->dataIndex);
-					$_count++;
-				}
-				if ($obj->columns->iterator()>0) $_columns.=',';
-				$_columns.='{';
-				$_columns.='xtype:"'.$obj->columns->value()->xtype.'",';
-				$_columns.='id:"'.$obj->columns->name().'",';
-				if (!is_null($obj->columns->value()->header))
-					$_columns.='header:"'.$obj->columns->value()->header.'",';
-				if (!is_null($obj->columns->value()->height)){
-					if (stristr($obj->columns->value()->height,"%"))
-						$_columns.='height:"'.$obj->columns->value()->height.'",';
-					else
-						$_columns.='height:'.$obj->columns->value()->height.',';
-				}
-				if (!is_null($obj->columns->value()->text))
-					$_columns.='text:"'.$obj->columns->value()->text.'",';
-				if (!is_null($obj->columns->value()->dataIndex))
-					$_columns.='dataIndex:"'.$obj->columns->value()->dataIndex.'",';
-				if (!is_null($obj->columns->value()->flex))
-					$_columns.='flex:'.$obj->columns->value()->flex.',';
-				if (!is_null($obj->columns->value()->renderer))
-					$_columns.='renderer:function(value,metaData,record,rowIndex,colIndex,store,view){'.$obj->columns->value()->renderer.'},';
-				if (!is_null($obj->columns->value()->hideable))
-					$_columns.='hideable:'.$this->boolean[$obj->columns->value()->hideable].',';
-				if (!is_null($obj->columns->value()->menuDisabled))
-					$_columns.='menuDisabled:'.$this->boolean[$obj->columns->value()->menuDisabled].',';
-				if (!is_null($obj->columns->value()->draggable))
-					$_columns.='draggable:'.$this->boolean[$obj->columns->value()->draggable].',';
-				if (!is_null($obj->columns->value()->groupable))
-					$_columns.='groupable:'.$this->boolean[$obj->columns->value()->groupable].',';
-				if (!is_null($obj->columns->value()->hidden))
-					$_columns.='hidden:'.$this->boolean[$obj->columns->value()->hidden].',';
-				if ($obj->columns->value()->xtype=='actioncolumn'){
-					$_columns.='items:[';
-					while ($obj->columns->value()->items->next()){
-						if ($obj->columns->value()->items->iterator()>0) $_columns.=',';
-						$_columns.='{';
-						if (!is_null($obj->columns->value()->items->value()->icon))
-							$_columns.='icon:"'.$obj->columns->value()->items->value()->icon.'",';
-						if (!is_null($obj->columns->value()->items->value()->iconCls))
-							$_columns.='iconCls:"'.$obj->columns->value()->items->value()->iconCls.'",';
-						if (!is_null($obj->columns->value()->items->value()->iconAlign))
-							$_columns.='iconAlign:"'.$obj->columns->value()->items->value()->iconAlign.'",';
-						if (!is_null($obj->columns->value()->items->value()->tooltip))
-							$_columns.='tooltip:"'.$obj->columns->value()->items->value()->tooltip.'",';
-						$handler='';
-						if (!is_null($obj->columns->value()->items->value()->handler)) $handler=$this->getString($obj->columns->value()->items->value()->handler);
-						$_columns.='handler:function(grid,rowIndex,colIndex){'.$handler.'}';
-						$_columns.='}';
-					}
-					$_columns.='],';
-				}
-				elseif($obj->columns->value()->xtype=='booleancolumn'){
-					$_columns.='trueText:"'.$obj->columns->value()->trueText.'",';
-					$_columns.='falseText:"'.$obj->columns->value()->falseText.'",';
-				}
-				elseif($obj->columns->value()->xtype=='datecolumn'||$obj->columns->value()->xtype=='numbercolumn'){
-					$_columns.='format:"'.$obj->columns->value()->format.'",';
-				}
-				elseif($obj->columns->value()->xtype=='templatecolumn'){
-					if (!is_null($obj->columns->value()->tpl)){
-						if (is_array($obj->columns->value()->tpl)){
-							$_columns.='tpl:[';
-							for($i=0;$i<count($obj->columns->value()->tpl);$i++){
-								if ($i) $_columns.=',';
-								$_columns.="'".$obj->columns->value()->tpl[$i]."'";
-							}
-							$_columns.='],';
-						}
-						else
-							$_columns.='tpl:"'.$obj->columns->value()->tpl.'",';
-					}
-				}
-				if (!is_null($obj->columns->value()->width)){
-					if (stristr($obj->columns->value()->width,"%"))
-						$_columns.='width:"'.$obj->columns->value()->width.'",';
-					else
-						$_columns.='width:'.$obj->columns->value()->width.',';
-				}
-				$_columns.='sortable:'.$this->boolean[$obj->columns->value()->sortable];
-				$_columns.='}';
-			}
+			$_columns ='[';
+			$_columns.=$this->columnGrid($obj->fields,$obj,!$obj->fields->count());
 			$_columns.=']';
 			if ($_columns!='[]'&&$obj->queryMode==TQueryModeType::$remote){
 				$this->writeLn('columns:'.$_columns.',');

@@ -51,6 +51,12 @@
 	color:#ff0000;
 	font: normal 13px arial, tahoma, verdana, sans-serif;
 }
+
+.x-grid-row-summary .x-grid-cell-inner {
+	font-weight: bold;
+	font-size: 11px;
+} 
+
 .badd {
 	background-image: url(../images/buttons/add.png) !important;
 }

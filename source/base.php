@@ -380,6 +380,7 @@
 				elseif (!strcasecmp($keys[$i],defaultType)) $this->defaultType=$v;
 				elseif (!strcasecmp($keys[$i],defaultValue)) $this->defaultValue=$v;
 				elseif (!strcasecmp($keys[$i],deferRowRender)) $this->deferRowRender=$v;
+				elseif (!strcasecmp($keys[$i],depthToIndent)) $this->depthToIndent=$v;
 				elseif (!strcasecmp($keys[$i],disabled)) $this->disabled=$v;
 				elseif (!strcasecmp($keys[$i],disabledDates)) $this->disabledDates=$v;
 				elseif (!strcasecmp($keys[$i],disabledDatesText)) $this->disabledDatesText=$v;
@@ -402,6 +403,12 @@
 				elseif (!strcasecmp($keys[$i],enableFont)) $this->enableFont=$v;
 				elseif (!strcasecmp($keys[$i],enableFontSize)) $this->enableFontSize=$v;
 				elseif (!strcasecmp($keys[$i],enableFormat)) $this->enableFormat=$v;
+				elseif (!strcasecmp($keys[$i],enableGroupingMenu)) $this->enableGroupingMenu=$v;
+				elseif (!strcasecmp($keys[$i],enableNoGroups)) $this->enableNoGroups=$v;
+				elseif (!strcasecmp($keys[$i],groupByText)) $this->groupByText=$v;
+				elseif (!strcasecmp($keys[$i],groupField)) $this->groupField=$v;
+				elseif (!strcasecmp($keys[$i],groupHeaderTpl)) $this->groupHeaderTpl=$v;
+				elseif (!strcasecmp($keys[$i],hideGroupedHeader)) $this->hideGroupedHeader=$v;
 				elseif (!strcasecmp($keys[$i],enableLinks)) $this->enableLinks=$v;
 				elseif (!strcasecmp($keys[$i],enableLists)) $this->enableLists=$v;
 				elseif (!strcasecmp($keys[$i],enableLocking)) $this->enableLocking=$v;
@@ -420,6 +427,7 @@
 						$this->fbar->add(spl_object_hash($v),$v);
 					}
 				}
+				elseif (!strcasecmp($keys[$i],features)) $this->features=$v;
 				elseif (!strcasecmp($keys[$i],field)) $this->field=$v;
 				elseif (!strcasecmp($keys[$i],fields)){
 					if (get_class($this)=='TChartAxis'){
@@ -451,6 +459,7 @@
 				elseif (!strcasecmp($keys[$i],format)) $this->format=$v;
 				elseif (!strcasecmp($keys[$i],frameHeader)) $this->frameHeader=$v;
 				elseif (!strcasecmp($keys[$i],frame)) $this->frame=$v;
+				elseif (!strcasecmp($keys[$i],ftype)) $this->ftype=$v;
 				elseif (!strcasecmp($keys[$i],gradients)) $this->gradients=$v;
 				elseif (!strcasecmp($keys[$i],grid)) $this->grid=$v;
 				elseif (!strcasecmp($keys[$i],groupable)) $this->groupable=$v;
@@ -601,6 +610,7 @@
 				elseif (!strcasecmp($keys[$i],selectionTolerance)) $this->selectionTolerance=$v;
 				elseif (!strcasecmp($keys[$i],series)) $this->series=$v;
 				elseif (!strcasecmp($keys[$i],shadow)) $this->shadow=$v;
+				elseif (!strcasecmp($keys[$i],showGroupsText)) $this->showGroupsText=$v;
 				elseif (!strcasecmp($keys[$i],showInLegend)) $this->showInLegend=$v;
 				elseif (!strcasecmp($keys[$i],showMarkers)) $this->showMarkers=$v;
 				elseif (!strcasecmp($keys[$i],showToday)) $this->showToday=$v;
@@ -611,11 +621,14 @@
 				elseif (!strcasecmp($keys[$i],spinDownEnabled)) $this->spinDownEnabled=$v;
 				elseif (!strcasecmp($keys[$i],spinUpEnabled)) $this->spinUpEnabled=$v;
 				elseif (!strcasecmp($keys[$i],smooth)) $this->smooth=$v;
+				elseif (!strcasecmp($keys[$i],startCollapsed)) $this->startCollapsed=$v;
 				elseif (!strcasecmp($keys[$i],startDay)) $this->startDay=$v;
 				elseif (!strcasecmp($keys[$i],stacked)) $this->stacked=$v;
 				elseif (!strcasecmp($keys[$i],step)) $this->step=$v;
 				elseif (!strcasecmp($keys[$i],steps)) $this->steps=$v;
 				elseif (!strcasecmp($keys[$i],style)) $this->style=$v;
+				elseif (!strcasecmp($keys[$i],summaryType)) $this->summaryType=$v;
+				elseif (!strcasecmp($keys[$i],summaryRenderer)) $this->summaryRenderer=$v;
 				elseif (!strcasecmp($keys[$i],tbar)){
 					if (is_array($v)){
 						for($j=0;$j<count($v);$j++){
@@ -661,6 +674,7 @@
 				elseif (!strcasecmp($keys[$i],value)) $this->value=$v;
 				elseif (!strcasecmp($keys[$i],vertical)) $this->vertical=$v;
 				elseif (!strcasecmp($keys[$i],viewBox)) $this->viewBox=$v;
+				elseif (!strcasecmp($keys[$i],viewConfig)) $this->viewConfig=$v;
 				elseif (!strcasecmp($keys[$i],visible)) $this->visible=$v;
 				elseif (!strcasecmp($keys[$i],width)) $this->width=$v;
 				elseif (!strcasecmp($keys[$i],x)) $this->x=$v;
@@ -981,6 +995,10 @@
 			$this->deferRowRender=$v;
 			return ($this);
 		}
+		public function depthToIndent($v){ 
+			$this->depthToIndent=$v;
+			return ($this);
+		}
 		public function disabled($v){ 
 			$this->disabled=$v;
 			return ($this);
@@ -1069,6 +1087,30 @@
 			$this->enableFormat=$v;
 			return ($this);
 		}
+		public function enableGroupingMenu($v){ 
+			$this->enableGroupingMenu=$v;
+			return ($this);
+		}
+		public function enableNoGroups($v){ 
+			$this->enableNoGroups=$v;
+			return ($this);
+		}
+		public function groupByText($v){ 
+			$this->groupByText=$v;
+			return ($this);
+		}
+		public function groupField($v){ 
+			$this->groupField=$v;
+			return ($this);
+		}
+		public function groupHeaderTpl($v){ 
+			$this->groupHeaderTpl=$v;
+			return ($this);
+		}
+		public function hideGroupedHeader($v){ 
+			$this->hideGroupedHeader=$v;
+			return ($this);
+		}
 		public function enableLinks($v){ 
 			$this->enableLinks=$v;
 			return ($this);
@@ -1110,6 +1152,10 @@
 			else{
 				$this->fbar->add(spl_object_hash($v),$v);
 			}
+			return ($this);
+		}
+		public function features($v){ 
+			$this->features=$v;
 			return ($this);
 		}
 		public function field($v){ 
@@ -1198,6 +1244,10 @@
 		}
 		public function frame($v){ 
 			$this->frame=$v;
+			return ($this);
+		}
+		public function ftype($v){ 
+			$this->ftype=$v;
 			return ($this);
 		}
 		public function groupable($v){ 
@@ -1651,6 +1701,10 @@
 			$this->shadow=$v;
 			return ($this);
 		}
+		public function showGroupsText($v){ 
+			$this->showGroupsText=$v;
+			return ($this);
+		}
 		public function showInLegend($v){ 
 			$this->showInLegend=$v;
 			return ($this);
@@ -1691,6 +1745,10 @@
 			$this->smooth=$v;
 			return ($this);
 		}
+		public function startCollapsed($v){ 
+			$this->startCollapsed=$v;
+			return ($this);
+		}
 		public function startDay($v){ 
 			$this->startDay=$v;
 			return ($this);
@@ -1709,6 +1767,14 @@
 		}
 		public function style($v){ 
 			$this->style=$v;
+			return ($this);
+		}
+		public function summaryType($v){ 
+			$this->summaryType=$v;
+			return ($this);
+		}
+		public function summaryRenderer($v){ 
+			$this->summaryRenderer=$v;
 			return ($this);
 		}
 		public function tbar($v){
@@ -1831,6 +1897,10 @@
 		}
 		public function viewBox($v){ 
 			$this->viewBox=$v;
+			return ($this);
+		}
+		public function viewConfig($v){ 
+			$this->viewConfig=$v;
 			return ($this);
 		}
 		public function visible($v){ 

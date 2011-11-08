@@ -65,6 +65,7 @@
 	define("defaultType","defaultType");
 	define("defaultValue","defaultValue");
 	define("deferRowRender","deferRowRender");
+	define("depthToIndent","depthToIndent");
 	define("disabled","disabled");
 	define("disabledDates","disabledDates");
 	define("disabledDatesText","disabledDatesText");
@@ -87,6 +88,12 @@
 	define("enableFont","enableFont");
 	define("enableFontSize","enableFontSize");
 	define("enableFormat","enableFormat");
+	define("enableGroupingMenu","enableGroupingMenu");
+	define("enableNoGroups","enableNoGroups");
+	define("groupByText","groupByText");
+	define("groupField","groupField");
+	define("groupHeaderTpl","groupHeaderTpl");
+	define("hideGroupedHeader","hideGroupedHeader");
 	define("enableLinks","enableLinks");
 	define("enableLists","enableLists");
 	define("enableLocking","enableLocking");
@@ -96,6 +103,7 @@
 	define("ext","ext");
 	define("falseText","falseText");
 	define("fbar","fbar");
+	define("features","features");
 	define("field","field");
 	define("fields","fields");
 	define("fieldLabel","fieldLabel");
@@ -113,6 +121,7 @@
 	define("format","format");
 	define("frameHeader","frameHeader");
 	define("frame","frame");
+	define("ftype","ftype");
 	define("gradients","gradients");
 	define("grid","grid");
 	define("groupable","groupable");
@@ -219,6 +228,7 @@
 	define("selectionTolerance","selectionTolerance");
 	define("series","series");
 	define("shadow","shadow");
+	define("showGroupsText","showGroupsText");
 	define("showInLegend","showInLegend");
 	define("showMarkers","showMarkers");
 	define("showToday","showToday");
@@ -229,11 +239,14 @@
 	define("spinDownEnabled","spinDownEnabled");
 	define("spinUpEnabled","spinUpEnabled");
 	define("smooth","smooth");
+	define("startCollapsed","startCollapsed");
 	define("startDay","startDay");
 	define("stacked","stacked");
 	define("step","step");
 	define("steps","steps");
 	define("style","style");
+	define("summaryType","summaryType");
+	define("summaryRenderer","summaryRenderer");
 	define("tbar","tbar");
 	define("tabIndex","tabIndex");
 	define("text","text");
@@ -261,6 +274,7 @@
 	define("value","value");
 	define("vertical","vertical");
 	define("viewBox","viewBox");
+	define("viewConfig","viewConfig");
 	define("visible","visible");
 	define("width","width");
 	define("x","x");

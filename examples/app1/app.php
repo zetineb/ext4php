@@ -233,6 +233,273 @@ try{
 			echo $_data;
 		}
 	}
+	class GroupingEvent extends TEvent{
+		public function execute(){
+			echo "[
+				{
+					name: 'Cheesecake Factory',
+					cuisine: 'American'
+				},{
+					name: 'University Cafe',
+					cuisine: 'American'
+				},{
+					name: 'Slider Bar',
+					cuisine: 'American'
+				},{
+					name: 'Shokolaat',
+					cuisine: 'American'
+				},{
+					name: 'Gordon Biersch',
+					cuisine: 'American'
+				},{
+					name: 'Crepevine',
+					cuisine: 'American'
+				},{
+					name: 'Creamery',
+					cuisine: 'American'
+				},{
+					name: 'Old Pro',
+					cuisine: 'American'
+				},{
+					name: 'Nola\'s',
+					cuisine: 'Cajun'
+				},{
+					name: 'House of Bagels',
+					cuisine: 'Bagels'
+				},{
+					name: 'The Prolific Oven',
+					cuisine: 'Sandwiches'
+				},{
+					name: 'La Strada',
+					cuisine: 'Italian'
+				},{
+					name: 'Buca di Beppo',
+					cuisine: 'Italian'
+				},{
+					name: 'Pasta?',
+					cuisine: 'Italian'
+				},{
+					name: 'Madame Tam',
+					cuisine: 'Asian'
+				},{
+					name: 'Sprout Cafe',
+					cuisine: 'Salad'
+				},{
+					name: 'Pluto\'s',
+					cuisine: 'Salad'
+				},{
+					name: 'Junoon',
+					cuisine: 'Indian'
+				},{
+					name: 'Bistro Maxine',
+					cuisine: 'French'
+				},{
+					name: 'Three Seasons',
+					cuisine: 'Vietnamese'
+				},{
+					name: 'Sancho\'s Taquira',
+					cuisine: 'Mexican'
+				},{
+					name: 'Reposado',
+					cuisine: 'Mexican'
+				},{
+					name: 'Siam Royal',
+					cuisine: 'Thai'
+				},{
+					name: 'Krung Siam',
+					cuisine: 'Thai'
+				},{
+					name: 'Thaiphoon',
+					cuisine: 'Thai'
+				},{
+					name: 'Tamarine',
+					cuisine: 'Vietnamese'
+				},{
+					name: 'Joya',
+					cuisine: 'Tapas'
+				},{
+					name: 'Jing Jing',
+					cuisine: 'Chinese'
+				},{
+					name: 'Patxi\'s Pizza',
+					cuisine: 'Pizza'
+				},{
+					name: 'Evvia Estiatorio',
+					cuisine: 'Mediterranean'
+				},{
+					name: 'Cafe 220',
+					cuisine: 'Mediterranean'
+				},{
+					name: 'Cafe Renaissance',
+					cuisine: 'Mediterranean'
+				},{
+					name: 'Kan Zeman',
+					cuisine: 'Mediterranean'
+				},{
+					name: 'Gyros-Gyros',
+					cuisine: 'Mediterranean'
+				},{
+					name: 'Mango Caribbean Cafe',
+					cuisine: 'Caribbean'
+				},{
+					name: 'Coconuts Caribbean Restaurant &amp; Bar',
+					cuisine: 'Caribbean'
+				},{
+					name: 'Rose &amp; Crown',
+					cuisine: 'English'
+				},{
+					name: 'Baklava',
+					cuisine: 'Mediterranean'
+				},{
+					name: 'Mandarin Gourmet',
+					cuisine: 'Chinese'
+				},{
+					name: 'Bangkok Cuisine',
+					cuisine: 'Thai'
+				},{
+					name: 'Darbar Indian Cuisine',
+					cuisine: 'Indian'
+				},{
+					name: 'Mantra',
+					cuisine: 'Indian'
+				},{
+					name: 'Janta',
+					cuisine: 'Indian'
+				},{
+					name: 'Hyderabad House',
+					cuisine: 'Indian'
+				},{
+					name: 'Starbucks',
+					cuisine: 'Coffee'
+				},{
+					name: 'Peet\'s Coffee',
+					cuisine: 'Coffee'
+				},{
+					name: 'Coupa Cafe',
+					cuisine: 'Coffee'
+				},{
+					name: 'Lytton Coffee Company',
+					cuisine: 'Coffee'
+				},{
+					name: 'Il Fornaio',
+					cuisine: 'Italian'
+				},{
+					name: 'Lavanda',
+					cuisine: 'Mediterranean'
+				},{
+					name: 'MacArthur Park',
+					cuisine: 'American'
+				},{
+					name: 'St Michael\'s Alley',
+					cuisine: 'Californian'
+				},{
+					name: 'Cafe Renzo',
+					cuisine: 'Italian'
+				},{
+					name: 'Osteria',
+					cuisine: 'Italian'
+				},{
+					name: 'Vero',
+					cuisine: 'Italian'
+				},{
+					name: 'Cafe Renzo',
+					cuisine: 'Italian'
+				},{
+					name: 'Miyake',
+					cuisine: 'Sushi'
+				},{
+					name: 'Sushi Tomo',
+					cuisine: 'Sushi'
+				},{
+					name: 'Kanpai',
+					cuisine: 'Sushi'
+				},{
+					name: 'Pizza My Heart',
+					cuisine: 'Pizza'
+				},{
+					name: 'New York Pizza',
+					cuisine: 'Pizza'
+				},{
+					name: 'California Pizza Kitchen',
+					cuisine: 'Pizza'
+				},{
+					name: 'Round Table',
+					cuisine: 'Pizza'
+				},{
+					name: 'Loving Hut',
+					cuisine: 'Vegan'
+				},{
+					name: 'Garden Fresh',
+					cuisine: 'Vegan'
+				},{
+					name: 'Cafe Epi',
+					cuisine: 'French'
+				},{
+					name: 'Tai Pan',
+					cuisine: 'Chinese'
+				}
+			]";
+		}
+	}
+	class GroupHeaderEvent extends TEvent{
+		public function execute(){
+			$_data = "[
+				{company:'3m Co',                               price:71.72, change:0.02,  pctChange:0.03,  lastChange:'9/1 12:00am'},
+				{company:'Alcoa Inc',                           price:29.01, change:0.42,  pctChange:1.47,  lastChange:'9/1 12:00am'},
+				{company:'Altria Group Inc',                    price:83.81, change:0.28,  pctChange:0.34,  lastChange:'9/1 12:00am'},
+				{company:'American Express Company',            price:52.55, change:0.01,  pctChange:0.02,  lastChange:'9/1 12:00am'},
+				{company:'American International Group, Inc.',  price:64.13, change:0.31,  pctChange:0.49,  lastChange:'9/1 12:00am'},
+				{company:'AT&T Inc.',                           price:31.61, change:-0.48, pctChange:-1.54, lastChange:'9/1 12:00am'},
+				{company:'Boeing Co.',                          price:75.43, change:0.53,  pctChange:0.71,  lastChange:'9/1 12:00am'},
+				{company:'Caterpillar Inc.',                    price:67.27, change:0.92,  pctChange:1.39,  lastChange:'9/1 12:00am'},
+				{company:'Citigroup, Inc.',                     price:49.37, change:0.02,  pctChange:0.04,  lastChange:'9/1 12:00am'},
+				{company:'E.I. du Pont de Nemours and Company', price:40.48, change:0.51,  pctChange:1.28,  lastChange:'9/1 12:00am'},
+				{company:'Exxon Mobil Corp',                    price:68.1,  change:-0.43, pctChange:-0.64, lastChange:'9/1 12:00am'},
+				{company:'General Electric Company',            price:34.14, change:-0.08, pctChange:-0.23, lastChange:'9/1 12:00am'},
+				{company:'General Motors Corporation',          price:30.27, change:1.09,  pctChange:3.74,  lastChange:'9/1 12:00am'},
+				{company:'Hewlett-Packard Co.',                 price:36.53, change:-0.03, pctChange:-0.08, lastChange:'9/1 12:00am'},
+				{company:'Honeywell Intl Inc',                  price:38.77, change:0.05,  pctChange:0.13,  lastChange:'9/1 12:00am'},
+				{company:'Intel Corporation',                   price:19.88, change:0.31,  pctChange:1.58,  lastChange:'9/1 12:00am'},
+				{company:'International Business Machines',     price:81.41, change:0.44,  pctChange:0.54,  lastChange:'9/1 12:00am'},
+				{company:'Johnson & Johnson',                   price:64.72, change:0.06,  pctChange:0.09,  lastChange:'9/1 12:00am'},
+				{company:'JP Morgan & Chase & Co',              price:45.73, change:0.07,  pctChange:0.15,  lastChange:'9/1 12:00am'},
+				{company:'McDonald\'s Corporation',             price:36.76, change:0.86,  pctChange:2.40,  lastChange:'9/1 12:00am'},
+				{company:'Merck & Co., Inc.',                   price:40.96, change:0.41,  pctChange:1.01,  lastChange:'9/1 12:00am'},
+				{company:'Microsoft Corporation',               price:25.84, change:0.14,  pctChange:0.54,  lastChange:'9/1 12:00am'},
+				{company:'Pfizer Inc',                          price:27.96, change:0.4,   pctChange:1.45,  lastChange:'9/1 12:00am'},
+				{company:'The Coca-Cola Company',               price:45.07, change:0.26,  pctChange:0.58,  lastChange:'9/1 12:00am'},
+				{company:'The Home Depot, Inc.',                price:34.64, change:0.35,  pctChange:1.02,  lastChange:'9/1 12:00am'},
+				{company:'The Procter & Gamble Company',        price:61.91, change:0.01,  pctChange:0.02,  lastChange:'9/1 12:00am'},
+				{company:'United Technologies Corporation',     price:63.26, change:0.55,  pctChange:0.88,  lastChange:'9/1 12:00am'},
+				{company:'Verizon Communications',              price:35.57, change:0.39,  pctChange:1.11,  lastChange:'9/1 12:00am'},
+				{company:'Wal-Mart Stores, Inc.',               price:45.45, change:0.73,  pctChange:1.63,  lastChange:'9/1 12:00am'}
+			]";
+			echo $_data;
+		}
+	}
+	class GroupSummaryEvent extends TEvent{
+		public function execute(){
+			$_data = "[
+				{projectId: 100, project: 'Ext Forms: Field Anchoring', taskId: 112, description: 'Integrate 2.0 Forms with 2.0 Layouts', estimate: 6, rate: 150, due:'06/24/2007'},
+				{projectId: 100, project: 'Ext Forms: Field Anchoring', taskId: 113, description: 'Implement AnchorLayout', estimate: 4, rate: 150, due:'06/25/2007'},
+				{projectId: 100, project: 'Ext Forms: Field Anchoring', taskId: 114, description: 'Add support for multiple types of anchors', estimate: 4, rate: 150, due:'06/27/2007'},
+				{projectId: 100, project: 'Ext Forms: Field Anchoring', taskId: 115, description: 'Testing and debugging', estimate: 8, rate: 0, due:'06/29/2007'},
+				{projectId: 101, project: 'Ext Grid: Single-level Grouping', taskId: 101, description: 'Add required rendering \"hooks\" to GridView', estimate: 6, rate: 100, due:'07/01/2007'},
+				{projectId: 101, project: 'Ext Grid: Single-level Grouping', taskId: 102, description: 'Extend GridView and override rendering functions', estimate: 6, rate: 100, due:'07/03/2007'},
+				{projectId: 101, project: 'Ext Grid: Single-level Grouping', taskId: 103, description: 'Extend Store with grouping functionality', estimate: 4, rate: 100, due:'07/04/2007'},
+				{projectId: 101, project: 'Ext Grid: Single-level Grouping', taskId: 121, description: 'Default CSS Styling', estimate: 2, rate: 100, due:'07/05/2007'},
+				{projectId: 101, project: 'Ext Grid: Single-level Grouping', taskId: 104, description: 'Testing and debugging', estimate: 6, rate: 100, due:'07/06/2007'},
+				{projectId: 102, project: 'Ext Grid: Summary Rows', taskId: 105, description: 'Ext Grid plugin integration', estimate: 4, rate: 125, due:'07/01/2007'},
+				{projectId: 102, project: 'Ext Grid: Summary Rows', taskId: 106, description: 'Summary creation during rendering phase', estimate: 4, rate: 125, due:'07/02/2007'},
+				{projectId: 102, project: 'Ext Grid: Summary Rows', taskId: 107, description: 'Dynamic summary updates in editor grids', estimate: 6, rate: 125, due:'07/05/2007'},
+				{projectId: 102, project: 'Ext Grid: Summary Rows', taskId: 108, description: 'Remote summary integration', estimate: 4, rate: 125, due:'07/05/2007'},
+				{projectId: 102, project: 'Ext Grid: Summary Rows', taskId: 109, description: 'Summary renderers and calculators', estimate: 4, rate: 125, due:'07/06/2007'},
+				{projectId: 102, project: 'Ext Grid: Summary Rows', taskId: 110, description: 'Integrate summaries with GroupingView', estimate: 10, rate: 125, due:'07/11/2007'},
+				{projectId: 102, project: 'Ext Grid: Summary Rows', taskId: 111, description: 'Testing and debugging', estimate: 8, rate: 125, due:'07/15/2007'}
+			]";
+			echo $_data;
+		}
+	}
 	
 	$lbl1=new TLabel(array(text=>'Label 1'));
 	//$lbl1->text='Label 1';
@@ -538,7 +805,7 @@ try{
 	$tab3=new TTab();
 	//$tab3->listeners->add('activate','if (!Ext.getCmp("grid").getStore().getCount()) Ext.Msg.alert("Information","Load data from menu Tools")');
 	$tab3->onActivate('if (!Ext.getCmp("grid").getStore().getCount()) Ext.Msg.alert("ATTENTION","Load data grid from menu Tools !")');
-	$tab3->title='Grid';
+	$tab3->title='Paging';
 	
 	$grid=$paging->getGrid();
 	$tab3->items->add($paging->gridId,$grid);	//->add(id,obj)
@@ -814,6 +1081,195 @@ try{
 	$tabpanel1->items->add('tab6',$tab6);
 	$tabpanel1->items->add('tab7',$tab7);
 	//
+	//
+	$tabpanel3=new TTabPanel();
+	$tab8=new TTab(array(
+		layout=>'fit',
+		title=>'Grid',
+		items=>$tabpanel3
+	));
+	$tab81=new TTab();
+	$tab81->layout='fit';
+	$tab81->title='Grouping';
+	//
+	$col811=new TColumn();
+	$col811->header='Name';
+	$col811->dataIndex='name';	
+	$col811->flex=1;
+	$col812=new TColumn();
+	$col812->header='Cuisine';
+	$col812->dataIndex='cuisine';
+	$col812->flex=1;
+	//
+	$feature81=new TGridFeature();
+	$feature81->ftype='grouping';
+	$feature81->groupHeaderTpl='Cuisine: {name} ({rows.length} Item{[values.rows.length > 1 ? "s" : ""]})';
+	//
+	$grid81=new TGrid(array(
+		columns=>array($col811,$col812)
+	));
+	$grid81->features=$feature81;	//or array($feature81,...) to more than one feature
+	$grid81->autoLoad=true;
+	$grid81->eventName='grouping';
+	$grid81->queryMode=TQueryModeType::$remote;
+	$grid81->groupField='cuisine';
+	//
+	$tab81->items->add('grouping',$grid81);
+	$tabpanel3->items->add('tab81',$tab81);
+	//
+	//
+	$tab82=new TTab();
+	$tab82->layout='fit';
+	$tab82->title='Group header';
+	//
+	$col821=new TColumn();
+	$col821->header='Company';
+	$col821->dataIndex='company';	
+	$col821->flex=1;
+	$col822=new TColumn();
+	$col822->text='Stock Price';
+	$col8221=new TColumn();
+    $col8221->text='Price';
+    $col8221->width=75;
+    $col8221->sortable=true;
+    $col8221->renderer='Ext.util.Format.usMoney';	//Renderer with format should not be array
+    $col8221->dataIndex='price';
+	$col8222=new TColumn();
+    $col8222->text='Change';
+    $col8222->width=75;
+    $col8222->sortable=true;
+    $col8222->renderer="
+        if (value > 0) {
+            return '<span style=\"color:green;\">' + value + '</span>';
+        } else if (value < 0) {
+            return '<span style=\"color:red;\">' + value + '</span>';
+        }
+        return value;
+	";
+    $col8222->dataIndex='change';
+	$col8223=new TColumn();
+    $col8223->text='% Change';
+    $col8223->width=75;
+    $col8223->sortable=true;
+    $col8223->renderer="
+        if (value > 0) {
+            return '<span style=\"color:green;\">' + value + '%</span>';
+        } else if (value < 0) {
+            return '<span style=\"color:red;\">' + value + '%</span>';
+        }
+        return value;
+	";
+    $col8223->dataIndex='pctChange';
+	//
+	$col822->columns->add('col8221',$col8221);
+	$col822->columns->add('col8222',$col8222);
+	$col822->columns->add('col8223',$col8223);
+	//
+	$col823=new TColumn();
+    $col823->text='Last Updated';
+    $col823->width=85;
+    $col823->sortable=true;
+    $col823->dataIndex='lastChange';
+	//
+	$grid82=new TGrid(array(
+		columns=>array($col821,$col822,$col823)
+	));
+	$grid82->autoLoad=true;
+	$grid82->eventName='groupheader';
+	$grid82->queryMode=TQueryModeType::$remote;
+	//
+	$tab82->items->add('groupheader',$grid82);
+	$tabpanel3->items->add('tab82',$tab82);
+	//
+	//
+	$tab83=new TTab();
+	$tab83->layout='fit';
+	$tab83->title='Group summary';
+	//
+	$feature83=new TGridFeature();
+    $feature83->ftype='groupingsummary';
+    $feature83->groupHeaderTpl='{name}';
+    $feature83->hideGroupedHeader=true;
+    $feature83->enableGroupingMenu=false;
+	//
+	$col831=new TColumn();
+    $col831->text='Task';
+    $col831->flex=1;
+    $col831->sortable=true;
+    $col831->dataIndex='description';
+    $col831->hideable=false;
+    $col831->summaryType='count';
+    $col831->summaryRenderer="return ((value === 0 || value > 1) ? '(' + value + ' Tasks)' : '(1 Task)');";	
+	//
+	$col832=new TColumn();
+    $col832->header='Project';
+    $col832->width=20;
+    $col832->sortable=true;
+    $col832->dataIndex='project';
+	//
+	$col833=new TColumn();
+    $col833->header='Due Date';
+    $col833->width=80;
+    $col833->sortable=true;
+    $col833->dataIndex='due';
+    $col833->summaryType='max';
+    $col833->renderer="Ext.util.Format.dateRenderer('m/d/Y')";			//Renderer with format should not be array
+    $col833->summaryRenderer="Ext.util.Format.dateRenderer('m/d/Y')";	//Renderer with format should not be array
+	//
+	$col834=new TColumn();
+    $col834->header='Estimate';
+    $col834->width=75;
+    $col834->sortable=true;
+    $col834->dataIndex='estimate';
+    $col834->summaryType='sum';
+    $col834->renderer="return value + ' hours';";
+    $col834->summaryRenderer="return value + ' hours';";
+	//
+	$col835=new TColumn();
+    $col835->header='Rate';
+    $col835->width=75;
+    $col835->sortable=true;
+    $col835->renderer='Ext.util.Format.usMoney';			//Renderer with format should not be array
+    $col835->summaryRenderer='Ext.util.Format.usMoney';		//Renderer with format should not be array
+    $col835->dataIndex='rate';
+    $col835->summaryType='average';
+	//
+	$col836=new TColumn();
+    $col836->header='Cost';
+    $col836->width=75;
+    $col836->sortable=false;
+    $col836->groupable=false;
+    $col836->renderer="return Ext.util.Format.usMoney(record.get('estimate') * record.get('rate'));";
+    $col836->dataIndex='cost';
+    $col836->summaryType="
+                var i = 0,
+                    length = records.length,
+                    total = 0,
+                    record;
+
+                for (; i < length; ++i) {
+                    record = records[i];
+                    total += record.get('estimate') * record.get('rate');
+                }
+                return total;
+	";
+    $col836->summaryRenderer='Ext.util.Format.usMoney';		//Renderer with format should not be array
+	//
+	$grid83=new TGrid(array(
+		columns=>array($col831,$col832,$col833,$col834,$col835,$col836)
+	));
+	$grid83->features=array($feature83);
+	$grid83->autoLoad=true;
+	$grid83->eventName='groupsummary';
+	$grid83->queryMode=TQueryModeType::$remote;
+	$grid83->groupField='project';
+	//
+	$tab83->items->add('groupsummary',$grid83);
+	$tabpanel3->items->add('tab83',$tab83);
+	//
+	$tabpanel1->items->add('tab8',$tab8);
+	//
+	//
 	$w1=new TWindow(array(
 		layout=>'fit',
 		title=>'First window',
@@ -851,7 +1307,7 @@ try{
 		TPackage::$tree,
 		TPackage::$window
 	);
-	$app->ext='ext-4.0.7-gpl';
+	$app->ext='ext-4.0.7-gpl';		//Path from the http root
 	$app->cls='xbody';
 	$app->headers->add('utils','<script type="text/javascript" src="js/utils.js"></script>');
 	$app->headers->add('app-style','<link rel="stylesheet" type="text/css" href="css/app.css"/>');
@@ -874,6 +1330,9 @@ try{
 	$app->events->add('formEvent',new FormEvent());
 	$app->events->add('chart',new ChartEvent());
 	$app->events->add('tree',new TreeEvent());
+	$app->events->add('grouping',new GroupingEvent());
+	$app->events->add('groupheader',new GroupHeaderEvent());
+	$app->events->add('groupsummary',new GroupSummaryEvent());
 	$app->windows->add('win1',$w1);
 	$it1=new TMenuItem();
 	$it1->iconCls='badd';
