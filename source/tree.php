@@ -87,8 +87,10 @@
 		public $padding=null;
 		public $preventHeader=null;
 		public $rbar;
+		public $region=null;
 		public $resizable=null;
 		public $rootVisible=null;
+		public $split=null;
 		public $saveDelay=null;
 		public $scroll=null;
 		public $scrollDelta=null;

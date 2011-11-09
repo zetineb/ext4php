@@ -37,6 +37,7 @@
 		public $region=null;
 		public $resizable=null;
 		public $style=null;
+		public $split=null;
 		public $tbar=null;
 		public $title=null;
 		public $titleCollapse=null;

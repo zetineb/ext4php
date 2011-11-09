@@ -242,6 +242,8 @@
 			}
 			if (!is_null($obj->region))
 					$this->writeLn('region:"'.$obj->region.'",');
+			if (!is_null($obj->split))
+				$this->writeLn('split:'.$this->boolean[$obj->split].',');
 			if (!is_null($obj->resizable))
 				$this->writeLn('resizable:'.$this->boolean[$obj->resizable].',');
 			if (!is_null($obj->style))
@@ -338,6 +340,10 @@
 				$this->writeLn('padding:"'.$obj->padding.'",');
 			if (!is_null($obj->pressed))
 				$this->writeLn('pressed:'.$this->boolean[$obj->pressed].',');
+			if (!is_null($obj->region))
+					$this->writeLn('region:"'.$obj->region.'",');
+			if (!is_null($obj->split))
+				$this->writeLn('split:'.$this->boolean[$obj->split].',');
 			if (!is_null($obj->style))
 				$this->writeLn('style:"'.$obj->style.'",');
 			if (!is_null($obj->tabIndex))
@@ -2008,6 +2014,9 @@
 					$_columns.='text:"'.$obj->columns->value()->text.'",';
 				if (!is_null($obj->columns->value()->dataIndex))
 					$_columns.='dataIndex:"'.$obj->columns->value()->dataIndex.'",';
+				if (!is_null($obj->columns->value()->field)&&get_parent_class($obj->columns->value()->field)=='TCustomComponent'){
+					$_columns.='field:{xtype:"'.$obj->columns->value()->field->xtype.'"},';
+				}
 				if (!is_null($obj->columns->value()->flex))
 					$_columns.='flex:'.$obj->columns->value()->flex.',';
 				if (!is_null($obj->columns->value()->renderer)){
@@ -2229,6 +2238,15 @@
 							$this->writeLn('groupHeaderTpl:"'.$_features[$i]->groupHeaderTpl.'",');
 					if (!is_null($_features[$i]->hideGroupedHeader))
 						$this->writeLn('hideGroupedHeader:'.$this->boolean[$_features[$i]->hideGroupedHeader].',');
+					if ($_features[$i]->listeners->count()){
+						$this->writeLn('listeners:{');
+						while ($_features[$i]->listeners->next()){
+							if ($_features[$i]->listeners->iterator()>0) $this->writeLn(',');
+							echo '"'.$_features[$i]->listeners->name().'":'.str_replace('%CODE%',$_features[$i]->listeners->value(),TComponentEvents::$name[$_features[$i]->listeners->name()]);
+						}
+						$this->writeLn('');
+						$this->writeLn('},');
+					}
 					if (!is_null($_features[$i]->showGroupsText))
 						$this->writeLn('showGroupsText:"'.$_features[$i]->showGroupsText.'",');
 					if (!is_null($_features[$i]->startCollapsed))
@@ -2262,11 +2280,53 @@
 				$this->writeLn('multiSelect:'.$this->boolean[$obj->multiSelect].',');
 			if (!is_null($obj->padding))
 				$this->writeLn('padding:"'.$obj->padding.'",');
+			if (!is_null($obj->plugins)){
+				if (!is_array($obj->plugins)){
+					$_plugins=array();
+					array_push($_plugins,$obj->plugins);
+				}
+				else
+					$_plugins=$obj->plugins;
+				$this->writeLn('plugins:[');
+				for ($i=0;$i<count($_plugins);$i++){
+					if ($i) $this->writeLn(',');
+					$this->writeLn('{');
+					if (!is_null($_plugins[$i]->ptype))
+						$this->writeLn('ptype:"'.$_plugins[$i]->ptype.'",');
+					else
+						$this->writeLn('ptype:"cellediting",');
+					if (!is_null($_plugins[$i]->autoCancel))
+						$this->writeLn('autoCancel:'.$this->boolean[$_plugins[$i]->autoCancel].',');
+					if (!is_null($_plugins[$i]->clicksToMoveEditor))
+						$this->writeLn('clicksToMoveEditor:'.$_plugins[$i]->clicksToMoveEditor.',');
+					if (!is_null($_plugins[$i]->errorSummary))
+						$this->writeLn('errorSummary:'.$this->boolean[$_plugins[$i]->errorSummary].',');
+					if ($_plugins[$i]->listeners->count()){
+						$this->writeLn('listeners:{');
+						while ($_plugins[$i]->listeners->next()){
+							if ($_plugins[$i]->listeners->iterator()>0) $this->writeLn(',');
+							echo '"'.$_plugins[$i]->listeners->name().'":'.str_replace('%CODE%',$_plugins[$i]->listeners->value(),TComponentEvents::$name[$_plugins[$i]->listeners->name()]);
+						}
+						$this->writeLn('');
+						$this->writeLn('},');
+					}
+					if (!is_null($_plugins[$i]->clicksToEdit))
+						$this->writeLn('clicksToEdit:'.$_plugins[$i]->clicksToEdit);
+					else
+						$this->writeLn('clicksToEdit:2');
+					$this->writeLn('}');
+				}
+				$this->writeLn('],');
+			}
 			if ($obj->rbar->count()){
 				$this->writeLn('rbar:[');
 				$this->mkItems($obj->rbar);
 				$this->writeLn('],');
 			}
+			if (!is_null($obj->region))
+					$this->writeLn('region:"'.$obj->region.'",');
+			if (!is_null($obj->split))
+				$this->writeLn('split:'.$this->boolean[$obj->split].',');
 			if (!is_null($obj->scroll))
 				$this->writeLn('scroll:"'.$obj->scroll.'",');
 			if (!is_null($obj->sortableColumns))
@@ -2351,6 +2411,10 @@
 				$this->writeLn('multiSelect:'.$this->boolean[$obj->multiSelect].',');
 			if (!is_null($obj->padding))
 				$this->writeLn('padding:"'.$obj->padding.'",');
+			if (!is_null($obj->region))
+					$this->writeLn('region:"'.$obj->region.'",');
+			if (!is_null($obj->split))
+				$this->writeLn('split:'.$this->boolean[$obj->split].',');
 			if (!is_null($obj->style))
 				$this->writeLn('style:"'.$obj->style.'",');
 			if (!is_null($obj->tpl)){
@@ -2594,6 +2658,10 @@
 					$this->writeLn('margin:"'.$obj->margin.'",');
 			if (!is_null($obj->padding))
 					$this->writeLn('padding:"'.$obj->padding.'",');
+			if (!is_null($obj->region))
+					$this->writeLn('region:"'.$obj->region.'",');
+			if (!is_null($obj->split))
+				$this->writeLn('split:'.$this->boolean[$obj->split].',');
 			if (!is_null($obj->resizable)){
 				if (stristr($obj->resizable,"{"))
 					$this->writeLn('resizable:'.$obj->resizable.',');
@@ -2653,6 +2721,15 @@
 							$this->writeLn('markerConfig:'.$obj->series[$i]->markerConfig.',');
 						else
 							$this->writeLn('markerConfig:{'.$obj->series[$i]->markerConfig.'},');
+					}
+					if ($obj->series[$i]->listeners->count()){
+						$this->writeLn('listeners:{');
+						while ($obj->series[$i]->listeners->next()){
+							if ($obj->series[$i]->listeners->iterator()>0) $this->writeLn(',');
+							echo '"'.$obj->series[$i]->listeners->name().'":'.str_replace('%CODE%',$obj->series[$i]->listeners->value(),TComponentEvents::$name[$obj->series[$i]->listeners->name()]);
+						}
+						$this->writeLn('');
+						$this->writeLn('},');
 					}
 					if (!is_null($obj->series[$i]->renderer))
 						$this->writeLn('renderer:function(sprite,record,attributes,index,store){'.$obj->series[$i]->renderer.'},');
@@ -3038,6 +3115,10 @@
 				$this->writeLn('padding:"'.$obj->padding.'",');
 			if (!is_null($obj->preventHeader))
 				$this->writeLn('preventHeader:'.$this->boolean[$obj->preventHeader].',');
+			if (!is_null($obj->region))
+					$this->writeLn('region:"'.$obj->region.'",');
+			if (!is_null($obj->split))
+				$this->writeLn('split:'.$this->boolean[$obj->split].',');
 			if (!is_null($obj->resizable))
 				$this->writeLn('resizable:'.$this->boolean[$obj->resizable].',');
 			if ($obj->rbar->count()){

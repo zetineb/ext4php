@@ -7,6 +7,7 @@
 	define("altFormats","altFormats");
 	define("anchor","anchor");
 	define("animate","animate");
+	define("autoCancel","autoCancel");
 	define("animCollapse","animCollapse");
 	define("angleField","angleField");
 	define("autoLoad","autoLoad");
@@ -38,6 +39,8 @@
 	define("buttonText","buttonText");
 	define("checked","checked");
 	define("clearCls","clearCls");
+	define("clicksToEdit","clicksToEdit");
+	define("clicksToMoveEditor","clicksToMoveEditor");
 	define("closable","closable");
 	define("closeText","closeText");
 	define("cls","cls");
@@ -90,6 +93,7 @@
 	define("enableFormat","enableFormat");
 	define("enableGroupingMenu","enableGroupingMenu");
 	define("enableNoGroups","enableNoGroups");
+	define("errorSummary","errorSummary");
 	define("groupByText","groupByText");
 	define("groupField","groupField");
 	define("groupHeaderTpl","groupHeaderTpl");
@@ -206,9 +210,11 @@
 	define("overlapHeader","overlapHeader");
 	define("padding","padding");
 	define("plain","plain");
+	define("plugins","plugins");
 	define("position","position");
 	define("pressed","pressed");
 	define("preventHeader","preventHeader");
+	define("ptype","ptype");
 	define("queryMode","queryMode");
 	define("queryParam","queryParam");
 	define("rbar","rbar");
@@ -239,6 +245,7 @@
 	define("sortableColumns","sortableColumns");
 	define("spinDownEnabled","spinDownEnabled");
 	define("spinUpEnabled","spinUpEnabled");
+	define("split","split");
 	define("smooth","smooth");
 	define("startCollapsed","startCollapsed");
 	define("startDay","startDay");

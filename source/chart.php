@@ -112,7 +112,9 @@
 		public $maintainFlex=null;
 		public $margin=null;
 		public $padding=null;
+		public $region=null;
 		public $resizable=null;
+		public $split=null;
 		public $series=null;	  //array of TChartSeries
 		public $shadow=null;
 		public $style=null;

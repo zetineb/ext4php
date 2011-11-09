@@ -23,6 +23,8 @@
 		public $minWidth=null;
 		public $padding=null;
 		public $pressed=null;
+		public $region=null;
+		public $split=null;
 		public $style=null;
 		public $tabIndex=null;
 		public $text=null;

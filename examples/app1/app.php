@@ -1184,13 +1184,18 @@ try{
 	//
 	$tab83=new TTab();
 	$tab83->layout='fit';
-	$tab83->title='Group summary';
+	$tab83->title='Group summary + plugin (<small>cellediting</small>)';
 	//
 	$feature83=new TGridFeature();
     $feature83->ftype='groupingsummary';
     $feature83->groupHeaderTpl='{name}';
     $feature83->hideGroupedHeader=true;
     $feature83->enableGroupingMenu=false;
+	//
+	$plugins83=new TGridPlugin();
+	$plugins83->ptype='cellediting';
+	$plugins83->clicksToEdit=1;
+	$plugins83->listeners->add("edit","Ext.getCmp('groupsummary').getView().refresh();");
 	//
 	$col831=new TColumn();
     $col831->text='Task';
@@ -1215,6 +1220,7 @@ try{
     $col833->summaryType='max';
     $col833->renderer="Ext.util.Format.dateRenderer('m/d/Y')";			//Renderer with format should not be array
     $col833->summaryRenderer="Ext.util.Format.dateRenderer('m/d/Y')";	//Renderer with format should not be array
+	$col833->field=new TDate();			//For plugin
 	//
 	$col834=new TColumn();
     $col834->header='Estimate';
@@ -1224,6 +1230,7 @@ try{
     $col834->summaryType='sum';
     $col834->renderer="return value + ' hours';";
     $col834->summaryRenderer="return value + ' hours';";
+	$col834->field=new TNumber();			//For plugin
 	//
 	$col835=new TColumn();
     $col835->header='Rate';
@@ -1233,6 +1240,7 @@ try{
     $col835->summaryRenderer='Ext.util.Format.usMoney';		//Renderer with format should not be array
     $col835->dataIndex='rate';
     $col835->summaryType='average';
+	$col835->field=new TNumber();			//For plugin
 	//
 	$col836=new TColumn();
     $col836->header='Cost';
@@ -1259,6 +1267,7 @@ try{
 		columns=>array($col831,$col832,$col833,$col834,$col835,$col836)
 	));
 	$grid83->features=array($feature83);
+	$grid83->plugins=array($plugins83);
 	$grid83->autoLoad=true;
 	$grid83->eventName='groupsummary';
 	$grid83->queryMode=TQueryModeType::$remote;

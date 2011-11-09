@@ -29,7 +29,8 @@ try{
 	$eastPanel=new TPanel(array(
 		title=>'Components',
 		region=>'west',
-		collapsible=>true,
+		split=>true,
+		flex=>1,
 		width=>300
 	));
 	$centerPanel=new TPanel(array(

@@ -80,6 +80,7 @@
 			'beforecollapse'    =>'function(container,direction,animate,options){%CODE%}',
 			'beforedeactivate'  =>'function(component,options){%CODE%}',
 			'beforedestroy'     =>'function(component,options){%CODE%}',
+			'beforeedit'        =>'function(component,options){%CODE%}',
 			'beforeexpand'      =>'function(container,animate,options){%CODE%}',
 			'beforehide'        =>'function(component,options){%CODE%}',
 			'beforepush'        =>'function(htmlEditor,html,options){%CODE%}',
@@ -94,10 +95,16 @@
 			'deactivate'        =>'function(component,options){%CODE%}',
 			'destroy'           =>'function(component,options){%CODE%}',
 			'disable'           =>'function(component,options){%CODE%}',
+			'edit' 			    =>'function(editor,component,options){%CODE%}',
 			'editmodechange'    =>'function(htmlEditor,sourceEdit,options){%CODE%}',
 			'enable'            =>'function(component,options){%CODE%}',
 			'expand'            =>'function(container,options){%CODE%}',
 			'focus'             =>'function(component,options){%CODE%}',
+			'groupclick'        =>'function(component,node,group,eventObj,options){%CODE%}',
+			'groupcollapse'     =>'function(component,node,group,eventObj,options){%CODE%}',
+			'groupcontextmenu'  =>'function(component,node,group,eventObj,options){%CODE%}',
+			'groupdblclick'     =>'function(component,node,group,eventObj,options){%CODE%}',
+			'groupexpand'       =>'function(component,node,group,eventObj,options){%CODE%}',
 			'hide'              =>'function(component,options){%CODE%}',
 			'initialize'        =>'function(htmlEditor,options){%CODE%}',
 			'itemclick'         =>'function(component,record,item,index,eventObj,options){%CODE%}',
@@ -117,6 +124,8 @@
 			'show'              =>'function(component,options){%CODE%}',
 			'specialkey'        =>'function(component,eventObj,options){%CODE%}',
 			'sync'              =>'function(htmlEditor,isValid,options){%CODE%}',
+			'titlechange'       =>'function(title,index,options){%CODE%}',
+			'validateedit  '    =>'function(editor,component,options){%CODE%}',
 			'validitychange'    =>'function(field,isValid,options){%CODE%}'
 		);
 	}

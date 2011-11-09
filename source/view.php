@@ -19,6 +19,8 @@
 		public $margin=null;
 		public $multiSelect=null;
 		public $padding=null;
+		public $region=null;
+		public $split=null;
 		public $style=null;
 		
 		public $emptyText=null;

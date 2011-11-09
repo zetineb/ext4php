@@ -1,4 +1,13 @@
 <?php
+	class TGridPlugin extends TComponent{		//DragDrop is missing
+		public $ptype=null;
+		public $autoCancel=null;
+		public $clicksToMoveEditor=null;
+		public $errorSummary=null;
+		//
+		public $clicksToEdit=null;
+	}
+	
 	class TGridFeature extends TComponent{
 		public $ftype=null;
 		public $depthToIndent=null;
@@ -15,6 +24,7 @@
 		public $header=null;
 		public $text=null;
 		public $dataIndex=null;
+		public $field=null;		//TCustomComponent
 		public $flex=null;
 		public $renderer=null;
 		public $sortable=false;
@@ -123,7 +133,10 @@
 		public $minWidth=null;
 		public $multiSelect=null;
 		public $padding=null;
+		public $plugins=null;	//array of TGridPlugin
 		public $rbar;
+		public $region=null;
+		public $split=null;
 		public $scroll=null;
 		public $sortableColumns=null;
 		public $style=null;

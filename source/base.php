@@ -286,6 +286,7 @@
 				elseif (!strcasecmp($keys[$i],angleField)) $this->angleField=$v;
 				elseif (!strcasecmp($keys[$i],anchor)) $this->anchor=$v;
 				elseif (!strcasecmp($keys[$i],animate)) $this->animate=$v;
+				elseif (!strcasecmp($keys[$i],autoCancel)) $this->autoCancel=$v;
 				elseif (!strcasecmp($keys[$i],animCollapse)) $this->animCollapse=$v;
 				elseif (!strcasecmp($keys[$i],autoLoad)) $this->autoLoad=$v;
 				elseif (!strcasecmp($keys[$i],autoSelect)) $this->autoSelect=$v;
@@ -334,6 +335,8 @@
 				elseif (!strcasecmp($keys[$i],buttonText)) $this->buttonText=$v;
 				elseif (!strcasecmp($keys[$i],checked)) $this->checked=$v;
 				elseif (!strcasecmp($keys[$i],clearCls)) $this->clearCls=$v;
+				elseif (!strcasecmp($keys[$i],clicksToEdit)) $this->clicksToEdit=$v;
+				elseif (!strcasecmp($keys[$i],clicksToMoveEditor)) $this->clicksToMoveEditor=$v;
 				elseif (!strcasecmp($keys[$i],closable)) $this->closable=$v;
 				elseif (!strcasecmp($keys[$i],closeText)) $this->closeText=$v;
 				elseif (!strcasecmp($keys[$i],cls)) $this->cls=$v;
@@ -405,6 +408,7 @@
 				elseif (!strcasecmp($keys[$i],enableFormat)) $this->enableFormat=$v;
 				elseif (!strcasecmp($keys[$i],enableGroupingMenu)) $this->enableGroupingMenu=$v;
 				elseif (!strcasecmp($keys[$i],enableNoGroups)) $this->enableNoGroups=$v;
+				elseif (!strcasecmp($keys[$i],errorSummary)) $this->errorSummary=$v;
 				elseif (!strcasecmp($keys[$i],groupByText)) $this->groupByText=$v;
 				elseif (!strcasecmp($keys[$i],groupField)) $this->groupField=$v;
 				elseif (!strcasecmp($keys[$i],groupHeaderTpl)) $this->groupHeaderTpl=$v;
@@ -580,8 +584,11 @@
 				elseif (!strcasecmp($keys[$i],overlapHeader)) $this->overlapHeader=$v;
 				elseif (!strcasecmp($keys[$i],padding)) $this->padding=$v;
 				elseif (!strcasecmp($keys[$i],plain)) $this->plain=$v;
+				elseif (!strcasecmp($keys[$i],plugins)) $this->plugins=$v;
 				elseif (!strcasecmp($keys[$i],position)) $this->position=$v;
 				elseif (!strcasecmp($keys[$i],pressed)) $this->pressed=$v;
+				elseif (!strcasecmp($keys[$i],preventHeader)) $this->preventHeader=$v;
+				elseif (!strcasecmp($keys[$i],ptype)) $this->ptype=$v;
 				elseif (!strcasecmp($keys[$i],queryMode)) $this->queryMode=$v;
 				elseif (!strcasecmp($keys[$i],queryParam)) $this->queryParam=$v;
 				elseif (!strcasecmp($keys[$i],rbar)){
@@ -621,6 +628,7 @@
 				elseif (!strcasecmp($keys[$i],sortableColumns)) $this->sortableColumns=$v;
 				elseif (!strcasecmp($keys[$i],spinDownEnabled)) $this->spinDownEnabled=$v;
 				elseif (!strcasecmp($keys[$i],spinUpEnabled)) $this->spinUpEnabled=$v;
+				elseif (!strcasecmp($keys[$i],split)) $this->split=$v;
 				elseif (!strcasecmp($keys[$i],smooth)) $this->smooth=$v;
 				elseif (!strcasecmp($keys[$i],startCollapsed)) $this->startCollapsed=$v;
 				elseif (!strcasecmp($keys[$i],startDay)) $this->startDay=$v;
@@ -733,6 +741,10 @@
 		}
 		public function animate($v){ 
 			$this->animate=$v;
+			return ($this);
+		}
+		public function autoCancel($v){ 
+			$this->autoCancel=$v;
 			return ($this);
 		}
 		public function animCollapse($v){ 
@@ -867,6 +879,14 @@
 		}
 		public function clearCls($v){ 
 			$this->clearCls=$v;
+			return ($this);
+		}
+		public function clicksToEdit($v){ 
+			$this->clicksToEdit=$v;
+			return ($this);
+		}
+		public function clicksToMoveEditor($v){ 
+			$this->clicksToMoveEditor=$v;
 			return ($this);
 		}
 		public function closable($v){ 
@@ -1094,6 +1114,10 @@
 		}
 		public function enableNoGroups($v){ 
 			$this->enableNoGroups=$v;
+			return ($this);
+		}
+		public function errorSummary($v){ 
+			$this->errorSummary=$v;
 			return ($this);
 		}
 		public function groupByText($v){ 
@@ -1607,6 +1631,10 @@
 			$this->plain=$v;
 			return ($this);
 		}
+		public function plugins($v){ 
+			$this->plugins=$v;
+			return ($this);
+		}
 		public function position($v){ 
 			$this->position=$v;
 			return ($this);
@@ -1617,6 +1645,10 @@
 		}
 		public function preventHeader($v){ 
 			$this->preventHeader=$v;
+			return ($this);
+		}
+		public function ptype($v){ 
+			$this->ptype=$v;
 			return ($this);
 		}
 		public function queryMode($v){ 
@@ -1744,6 +1776,10 @@
 		}
 		public function spinUpEnabled($v){ 
 			$this->spinUpEnabled=$v;
+			return ($this);
+		}
+		public function split($v){ 
+			$this->split=$v;
 			return ($this);
 		}
 		public function smooth($v){ 
