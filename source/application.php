@@ -118,6 +118,8 @@
 				else
 					$this->writeLn('layout:"'.$obj->layout.'",');
 			}
+			if (!is_null($obj->region))
+				$this->writeLn('region:"'.$obj->region.'",');
 			$this->writeLn('items:[');
 			$this->mkItems($obj->items);
 			$this->writeLn(']');
@@ -238,6 +240,8 @@
 				$this->mkItems($obj->rbar);
 				$this->writeLn('],');
 			}
+			if (!is_null($obj->region))
+					$this->writeLn('region:"'.$obj->region.'",');
 			if (!is_null($obj->resizable))
 				$this->writeLn('resizable:'.$this->boolean[$obj->resizable].',');
 			if (!is_null($obj->style))

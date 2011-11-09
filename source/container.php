@@ -8,6 +8,7 @@
 		public $defaults=null;
 		public $frame=null;
 		public $layout=null;		
+		public $region=null;		
 		public $items;
 		
 		public function __construct($param=array()){

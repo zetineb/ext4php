@@ -1,6 +1,8 @@
 <?php
 	class TPanel extends TComponent{
 		public $xtype='panel';
+		public $eventName=null;
+		//
 		public $activeItem=null;
 		public $autoScroll=null;
 		public $baseCls=null;
@@ -33,6 +35,7 @@
 		public $minWidth=null;
 		public $padding=null;
 		public $rbar;
+		public $region=null;
 		public $resizable=null;
 		public $style=null;
 		public $tbar=null;

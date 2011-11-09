@@ -595,6 +595,7 @@
 					}
 				}
 				elseif (!strcasecmp($keys[$i],readOnly)) $this->readOnly=$v;
+				elseif (!strcasecmp($keys[$i],region)) $this->region=$v;
 				elseif (!strcasecmp($keys[$i],renderer)) $this->renderer=$v;
 				elseif (!strcasecmp($keys[$i],resizable)) $this->resizable=$v;
 				elseif (!strcasecmp($keys[$i],roundToDecimal)) $this->roundToDecimal=$v;
@@ -1639,6 +1640,10 @@
 		}
 		public function readOnly($v){ 
 			$this->readOnly=$v;
+			return ($this);
+		}
+		public function region($v){ 
+			$this->region=$v;
 			return ($this);
 		}
 		public function renderer($v){ 

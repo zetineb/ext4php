@@ -13,3 +13,4 @@ PS     : All tests are being done with WampServer 2.1e (32 bit)
 					0.9.9.2=> update and bug-fix TChart
 					1.0.0.0=> insert TTree
 					1.0.7.0=> several bug fixes and update grid feature
+					1.0.7.1=> bug-fix layout and starting application docs

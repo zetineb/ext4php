@@ -213,6 +213,7 @@
 	define("queryParam","queryParam");
 	define("rbar","rbar");
 	define("readOnly","readOnly");
+	define("region","region");
 	define("renderer","renderer");
 	define("resizable","resizable");
 	define("roundToDecimal","roundToDecimal");
