@@ -1,4 +1,6 @@
 <?php
+	define("__version","1.0.8.0");
+	//
 	define("activeItem","activeItem");
 	define("activeError","activeError");
 	define("allowBlank","allowBlank");
