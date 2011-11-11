@@ -128,6 +128,10 @@
 			$this->listeners->add('beforeshow',$this->getString($value));
 		}
 
+		public function onBlur($value){
+			$this->listeners->add('blur',$this->getString($value));
+		}
+		
 		public function onChange($value){
 			$this->listeners->add('change',$this->getString($value));
 		}

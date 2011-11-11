@@ -87,6 +87,7 @@
 			'beforeremove'      =>'function(container,component,options){%CODE%}',
 			'beforerender'      =>'function(component,options){%CODE%}',
 			'beforeshow'        =>'function(component,options){%CODE%}',
+			'blur'  		    =>'function(component,options){%CODE%}',
 			'change'  		    =>'function(component,newValue,oldValue,options){%CODE%}',
 			'checkchange'       =>'function(component,checked,options){%CODE%}',
 			'click'             =>'function(component,eventObj,options){%CODE%}',
