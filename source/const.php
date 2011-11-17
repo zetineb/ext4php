@@ -40,6 +40,7 @@
 	define("buttonAlign","buttonAlign");
 	define("buttonText","buttonText");
 	define("checked","checked");
+	define("children","children");
 	define("clearCls","clearCls");
 	define("clicksToEdit","clicksToEdit");
 	define("clicksToMoveEditor","clicksToMoveEditor");
@@ -96,6 +97,7 @@
 	define("enableGroupingMenu","enableGroupingMenu");
 	define("enableNoGroups","enableNoGroups");
 	define("errorSummary","errorSummary");
+	define("expanded","expanded");
 	define("groupByText","groupByText");
 	define("groupField","groupField");
 	define("groupHeaderTpl","groupHeaderTpl");

@@ -63,174 +63,176 @@ try{
 	}
 	class TreeEvent extends TEvent{
 		public function execute(){
-			$_data="{'text':'.','children': [
-				{
-					task:'Project: Shopping',
-					duration:13.25,
-					user:'Tommy Maintz',
-					iconCls:'task-folder',
-					expanded: true,
-					children:[{
-						task:'Housewares',
-						duration:1.25,
-						user:'Tommy Maintz',
-						iconCls:'task-folder',
-						children:[{
-							task:'Kitchen supplies',
-							duration:0.25,
-							user:'Tommy Maintz',
-							leaf:true,
-							iconCls:'task'
-						},{
-							task:'Groceries',
-							duration:.4,
-							user:'Tommy Maintz',
-							leaf:true,
-							iconCls:'task'
-						},{
-							task:'Cleaning supplies',
-							duration:.4,
-							user:'Tommy Maintz',
-							leaf:true,
-							iconCls:'task'
-						},{
-							task: 'Office supplies',
-							duration: .2,
-							user: 'Tommy Maintz',
-							leaf: true,
-							iconCls: 'task'
-						}]
-					}, {
-						task:'Remodeling',
-						duration:12,
+			if ($this->filter){			//To kill bug ExtJS tree
+				$_data="{'text':'.','children': [
+					{
+						task:'Project: Shopping',
+						duration:13.25,
 						user:'Tommy Maintz',
 						iconCls:'task-folder',
 						expanded: true,
 						children:[{
-							task:'Retile kitchen',
-							duration:6.5,
-							user:'Tommy Maintz',
-							leaf:true,
-							iconCls:'task'
-						},{
-							task:'Paint bedroom',
-							duration: 2.75,
+							task:'Housewares',
+							duration:1.25,
 							user:'Tommy Maintz',
 							iconCls:'task-folder',
+							children:[{
+								task:'Kitchen supplies',
+								duration:0.25,
+								user:'Tommy Maintz',
+								leaf:true,
+								iconCls:'task'
+							},{
+								task:'Groceries',
+								duration:.4,
+								user:'Tommy Maintz',
+								leaf:true,
+								iconCls:'task'
+							},{
+								task:'Cleaning supplies',
+								duration:.4,
+								user:'Tommy Maintz',
+								leaf:true,
+								iconCls:'task'
+							},{
+								task: 'Office supplies',
+								duration: .2,
+								user: 'Tommy Maintz',
+								leaf: true,
+								iconCls: 'task'
+							}]
+						}, {
+							task:'Remodeling',
+							duration:12,
+							user:'Tommy Maintz',
+							iconCls:'task-folder',
+							expanded: true,
+							children:[{
+								task:'Retile kitchen',
+								duration:6.5,
+								user:'Tommy Maintz',
+								leaf:true,
+								iconCls:'task'
+							},{
+								task:'Paint bedroom',
+								duration: 2.75,
+								user:'Tommy Maintz',
+								iconCls:'task-folder',
+								children: [{
+									task: 'Ceiling',
+									duration: 1.25,
+									user: 'Tommy Maintz',
+									iconCls: 'task',
+									leaf: true
+								}, {
+									task: 'Walls',
+									duration: 1.5,
+									user: 'Tommy Maintz',
+									iconCls: 'task',
+									leaf: true
+								}]
+							},{
+								task:'Decorate living room',
+								duration:2.75,
+								user:'Tommy Maintz',
+								leaf:true,
+								iconCls:'task'
+							},{
+								task: 'Fix lights',
+								duration: .75,
+								user: 'Tommy Maintz',
+								leaf: true,
+								iconCls: 'task'
+							}, {
+								task: 'Reattach screen door',
+								duration: 2,
+								user: 'Tommy Maintz',
+								leaf: true,
+								iconCls: 'task'
+							}]
+						}]
+					},{
+						task:'Project: Testing',
+						duration:2,
+						user:'Core Team',
+						iconCls:'task-folder',
+						children:[{
+							task: 'Mac OSX',
+							duration: 0.75,
+							user: 'Tommy Maintz',
+							iconCls: 'task-folder',
 							children: [{
-								task: 'Ceiling',
-								duration: 1.25,
+								task: 'FireFox',
+								duration: 0.25,
 								user: 'Tommy Maintz',
 								iconCls: 'task',
 								leaf: true
 							}, {
-								task: 'Walls',
-								duration: 1.5,
+								task: 'Safari',
+								duration: 0.25,
+								user: 'Tommy Maintz',
+								iconCls: 'task',
+								leaf: true
+							}, {
+								task: 'Chrome',
+								duration: 0.25,
 								user: 'Tommy Maintz',
 								iconCls: 'task',
 								leaf: true
 							}]
 						},{
-							task:'Decorate living room',
-							duration:2.75,
-							user:'Tommy Maintz',
-							leaf:true,
-							iconCls:'task'
+							task: 'Windows',
+							duration: 3.75,
+							user: 'Darrell Meyer',
+							iconCls: 'task-folder',
+							children: [{
+								task: 'FireFox',
+								duration: 0.25,
+								user: 'Darrell Meyer',
+								iconCls: 'task',
+								leaf: true
+							}, {
+								task: 'Safari',
+								duration: 0.25,
+								user: 'Darrell Meyer',
+								iconCls: 'task',
+								leaf: true
+							}, {
+								task: 'Chrome',
+								duration: 0.25,
+								user: 'Darrell Meyer',
+								iconCls: 'task',
+								leaf: true
+							},{
+								task: 'Internet Exploder',
+								duration: 3,
+								user: 'Darrell Meyer',
+								iconCls: 'task',
+								leaf: true
+							}]
 						},{
-							task: 'Fix lights',
-							duration: .75,
-							user: 'Tommy Maintz',
-							leaf: true,
-							iconCls: 'task'
-						}, {
-							task: 'Reattach screen door',
-							duration: 2,
-							user: 'Tommy Maintz',
-							leaf: true,
-							iconCls: 'task'
-						}]
-					}]
-				},{
-					task:'Project: Testing',
-					duration:2,
-					user:'Core Team',
-					iconCls:'task-folder',
-					children:[{
-						task: 'Mac OSX',
-						duration: 0.75,
-						user: 'Tommy Maintz',
-						iconCls: 'task-folder',
-						children: [{
-							task: 'FireFox',
-							duration: 0.25,
-							user: 'Tommy Maintz',
-							iconCls: 'task',
-							leaf: true
-						}, {
-							task: 'Safari',
-							duration: 0.25,
-							user: 'Tommy Maintz',
-							iconCls: 'task',
-							leaf: true
-						}, {
-							task: 'Chrome',
-							duration: 0.25,
-							user: 'Tommy Maintz',
-							iconCls: 'task',
-							leaf: true
-						}]
-					},{
-						task: 'Windows',
-						duration: 3.75,
-						user: 'Darrell Meyer',
-						iconCls: 'task-folder',
-						children: [{
-							task: 'FireFox',
-							duration: 0.25,
-							user: 'Darrell Meyer',
-							iconCls: 'task',
-							leaf: true
-						}, {
-							task: 'Safari',
-							duration: 0.25,
-							user: 'Darrell Meyer',
-							iconCls: 'task',
-							leaf: true
-						}, {
-							task: 'Chrome',
-							duration: 0.25,
-							user: 'Darrell Meyer',
-							iconCls: 'task',
-							leaf: true
-						},{
-							task: 'Internet Exploder',
-							duration: 3,
-							user: 'Darrell Meyer',
-							iconCls: 'task',
-							leaf: true
-						}]
-					},{
-						task: 'Linux',
-						duration: 0.5,
-						user: 'Aaron Conran',
-						iconCls: 'task-folder',
-						children: [{
-							task: 'FireFox',
-							duration: 0.25,
+							task: 'Linux',
+							duration: 0.5,
 							user: 'Aaron Conran',
-							iconCls: 'task',
-							leaf: true
-						}, {
-							task: 'Chrome',
-							duration: 0.25,
-							user: 'Aaron Conran',
-							iconCls: 'task',
-							leaf: true
+							iconCls: 'task-folder',
+							children: [{
+								task: 'FireFox',
+								duration: 0.25,
+								user: 'Aaron Conran',
+								iconCls: 'task',
+								leaf: true
+							}, {
+								task: 'Chrome',
+								duration: 0.25,
+								user: 'Aaron Conran',
+								iconCls: 'task',
+								leaf: true
+							}]
 						}]
-					}]
-				}
-			]}";		
-			echo $_data;
+					}
+				]}";
+				echo $_data;
+			}
 		}
 	}
 	class GroupingEvent extends TEvent{
@@ -500,7 +502,6 @@ try{
 			echo $_data;
 		}
 	}
-	
 	$lbl1=new TLabel(array(text=>'Label 1'));
 	//$lbl1->text='Label 1';
 //	$lbl1->margin='5 5 5 5';
@@ -1010,8 +1011,8 @@ try{
 	$tabpanel2->items->add('tab63',$tab63);
 	//
 	//For local
-	$treeNode1=new TTreeNode();
-	$treeNode1->text='node 1';
+	$treeNode1=new TTreeNode(array(text=>'node 1'));
+	//$treeNode1->text='node 1';
 	$treeNode2=new TTreeNode();
 	$treeNode2->text='node 2';
 	$treeNode21=new TTreeNode();
@@ -1024,10 +1025,13 @@ try{
 	$treeNode221->text='node 221';
 	$treeNode22->children->add('node221',$treeNode221);
 	$treeNode22->expanded=true;
-	$treeRootNode=new TTreeNode();
-	$treeRootNode->expanded=true;
+	$treeRootNode=new TTreeNode(array(
+		expanded=>true,
+		children=>array($treeNode1,$treeNode2)
+	));
+/*	$treeRootNode->expanded=true;
 	$treeRootNode->children->add('node1',$treeNode1);
-	$treeRootNode->children->add('node2',$treeNode2);
+	$treeRootNode->children->add('node2',$treeNode2);*/
 	//
 	//
 	$tree=new TTree();
@@ -1069,9 +1073,19 @@ try{
 	}
 	else{
 		$tree->onAfterRender("
-			Ext.getCmp('tree').getStore().load();
+			operation = new Ext.data.Operation({
+				filters: [
+					{'property':'load','value':1}
+				]
+			});	
+			Ext.getCmp('tree').getStore().load(operation);	//ExtJS execute store twice in the tree (???), use filters to kill the bug
 		");
 	}
+/*	$tree->onItemClick("
+		var _o=record.fields.getAt(index);
+		for (var _p in _o)
+		if (!confirm(_p+'='+_o[_p])) break;
+	");*/
 	//
 	$tab7=new TTab();
 	$tab7->layout='fit';

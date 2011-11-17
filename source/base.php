@@ -338,6 +338,16 @@
 				elseif (!strcasecmp($keys[$i],buttonAlign)) $this->buttonAlign=$v;
 				elseif (!strcasecmp($keys[$i],buttonText)) $this->buttonText=$v;
 				elseif (!strcasecmp($keys[$i],checked)) $this->checked=$v;
+				elseif (!strcasecmp($keys[$i],children)){
+					if (is_array($v)){
+						for($j=0;$j<count($v);$j++){
+							$this->children->add(spl_object_hash($v[$j]),$v[$j]);
+						}
+					}
+					else{
+						$this->children->add(spl_object_hash($v),$v);
+					}
+				}
 				elseif (!strcasecmp($keys[$i],clearCls)) $this->clearCls=$v;
 				elseif (!strcasecmp($keys[$i],clicksToEdit)) $this->clicksToEdit=$v;
 				elseif (!strcasecmp($keys[$i],clicksToMoveEditor)) $this->clicksToMoveEditor=$v;
@@ -413,6 +423,7 @@
 				elseif (!strcasecmp($keys[$i],enableGroupingMenu)) $this->enableGroupingMenu=$v;
 				elseif (!strcasecmp($keys[$i],enableNoGroups)) $this->enableNoGroups=$v;
 				elseif (!strcasecmp($keys[$i],errorSummary)) $this->errorSummary=$v;
+				elseif (!strcasecmp($keys[$i],expanded)) $this->expanded=$v;
 				elseif (!strcasecmp($keys[$i],groupByText)) $this->groupByText=$v;
 				elseif (!strcasecmp($keys[$i],groupField)) $this->groupField=$v;
 				elseif (!strcasecmp($keys[$i],groupHeaderTpl)) $this->groupHeaderTpl=$v;
@@ -881,6 +892,17 @@
 			$this->checked=$v;
 			return ($this);
 		}
+		public function children($v){
+			if (is_array($v)){
+				for($j=0;$j<count($v);$j++){
+					$this->children->add(spl_object_hash($v[$j]),$v[$j]);
+				}
+			}
+			else{
+				$this->children->add(spl_object_hash($v),$v);
+			}
+			return ($this);
+		}
 		public function clearCls($v){ 
 			$this->clearCls=$v;
 			return ($this);
@@ -1122,6 +1144,10 @@
 		}
 		public function errorSummary($v){ 
 			$this->errorSummary=$v;
+			return ($this);
+		}
+		public function expanded($v){ 
+			$this->expanded=$v;
 			return ($this);
 		}
 		public function groupByText($v){ 
