@@ -192,8 +192,16 @@
 			$this->listeners->add('itemclick',$this->getString($value));
 		}
 
+		public function onItemCollapse($value){
+			$this->listeners->add('itemcollapse',$this->getString($value));
+		}
+
 		public function onItemDblClick($value){
 			$this->listeners->add('itemdblclick',$this->getString($value));
+		}
+		
+		public function onItemExpand($value){
+			$this->listeners->add('itemexpand',$this->getString($value));
 		}
 
 		public function onKeyDown($value){

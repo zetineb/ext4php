@@ -1081,11 +1081,6 @@ try{
 			Ext.getCmp('tree').getStore().load(operation);	//ExtJS execute store twice in the tree (???), use filters to kill the bug
 		");
 	}
-/*	$tree->onItemClick("
-		var _o=record.fields.getAt(index);
-		for (var _p in _o)
-		if (!confirm(_p+'='+_o[_p])) break;
-	");*/
 	//
 	$tab7=new TTab();
 	$tab7->layout='fit';

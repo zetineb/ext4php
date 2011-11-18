@@ -90,8 +90,12 @@
 				$this->writeLn('autoScroll:'.$this->boolean[$obj->autoScroll].',');
 			if (!is_null($obj->baseCls))
 				$this->writeLn('baseCls:"'.$obj->baseCls.'",');
-			if (!is_null($obj->border))
-				$this->writeLn('border:'.$obj->border.',');
+			if (!is_null($obj->border)){
+				if (is_int($obj->border))
+					$this->writeLn('border:'.$obj->border.',');
+				else
+					$this->writeLn('border:"'.$obj->border.'",');
+			}
 			if (!is_null($obj->cls))
 				$this->writeLn('cls:"'.$obj->cls.'",');
 			if (!is_null($obj->defaults)){
@@ -161,15 +165,19 @@
 				$this->writeLn('],');
 			}
 			if (!is_null($obj->bodyBorder))
-				$this->writeLn('bodyBorder:'.$obj->bodyBorder.',');
+				$this->writeLn('bodyBorder:'.$this->boolean[$obj->bodyBorder].',');
 			if (!is_null($obj->bodyCls))
 					$this->writeLn('bodyCls:"'.$obj->bodyCls.'",');
 			if (!is_null($obj->bodyPadding))
 					$this->writeLn('bodyPadding:"'.$obj->bodyPadding.'",');
 			if (!is_null($obj->bodyStyle))
 					$this->writeLn('bodyStyle:"'.$obj->bodyStyle.'",');
-			if (!is_null($obj->border))
-				$this->writeLn('border:'.$obj->border.',');
+			if (!is_null($obj->border)){
+				if (is_int($obj->border))
+					$this->writeLn('border:'.$obj->border.',');
+				else
+					$this->writeLn('border:"'.$obj->border.'",');
+			}
 			if ($obj->buttons->count()){
 				$this->writeLn('buttons:[');
 				$this->mkItems($obj->buttons);
@@ -294,8 +302,12 @@
 
 			if (!is_null($obj->baseCls))
 				$this->writeLn('baseCls:"'.$obj->baseCls.'",');
-			if (!is_null($obj->border))
-				$this->writeLn('border:'.$obj->border.',');
+			if (!is_null($obj->border)){
+				if (is_int($obj->border))
+					$this->writeLn('border:'.$obj->border.',');
+				else
+					$this->writeLn('border:"'.$obj->border.'",');
+			}
 			if (!is_null($obj->closable))
 				$this->writeLn('closable:'.$this->boolean[$obj->closable].',');
 			if (!is_null($obj->closeText))
@@ -385,15 +397,19 @@
 				$this->writeLn('],');
 			}
 			if (!is_null($obj->bodyBorder))
-				$this->writeLn('bodyBorder:'.$obj->bodyBorder.',');
+				$this->writeLn('bodyBorder:'.$this->boolean[$obj->bodyBorder].',');
 			if (!is_null($obj->bodyCls))
 				$this->writeLn('bodyCls:"'.$obj->bodyCls.'",');
 			if (!is_null($obj->bodyPadding))
 				$this->writeLn('bodyPadding:"'.$obj->bodyPadding.'",');
 			if (!is_null($obj->bodyStyle))
 				$this->writeLn('bodyStyle:"'.$obj->bodyStyle.'",');
-			if (!is_null($obj->border))
-				$this->writeLn('border:'.$obj->border.',');
+			if (!is_null($obj->border)){
+				if (is_int($obj->border))
+					$this->writeLn('border:'.$obj->border.',');
+				else
+					$this->writeLn('border:"'.$obj->border.'",');
+			}
 			if ($obj->buttons->count()){
 				$this->writeLn('buttons:[');
 				$this->mkItems($obj->buttons);
@@ -493,8 +509,12 @@
 		private function mkLabel($obj){
 			if (!is_null($obj->baseCls))
 				$this->writeLn('baseCls:"'.$obj->baseCls.'",');
-			if (!is_null($obj->border))
-				$this->writeLn('border:'.$obj->border.',');
+			if (!is_null($obj->border)){
+				if (is_int($obj->border))
+					$this->writeLn('border:'.$obj->border.',');
+				else
+					$this->writeLn('border:"'.$obj->border.'",');
+			}
 			if (!is_null($obj->cls))
 				$this->writeLn('cls:"'.$obj->cls.'",');
 			if (!is_null($obj->disabled))
@@ -534,8 +554,12 @@
 				$this->writeLn('anchor:"'.$obj->anchor.'",');
 			if (!is_null($obj->baseCls))
 				$this->writeLn('baseCls:"'.$obj->baseCls.'",');
-			if (!is_null($obj->border))
-				$this->writeLn('border:'.$obj->border.',');
+			if (!is_null($obj->border)){
+				if (is_int($obj->border))
+					$this->writeLn('border:'.$obj->border.',');
+				else
+					$this->writeLn('border:"'.$obj->border.'",');
+			}
 			if (!is_null($obj->boxLabel))
 				$this->writeLn('boxLabel:"'.$obj->boxLabel.'",');
 			if (!is_null($obj->boxLabelAlign))
@@ -627,8 +651,12 @@
 				$this->writeLn('blankText:"'.$obj->blankText.'",');
 			if (!is_null($obj->baseCls))
 				$this->writeLn('baseCls:"'.$obj->baseCls.'",');
-			if (!is_null($obj->border))
-				$this->writeLn('border:'.$obj->border.',');
+			if (!is_null($obj->border)){
+				if (is_int($obj->border))
+					$this->writeLn('border:'.$obj->border.',');
+				else
+					$this->writeLn('border:"'.$obj->border.'",');
+			}
 			if (!is_null($obj->clearCls))
 				$this->writeLn('clearCls:"'.$obj->clearCls.'",');
 			if (!is_null($obj->cls))
@@ -798,8 +826,12 @@
 				$this->writeLn('baseCls:"'.$obj->baseCls.'",');
 			if (!is_null($obj->blankText))
 				$this->writeLn('blankText:"'.$obj->blankText.'",');
-			if (!is_null($obj->border))
-				$this->writeLn('border:'.$obj->border.',');
+			if (!is_null($obj->border)){
+				if (is_int($obj->border))
+					$this->writeLn('border:'.$obj->border.',');
+				else
+					$this->writeLn('border:"'.$obj->border.'",');
+			}
 			if (!is_null($obj->clearCls))
 				$this->writeLn('clearCls:"'.$obj->clearCls.'",');
 			if (!is_null($obj->cls))
@@ -932,8 +964,12 @@
 				$this->writeLn('anchor:"'.$obj->anchor.'",');
 			if (!is_null($obj->baseCls))
 				$this->writeLn('baseCls:"'.$obj->baseCls.'",');
-			if (!is_null($obj->border))
-				$this->writeLn('border:'.$obj->border.',');
+			if (!is_null($obj->border)){
+				if (is_int($obj->border))
+					$this->writeLn('border:'.$obj->border.',');
+				else
+					$this->writeLn('border:"'.$obj->border.'",');
+			}
 			if (!is_null($obj->clearCls))
 				$this->writeLn('clearCls:"'.$obj->clearCls.'",');
 			if (!is_null($obj->cls))
@@ -1005,8 +1041,12 @@
 				$this->writeLn('anchor:"'.$obj->anchor.'",');
 			if (!is_null($obj->baseCls))
 				$this->writeLn('baseCls:"'.$obj->baseCls.'",');
-			if (!is_null($obj->border))
-				$this->writeLn('border:'.$obj->border.',');
+			if (!is_null($obj->border)){
+				if (is_int($obj->border))
+					$this->writeLn('border:'.$obj->border.',');
+				else
+					$this->writeLn('border:"'.$obj->border.'",');
+			}
 			if (!is_null($obj->buttonText))
 				$this->writeLn('buttonText:"'.$obj->buttonText.'",');
 			if (!is_null($obj->clearCls))
@@ -1089,8 +1129,12 @@
 				$this->writeLn('autoScroll:'.$this->boolean[$obj->autoScroll].',');
 			if (!is_null($obj->baseCls))
 				$this->writeLn('baseCls:"'.$obj->baseCls.'",');
-			if (!is_null($obj->border))
-				$this->writeLn('border:'.$obj->border.',');
+			if (!is_null($obj->border)){
+				if (is_int($obj->border))
+					$this->writeLn('border:'.$obj->border.',');
+				else
+					$this->writeLn('border:"'.$obj->border.'",');
+			}
 			if (!is_null($obj->clearCls))
 				$this->writeLn('clearCls:"'.$obj->clearCls.'",');
 			if (!is_null($obj->cls))
@@ -1192,8 +1236,12 @@
 				$this->writeLn('baseCls:"'.$obj->baseCls.'",');
 			if (!is_null($obj->blankText))
 				$this->writeLn('blankText:"'.$obj->blankText.'",');
-			if (!is_null($obj->border))
-				$this->writeLn('border:'.$obj->border.',');
+			if (!is_null($obj->border)){
+				if (is_int($obj->border))
+					$this->writeLn('border:'.$obj->border.',');
+				else
+					$this->writeLn('border:"'.$obj->border.'",');
+			}
 			if (!is_null($obj->clearCls))
 				$this->writeLn('clearCls:"'.$obj->clearCls.'",');
 			if (!is_null($obj->cls))
@@ -1309,8 +1357,12 @@
 				$this->writeLn('anchor:"'.$obj->anchor.'",');
 			if (!is_null($obj->baseCls))
 				$this->writeLn('baseCls:"'.$obj->baseCls.'",');
-			if (!is_null($obj->border))
-				$this->writeLn('border:'.$obj->border.',');
+			if (!is_null($obj->border)){
+				if (is_int($obj->border))
+					$this->writeLn('border:'.$obj->border.',');
+				else
+					$this->writeLn('border:"'.$obj->border.'",');
+			}
 			if (!is_null($obj->boxLabel))
 				$this->writeLn('boxLabel:"'.$obj->boxLabel.'",');
 			if (!is_null($obj->boxLabelAlign))
@@ -1400,8 +1452,12 @@
 				$this->writeLn('blankText:"'.$obj->blankText.'",');
 			if (!is_null($obj->baseCls))
 				$this->writeLn('baseCls:"'.$obj->baseCls.'",');
-			if (!is_null($obj->border))
-				$this->writeLn('border:'.$obj->border.',');
+			if (!is_null($obj->border)){
+				if (is_int($obj->border))
+					$this->writeLn('border:'.$obj->border.',');
+				else
+					$this->writeLn('border:"'.$obj->border.'",');
+			}
 			if (!is_null($obj->clearCls))
 				$this->writeLn('clearCls:"'.$obj->clearCls.'",');
 			if (!is_null($obj->cls))
@@ -1486,8 +1542,12 @@
 				$this->writeLn('blankText:"'.$obj->blankText.'",');
 			if (!is_null($obj->baseCls))
 				$this->writeLn('baseCls:"'.$obj->baseCls.'",');
-			if (!is_null($obj->border))
-				$this->writeLn('border:'.$obj->border.',');
+			if (!is_null($obj->border)){
+				if (is_int($obj->border))
+					$this->writeLn('border:'.$obj->border.',');
+				else
+					$this->writeLn('border:"'.$obj->border.'",');
+			}
 			if (!is_null($obj->clearCls))
 				$this->writeLn('clearCls:"'.$obj->clearCls.'",');
 			if (!is_null($obj->cls))
@@ -1572,8 +1632,12 @@
 				$this->writeLn('baseCls:"'.$obj->baseCls.'",');
 			if (!is_null($obj->blankText))
 				$this->writeLn('blankText:"'.$obj->blankText.'",');
-			if (!is_null($obj->border))
-				$this->writeLn('border:'.$obj->border.',');
+			if (!is_null($obj->border)){
+				if (is_int($obj->border))
+					$this->writeLn('border:'.$obj->border.',');
+				else
+					$this->writeLn('border:"'.$obj->border.'",');
+			}
 			if (!is_null($obj->clearCls))
 				$this->writeLn('clearCls:"'.$obj->clearCls.'",');
 			if (!is_null($obj->cls))
@@ -1678,8 +1742,12 @@
 				$this->writeLn('activeError:"'.$obj->activeError.'",');
 			if (!is_null($obj->baseCls))
 				$this->writeLn('baseCls:"'.$obj->baseCls.'",');
-			if (!is_null($obj->border))
-				$this->writeLn('border:'.$obj->border.',');
+			if (!is_null($obj->border)){
+				if (is_int($obj->border))
+					$this->writeLn('border:'.$obj->border.',');
+				else
+					$this->writeLn('border:"'.$obj->border.'",');
+			}
 			if (!is_null($obj->cls))
 				$this->writeLn('cls:"'.$obj->cls.'",');
 			if (!is_null($obj->columns))
@@ -1728,8 +1796,12 @@
 				$this->writeLn('activeError:"'.$obj->activeError.'",');
 			if (!is_null($obj->baseCls))
 				$this->writeLn('baseCls:"'.$obj->baseCls.'",');
-			if (!is_null($obj->border))
-				$this->writeLn('border:'.$obj->border.',');
+			if (!is_null($obj->border)){
+				if (is_int($obj->border))
+					$this->writeLn('border:'.$obj->border.',');
+				else
+					$this->writeLn('border:"'.$obj->border.'",');
+			}
 			if (!is_null($obj->cls))
 				$this->writeLn('cls:"'.$obj->cls.'",');
 			if (!is_null($obj->disabled))
@@ -1774,8 +1846,12 @@
 				$this->writeLn('activeError:"'.$obj->activeError.'",');
 			if (!is_null($obj->baseCls))
 				$this->writeLn('baseCls:"'.$obj->baseCls.'",');
-			if (!is_null($obj->border))
-				$this->writeLn('border:'.$obj->border.',');
+			if (!is_null($obj->border)){
+				if (is_int($obj->border))
+					$this->writeLn('border:'.$obj->border.',');
+				else
+					$this->writeLn('border:"'.$obj->border.'",');
+			}
 			if (!is_null($obj->cls))
 				$this->writeLn('cls:"'.$obj->cls.'",');
 			if (!is_null($obj->collapsed))
@@ -2175,8 +2251,12 @@
 				$this->mkItems($obj->bbar);
 				$this->writeLn('],');
 			}
-			if (!is_null($obj->border))
-				$this->writeLn('border:'.$obj->border.',');
+			if (!is_null($obj->border)){
+				if (is_int($obj->border))
+					$this->writeLn('border:'.$obj->border.',');
+				else
+					$this->writeLn('border:"'.$obj->border.'",');
+			}
 			if (!is_null($obj->buttonAlign))
 				$this->writeLn('buttonAlign:"'.$obj->buttonAlign.'",');
 			if ($obj->buttons->count()){
@@ -2381,8 +2461,12 @@
 				$this->writeLn('baseCls:"'.$obj->baseCls.'",');
 			if (!is_null($obj->blockRefresh))
 				$this->writeLn('blockRefresh:'.$this->boolean[$obj->blockRefresh].',');
-			if (!is_null($obj->border))
-				$this->writeLn('border:'.$obj->border.',');
+			if (!is_null($obj->border)){
+				if (is_int($obj->border))
+					$this->writeLn('border:'.$obj->border.',');
+				else
+					$this->writeLn('border:"'.$obj->border.'",');
+			}
 			if (!is_null($obj->cls))
 				$this->writeLn('cls:"'.$obj->cls.'",');
 			if (!is_null($obj->disableSelection))
@@ -2592,8 +2676,12 @@
 			}
 			if (!is_null($obj->baseCls))
 				$this->writeLn('baseCls:"'.$obj->baseCls.'",');
-			if (!is_null($obj->border))
-				$this->writeLn('border:'.$obj->border.',');
+			if (!is_null($obj->border)){
+				if (is_int($obj->border))
+					$this->writeLn('border:'.$obj->border.',');
+				else
+					$this->writeLn('border:"'.$obj->border.'",');
+			}
 			if (!is_null($obj->cls))
 				$this->writeLn('cls:"'.$obj->cls.'",');
 			if (!is_null($obj->disabled))
@@ -2986,8 +3074,12 @@
 				$this->mkItems($obj->bbar);
 				$this->writeLn('],');
 			}
-			if (!is_null($obj->border))
-				$this->writeLn('border:'.$obj->border.',');
+			if (!is_null($obj->border)){
+				if (is_int($obj->border))
+					$this->writeLn('border:'.$obj->border.',');
+				else
+					$this->writeLn('border:"'.$obj->border.'",');
+			}
 			if (!is_null($obj->bodyBorder))
 				$this->writeLn('bodyBorder:'.$this->boolean[$obj->bodyBorder].',');
 			if (!is_null($obj->bodyCls))
@@ -3290,15 +3382,19 @@
 					$this->writeLn('],');
 				}
 				if (!is_null($this->windows->value()->bodyBorder))
-					$this->writeLn('bodyBorder:'.$this->windows->value()->bodyBorder.',');
+					$this->writeLn('bodyBorder:'.$this->boolean[$this->windows->value()->bodyBorder].',');
 				if (!is_null($this->windows->value()->bodyCls))
 					$this->writeLn('bodyCls:"'.$this->windows->value()->bodyCls.'",');
 				if (!is_null($this->windows->value()->bodyPadding))
 					$this->writeLn('bodyPadding:"'.$this->windows->value()->bodyPadding.'",');
 				if (!is_null($this->windows->value()->bodyStyle))
 					$this->writeLn('bodyStyle:"'.$this->windows->value()->bodyStyle.'",');
-				if (!is_null($this->windows->value()->border))
-					$this->writeLn('border:'.$this->windows->value()->border.',');
+				if (!is_null($this->windows->value()->border)){
+					if (is_int($this->windows->value()->border))
+						$this->writeLn('border:'.$this->windows->value()->border.',');
+					else
+						$this->writeLn('border:"'.$this->windows->value()->border.'",');
+				}
 				if ($this->windows->value()->buttons->count()){
 					$this->writeLn('buttons:[');
 					$this->mkItems($this->windows->value()->buttons);
@@ -3427,8 +3523,12 @@
 				$this->writeLn('activeItem:'.$this->activeItem.',');
 			if (!is_null($this->baseCls)) 
 				$this->writeLn('baseCls:"'.$this->baseCls.'",');
-			if (!is_null($this->border)) 
-				$this->writeLn('border:'.$this->border.',');
+			if (!is_null($this->border)){
+				if (is_int($this->border))
+					$this->writeLn('border:'.$this->border.',');
+				else
+					$this->writeLn('border:"'.$this->border.'",');
+			}
 			if (!is_null($this->cls)) 
 				$this->writeLn('cls:"'.$this->cls.'",');
 			if (!is_null($this->defaults)){

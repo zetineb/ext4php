@@ -17,3 +17,4 @@ PS     : All tests are being done with WampServer 2.1e (32 bit)
 					1.0.8.0=> several bug fixes and update grid plugins
 					1.0.8.1=> update form fields events
 					1.0.8.2=> bug-fix TTree
+					1.0.8.3=> several bug fixes an update tree events
