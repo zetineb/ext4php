@@ -1081,6 +1081,16 @@ try{
 			Ext.getCmp('tree').getStore().load(operation);	//ExtJS execute store twice in the tree (???), use filters to kill the bug
 		");
 	}
+	$tree->onItemClick("
+		alert(record.get('task'));
+		//alert(record.get('text'));	//for TQueryModeType -> local
+/*		var _o=Ext.getCmp('tree').getSelectionModel().selected;
+		_o.each(function(_res){
+					for(var _p in _res.data){
+					  alert(_p+'='+_res.data[_p]);
+					}
+		});*/
+	");
 	//
 	$tab7=new TTab();
 	$tab7->layout='fit';
