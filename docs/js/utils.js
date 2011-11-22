@@ -23,5 +23,11 @@ _APP={
 			if (_p.msg) Ext.Msg.hide();
 			alert(e.message)
 		}
-	}
+	},
+	fileExists:function(strURL){
+		oHttp = window.ActiveXObject ? new ActiveXObject('Microsoft.XMLHTTP') : new XMLHttpRequest();
+		oHttp.open('GET', strURL, false); 
+		oHttp.send();
+		return oHttp.responseText.indexOf('404 - File not found') > 0 ? false : true;
+	}	
 }

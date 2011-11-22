@@ -1,0 +1,19 @@
+<?php
+     $app->package=array(
+         TPackage::$button,
+	     TPackage::$chart,
+		 TPackage::$container,
+		 TPackage::$data,
+		 TPackage::$form,
+		 TPackage::$grid,
+		 TPackage::$layout,
+		 TPackage::$menu,
+		 TPackage::$tab,
+		 TPackage::$tip,
+		 TPackage::$toolbar,
+		 TPackage::$util,
+		 TPackage::$view,
+		 TPackage::$tree,
+		 TPackage::$window
+     );
+?>

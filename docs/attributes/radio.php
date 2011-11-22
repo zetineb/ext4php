@@ -1,0 +1,164 @@
+<?php 
+include("principal.html");
+?>
+    
+<h2 class="demoHeaders">Radio</h2>
+<div id="accordion">
+	<div>
+        <h3><a href="#"> activeError: <strong class="stitulo"> String </strong></a></h3>
+        <div class="barra">If specified, then the component will be displayed with this value as its active error when first rendered. Use setActiveError or unsetActiveError to        change it after component creation.</div>
+    </div>
+    <div>
+        <h3><a href="#"> baseCls: <strong class="stitulo"> String </strong></a></h3>
+        <div class="barra">The base CSS class to apply to this components's element. This will also be prepended to elements within this component like Panel's body will get a        class x-panel-body. This means that if you create a subclass of Panel, and you want it to get all the Panels styling for the element and the body, you leave        the baseCls x-panel and use componentCls to add specific styling for this component.
+        <br /><br />
+        Defaults to: "x-component"</div>
+    </div>
+    <div>
+        <h3><a href="#"> border: <strong class="stitulo"> Number/String </strong></a></h3>
+        <div class="barra">Specifies the border for this component. The border can be a single numeric value to apply to all sides or it can be a CSS style specification for each        style, for example: '10 5 3 10'.</div>
+    </div>
+    <div>
+        <h3><a href="#"> boxLabel: <strong class="stitulo"> String </strong></a></h3>
+        <div class="barra">An optional text label that will appear next to the checkbox. Whether it appears before or after the checkbox is determined by the boxLabelAlign        config.</div>
+    </div>
+    <div>
+        <h3><a href="#"> boxLabelAlign: <strong class="stitulo"> String </strong></a></h3>
+        <div class="barra">The position relative to the checkbox where the boxLabel should appear. Recognized values are 'before' and 'after'.
+        <br /><br />
+        Defaults to: "after"</div>
+    </div>
+    <div>
+        <h3><a href="#"> checked: <strong class="stitulo"> Boolean </strong></a></h3>
+        <div class="barra">true if the checkbox should render initially checked
+        <br /><br />
+        Defaults to: false</div>
+    </div>
+    <div>
+        <h3><a href="#"> clearCls: <strong class="stitulo"> String </strong></a></h3>
+        <div class="barra">The CSS class to be applied to the special clearing div rendered directly after the field contents wrapper to provide field clearing.
+        <br /><br />
+        Defaults to: "x-clear"</div>
+    </div>
+    <div>
+        <h3><a href="#"> cls: <strong class="stitulo"> String </strong></a></h3>
+        <div class="barra">An optional extra CSS class that will be added to this component's Element. This can be useful for adding customized styles to the component or any of        its children using standard CSS rules.
+        <br /><br />
+        Defaults to: ""</div>
+    </div>
+    <div>
+        <h3><a href="#"> disabled: <strong class="stitulo"> Boolean </strong></a></h3>
+        <div class="barra">True to disable the field. Disabled Fields will not be submitted.
+        <br /><br />
+        Defaults to: false</div>
+    </div>
+    <div>
+        <h3><a href="#"> fieldLabel: <strong class="stitulo"> String </strong></a></h3>
+        <div class="barra">The label for the field. It gets appended with the labelSeparator, and its position and sizing is determined by the labelAlign, labelWidth, and        labelPad configs.</div>
+    </div>
+    <div>
+        <h3><a href="#"> handler: <strong class="stitulo"> Function </strong></a></h3>
+        <div class="barra">A function called when the checked value changes (can be used instead of handling the change event).
+        <br /><br />
+        <b>Parameters</b>
+        <br /><br />
+        &bull; checkbox : Ext.form.field.Checkbox
+        <br />
+        The Checkbox being toggled. <br /><br />
+        &bull; checked : Boolean<br />
+        The new checked state of the checkbox.
+    </div>
+    </div>
+    <div>
+        <h3><a href="#"> height: <strong class="stitulo"> Number </strong></a></h3>
+        <div class="barra">The height of this component in pixels.</div>
+    </div>
+    <div>
+        <h3><a href="#"> hidden: <strong class="stitulo"> Boolean </strong></a></h3>
+        <div class="barra">True to hide the component.
+        <br /><br />
+        Defaults to: false</div>
+    </div>
+    <div>
+        <h3><a href="#"> html: <strong class="stitulo"> String/Object </strong></a></h3>
+        <div class="barra">An HTML fragment, or a DomHelper specification to use as the layout element content. The HTML content is added after the component is rendered, so the        document will not contain this HTML at the time the render event is fired. This content is inserted into the body before any configured contentEl is        appended.
+        <br /><br />
+        Defaults to: ""</div>
+    </div>
+    <div>
+        <h3><a href="#"> inputValue: <strong class="stitulo"> String </strong></a></h3>
+        <div class="barra">The value that should go into the generated input element's value attribute and should be used as the parameter value when submitting as part of a        form.
+        <br /><br />
+        Defaults to: "on"</div>
+    </div>
+    <div>
+        <h3><a href="#"> labelAlign: <strong class="stitulo"> String </strong></a></h3>
+        <div class="barra">Controls the position and alignment of the fieldLabel. Valid values are:
+		<br /><br />
+    	&bull; "left" (the default) - The label is positioned to the left of the field, with its text aligned to the left. Its width is determined by the labelWidth        config.
+    	<br />
+    	&bull; "top" - The label is positioned above the field.
+    	<br />
+	    &bull; "right" - The label is positioned to the left of the field, with its text aligned to the right. Its width is determined by the labelWidth config.
+        <br /><br />
+        Defaults to: "left"</div>
+    </div>
+    <div>
+        <h3><a href="#"> labelPad: <strong class="stitulo"> Number </strong></a></h3>
+        <div class="barra">The amount of space in pixels between the fieldLabel and the input field.
+        <br /><br />
+        Defaults to: 5</div>
+    </div>
+    <div>
+        <h3><a href="#"> labelSeparator: <strong class="stitulo"> String </strong></a></h3>
+        <div class="barra">Character(s) to be inserted at the end of the label text.
+        <br /><br />
+        Defaults to: ":"</div>
+    </div>
+    <div>
+        <h3><a href="#"> labelWidth: <strong class="stitulo"> Number </strong></a></h3>
+        <div class="barra">The width of the fieldLabel in pixels. Only applicable if the labelAlign is set to "left" or "right".
+        <br /><br />
+        Defaults to: 100</div>
+    </div>
+    <div>
+        <h3><a href="#"> margin: <strong class="stitulo"> Number/String </strong></a></h3>
+        <div class="barra">Specifies the margin for this component. The margin can be a single numeric value to apply to all sides or it can be a CSS style specification for each        style, for example: '10 5 3 10'.</div>
+    </div>
+    <div>
+        <h3><a href="#"> name: <strong class="stitulo"> String </strong></a></h3>
+        <div class="barra">The name of the field. This is used as the parameter name when including the field value in a form submit(). If no name is configured, it falls back to        the inputId. To prevent the field from being included in the form submit, set submitValue to false.</div>
+    </div>
+    <div>
+        <h3><a href="#"> padding: <strong class="stitulo"> Number/String </strong></a></h3>
+        <div class="barra">Specifies the padding for this component. The padding can be a single numeric value to apply to all sides or it can be a CSS style specification for        each style, for example: '10 5 3 10'.</div>
+    </div>
+    <div>
+        <h3><a href="#"> readOnly: <strong class="stitulo"> Boolean </strong></a></h3>
+        <div class="barra">true to mark the field as readOnly in HTML.
+		<br /><br />
+        <b>Note:</b> this only sets the element's readOnly DOM attribute. Setting readOnly=true, for example, will not disable triggering a ComboBox or Date; it        gives you the option of forcing the user to choose via the trigger without typing in the text box. To hide the trigger use hideTrigger.
+        <br /><br />
+        Defaults to: false</div>
+    </div>
+    <div>
+        <h3><a href="#"> style: <strong class="stitulo"> String </strong></a></h3>
+        <div class="barra">A custom style specification to be applied to this component's Element. Should be a valid argument to Ext.Element.applyStyles.</div>
+    </div>
+    <div>
+        <h3><a href="#"> tabIndex: <strong class="stitulo"> Number </strong></a></h3>
+        <div class="barra">The tabIndex for this field. Note this only applies to fields that are rendered, not those which are built via applyTo</div>
+    </div>
+    <div>
+        <h3><a href="#"> tpl: <strong class="stitulo"> Ext.XTemplate/Ext.Template/String/String[] </strong></a></h3>
+        <div class="barra">An Ext.Template, Ext.XTemplate or an array of strings to form an Ext.XTemplate. Used in conjunction with the data and tplWriteMode configurations.</div>
+    </div>
+    <div>
+        <h3><a href="#"> value: <strong class="stitulo"> Object </strong></a></h3>
+        <div class="barra">A value to initialize this field with.</div>
+    </div>
+    <div>
+        <h3><a href="#"> width: <strong class="stitulo"> Number </strong></a></h3>
+        <div class="barra">The width of this component in pixels.</div>
+    </div>
+</div>

@@ -123,3 +123,9 @@
 .brefresh{
 	background-image: url(../images/buttons/refresh.png) !important;
 }
+.tdocs{
+	background-image: url(../images/tree/docs.png) !important;
+}
+.borderDefaultContainer{
+	border: 1px solid #cccccc !important;
+}

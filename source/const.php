@@ -1,5 +1,5 @@
 <?php
-	define("__version","1.0.8.1");
+	define("__version","1.0.8.5");
 	//
 	define("activeItem","activeItem");
 	define("activeError","activeError");
@@ -169,6 +169,7 @@
 	define("labelWidth","labelWidth");
 	define("language","language");
 	define("layout","layout");
+	define("leaf","leaf");
 	define("legend","legend");
 	define("length","length");
 	define("lengthField","lengthField");

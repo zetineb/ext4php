@@ -544,6 +544,7 @@
 				elseif (!strcasecmp($keys[$i],labelWidth)) $this->labelWidth=$v;
 				elseif (!strcasecmp($keys[$i],language)) $this->language=$v;
 				elseif (!strcasecmp($keys[$i],layout)) $this->layout=$v;
+				elseif (!strcasecmp($keys[$i],leaf)) $this->leaf=$v;
 				elseif (!strcasecmp($keys[$i],legend)) $this->legend=$v;
 				elseif (!strcasecmp($keys[$i],lbar)){
 					if (is_array($v)){
@@ -1473,6 +1474,10 @@
 		}
 		public function layout($v){ 
 			$this->layout=$v;
+			return ($this);
+		}
+		public function leaf($v){ 
+			$this->leaf=$v;
 			return ($this);
 		}
 		public function legend($v){ 
