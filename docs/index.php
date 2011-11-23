@@ -10,7 +10,12 @@ try{
 		TPackage::$layout,
 		TPackage::$tree,
 	);
-	$app->ext='ext-4.0.7-gpl';	
+	$app->ext='../ext-4.0.7-gpl';	
+	$app->headers->add('author1','<meta name="author" content="Fausto Castagnari Marouvo, fausto@grupouds.com.br">');
+	$app->headers->add('author2','<meta name="author" content="Cezar Aluisio Pavelski, cezar@pavelski.net">');
+	$app->headers->add('author3','<meta name="author" content="Kaisa Fernanda P. de Almeida, kaisafernanda@gmail.com.br">');
+	$app->headers->add('title','<title>EXT4PHP Framework Documentation</title>');	
+	$app->headers->add('icon','<link rel="shortcut icon" href="images/favicon.png" />');
 	$app->headers->add('utils','<script type="text/javascript" src="js/utils.js"></script>');
 	$app->headers->add('app-style','<link rel="stylesheet" type="text/css" href="css/app.css"/>');
 

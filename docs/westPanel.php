@@ -117,7 +117,7 @@ class WestPanel{
 		));
 		
 		$nodeS2=new TTreeNode(array(
-			text=>'TCheckboxGroup'
+			text=>'TCheckboxgroup'
 		));
 		
 		$nodeS3=new TTreeNode(array(
@@ -169,7 +169,7 @@ class WestPanel{
 		));
 		
 		$nodeS17=new TTreeNode(array(
-			text=>'TTextarea'
+			text=>'TTextArea'
 		));
 		
 		$nodeS18=new TTreeNode(array(
@@ -407,6 +407,10 @@ class WestPanel{
 		$tree->onItemClick("
 			for(var _i=0;_i<_arrayTabs.length;_i++){	
 				_treeText = record.get('text').replace(' ','');
+				if(_treeText=='StartApplication')
+					_treeText='Startapplication';
+				if(_treeText=='RunApplication')
+					_treeText='Runapplication';
 				if(_arrayTabs[_i][0]==_treeText.toLowerCase()){
 					index=_i;
 					break;
@@ -415,11 +419,12 @@ class WestPanel{
 			}
 			if(index!=null){
 				_filename='class'+_treeText+'.php';
-				_APP.send({event:\"wpn_fileExists\",data:_filename,handler:function(_r){
+				_APP.send({event:\"wpn_fileExists\",data:_treeText,handler:function(_r){
 					if(_r=='OK'){
 						_index=_arrayTabs[index].toString();
-						if(_treeText.substr(0,1)!='T')
+						if(_treeText.substr(0,1)!='T'){
 							_iframe=_filename.toString();
+						}
 						else
 						  _iframe='indexIFrame.php?type='+_index.toString();
 						if (!Ext.getCmp('tab'+_treeText)){
@@ -464,15 +469,20 @@ class WestPanel{
 	class wpn_fileExists extends TEvent{
 		public function execute(){
 			if(isset($this->data)) $file = $this->data; else $file='';
+			$file = strtolower($file);
+			$pos = substr($file,0,1);
+			if($pos=='t')
+				$file = 'class'.strtoupper(substr($file,0,2)).substr($file,2,strlen($file)).'.php';
+			else
+				$file = 'class'.strtoupper(substr($file,0,1)).substr($file,1,strlen($file)).'.php';
 			if($file!=""){
 				if(file_exists($file))
 					echo "OK";
-				else{
+				else
 					echo "FAILURE: File does not exist!";
-				}
 			}else{
 				echo "FAILURE: GET File is empty!";
-			}			
+			}		
 		}
 	}
 ?>

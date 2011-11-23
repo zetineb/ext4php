@@ -7,15 +7,15 @@ require_once "TTabDefault.php";
 require_once "classTButton.php";
 require_once "classTContainer.php";
 require_once "classTText.php";
-require_once "classTTextArea.php";
+require_once "classTTextarea.php";
 require_once "classTDate.php";
-require_once "classTHtmlEditor.php";
+require_once "classTHtmleditor.php";
 require_once "classTNumber.php";
 require_once "classTTime.php";
 require_once "classTLabel.php";
-require_once "classTComboBox.php";
+require_once "classTCombobox.php";
 require_once "classTDisplay.php";
-require_once "classTCheckBox.php";
+require_once "classTCheckbox.php";
 require_once "classTRadio.php";
 require_once "classTFile.php";
 require_once "classTFieldset.php";
@@ -69,6 +69,7 @@ try{
             case 'tfile':  $object = new classTFile(); break;
             case 'tradio':  $object = new classTRadio(); break;
             case 'tfieldset':  $object = new classTFieldset(); break;
+            case 'twindow':  $object = new classTWindow();break;
             default:  $object = new classTText(); break;
        }
     }else{
@@ -77,11 +78,13 @@ try{
 
 
     $container->items->add('object',$object->execute());
+    if($_GET['type']=='window'){
+      $app->windows->add('windowObject',$object->getWindow());
+    }
 
     $app->items->add('main',$container);
    	$app->events->add('comboboxRemote',new ComboboxRemote());
-    //$app->windows->add('window',$oWindow->getWindow());
-    
+
 	$app->show();
 }
 catch(Exception $e){

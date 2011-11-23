@@ -104,7 +104,7 @@ switch($type){
 		 ));
       ?>';
       break;
-   case 'htmleditor':
+   case 'htmlEditor':
       $stringObj='
       <?php
         $obj = new THtmlEditor(array(
@@ -116,7 +116,7 @@ switch($type){
       ?>
       ';
       break;
-   case 'textarea':
+   case 'textArea':
       $stringObj='
       <?php
         $obj = new TTextArea(array(

@@ -19,3 +19,4 @@ PS     : All tests are being done with WampServer 2.1e (32 bit)
 					1.0.8.2=> bug-fix TTree
 					1.0.8.3=> several bug fixes and update tree events
 					1.0.8.5=> update application docs
+					1.0.8.6=> bug-fix application docs

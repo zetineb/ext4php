@@ -9,6 +9,10 @@ include("principal.html");
         <div class="barra">If specified, then the component will be displayed with this value as its active error when first rendered. Use setActiveError or unsetActiveError to        change it after component creation.</div>
     </div>
     <div>
+        <h3><a href="#"> anchor: <strong class="stitulo">  </strong></a></h3>
+        <div class="barra"></div>
+    </div>
+    <div>
         <h3><a href="#"> autoScroll: <strong class="stitulo"> Boolean </strong></a></h3>
         <div class="barra">true to use overflow:'auto' on the components layout element and show scroll bars automatically when necessary, false to clip any overflowing content.
         <br /><br />
@@ -87,6 +91,10 @@ include("principal.html");
         <div class="barra">Enable the bold, italic and underline buttons
         <br /><br />
         Defaults to: true</div>
+    </div>
+    <div>
+        <h3><a href="#"> enableKeyEvents: <strong class="stitulo">  </strong></a></h3>
+        <div class="barra"></div>
     </div>
     <div>
         <h3><a href="#"> enableLinks: <strong class="stitulo"> Boolean </strong></a></h3>
@@ -169,8 +177,16 @@ include("principal.html");
         <div class="barra">Specifies the padding for this component. The padding can be a single numeric value to apply to all sides or it can be a CSS style specification for        each style, for example: '10 5 3 10'.</div>
     </div>
     <div>
+        <h3><a href="#"> readOnly: <strong class="stitulo">  </strong></a></h3>
+        <div class="barra"></div>
+    </div>
+    <div>
         <h3><a href="#"> style: <strong class="stitulo"> String </strong></a></h3>
         <div class="barra">A custom style specification to be applied to this component's Element. Should be a valid argument to Ext.Element.applyStyles.</div>
+    </div>
+    <div>
+        <h3><a href="#"> tabIndex: <strong class="stitulo">  </strong></a></h3>
+        <div class="barra"></div>
     </div>
     <div>
         <h3><a href="#"> tpl: <strong class="stitulo"> Ext.XTemplate/Ext.Template/String/String[] </strong></a></h3>

@@ -15,6 +15,10 @@ include("principal.html");
         Defaults to: true</div>
     </div>
     <div>
+        <h3><a href="#"> anchor: <strong class="stitulo">  </strong></a></h3>
+        <div class="barra"></div>
+    </div>
+    <div>
         <h3><a href="#"> baseCls: <strong class="stitulo"> String </strong></a></h3>
         <div class="barra">The base CSS class to apply to this components's element. This will also be prepended to elements within this component like Panel's body will get a        class x-panel-body. This means that if you create a subclass of Panel, and you want it to get all the Panels styling for the element and the body, you leave        the baseCls x-panel and use componentCls to add specific styling for this component.
         <br /><br />
