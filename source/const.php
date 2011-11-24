@@ -1,5 +1,5 @@
 <?php
-	define("__version","1.0.8.5");
+	define("__version","1.0.8.7");
 	//
 	define("activeItem","activeItem");
 	define("activeError","activeError");

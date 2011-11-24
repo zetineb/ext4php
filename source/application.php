@@ -1755,7 +1755,7 @@
 			if (!is_null($obj->disabled))
 				$this->writeLn('disabled:'.$this->boolean[$obj->disabled].',');
 			if (!is_null($obj->fieldLabel))
-				$this->writeLn('fieldLabel:"'.$obj->fieldLabel.'"');
+				$this->writeLn('fieldLabel:"'.$obj->fieldLabel.'",');
 			if (!is_null($obj->height)){
 				if (stristr($obj->height,"%"))
 					$this->writeLn('height:"'.$obj->height.'",');
@@ -1807,7 +1807,7 @@
 			if (!is_null($obj->disabled))
 				$this->writeLn('disabled:'.$this->boolean[$obj->disabled].',');
 			if (!is_null($obj->fieldLabel))
-				$this->writeLn('fieldLabel:"'.$obj->fieldLabel.'"');
+				$this->writeLn('fieldLabel:"'.$obj->fieldLabel.'",');
 			if (!is_null($obj->height)){
 				if (stristr($obj->height,"%"))
 					$this->writeLn('height:"'.$obj->height.'",');
