@@ -356,7 +356,7 @@ class WestPanel{
 	private function TreeNode12(){	
 		$node=new TTreeNode(array(
 			text=>'TWindow',
-			leaf=>true
+			iconCls=>'new'
 		));
 		return $node;
 	}

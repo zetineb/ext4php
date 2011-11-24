@@ -129,3 +129,9 @@
 .borderDefaultContainer{
 	border: 1px solid #cccccc !important;
 }
+.new{
+	width:22px;
+	background-image: url(../images/new.png) !important;
+	background-repeat: no-repeat;
+	background-position: top;	
+}

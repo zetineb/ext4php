@@ -15,10 +15,6 @@ include("principal.html");
         Defaults to: true</div>
     </div>
     <div>
-        <h3><a href="#"> anchor: <strong class="stitulo">  </strong></a></h3>
-        <div class="barra"></div>
-    </div>
-    <div>
         <h3><a href="#"> baseCls: <strong class="stitulo"> String </strong></a></h3>
         <div class="barra">The base CSS class to apply to this components's element. This will also be prepended to elements within this component like Panel's body will get a        class x-panel-body. This means that if you create a subclass of Panel, and you want it to get all the Panels styling for the element and the body, you leave        the baseCls x-panel and use componentCls to add specific styling for this component.
         <br /><br />
@@ -128,7 +124,9 @@ include("principal.html");
     </div>
     <div>
         <h3><a href="#"> maskRe: <strong class="stitulo"> RegExp </strong></a></h3>
-        <div class="barra">An input mask regular expression that will be used to filter keystrokes (character being typed) that do not match. Note: It dose not filter characters        already in the input.</div>
+        <div class="barra">An input mask regular expression that will be used to filter keystrokes (character being typed) that do not match.
+        <br /><b>Note: It does not filter characters already in the input. <br />
+        This parameter must be passed as string. Ex to write just numbers: '/[0-9]/'</b></div>
     </div>
     <div>
         <h3><a href="#"> maxLength: <strong class="stitulo"> Number </strong></a></h3>

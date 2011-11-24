@@ -19,6 +19,10 @@ require_once "classTCheckbox.php";
 require_once "classTRadio.php";
 require_once "classTFile.php";
 require_once "classTFieldset.php";
+require_once "classTWindow.php";
+require_once "classSimpleWindow.php";
+require_once "classToolbarWindow.php";
+require_once "classToolsWindow.php";
 
 try{
 	/*$oButton = new classTButton();*/
@@ -76,14 +80,17 @@ try{
        $object = new classTText();
     }
 
+    $simpleWindow = new classSimpleWindow();
+    $toolsWindow = new classToolsWindow();
+    $toolbarWindow = new classToolbarWindow();
 
-    $container->items->add('object',$object->execute());
-    if($_GET['type']=='window'){
-      $app->windows->add('windowObject',$object->getWindow());
-    }
+    $container->items->add('content',$object->execute());
 
     $app->items->add('main',$container);
    	$app->events->add('comboboxRemote',new ComboboxRemote());
+    $app->windows->add('simpleWindow',$simpleWindow->getWindow());
+    $app->windows->add('toolsWindow',$toolsWindow->getWindow());
+    $app->windows->add('toolbarWindow',$toolbarWindow->getWindow());
 
 	$app->show();
 }

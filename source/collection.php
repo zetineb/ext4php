@@ -142,6 +142,7 @@
 			$this->name='TCheckbox';
 		}
 		public function add($name,$value){
+			$value->setOwner($this->owner);
 			if (get_class($value)!='TCheckbox') throw new Exception($this->name.' "'.$name.'" is not TCheckbox');
 			parent::add($name,$value);
 		}
@@ -152,6 +153,7 @@
 			$this->name='TRadio';
 		}
 		public function add($name,$value){
+			$value->setOwner($this->owner);
 			if (get_class($value)!='TRadio') throw new Exception($this->name.' "'.$name.'" is not TRadio');
 			parent::add($name,$value);
 		}

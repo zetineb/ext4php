@@ -13,11 +13,19 @@ class TTabDefault{
 	    $tab3=new TTab(array(
             title=>'Attributes'
         ));
-        $tab3->html="<iframe width='99%' height='99%' src='attributes.php?type=".$idObject."''/>";
+				$file3='attributes/'.$idObject.'.php';
+				if(is_file($file3))
+					$tab3->html="<iframe width='99%' height='99%' src='attributes.php?type=".$idObject."''/>";
+				else
+					$tab3->html="<iframe width='99%' height='99%' src='comming.php' />";
 	    $tab4=new TTab(array(
             title=>'Listeners'
         ));
-        $tab4->html="<iframe width='99%' height='99%' src='listeners.php?type=".$idObject."''/>";
+				$file4='listeners/'.$idObject.'.php';
+				if(is_file($file4))
+					$tab4->html="<iframe width='99%' height='99%' src='listeners.php?type=".$idObject."''/>";
+				else
+					$tab4->html="<iframe width='99%' height='99%' src='comming.php' />";				
         $tab5=new TTab(array(
             title=>'Usage'
         ));

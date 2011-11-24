@@ -104,7 +104,7 @@ switch($type){
 		 ));
       ?>';
       break;
-   case 'htmlEditor':
+   case 'htmleditor':
       $stringObj='
       <?php
         $obj = new THtmlEditor(array(
@@ -116,7 +116,7 @@ switch($type){
       ?>
       ';
       break;
-   case 'textArea':
+   case 'textarea':
       $stringObj='
       <?php
         $obj = new TTextArea(array(
@@ -228,6 +228,80 @@ switch($type){
        ));
       ?>
       ';
+      break;
+    case 'window':
+      $stringObj='
+      ==================================
+      Simple Window
+      ==================================
+
+      <?php
+        $simpleWindow = new TWindow(array(
+            layout=>"fit",
+		    title=>"Simple Window",
+		    width=>600,
+		    height=>300
+        ));
+      ?>
+      
+      ==================================
+      Tools Window
+      ==================================
+      
+      <?php
+        $tool=new TTools();
+	    $tool->type=TToolsType::$print;
+	    $tool->handler="Ext.Msg.alert(\'INFO\',\'Print\');";
+        $toolsWindow = new TWindow(array(
+          layout=>"fit",
+		  title=>"Tools Window",
+		  width=>600,
+		  height=>300,
+		  tools=>$tool
+	   ));
+      ?>
+      
+      ==================================
+      Toolsbar Window
+      ==================================
+      
+      <?php
+        $buttonClose = new TButton(array(
+    	    text=>"Close",
+    	    iconCls=>"bclose",
+			iconAlign=>"left",
+			handler=>"Ext.Msg.alert(\'INFO\',\'Close\');"
+		));
+
+		$buttonNew = new TButton(array(
+    	    text=>"New",
+    	    iconCls=>"badd",
+			iconAlign=>"left",
+            handler=>"Ext.Msg.alert(\'INFO\',\'New\');"
+		));
+
+		$buttonSave = new TButton(array(
+    	    text=>"Save",
+            iconCls=>"bsave",
+			iconAlign=>"left",
+            handler=>"Ext.Msg.alert(\'INFO\',\'Save\');"
+		));
+
+       $toolbarWindow = new TWindow(array(
+            layout=>"fit",
+		    title=>"Toolbar Window",
+		    width=>600,
+		    height=>300
+	   ));
+
+	   $toolbarWindow->bbar->add("bnew",$buttonNew);
+   	   $toolbarWindow->bbar->add("bsave",$buttonSave);
+   	   $toolbarWindow->bbar->add("bclose",$buttonClose);
+      ?>
+      
+      ==================================
+      ';
+      break;
 
 }
 ?>

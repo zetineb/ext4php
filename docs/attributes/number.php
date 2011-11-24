@@ -152,7 +152,9 @@ Defaults to: 100</div>
     </div>
     <div>
         <h3><a href="#"> maskRe: <strong class="stitulo"> RegExp </strong></a></h3>
-        <div class="barra">An input mask regular expression that will be used to filter keystrokes (character being typed) that do not match. Note: It dose not filter characters        already in the input.</div>
+        <div class="barra">An input mask regular expression that will be used to filter keystrokes (character being typed) that do not match. 
+        <br /><b>Note: It does not filter characters already in the input. <br />
+        This parameter must be passed as string. Ex to write just numbers: '/[0-9]/'</b></div>
     </div>
     <div>
         <h3><a href="#"> maxLength: <strong class="stitulo"> Number </strong></a></h3>
