@@ -260,6 +260,7 @@
 		public $decimalSeparator=null;
 		public $editable=null;
 		public $emptyText=null;
+		public $hideTrigger=null;
 		public $invalidText=null;
 		public $keyNavEnabled=null;
 		public $labelAlign=null;

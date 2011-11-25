@@ -513,6 +513,7 @@
 				elseif (!strcasecmp($keys[$i],hideMode)) $this->hideMode=$v;
 				elseif (!strcasecmp($keys[$i],highlight)) $this->highlight=$v;
 				elseif (!strcasecmp($keys[$i],highlightDuration)) $this->highlightDuration=$v;
+				elseif (!strcasecmp($keys[$i],hideTrigger)) $this->hideTrigger=$v;
 				elseif (!strcasecmp($keys[$i],html)) $this->html=$v;
 				elseif (!strcasecmp($keys[$i],icon)) $this->icon=$v;
 				elseif (!strcasecmp($keys[$i],iconAlign)) $this->iconAlign=$v;
@@ -1379,6 +1380,10 @@
 		}
 		public function highlightDuration($v){ 
 			$this->highlightDuration=$v;
+			return ($this);
+		}
+		public function hideTrigger($v){ 
+			$this->hideTrigger=$v;
 			return ($this);
 		}
 		public function html($v){ 

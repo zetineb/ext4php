@@ -1272,6 +1272,8 @@
 				$this->writeLn('invalidText:"'.$obj->invalidText.'",');
 			if (!is_null($obj->keyNavEnabled))
 				$this->writeLn('keyNavEnabled:'.$this->boolean[$obj->keyNavEnabled].',');
+			if (!is_null($obj->hideTrigger))
+				$this->writeLn('hideTrigger:'.$this->boolean[$obj->hideTrigger].',');
 			if (!is_null($obj->labelAlign))
 				$this->writeLn('labelAlign:"'.$obj->labelAlign.'",');
 			if (!is_null($obj->labelPad))

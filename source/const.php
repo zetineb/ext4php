@@ -1,5 +1,5 @@
 <?php
-	define("__version","1.0.8.7");
+	define("__version","1.0.8.9");
 	//
 	define("activeItem","activeItem");
 	define("activeError","activeError");
@@ -147,6 +147,7 @@
 	define("hideMode","hideMode");
 	define("highlight","highlight");
 	define("highlightDuration","highlightDuration");
+	define("hideTrigger","hideTrigger");
 	define("html","html");
 	define("icon","icon");
 	define("iconAlign","iconAlign");
