@@ -1,8 +1,8 @@
 <?php
-class classTLabel extends TTabDefault implements iObject{
+class classTHidden extends TTabDefault implements iObject{
     public function labelTitle(){
        $obj = new TLabel(array(
-    	    text=>"Label Demo",
+    	    text=>"Hidden Demo",
             name=>"label_name",
             padding=>"10 10 10 10",
             style=>"font-size:25px"
@@ -12,9 +12,17 @@ class classTLabel extends TTabDefault implements iObject{
 
     public function TLabelObj(){
        $obj = new TLabel(array(
-    	    text=>"Label",
+    	    text=>"The object does not have Hidden preview, this object is used to send a hidden value for the form.",
             name=>"label_name",
             padding=>"10 10 10 10"
+		));
+	  return $obj;
+    }
+    
+    public function THiddenObj(){
+       $obj = new THidden(array(
+            name=>"hidden_name",
+            value=>10
 		));
 	  return $obj;
     }
@@ -27,11 +35,12 @@ class classTLabel extends TTabDefault implements iObject{
 	  ));
 	  $obj->items->add('label_title',$this->labelTitle());
       $obj->items->add('label',$this->TLabelObj());
+      $obj->items->add('hidden',$this->THiddenObj());
 	  return $obj;
 	}
 
     public function execute(){
-       return $this->TTabObj($this->TContainerObj(),'label');
+       return $this->TTabObj($this->TContainerObj(),'hidden');
     }
 }
 ?>

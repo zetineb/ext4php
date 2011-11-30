@@ -67,7 +67,7 @@ class classCredits{
 				<td width="100"><img src="images/credits/foto_kaisa.png" border="0"></td>
 				<td class="desc" valign="top">
 					<b>Nome:</b> Kaísa Fernanda P. de Almeida <br /><br />
-					<b>Email:</b> kaisafernanda@gmail.com.br
+					<b>Email:</b> kaisafernanda@gmail.com
 				</td>
 			</tr>
 		</table>

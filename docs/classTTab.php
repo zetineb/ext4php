@@ -1,6 +1,3 @@
-<?php
-$type = $_GET['type'];
-?>
 <style>
     body{
        background-color:#FFFFFF;
@@ -14,10 +11,6 @@ $type = $_GET['type'];
        padding:0 0 0 0;
        margin:0 0 0 0;
     }
-    fieldset{
-       border:1px solid #cccccc;
-       padding:20px;
-    }
     .titulo{
 	   color:#569ce5;
 	   font-size:20px;
@@ -29,13 +22,15 @@ $type = $_GET['type'];
 <body>
       <div style="margin-bottom:20px">
            <img src="images/credits/logo_ext64x64.png" alt="Ext4PHP" title="Ext4PHP" style="float:left; margin:10px"/>
-           <div class="titulo">Ext4PHP FrameWork - <?php echo ucwords($type);?></div>
+           <div class="titulo">Ext4PHP FrameWork - TTab</div>
       </div>
-      <div style="padding:0 0 10px 10px">
-           <p>Below is an example of use for this object.</p>
+      <div style="padding:0 0 0 10px">
+           <p>The Tab object is used in conjunction with the TabPanel object to the development of a number of tabs</p>
       </div>
-      <fieldset>
-          <legend><strong>For Example</strong></legend>
-     <?php echo highlight_file("classT".ucwords($type).".php", true);?>
-</fieldset>
+      <div style="padding:10px 0 0 10px">
+           <fieldset>
+               <legend><strong>Usage</strong></legend>
+               <?php echo highlight_file("tab.php", true);?>
+           </fieldset>
+      </div>
 </body>

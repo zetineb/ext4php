@@ -123,11 +123,11 @@
 			'removed'           =>'function(component,container,options){%CODE%}',
 			'render'            =>'function(component,options){%CODE%}',
 			'resize'            =>'function(component,adjWidth,adjHeight,options){%CODE%}',
-			'select'            =>'function(component,value,options){%CODE%}',
+			'select'            =>'function(component,record,p3,p4){%CODE%}',
 			'show'              =>'function(component,options){%CODE%}',
 			'specialkey'        =>'function(component,eventObj,options){%CODE%}',
 			'sync'              =>'function(htmlEditor,isValid,options){%CODE%}',
-			'titlechange'       =>'function(title,index,options){%CODE%}',
+			'titlechange'       =>'function(p1,p2,p3,p4){%CODE%}',
 			'validateedit  '    =>'function(editor,component,options){%CODE%}',
 			'validitychange'    =>'function(field,isValid,options){%CODE%}'
 		);

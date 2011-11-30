@@ -1,8 +1,8 @@
 <?php
-class classTContainer extends TTabDefault implements iObject{
+class classTPanel extends TTabDefault implements iObject{
     public function labelTitle(){
         $obj = new TLabel(array(
-             text=>"Container Demo",
+             text=>"Panel Demo",
              name=>"label_name",
              padding=>"10 10 10 10",
              style=>"font-size:25px"
@@ -10,12 +10,13 @@ class classTContainer extends TTabDefault implements iObject{
 	    return $obj;
     }
 
-    public function TContainerObjDemo(){
-      $obj = new TContainer(array(
+    public function TPanelObj(){
+      $obj = new TPanel(array(
              layout=>"vbox",
+             title=>"Panel",
              width=>300,
              height=>200,
-             cls=>"borderDefaultContainer"
+             margin=>'5 5 5 5'
 	  ));
 	  return $obj;
 	}
@@ -27,12 +28,12 @@ class classTContainer extends TTabDefault implements iObject{
              height=>'100%'
 	  ));
 	  $obj->items->add('label_title',$this->labelTitle());
-      $obj->items->add('container',$this->TContainerObjDemo());
+      $obj->items->add('panel',$this->TPanelObj());
 	  return $obj;
 	}
 	
 	public function execute(){
-        return $this->TTabObj($this->TContainerObj(),'container');
+        return $this->TTabObj($this->TContainerObj(),'panel');
 	}
 }
 ?>

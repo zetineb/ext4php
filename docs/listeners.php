@@ -1,3 +1,8 @@
+<?php
+     $path="listeners";
+     $type = $_GET['type'];
+?>
+
 <style>
     body{
        background-color:#FFFFFF;
@@ -26,10 +31,14 @@
 <body>
       <div style="margin-bottom:20px">
            <img src="images/credits/logo_ext64x64.png" alt="Ext4PHP" title="Ext4PHP" style="float:left; margin:10px"/>
-           <div class="titulo">Ext4PHP FrameWork</div>
+           <div class="titulo">Ext4PHP FrameWork - <?php echo ucwords($type);?></div>
       </div>
-      <div style="padding:0 0 0 10px">
-           <p>Coming Soon</p>
-           <p>Thank you for your interest.</p>
+      <div style="padding:0 0 10px 10px">
+           <p>The following are the events for use in this object.</p>
       </div>
+      <fieldset>
+          <legend><strong>Attributes</strong></legend>
+          <?php include_once("$path/$type.php");?>
+      </fieldset>
 </body>
+

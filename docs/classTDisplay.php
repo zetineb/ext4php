@@ -14,10 +14,10 @@ class classTDisplay extends TTabDefault implements iObject{
        $obj = new TDisplay(array(
             name=>"display_name",
             padding=>"10 10 10 10",
-			width=>250,
+            width=>250,
 			fieldLabel=>"Display",
 			labelWidth=>40,
-			value=>"11"
+			value=>11
 		));
 	  return $obj;
     }
@@ -25,7 +25,6 @@ class classTDisplay extends TTabDefault implements iObject{
     public function TContainerObj(){
       $obj = new TContainer(array(
              layout=>'vbox',
-             margin=>'2 0 10 2',
              width=>'100%',
              height=>'100%'
 	  ));

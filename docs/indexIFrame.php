@@ -23,6 +23,14 @@ require_once "classTWindow.php";
 require_once "classSimpleWindow.php";
 require_once "classToolbarWindow.php";
 require_once "classToolsWindow.php";
+require_once "classTCheckboxgroup.php";
+require_once "classTRadiogroup.php";
+require_once "classTButtoncycle.php";
+require_once "classTButtonsplit.php";
+require_once "classTTabpanel.php";
+require_once "classTTree.php";
+require_once "classTPanel.php";
+require_once "classTHidden.php";
 
 try{
 	/*$oButton = new classTButton();*/
@@ -74,6 +82,14 @@ try{
             case 'tradio':  $object = new classTRadio(); break;
             case 'tfieldset':  $object = new classTFieldset(); break;
             case 'twindow':  $object = new classTWindow();break;
+            case 'tcheckboxgroup':  $object = new classTCheckBoxGroup();break;
+            case 'tradiogroup':  $object = new classTRadioGroup();break;
+            case 'tbuttoncycle':  $object = new classTButtonCycle();break;
+            case 'tbuttonsplit':  $object = new classTSplitButton();break;
+            case 'ttabpanel':  $object = new classTTabPanel();break;
+            case 'ttree':  $object = new classTTree();break;
+            case 'tpanel':  $object = new classTPanel();break;
+            case 'thidden':  $object = new classTHidden();break;
             default:  $object = new classTText(); break;
        }
     }else{
@@ -88,6 +104,7 @@ try{
 
     $app->items->add('main',$container);
    	$app->events->add('comboboxRemote',new ComboboxRemote());
+    $app->events->add('getTree',new getTree());
     $app->windows->add('simpleWindow',$simpleWindow->getWindow());
     $app->windows->add('toolsWindow',$toolsWindow->getWindow());
     $app->windows->add('toolbarWindow',$toolbarWindow->getWindow());

@@ -25,7 +25,6 @@ class classTNumber extends TTabDefault implements iObject{
     public function TContainerObj(){
       $obj = new TContainer(array(
              layout=>'vbox',
-             margin=>'2 0 10 2',
              width=>'100%',
              height=>'100%'
 	  ));

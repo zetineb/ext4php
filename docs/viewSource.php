@@ -11,6 +11,15 @@ switch($type){
         ));
      ?>';
      break;
+  case 'hidden':
+     $stringObj='
+     <?php
+        $obj=new THidden(array(
+           name=>"hidden_name",
+           value=>10
+        ));
+     ?>';
+     break;
   case 'number':
      $stringObj='
      <?php
@@ -113,6 +122,19 @@ switch($type){
 			width=>500,
 			height=>200
 		));
+      ?>
+      ';
+      break;
+   case 'panel':
+      $stringObj='
+      <?php
+        $obj = new TPanel(array(
+             layout=>"vbox",
+             title=>"Panel",
+             width=>300,
+             height=>200,
+             margin=>"5 5 5 5"
+	    ));
       ?>
       ';
       break;
@@ -229,6 +251,287 @@ switch($type){
       ?>
       ';
       break;
+    case 'radiogroup':
+      $stringObj='
+      <?php
+        $radio1 = new TRadio(array(
+		     boxLabel=>"Radio 1",
+		     name=>"radio",
+		     inputValue=>1
+        ));
+
+        $radio2 = new TRadio(array(
+		     boxLabel=>"Radio 2",
+		     name=>"radio",
+		     inputValue=>2,
+		     checked=>true
+        ));
+
+        $radio3 = new TRadio(array(
+		      boxLabel=>"Radio 3",
+		      name=>"radio",
+		      inputValue=>3
+        ));
+
+        $obj = new TRadioGroup(array(
+              fieldLabel=>"Radio Group",
+		      columns=>2,
+              vertical=>true,
+              width=>300,
+              height=>300,
+              margin=>"6 6 6 6"
+        ));
+        $obj->items->add("radio1",$radio1);
+        $obj->items->add("radio2",$radio2);
+        $obj->items->add("radio3",$radio3);
+      ?>
+      ';
+      break;
+    case 'checkboxgroup':
+      $stringObj='
+      <?php
+        $check1 = new TCheckbox(array(
+		     boxLabel=>"Checkbox 1",
+		     name=>"checkbox1",
+		     inputValue=>1
+        ));
+
+        $check2 = new TCheckbox(array(
+		     boxLabel=>"Checkbox 2",
+		     name=>"checkbox2",
+		     inputValue=>2
+        ));
+
+        $check3 = new TCheckbox(array(
+		     boxLabel=>"Checkbox 3",
+		     name=>"checkbox3",
+		     inputValue=>3,
+		     checked=>true
+        ));
+
+        $obj = new TCheckboxGroup(array(
+            fieldLabel=>"Checkbox Group",
+		    columns=>2,
+            vertical=>true,
+            width=>300,
+            height=>300,
+            margin=>"6 6 6 6"
+        ));
+        $obj->items->add("checkbox1",$check1);
+        $obj->items->add("checkbox2",$check2);
+        $obj->items->add("checkbox3",$check3);
+      ?>
+      ';
+      break;
+    case 'tree':
+      $stringObj='
+      ==================================
+      Tree Remote
+      ==================================
+      
+      <?php
+		$treecol=new TTreeColumn(array(
+           text=>"",
+		   flex=>1,
+		   dataIndex=>"className"
+       ));
+
+	   $tree=new TTree(array(
+	       autoLoad=>false,
+		   eventName=>"getTree",
+		   queryMode=>TQueryModeType::$remote,
+		   rootVisible=>true,
+		   useArrows=>true,
+		   width=>300,
+           height=>150,
+           border=>0,
+           margin=>"5 5 20px 5"
+       ));
+       $tree->columns->add("treecol",$treecol);
+
+       $tree->onAfterRender("
+			operation = new Ext.data.Operation({
+				filters: [
+					{\'property\':\'load\',\'value\':1}
+				]
+			});
+			Ext.getCmp(\'treeremote\').getStore().load(operation);
+	   ");
+      ?>
+	   
+      ==================================
+      Tree Local
+      ==================================
+
+      <?php
+        $treeNodeOS = new TTreeNode(array(
+            text=>"OS",
+            expanded=>true
+        ));
+        $treeNodeWindows = new TTreeNode(array(
+            text=>"Windows",
+            leaf=>true
+        ));
+        $treeNodeMac = new TTreeNode(array(
+            text=>"Mac OS",
+            leaf=>true
+        ));
+        $treeNodeLinux = new TTreeNode(array(
+            text=>"Linux",
+            leaf=>true
+        ));
+
+        $treeNodeOS->children->add("nodeWindows",$treeNodeWindows);
+        $treeNodeOS->children->add("nodeMac",$treeNodeMac);
+	    $treeNodeOS->children->add("nodeLinux",$treeNodeLinux);
+
+        $treeNodeBrowser = new TTreeNode(array(
+            text=>"Browser",
+            expanded=>true
+        ));
+        $treeNodeFirefox = new TTreeNode(array(
+            text=>"Firefox",
+            leaf=>true
+        ));
+        $treeNodeIE = new TTreeNode(array(
+            text=>"Internet Explorer",
+            leaf=>true
+        ));
+        $treeNodeChrome = new TTreeNode(array(
+            text=>"Chrome",
+            leaf=>true
+        ));
+        $treeNodeSafari = new TTreeNode(array(
+            text=>"Safari",
+            leaf=>true
+        ));
+        $treeNodeOpera = new TTreeNode(array(
+            text=>"Opera",
+            leaf=>true
+        ));
+
+        $treeNodeBrowser->children->add("nodeFirefox",$treeNodeFirefox);
+        $treeNodeBrowser->children->add("nodeIE",$treeNodeIE);
+	    $treeNodeBrowser->children->add("nodeChrome",$treeNodeChrome);
+	    $treeNodeBrowser->children->add("nodeSafari",$treeNodeSafari);
+	    $treeNodeBrowser->children->add("nodeOpera",$treeNodeOpera);
+
+        $treeNodeRoot = new TTreeNode(array(
+            text=>"Project",
+            expanded=>true,
+            children=>array($treeNodeOS,$treeNodeBrowser)
+        ));
+
+        $tree=new TTree(array(
+			margin=>"5 5 5 5",
+			width=>300,
+			height=>600,
+			border=>false,
+			rootNode=>$treeNodeRoot
+		));
+      ?>
+      
+      ==================================
+      ';
+      break;
+    case 'buttonsplit':
+      $stringObj='
+      <?php
+        $button1=new TMenuItem(array(
+            text=>"Button 1"
+        ));
+        $button1->onClick("Ext.Msg.alert(\'Alert\',\'Is button one.\');");
+
+        $button2 = new TMenuItem(array(
+    	    text=>"Button 2"
+        ));
+        $button2->onClick("Ext.Msg.alert(\'Alert\',\'Is button two.\');");
+
+        $buttonSplit = new TButtonSplit(array(
+    	    text=>"Button Split",
+			padding=>"10 10 10 10",
+			margin=>"5 5 5 5",
+			width=>120,
+			iconCls=>"btools",
+			iconAlign=>"left",
+			handler=>"Ext.Msg.alert(\'Alert\',\'Is button split.\');"
+		));
+		$buttonSplit->menu->add("button1",$button1);
+		$buttonSplit->menu->add("button2",$button2);
+      ?>
+      ';
+      break;
+    case 'buttoncycle':
+      $stringObj='
+      <?php
+        $button1=new TMenuItem(array(
+            text=>"Button 1"
+        ));
+        $button1->onClick("Ext.Msg.alert(\'Alert\',\'Is button one.\');");
+
+        $button2 = new TMenuItem(array(
+    	    text=>"Button 2"
+        ));
+        $button2->onClick("Ext.Msg.alert(\'Alert\',\'Is button two.\');");
+
+        $buttonCycle = new TButtonCycle(array(
+    	    text=>"Button Cycle",
+			padding=>"10 10 10 10",
+			margin=>"5 5 5 5",
+			width=>120,
+			iconCls=>"btools",
+			iconAlign=>"left",
+			handler=>"Ext.Msg.alert(\'Alert\',\'Is button cycle.\');"
+		));
+		$buttonCycle->menu->add("button1",$button1);
+		$buttonCycle->menu->add("button2",$button2);
+      ?>
+      ';
+      break;
+    case 'tabpanel':
+      $stringObj='
+      <?php
+        public function inputField($text,$name){
+           $obj = new TText(array(
+               fieldLabel=>$text,
+               labelWidth=>100,
+               name=>$name,
+               padding=>"10 10 10 10",
+               width=>350
+           ));
+	       return $obj;
+        }
+
+        $tab1=new TTab(array(
+            title=>"Tab One"
+        ));
+	    $tab1->items->add("tabone",$this->inputField("Name","name"));
+
+	    $tab2=new TTab(array(
+            title=>"Tab Two"
+        ));
+        $tab2->items->add("tabtwo",$this->inputField("Phone","phone"));
+
+	    $tab3=new TTab(array(
+            title=>"Tab Three"
+        ));
+        $tab3->items->add("tabthree",$this->inputField("Email","email"));
+
+	    $tab4=new TTab(array(
+            title=>"Tab Four"
+        ));
+        $tab4->items->add("tabfour",$this->inputField("Subject","subject"));
+
+	    $tabpanel=new TTabPanel(array(
+                margin=>"5 5 5 5"
+        ));
+	    $tabpanel->items->add("tabonepanel",$tab1);
+	    $tabpanel->items->add("tabtwopanel",$tab2);
+	    $tabpanel->items->add("tabthreepanel",$tab3);
+	    $tabpanel->items->add("tabfourpanel",$tab4);
+      ?>
+      ';
+      break;
     case 'window':
       $stringObj='
       ==================================
@@ -262,7 +565,7 @@ switch($type){
       ?>
       
       ==================================
-      Toolsbar Window
+      Toolbar Window
       ==================================
       
       <?php
@@ -305,17 +608,45 @@ switch($type){
 
 }
 ?>
+
+<?php
+$type = $_GET['type'];
+?>
 <style>
+    body{
+       background-color:#FFFFFF;
+       margin:10;
+    }
     *{
        font-family:Verdana;
        font-size:12px;
+    }
+    p{
+       padding:0 0 0 0;
+       margin:0 0 0 0;
     }
     fieldset{
        border:1px solid #cccccc;
        padding:20px;
     }
+    .titulo{
+	   color:#569ce5;
+	   font-size:20px;
+	   font-family:Arial, Helvetica, sans-serif;
+	   font-weight:bold;
+	   padding:20px 0 0 0;
+    }
 </style>
-<fieldset>
+<body>
+      <div style="margin-bottom:20px">
+           <img src="images/credits/logo_ext64x64.png" alt="Ext4PHP" title="Ext4PHP" style="float:left; margin:10px"/>
+           <div class="titulo">Ext4PHP FrameWork - <?php echo ucwords($type);?></div>
+      </div>
+      <div style="padding:0 0 10px 10px">
+           <p>The following is the naming of the object for use in your project.</p>
+      </div>
+      <fieldset>
           <legend><strong>For Example</strong></legend>
-     <?php echo highlight_string($stringObj, true);?>
-</fieldset>
+          <?php echo highlight_string($stringObj, true);?>
+      </fieldset>
+</body>

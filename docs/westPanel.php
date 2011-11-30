@@ -49,15 +49,18 @@ class WestPanel{
 		));
 		
 		$nodeS2=new TTreeNode(array(
-			text=>'TButtonCycle'
+			text=>'TButtonCycle',
+			iconCls=>'new'
 		));
 		
 		$nodeS3=new TTreeNode(array(
-			text=>'TButtonSplit'
+			text=>'TButtonSplit',
+			iconCls=>'new'
 		));
 		
 		$node=new TTreeNode(array(
-			text=>'TButton'
+			text=>'TButton',
+			iconCls=>'new'
 		));
 		$node->children->add('n2s1',$nodeS1);
 		$node->children->add('n2s2',$nodeS2);
@@ -117,7 +120,8 @@ class WestPanel{
 		));
 		
 		$nodeS2=new TTreeNode(array(
-			text=>'TCheckboxgroup'
+			text=>'TCheckboxgroup',
+			iconCls=>'new'
 		));
 		
 		$nodeS3=new TTreeNode(array(
@@ -141,7 +145,8 @@ class WestPanel{
 		));
 		
 		$nodeS10=new TTreeNode(array(
-			text=>'THidden'
+			text=>'THidden',
+			iconCls=>'new'
 		));
 		
 		$nodeS11=new TTreeNode(array(
@@ -161,7 +166,8 @@ class WestPanel{
 		));
 		
 		$nodeS15=new TTreeNode(array(
-			text=>'TRadioGroup'
+			text=>'TRadioGroup',
+			iconCls=>'new'
 		));
 		
 		$nodeS16=new TTreeNode(array(
@@ -177,7 +183,8 @@ class WestPanel{
 		));
 
 		$node=new TTreeNode(array(
-			text=>'TForm'
+			text=>'TForm',
+			iconCls=>'new'
 		));
 		$node->children->add('n5s1',$nodeS1);
 		$node->children->add('n5s2',$nodeS2);	
@@ -282,22 +289,26 @@ class WestPanel{
 	private function TreeNode8(){	
 		$node=new TTreeNode(array(
 			text=>'TPanel',
-			leaf=>true
+			leaf=>true,
+			iconCls=>'new'
 		));
 		return $node;
 	}
 
 	private function TreeNode9(){	
 		$nodeS1=new TTreeNode(array(
-			text=>'TTab'
+			text=>'TTab',
+			iconCls=>'new'
 		));
 		
 		$nodeS2=new TTreeNode(array(
-			text=>'TTabPanel'
+			text=>'TTabPanel',
+			iconCls=>'new'
 		));
 	
 		$node=new TTreeNode(array(
-			text=>'TTabPanel'
+			text=>'TTabPanel',
+			iconCls=>'new'
 		));
 		$node->children->add('n9s1',$nodeS1);
 		$node->children->add('n9s2',$nodeS2);
@@ -306,15 +317,18 @@ class WestPanel{
 	
 	private function TreeNode10(){	
 		$nodeS1=new TTreeNode(array(
-			text=>'TTree'
+			text=>'TTree',
+			iconCls=>'new'
 		));
 		
 		$nodeS2=new TTreeNode(array(
-			text=>'TTreeNode'
+			text=>'TTreeNode',
+			iconCls=>'new'
 		));
 	
 		$node=new TTreeNode(array(
-			text=>'TTree'
+			text=>'TTree',
+			iconCls=>'new'
 		));
 		$node->children->add('n10s1',$nodeS1);
 		$node->children->add('n10s2',$nodeS2);
@@ -323,7 +337,7 @@ class WestPanel{
 	
 	private function TreeNode11(){	
 		$nodeS1=new TTreeNode(array(
-			text=>'TCustomToolbar'
+			text=>'TToolbar'
 		));
 		
 		$nodeS2=new TTreeNode(array(
@@ -355,8 +369,7 @@ class WestPanel{
 	
 	private function TreeNode12(){	
 		$node=new TTreeNode(array(
-			text=>'TWindow',
-			iconCls=>'new'
+			text=>'TWindow'
 		));
 		return $node;
 	}
@@ -407,6 +420,10 @@ class WestPanel{
 		$tree->onItemClick("
 			for(var _i=0;_i<_arrayTabs.length;_i++){	
 				_treeText = record.get('text').replace(' ','');
+				if(_treeText=='Ext4PHP')
+					_treeText='Introduction';
+				if(_treeText=='TApplication')
+					_treeText='Introduction';
 				if(_treeText=='StartApplication')
 					_treeText='Startapplication';
 				if(_treeText=='RunApplication')
@@ -426,7 +443,12 @@ class WestPanel{
 							_iframe=_filename.toString();
 						}
 						else
-						  _iframe='indexIFrame.php?type='+_index.toString();
+							if(_treeText=='TTab')
+							  _iframe=_filename.toString();
+							else if(_treeText=='TTreeNode')
+								_iframe=_filename.toString();
+							else
+						    _iframe='indexIFrame.php?type='+_index.toString();
 						if (!Ext.getCmp('tab'+_treeText)){
 							Ext.getCmp('topTab').add(
 								{
