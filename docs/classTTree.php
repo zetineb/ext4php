@@ -64,7 +64,7 @@ class classTTree extends TTabDefault implements iObject{
            text=>'',
 		   flex=>1,
 		   dataIndex=>'className'
-       ));
+        ));
 
 	   $tree=new TTree(array(
 	       autoLoad=>false,

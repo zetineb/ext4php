@@ -1,6 +1,84 @@
 <?php
 $type = $_GET['type'];
 switch($type){
+  case 'grid':
+	$stringObj='
+	<?php
+		class classTGrid extends TTabDefault implements iObject{
+			public function labelTitle(){
+				$obj = new TLabel(array(
+					 text=>"Grid Demo",
+					 name=>"label_name",
+					 padding=>"10 10 10 10",
+					 style=>"font-size:25px"
+				));
+				return $obj;
+			}
+			
+			public function TGridObj(){
+				$col1 = new TColumn(array(
+					header=>"Code",
+					dataIndex=>"code",
+					width=>60
+				));
+				
+				$col2 = new TColumn(array(
+					header=>"Name",
+					dataIndex=>"descr",
+					width=>430,
+					flex=>1
+				));	
+				
+				$grid=new TGrid(array(
+					width=>400,
+					height=>250,
+					padding=>10
+				));
+				
+				$grid->fields->add(0,"code");
+				$grid->fields->add(1,"descr");
+
+				$grid->data->add(0,array("1","John"));
+				$grid->data->add(1,array("2","Joseph"));
+				$grid->data->add(2,array("3","Alice"));
+				$grid->data->add(3,array("4","Mariay"));
+				$grid->data->add(4,array("2","Joseph"));
+				$grid->data->add(5,array("5","Brad"));
+				$grid->data->add(6,array("6","Washington"));
+				$grid->data->add(7,array("7","Angelina"));
+				$grid->data->add(8,array("8","Jennifer"));
+				$grid->data->add(9,array("9","Emma"));
+				$grid->data->add(10,array("10","Evan"));
+				$grid->data->add(11,array("11","Sarah"));
+				$grid->data->add(12,array("12","Julia"));
+				$grid->data->add(13,array("13","Samuel"));
+				$grid->data->add(14,array("14","Will"));
+				$grid->data->add(15,array("15","Johnny"));
+				$grid->data->add(16,array("16","George"));
+		
+				$grid->columns->add("col1",$col1);
+				$grid->columns->add("col2",$col2);	
+				return $grid;
+			}
+			
+			public function TContainerObj(){
+			  $obj = new TContainer(array(
+					 layout=>"vbox",
+					 width=>"100%",
+					 height=>"100%"
+			  ));
+			  $obj->items->add("label_title",$this->labelTitle());
+			  $obj->items->add("grid",$this->TGridObj());
+			  return $obj;
+			}
+				
+			public function execute(){
+			   return $this->TTabObj($this->TContainerObj(),"grid");
+			}
+		}
+	?>
+	';
+	break;
   case 'label':
      $stringObj='
      <?php
@@ -323,6 +401,280 @@ switch($type){
       ?>
       ';
       break;
+	case 'paging':
+		$stringObj='
+		<?php
+			$paging=new TPaging("grid","operation",array(
+				height=>217,
+				width=>490,
+				padding=>"10 10 10 10",
+				autoLoad=>false,
+				eventName=>"getGridResult",
+				queryMode=>TQueryModeType::$remote
+			));
+			$paging->displayMsg="Page"; 
+			$paging->first->iconCls="bpgfirst";
+			$paging->first->text="First";
+			$paging->prev->iconCls="bpgprev";
+			$paging->prev->text="Previous";
+			$paging->next->iconCls="bpgnext";
+			$paging->next->text="Next";
+			$paging->last->iconCls="bpglast";
+			$paging->last->text="Last";	
+		
+			$col1 = new TColumn(array(
+				header=>"Code",
+				dataIndex=>"code",
+				width=>60
+			));
+			
+			$col2 = new TColumn(array(
+				header=>"Name",
+				dataIndex=>"descr",
+				width=>430,
+				flex=>1
+			));	
+			
+			$grid=$paging->getGrid();
+			$grid->columns->add("col1",$col1);
+			$grid->columns->add("col2",$col2);	
+			
+			class getGridCount extends TEvent{
+				public function execute(){
+					echo "16";
+				}
+			}
+
+			class getGridResult extends TEvent{
+				public function execute(){
+					$array=array(
+						array("code"=>"1","descr"=>"John"),
+						array("code"=>"2","descr"=>"Joseph"),
+						array("code"=>"3","descr"=>"Alice"),
+						array("code"=>"4","descr"=>"Mariay"),
+						array("code"=>"5","descr"=>"Brad"),
+						array("code"=>"6","descr"=>"Washington"),
+						array("code"=>"7","descr"=>"Angelina"),
+						array("code"=>"8","descr"=>"Jennifer"),
+						array("code"=>"9","descr"=>"Emma"),
+						array("code"=>"10","descr"=>"Evan"),
+						array("code"=>"11","descr"=>"Sarah"),
+						array("code"=>"12","descr"=>"Julia"),
+						array("code"=>"13","descr"=>"Samuel"),
+						array("code"=>"14","descr"=>"Will"),
+						array("code"=>"15","descr"=>"Johnny"),
+						array("code"=>"16","descr"=>"George")
+					);
+					$arrayResult=array();
+					
+					if(($this->start+$this->limit)>count($array)){
+						$endArray = count($array);
+					}else{
+						$endArray = $this->start+$this->limit;
+					}
+
+					for($i=$this->start;$i<$endArray;$i++){
+						array_push($arrayResult,$array[$i]);
+					}	
+					echo json_encode($arrayResult);
+				}
+			}
+		?>
+		';
+		break;
+	case 'chartpie':
+		$stringObj='
+		<?php
+			$container=new TContainer(array(
+				layout=>"fit"
+			));
+			
+			$legend=new TChartLegend();
+			$legend->position="right";
+		
+			$chart=new TChart();
+			$chart->style="background:#fff";
+			$chart->insetPadding=30;
+			$chart->animate=true;
+			$chart->theme="Base:gradients";
+			$chart->shadow=true;
+			$chart->legend=$legend;
+			$chart->fields->add(0,"month");
+			$chart->fields->add(1,"payments");
+			$chart->data->add(0,array("May 2011",4824.43));
+			$chart->data->add(1,array("June 2011",9631.88));
+			$chart->data->add(2,array("July 2011",28373.89));
+			$chart->data->add(3,array("August 2011",24072.13));
+			$chart->data->add(4,array("September 2011",33475.55));
+		
+			$tips=new TChartTips(array(
+				trackMouse=>true,
+				width=>140,
+				height=>28,
+				renderer=>"
+						var total = 0;
+						Ext.getCmp(\'chart1\').store.each(function(rec) {
+							total += rec.get(\'payments\');
+						});
+						this.setTitle(storeItem.get(\'month\') + \': \' + Math.round(storeItem.get(\'payments\') / total * 100) + \'%\');
+					"
+			));
+			
+			$label=new TChartLabel(array(
+				field=>"month",
+				display=>"rotate",
+				contrast=>true,
+				font=>"12px Arial"
+			));
+			
+			$chartSerie=new TChartSeries(array(
+				type=>"pie",
+				field=>"payments",
+				axis=>"left",
+				highlight=>"{
+					segment: {
+						margin: 20
+					}
+				}",
+				showInLegend=>true,
+				donut=>true,
+				tips=>$tips,
+				label=>$label
+			));
+			
+			$chart->series=array($chartSerie);
+			$container->items->add("chart",$chart);
+		?>
+		';
+		break;
+	case 'chartline':
+		$stringObj='
+		<?php
+			$container=new TContainer(array(
+				layout=>"fit"
+			));
+			$chart=new TChart();
+			$chart->style="background:#fff";
+			$chart->animate=true;
+			$chart->shadow=true;
+			$chart->fields->add(0,"month");
+			$chart->fields->add(1,"payments");
+			$chart->data->add(0,array("May 2011",4824.43));
+			$chart->data->add(1,array("June 2011",9631.88));
+			$chart->data->add(2,array("July 2011",28373.89));
+			$chart->data->add(3,array("August 2011",24072.13));
+			$chart->data->add(4,array("September 2011",33475.55));
+			$chartLabelY=new TChartLabel(array(
+				renderer=>"Ext.util.Format.numberRenderer(\'0,0\')"
+			));
+			$chartAxisY=new TChartAxis(array(
+				type=>"Numeric",
+				position=>"left",
+				fields=>array("payments"),
+				label=>$chartLabelY,
+				title=>"Payments",
+				grid=>true,
+				minimum=>0
+			));
+			$chartAxisX=new TChartAxis(array(
+				type=>"Category",
+				position=>"bottom",
+				fields=>array("month"),
+				title=>"Month of the Year"
+			));
+			$chartTips=new TChartTips(array(
+				trackMouse=>true,
+				width=>140,
+				height=>28,
+				renderer=>"this.setTitle(storeItem.get(\'month\') + \': \' + storeItem.get(\'payments\') + \' $\');"
+			));
+			$chartLabelSeries=new TChartLabel(array(
+				display=>"insideEnd",
+				textAnchor=>"middle",	
+				field=>"payments",
+				renderer=>"Ext.util.Format.numberRenderer(\'0\')",
+				orientation=>"vertical",
+				color=>"#333"
+			));
+			$series=new TChartSeries(array(
+				type=>"line",
+				axis=>"left",
+				highlight=>true,
+				tips=>$chartTips,
+				label=>$chartLabelSeries,
+				xField=>"month",
+				yField=>"payments"
+			));
+			$chart->axes=array($chartAxisY,$chartAxisX);
+			$chart->series=array($series);
+			$container->items->add("chart",$chart);
+		?>
+		';
+		break;
+	case 'chartcolumn':
+		$stringObj='
+		<?php
+			$container=new TContainer(array(
+				layout=>"fit"
+			));
+			$chart=new TChart();
+			$chart->style="background:#fff";
+			$chart->animate=true;
+			$chart->shadow=true;
+			$chart->fields->add(0,"month");
+			$chart->fields->add(1,"payments");
+			$chart->data->add(0,array("May 2011",4824.43));
+			$chart->data->add(1,array("June 2011",9631.88));
+			$chart->data->add(2,array("July 2011",28373.89));
+			$chart->data->add(3,array("August 2011",24072.13));
+			$chart->data->add(4,array("September 2011",33475.55));
+			$chartLabelY=new TChartLabel(array(
+				renderer=>"Ext.util.Format.numberRenderer(\'0,0\')"
+			));
+			$chartAxisY=new TChartAxis(array(
+				type=>"Numeric",
+				position=>"left",
+				fields=>array("payments"),
+				label=>$chartLabelY,
+				title=>"Payments",
+				grid=>true,
+				minimum=>0
+			));
+			$chartAxisX=new TChartAxis(array(
+				type=>"Category",
+				position=>"bottom",
+				fields=>array("month"),
+				title=>"Month of the Year"
+			));
+			$chartTips=new TChartTips(array(
+				trackMouse=>true,
+				width=>140,
+				height=>28,
+				renderer=>"this.setTitle(storeItem.get(\'month\') + \': \' + storeItem.get(\'payments\') + \' $\');"
+			));
+			$chartLabelSeries=new TChartLabel(array(
+				display=>"insideEnd",
+				textAnchor=>"middle",	
+				field=>"payments",
+				renderer=>"Ext.util.Format.numberRenderer(\'0\')",
+				orientation=>"vertical",
+				color=>"#333"
+			));
+			$series=new TChartSeries(array(
+				type=>"column",
+				axis=>"left",
+				highlight=>true,
+				tips=>$chartTips,
+				label=>$chartLabelSeries,
+				xField=>"month",
+				yField=>"payments"
+			));
+			$chart->axes=array($chartAxisY,$chartAxisX);
+			$chart->series=array($series);
+			$container->items->add("chart",$chart);
+		?>
+		';
+		break;
     case 'tree':
       $stringObj='
       ==================================
@@ -488,6 +840,30 @@ switch($type){
       ?>
       ';
       break;
+	case 'toolbar':
+	  $stringObj='
+	  <?php
+		$obj = new TPanel(array(
+             layout=>"vbox",
+             title=>"Panel",
+             width=>500,
+             height=>200,
+             margin=>"5 5 5 5"
+        ));
+        $obj->bbar->add("buttonTools",$buttonTools);
+        $obj->bbar->add("separator",new TToolbarSeparator());
+        $obj->bbar->add("text1",$obj = new TToolbarText(array(
+			html=>"<b>Text Html One</b>"
+		)));
+        $obj->bbar->add("spacer",new TToolbarSpacer());
+        $obj->bbar->add("text2",$obj = new TToolbarText(array(
+			html=>"<i>Text Html Two</i>"
+		)));
+        $obj->bbar->add("fill",new TToolbarFill());
+        $obj->bbar->add("buttonClose",$buttonClose);
+	  ?>
+	  ';
+	  break;
     case 'tabpanel':
       $stringObj='
       <?php

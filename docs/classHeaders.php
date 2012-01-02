@@ -30,8 +30,8 @@
       </div>
       <div style="padding:0 0 0 10px">
            <p>To add new scripts or css styles use the lines below.</p>
-           <p>Example: Insert mask for phone</p>
-           <p>$app->headers->add('utils', '<?php echo highlight_string("<script type=\"text/javascript\" src=\"js/utils.js\"></script>", true);?>');</p>
+           <p><b>Example:</b> Insert mask for phone</p>
+           <p><b>$app->headers->add('utils', '<?php echo highlight_string("<script type=\"text/javascript\" src=\"js/utils.js\"></script>", true);?>');</b></p>
       </div>
       <div style="padding:10px 0 0 10px">
            <fieldset>

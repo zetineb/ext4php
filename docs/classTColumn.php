@@ -1,38 +1,36 @@
-<?php
-class classTCheckBox extends TTabDefault implements iObject{
-    public function labelTitle(){
-        $obj = new TLabel(array(
-             text=>"CheckBox Demo",
-             name=>"label_name",
-             padding=>"10 10 10 10",
-             style=>"font-size:25px"
-        ));
-	    return $obj;
+<style>
+    body{
+       background-color:#FFFFFF;
+       margin:10;
     }
-
-    public function TCheckBoxObj(){
-       $obj = new TCheckbox(array(
-		    boxLabel=>'Checkbox',
-		    name=>'checkbox_name',
-            padding=>"10 10 10 10",
-		    inputValue=>1
-       ));
-	  return $obj;
+    *{
+       font-family:Verdana;
+       font-size:12px;
     }
-    
-    public function TContainerObj(){
-      $obj = new TContainer(array(
-             layout=>'vbox',
-             width=>'100%',
-             height=>'100%'
-	  ));
-	  $obj->items->add('label_title',$this->labelTitle());
-      $obj->items->add('checkboxgroup',$this->TCheckBoxObj());
-	  return $obj;
-	}
-    
-    public function execute(){
-       return $this->TTabObj($this->TContainerObj(),'checkboxgroup');
+    p{
+       padding:0 0 0 0;
+       margin:0 0 0 0;
     }
-}
-?>
+    .titulo{
+	   color:#569ce5;
+	   font-size:20px;
+	   font-family:Arial, Helvetica, sans-serif;
+	   font-weight:bold;
+	   padding:20px 0 0 0;
+    }
+</style>
+<body>
+      <div style="margin-bottom:20px">
+           <img src="images/credits/logo_ext64x64.png" alt="Ext4PHP" title="Ext4PHP" style="float:left; margin:10px"/>
+           <div class="titulo">Ext4PHP FrameWork - Grid->Column</div>
+      </div>
+      <div style="padding:0 0 0 10px">
+           <p>TColumn The object is used in conjunction with the object TGrid to create the columns of the grid.</p>
+      </div>
+      <div style="padding:10px 0 0 10px">
+           <fieldset>
+               <legend><strong>Usage</strong></legend>
+               <?php echo highlight_file("column.php", true);?>
+           </fieldset>
+      </div>
+</body>

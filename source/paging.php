@@ -100,8 +100,14 @@ class TPaging{
 			var _last=999999;
 			if (typeof ".$operation.".count!='undefined') _last=Math.ceil(".$operation.".count/".$operation.".limit);
 			if (".$operation.".page!=-1&&".$operation.".page<_last){
-				".$operation.".page =-1;
-				".$operation.".start=-1;
+				if (_last==999999){
+					".$operation.".page =-1;
+					".$operation.".start=-1;
+				}
+				else{
+					".$operation.".page =_last;
+					".$operation.".start=_last*".$operation.".limit-".$operation.".limit;
+				}
 				var _txt='?';
 				if (typeof ".$operation.".count!='undefined') _txt=_last;
 				if (Ext.getCmp('".$id."_display').displayMsg!='')

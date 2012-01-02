@@ -31,6 +31,12 @@ require_once "classTTabpanel.php";
 require_once "classTTree.php";
 require_once "classTPanel.php";
 require_once "classTHidden.php";
+require_once "classTToolbar.php";
+require_once "classTChartcolumn.php";
+require_once "classTChartline.php";
+require_once "classTChartpie.php";
+require_once "classTGrid.php";
+require_once "classTPaging.php";
 
 try{
 	/*$oButton = new classTButton();*/
@@ -90,6 +96,12 @@ try{
             case 'ttree':  $object = new classTTree();break;
             case 'tpanel':  $object = new classTPanel();break;
             case 'thidden':  $object = new classTHidden();break;
+			case 'ttoolbar':  $object = new classTToolbar();break;
+			case 'tchartcolumn':  $object = new classTChartColumn();break;
+			case 'tchartline':  $object = new classTChartLine();break;
+			case 'tchartpie':  $object = new classTChartPie();break;
+			case 'tpaging':  $object = new classTPaging();break;
+			case 'tgrid':  $object = new classTGrid();break;
             default:  $object = new classTText(); break;
        }
     }else{
@@ -103,12 +115,42 @@ try{
     $container->items->add('content',$object->execute());
 
     $app->items->add('main',$container);
-   	$app->events->add('comboboxRemote',new ComboboxRemote());
+	
+	//============== LISTENERS =================================================//
+	
+	$app->onAfterRender("
+	    _APP.send({event:\"getPagingCount\",handler:function(_r){
+		operation = new Ext.data.Operation({
+	    start : 0, 
+	    page  : 1,	
+	    count : _r, 
+	    limit : 10,  
+	    sorters: [ 																	
+	    ],
+	    filters: [  										
+	    ]
+	    });	
+	    Ext.getCmp('paging').getStore().load(operation);	
+	    Ext.getCmp('paging_display').setText('<b>Page: 1 - '+Math.ceil(operation.count/operation.limit)+'</b>');
+	    
+	    }});
+	");
+	
+	//============== EVENTS ====================================================//
+   
+    $app->events->add('comboboxRemote',new ComboboxRemote());
     $app->events->add('getTree',new getTree());
+	$app->events->add('getPagingCount',new getPagingCount());
+	$app->events->add('getPagingResult',new getPagingResult());
+	
+	//============== WINDOWS =================================================//
+   
     $app->windows->add('simpleWindow',$simpleWindow->getWindow());
     $app->windows->add('toolsWindow',$toolsWindow->getWindow());
     $app->windows->add('toolbarWindow',$toolbarWindow->getWindow());
-
+	
+	//=========================================================================
+	
 	$app->show();
 }
 catch(Exception $e){

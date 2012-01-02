@@ -13,15 +13,15 @@ class TTabDefault{
 	    $tab3=new TTab(array(
             title=>'Attributes'
         ));
-        $tab3->html="<iframe width='99%' height='99%' src='attributes.php?type=".$idObject."''/>";
+        $tab3->html="<iframe width='99%' height='99%' src='attributes.php?type=".$idObject."'/>";
 	    $tab4=new TTab(array(
             title=>'Listeners'
         ));
-        $tab4->html="<iframe width='99%' height='99%' src='listeners.php?type=".$idObject."''/>";
+        $tab4->html="<iframe width='99%' height='99%' src='listeners.php?type=".$idObject."'/>";
         $tab5=new TTab(array(
             title=>'Usage'
         ));
-        $tab5->html="<iframe width='99%' height='99%' src='usage.php?type=".$idObject."''/>";
+        $tab5->html="<iframe width='99%' height='99%' src='usage.php?type=".$idObject."'/>";
 	    $tabpanel=new TTabPanel();
 	    $tabpanel->items->add('tab1',$tab1);
 	    $tabpanel->items->add('tab2',$tab2);

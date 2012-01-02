@@ -101,6 +101,12 @@ include("principal.html");
         Defaults to: false</div>
     </div>
     <div>
+        <h3><a href="#"> hideTrigger: <strong class="stitulo"> Boolean </strong></a></h3>
+        <div class="barra"> true to hide the trigger element and display only the base text field
+        <br /><br />
+        Defaults to: false</div>
+    </div>
+    <div>
         <h3><a href="#"> html: <strong class="stitulo"> String/Object </strong></a></h3>
         <div class="barra">An HTML fragment, or a DomHelper specification to use as the layout element content. The HTML content is added after the component is rendered, so the        document will not contain this HTML at the time the render event is fired. This content is inserted into the body before any configured contentEl is        appended.
         <br /><br />
