@@ -11428,7 +11428,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 --
 
 INSERT INTO `usuario` (`codigo`, `confirmado`, `finalizado`, `frase`, `login`, `nome`, `senha`, `tipo`, `version`, `email`, `empresa`, `entidade`) VALUES
-(10850, b'1', b'0', 'PHRASE HERE!!', 'FAUSTO', 'FAUSTO MAROUVO', '123', '', 0, 10976, 0, 9999);
+(10850, b'1', b'0', 'PHRASE HERE!!', 'DEMO', 'DEMONSTRATIVE APPLICATION', '123', '', 0, 10976, 0, 9999);
 
 --
 -- Restrições para as tabelas dumpadas
