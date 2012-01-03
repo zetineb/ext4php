@@ -8,7 +8,7 @@ session_start();
 setlocale (LC_ALL, 'pt_BR');
 date_default_timezone_set('America/Sao_Paulo');
 //error_reporting(E_USER_NOTICE); //set which php errors are reported
-if(isset($_GET['local']) and $_GET['local']=='docs'){
+if($_GET['local']=='docs'){
 	require "../source/application.php";
 	$js='<script type="text/javascript" src="../examples/app2/js/utils.js"></script>';
 	$css='<link rel="stylesheet" type="text/css" href="../examples/app2/css/app.css"/>';
@@ -44,8 +44,8 @@ require_once  "winInstituicao.php";
 require_once  "winPerfil.php";
 require_once  "menuHeader.php";
 
-$conexao = mysql_connect("localhost","root","");
-$db = mysql_select_db("destaque",$conexao);
+$conexao = mysql_connect("localhost","vmtech_vmtech","vmtech@2011");
+$db = mysql_select_db("vmtech_destaque",$conexao);
 
 if($_SESSION['login']!="" and $_SESSION['senha']!=""){
   $_SESSION['store']='{"nome":"'.$_SESSION['nome'].'","login":"'.$_SESSION['login'].'","senha":"'.$_SESSION['senha'].'","codigo":"'.$_SESSION['codigo'].'","perfil":"'.$_SESSION['perfil'].'","entidade":"'.$_SESSION['entidade'].'"}';

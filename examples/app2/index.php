@@ -1,9 +1,9 @@
 <?php
+session_start();
 /*
 Developed by: Fausto Marouvo
 Contact Email: fausto@mirageminterativa.com.br
 */
-session_start();
 //error_reporting(E_USER_NOTICE); //set which php errors are reported
 $conexao = mysql_connect("localhost","root","");
 $db = mysql_select_db("destaque",$conexao);
@@ -14,7 +14,7 @@ $db = mysql_select_db("destaque",$conexao);
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="author" content="Fausto Castagnari Marouvo, fausto@grupouds.com.br">
-<title>Capacitanto.net</title>
+<title>EXT4PHP - Demonstrative application</title>
 <link rel="stylesheet" type="text/css" media="all" href="css/default.css" />
 <script type="text/javascript">
   function log(){
@@ -78,11 +78,13 @@ $db = mysql_select_db("destaque",$conexao);
 <body>
 <div id="topo">
     <div class="resolucao">
-    	<a href="index.php" title="Back para página inicial" id="logo">Capacitando.net</a>
+    	<a href="index.php" title="Back para página inicial" id="logo">EXT4PHP - Demonstrative Application</a>
     </div>
 </div>
 <div class="resolucao">
-    &nbsp;
+    Create a new user or login with bellow user:<br />
+		Username: demo<br />
+		Password: 123
  </div>
  <div class="right">
      <div id="login">

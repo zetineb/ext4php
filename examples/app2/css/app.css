@@ -51,12 +51,6 @@
 	color:#ff0000;
 	font: normal 13px arial, tahoma, verdana, sans-serif;
 }
-
-.x-grid-row-summary .x-grid-cell-inner {
-	font-weight: bold;
-	font-size: 11px;
-} 
-
 .badd {
 	background-image: url(../images/buttons/add.png) !important;
 }
@@ -122,4 +116,56 @@
 }
 .brefresh{
 	background-image: url(../images/buttons/refresh.png) !important;
+}
+.buser{
+	background-image: url(../images/buttons/user.png) !important;
+}
+.bemail{
+	background-image: url(../images/buttons/email.png) !important;
+}
+.baddress{
+	background-image: url(../images/buttons/address.png) !important;
+}
+.blogout{
+	background-image: url(../images/buttons/logout.png) !important;
+}
+.bspeech{
+	background-image: url(../images/buttons/speech.png) !important;
+}
+.bprofhist{
+	background-image: url(../images/buttons/profhist.png) !important;
+}
+.bphone{
+	background-image: url(../images/buttons/phone.png) !important;
+}
+.bgrade{
+	background-image: url(../images/buttons/graduation.png) !important;
+}
+.bcancel{
+	background-image: url(../images/buttons/cancel.png) !important;
+}
+.bselect{
+	background-image: url(../images/buttons/select.png) !important;
+}
+.baddsel{
+	background-image: url(../images/buttons/addsel.png) !important;
+}
+.bability{
+	background-image: url(../images/buttons/ability.png) !important;
+}
+.bmonitor{
+	background-image: url(../images/buttons/monitor.png) !important;
+}
+.bback{
+	background-image: url(../images/buttons/back.png) !important;
+}
+.bphoto{
+	background-image: url(../images/buttons/photo.png) !important;
+}
+.bupload{
+	background-image: url(../images/buttons/upload.png) !important;
+}
+.fotoPerfil{
+	text-align: right;
+	padding-right: 10px;
 }
