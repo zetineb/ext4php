@@ -38,7 +38,13 @@
       </div>
       <fieldset>
           <legend><strong>Attributes</strong></legend>
-          <?php include_once("$path/$type.php");?>
+          <?php 
+			if(file_exists($path."/".$type.".php")) {
+				include_once("$path/$type.php");
+			}else{
+				echo "Coming Soon";
+			}
+		   ?>
       </fieldset>
 </body>
 

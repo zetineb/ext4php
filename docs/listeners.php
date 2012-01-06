@@ -37,8 +37,14 @@
            <p>The following are the events for use in this object.</p>
       </div>
       <fieldset>
-          <legend><strong>Attributes</strong></legend>
-          <?php include_once("$path/$type.php");?>
+          <legend><strong>Listeners</strong></legend>
+		  <?php 
+			if(file_exists($path."/".$type.".php")) {
+				include_once("$path/$type.php");
+			}else{
+				echo "Coming Soon";
+			}
+		   ?>
       </fieldset>
 </body>
 

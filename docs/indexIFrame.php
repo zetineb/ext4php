@@ -71,7 +71,8 @@ try{
 	$app->headers->add('app-style','<link rel="stylesheet" type="text/css" href="css/app.css"/>');
 
     if(isset($_GET['type'])){
-       switch($_GET['type']){
+	   $type = $_GET['type'];
+       switch($type){
             case 'tlabel':  $object = new classTLabel(); break;
             case 'tnumber':  $object = new classTNumber(); break;
             case 'ttext':  $object = new classTText(); break;
@@ -105,6 +106,7 @@ try{
             default:  $object = new classTText(); break;
        }
     }else{
+	   $type = "";
        $object = new classTText();
     }
 
@@ -117,28 +119,31 @@ try{
     $app->items->add('main',$container);
 	
 	//============== LISTENERS =================================================//
-	
-	$app->onAfterRender("
-	    _APP.send({event:\"getPagingCount\",handler:function(_r){
-		operation = new Ext.data.Operation({
-	    start : 0, 
-	    page  : 1,	
-	    count : _r, 
-	    limit : 10,  
-	    sorters: [ 																	
-	    ],
-	    filters: [  										
-	    ]
-	    });	
-	    Ext.getCmp('paging').getStore().load(operation);	
-	    Ext.getCmp('paging_display').setText('<b>Page: 1 - '+Math.ceil(operation.count/operation.limit)+'</b>');
-	    
-	    }});
-	");
+	if($type =='tpaging'){
+		$app->onAfterRender("
+			_APP.send({event:\"getPagingCount\",handler:function(_r){
+			operation = new Ext.data.Operation({
+			start : 0, 
+			page  : 1,	
+			count : _r, 
+			limit : 10,  
+			sorters: [ 																	
+			],
+			filters: [  										
+			]
+			});	
+			Ext.getCmp('paging').getStore().load(operation);	
+			Ext.getCmp('paging_display').setText('<b>Page: 1 - '+Math.ceil(operation.count/operation.limit)+'</b>');
+			
+			}});
+		");
+	}
 	
 	//============== EVENTS ====================================================//
    
-    $app->events->add('comboboxRemote',new ComboboxRemote());
+    $app->events->add('groupheader',new GroupHeaderEvent());
+	$app->events->add('groupsummary',new GroupSummaryEvent());
+	$app->events->add('grouping',new GroupingEvent());
     $app->events->add('getTree',new getTree());
 	$app->events->add('getPagingCount',new getPagingCount());
 	$app->events->add('getPagingResult',new getPagingResult());
