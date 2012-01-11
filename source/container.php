@@ -8,6 +8,8 @@
 		public $defaults=null;
 		public $frame=null;
 		public $layout=null;		
+		public $margin=null;		
+		public $padding=null;		
 		public $region=null;		
 		public $items;
 		

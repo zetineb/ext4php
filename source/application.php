@@ -122,6 +122,10 @@
 				else
 					$this->writeLn('layout:"'.$obj->layout.'",');
 			}
+			if (!is_null($obj->margin))
+					$this->writeLn('margin:"'.$obj->margin.'",');
+			if (!is_null($obj->padding))
+					$this->writeLn('padding:"'.$obj->padding.'",');
 			if (!is_null($obj->region))
 				$this->writeLn('region:"'.$obj->region.'",');
 			$this->writeLn('items:[');
