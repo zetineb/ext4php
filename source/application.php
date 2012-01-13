@@ -675,6 +675,8 @@
 				$this->writeLn('emptyText:"'.$obj->emptyText.'",');
 			if (!is_null($obj->enableKeyEvents))
 				$this->writeLn('enableKeyEvents:'.$this->boolean[$obj->enableKeyEvents].',');
+			if (!is_null($obj->enforceMaxLength))
+				$this->writeLn('enforceMaxLength:'.$this->boolean[$obj->enforceMaxLength].',');
 			if (!is_null($obj->fieldLabel))
 				$this->writeLn('fieldLabel:"'.$obj->fieldLabel.'",');
 			if (!is_null($obj->forceSelection))
@@ -874,6 +876,8 @@
 				$this->writeLn('emptyText:"'.$obj->emptyText.'",');
 			if (!is_null($obj->enableKeyEvents))
 				$this->writeLn('enableKeyEvents:'.$this->boolean[$obj->enableKeyEvents].',');
+			if (!is_null($obj->enforceMaxLength))
+				$this->writeLn('enforceMaxLength:'.$this->boolean[$obj->enforceMaxLength].',');
 			if (!is_null($obj->fieldLabel))
 				$this->writeLn('fieldLabel:"'.$obj->fieldLabel.'",');
 			if (!is_null($obj->format))
@@ -1258,6 +1262,10 @@
 				$this->writeLn('disabled:'.$this->boolean[$obj->disabled].',');
 			if (!is_null($obj->editable))
 				$this->writeLn('editable:'.$this->boolean[$obj->editable].',');
+			if (!is_null($obj->enableKeyEvents))
+				$this->writeLn('enableKeyEvents:'.$this->boolean[$obj->enableKeyEvents].',');
+			if (!is_null($obj->enforceMaxLength))
+				$this->writeLn('enforceMaxLength:'.$this->boolean[$obj->enforceMaxLength].',');
 			if (!is_null($obj->emptyText))
 				$this->writeLn('emptyText:"'.$obj->emptyText.'",');
 			if (!is_null($obj->fieldLabel))
@@ -1383,6 +1391,8 @@
 				$this->writeLn('disabled:'.$this->boolean[$obj->disabled].',');
 			if (!is_null($obj->enableKeyEvents))
 				$this->writeLn('enableKeyEvents:'.$this->boolean[$obj->enableKeyEvents].',');
+			if (!is_null($obj->enforceMaxLength))
+				$this->writeLn('enforceMaxLength:'.$this->boolean[$obj->enforceMaxLength].',');
 			if (!is_null($obj->fieldLabel))
 				$this->writeLn('fieldLabel:"'.$obj->fieldLabel.'",');
 			if (!is_null($obj->handler)){
@@ -1474,6 +1484,8 @@
 				$this->writeLn('emptyText:"'.$obj->emptyText.'",');
 			if (!is_null($obj->enableKeyEvents))
 				$this->writeLn('enableKeyEvents:'.$this->boolean[$obj->enableKeyEvents].',');
+			if (!is_null($obj->enforceMaxLength))
+				$this->writeLn('enforceMaxLength:'.$this->boolean[$obj->enforceMaxLength].',');
 			if (!is_null($obj->fieldLabel))
 				$this->writeLn('fieldLabel:"'.$obj->fieldLabel.'",');
 			if (!is_null($obj->height)){
@@ -1564,6 +1576,8 @@
 				$this->writeLn('emptyText:"'.$obj->emptyText.'",');
 			if (!is_null($obj->enableKeyEvents))
 				$this->writeLn('enableKeyEvents:'.$this->boolean[$obj->enableKeyEvents].',');
+			if (!is_null($obj->enforceMaxLength))
+				$this->writeLn('enforceMaxLength:'.$this->boolean[$obj->enforceMaxLength].',');
 			if (!is_null($obj->fieldLabel))
 				$this->writeLn('fieldLabel:"'.$obj->fieldLabel.'",');
 			if (!is_null($obj->height)){
@@ -1656,6 +1670,8 @@
 				$this->writeLn('emptyText:"'.$obj->emptyText.'",');
 			if (!is_null($obj->enableKeyEvents))
 				$this->writeLn('enableKeyEvents:'.$this->boolean[$obj->enableKeyEvents].',');
+			if (!is_null($obj->enforceMaxLength))
+				$this->writeLn('enforceMaxLength:'.$this->boolean[$obj->enforceMaxLength].',');
 			if (!is_null($obj->fieldLabel))
 				$this->writeLn('fieldLabel:"'.$obj->fieldLabel.'",');
 			if (!is_null($obj->format))

@@ -1,5 +1,5 @@
 <?php
-	define("__version","1.0.9.7");
+	define("__version","1.0.9.8");
 	//
 	define("activeItem","activeItem");
 	define("activeError","activeError");
@@ -96,6 +96,7 @@
 	define("enableFormat","enableFormat");
 	define("enableGroupingMenu","enableGroupingMenu");
 	define("enableNoGroups","enableNoGroups");
+	define("enforceMaxLength","enforceMaxLength");
 	define("errorSummary","errorSummary");
 	define("expanded","expanded");
 	define("groupByText","groupByText");

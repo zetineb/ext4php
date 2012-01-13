@@ -430,6 +430,7 @@
 				elseif (!strcasecmp($keys[$i],enableFormat)) $this->enableFormat=$v;
 				elseif (!strcasecmp($keys[$i],enableGroupingMenu)) $this->enableGroupingMenu=$v;
 				elseif (!strcasecmp($keys[$i],enableNoGroups)) $this->enableNoGroups=$v;
+				elseif (!strcasecmp($keys[$i],enforceMaxLength)) $this->enforceMaxLength=$v;
 				elseif (!strcasecmp($keys[$i],errorSummary)) $this->errorSummary=$v;
 				elseif (!strcasecmp($keys[$i],expanded)) $this->expanded=$v;
 				elseif (!strcasecmp($keys[$i],groupByText)) $this->groupByText=$v;
@@ -1150,6 +1151,10 @@
 		}
 		public function enableNoGroups($v){ 
 			$this->enableNoGroups=$v;
+			return ($this);
+		}
+		public function enforceMaxLength($v){ 
+			$this->enforceMaxLength=$v;
 			return ($this);
 		}
 		public function errorSummary($v){ 

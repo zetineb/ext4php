@@ -88,6 +88,7 @@
 		public $cls=null;
 		public $disabled=null;
 		public $enableKeyEvents=null;
+		public $enforceMaxLength=null;
 		public $fieldLabel=null;
 		public $hidden=null;
 		public $html=null;
