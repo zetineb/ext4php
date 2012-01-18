@@ -28,3 +28,4 @@ PS     : All tests are being done with WampServer 2.1e (32 bit)
 					1.0.9.6=> update application docs
 					1.0.9.7=> update TContainer
 					1.0.9.8=> update TForm
+					1.0.9.9=> add TApplication style

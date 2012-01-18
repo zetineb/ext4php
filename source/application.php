@@ -76,7 +76,7 @@
 		private function mkHeader(){
 			$this->writeLn('<head>');
 			$this->writeLn('<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />');
-			$this->writeLn('<link rel="stylesheet" type="text/css" href="/'.$this->ext.'/resources/css/ext-all.css"/>');
+			$this->writeLn('<link rel="stylesheet" type="text/css" href="/'.$this->ext.'/resources/css/'.$this->style.'.css"/>');
 			$this->writeLn('<script type="text/javascript" src="/'.$this->ext.'/bootstrap.js"></script>');
 			$this->writeLn('<script type="text/javascript" src="/'.$this->ext.'/locale/'.$this->language.'"></script>');
 			while ($this->headers->next()){
@@ -3630,6 +3630,7 @@
 		//
 		public function __construct($param=array()){
 			$this->language=TLanguage::$pt_BR;
+			$this->style='ext-all';
 			$this->headers=new TListHeader();
 			//$this->listeners=new TListListener();
 			$this->events=new TListEvent();
